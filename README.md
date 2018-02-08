@@ -8,7 +8,7 @@ The goal is to have any Node app running in less than 30 seconds.
 > Inspired by [`create-react-app`](https://github.com/facebook/create-react-app)
 
 * [Usage](docs/Usage.md)
-* [Configuration)(docs/Configuration.md)
+* [Configuration](docs/Configuration.md)
 
 To start off in less than 30 seconds, create a Noderize app:
 
