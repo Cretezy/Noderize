@@ -18,7 +18,7 @@ const defaults = {
 	sourcemap: "cheap-module-eval-source-map",
 	runOnWatch: true,
 	minify: false,
-	includeExternal: false,
+	includeExternal: false
 };
 const envDefaults = {
 	production: {
@@ -31,7 +31,13 @@ function getOptions(rawArgs) {
 	// Parse args
 	const args = parseArgs(rawArgs, {
 		boolean: bools,
-		default: { "shebang": null, "runOnWatch": null, "minify": null, "includeExternal": null, "targets": null }
+		default: {
+			shebang: null,
+			runOnWatch: null,
+			minify: null,
+			includeExternal: null,
+			targets: null
+		}
 	});
 
 	// Get options from package.json with defaults
@@ -43,18 +49,20 @@ function getOptions(rawArgs) {
 	}
 
 	if (args.sources != undefined) {
-		options.sources = Array.isArray(args.sources) ? args.sources : [args.sources]
+		options.sources = Array.isArray(args.sources)
+			? args.sources
+			: [args.sources];
 	}
 
 	bools.forEach(bool => {
 		if (args[bool] !== null) {
-			options[bool] = args[bool]
+			options[bool] = args[bool];
 		}
 	});
 
 	strings.forEach(string => {
 		if (args[string] !== undefined) {
-			options[string] = args[string]
+			options[string] = args[string];
 		}
 	});
 

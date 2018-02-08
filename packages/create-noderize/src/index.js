@@ -77,9 +77,21 @@ import { execSync } from "child_process";
 	const runCommand = useYarn ? "yarn" : "npm run";
 
 	console.log(`${chalk.greenBright("[INFO]")} Done!`);
-	console.log(`${chalk.greenBright("[INFO]")} You may visit your app with ${chalk.cyan(`cd ${name}`)}`);
-	console.log(`${chalk.greenBright("[INFO]")} Develop by using ${chalk.cyan(`${runCommand} watch`)}`);
-	console.log(`${chalk.greenBright("[INFO]")} Build a production version using ${chalk.cyan(`${runCommand} build`)}`);
+	console.log(
+		`${chalk.greenBright("[INFO]")} You may visit your app with ${chalk.cyan(
+			`cd ${name}`
+		)}`
+	);
+	console.log(
+		`${chalk.greenBright("[INFO]")} Develop by using ${chalk.cyan(
+			`${runCommand} watch`
+		)}`
+	);
+	console.log(
+		`${chalk.greenBright(
+			"[INFO]"
+		)} Build a production version using ${chalk.cyan(`${runCommand} build`)}`
+	);
 })();
 
 function shouldUseYarn() {
