@@ -209,6 +209,10 @@
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-class-properties/-/plugin-syntax-class-properties-7.0.0-beta.39.tgz#a1a0e89c6042635cd21aafbdec3f006f06c368aa"
 
+"@babel/plugin-syntax-flow@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.0.0-beta.39.tgz#b9247a81e4dacaa57aac3670792d788a64253f68"
+
 "@babel/plugin-syntax-object-rest-spread@7.0.0-beta.39":
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-object-rest-spread/-/plugin-syntax-object-rest-spread-7.0.0-beta.39.tgz#f19f0761ccebf1d579197705e2efda36e1a45545"
@@ -273,6 +277,12 @@
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-exponentiation-operator/-/plugin-transform-exponentiation-operator-7.0.0-beta.39.tgz#d0115ee85e3d895ead38c6fd149df223bde6e069"
   dependencies:
     "@babel/helper-builder-binary-assignment-operator-visitor" "7.0.0-beta.39"
+
+"@babel/plugin-transform-flow-strip-types@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-flow-strip-types/-/plugin-transform-flow-strip-types-7.0.0-beta.39.tgz#3a03fc8ebaa9eddd62bdf501ceeff2a8e048bc4d"
+  dependencies:
+    "@babel/plugin-syntax-flow" "7.0.0-beta.39"
 
 "@babel/plugin-transform-for-of@7.0.0-beta.39":
   version "7.0.0-beta.39"
@@ -408,6 +418,12 @@
     browserslist "^2.4.0"
     invariant "^2.2.2"
     semver "^5.3.0"
+
+"@babel/preset-flow@^7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/preset-flow/-/preset-flow-7.0.0-beta.39.tgz#2a104114c71fbce992af0ed6ba633ac8f1be7277"
+  dependencies:
+    "@babel/plugin-transform-flow-strip-types" "7.0.0-beta.39"
 
 "@babel/template@7.0.0-beta.39":
   version "7.0.0-beta.39"

@@ -1,14 +1,15 @@
 module.exports = ({ modules, targets } = {}) => ({
 	presets: [
 		[
-			require.resolve("@babel/preset-env"),
+			"@babel/preset-env",
 			{
 				targets
 			}
-		]
+		],
+		"@babel/preset-flow"
 	],
 	plugins: [
-		require.resolve("@babel/plugin-proposal-object-rest-spread"),
-		require.resolve("@babel/plugin-proposal-class-properties")
+		"@babel/plugin-proposal-object-rest-spread",
+		"@babel/plugin-proposal-class-properties"
 	]
 });
