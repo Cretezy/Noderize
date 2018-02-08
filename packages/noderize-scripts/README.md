@@ -1,7 +1,4 @@
-<p align="center">
-    <h1>Noderize Scripts</h1>
-    <a href="https://www.npmjs.com/package/noderize-scripts"><img src="https://img.shields.io/npm/v/noderize-scripts.svg" alt="npm"></a>
-</p>
+# Noderize Scripts [![npm](https://img.shields.io/npm/v/noderize-scripts.svg)](https://www.npmjs.com/package/noderize-scripts)
 
 > Part of [Noderize](https://github.com/Cretezy/noderize).
 
