@@ -1,0 +1,8 @@
+{
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "packages/create-noderize/a"
+  ]
+}

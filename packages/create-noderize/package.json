@@ -1,0 +1,17 @@
+{
+  "name": "create-noderize",
+  "version": "0.1.0",
+  "license": "MIT",
+  "bin": "dist/index.js",
+  "dependencies": {
+    "ncp": "^2.0.0",
+    "noderize-scripts": "^0.1.0"
+  },
+  "scripts": {
+    "watch": "noderize-scripts watch",
+    "test": "noderize-scripts test",
+    "format": "noderize-scripts format",
+    "build": "noderize-scripts build",
+    "start": "noderize-scripts start"
+  }
+}
