@@ -47,6 +47,12 @@ Enable running the app while watching. Might be useful to disable if you are wor
 
 Array of paths to not include in build.
 
+> Unless if using `includeExternal`.
+
+### `includeExternal`: `bool` (default: `false`)
+
+Include all your dependencies in your bundle. This will make your file size a lot larger.
+
 ### `minify`: `bool` (default: `false`)
 
 Minifies (compress) your app.

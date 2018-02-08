@@ -30,6 +30,9 @@
     "prettier": "^1.10.2",
     "source-map-support": "^0.5.3",
     "supports-color": "^5.1.0",
+    "ts-loader": "^3.5.0",
+    "typescript": "^2.7.1",
+    "typescript-babel-jest": "^1.0.5",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.10.0"
   }

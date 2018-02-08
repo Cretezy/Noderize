@@ -38,6 +38,10 @@ if (undefinedOrNull(options.minify)) {
 	options.minify = false;
 }
 
+if (undefinedOrNull(options.includeExternal)) {
+	options.includeExternal = false;
+}
+
 const distOptions = merge(
 	{},
 	options,
