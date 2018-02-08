@@ -1,7 +1,7 @@
 {
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+  "devDependencies": {
     "noderize-scripts": "^0.1.0"
   },
   "scripts": {

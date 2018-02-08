@@ -1,5 +1,7 @@
 # Noderize Scrips
 
+> Part of [Noderize](https://github.com/Cretezy/noderize).
+
 ## Commands
 
 ### `build`

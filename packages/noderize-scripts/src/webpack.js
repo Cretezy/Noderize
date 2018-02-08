@@ -1,7 +1,9 @@
 const { resolveApp } = require("./utils");
 const path = require("path");
 const webpack = require("webpack");
+const webpackUglify = require('uglifyjs-webpack-plugin');
 const createBabelConfig = require("./createBabelConfig");
+const pathIsInside = require("path-is-inside");
 
 function getCompiler(options) {
 	const output = resolveApp(options.output);
@@ -26,11 +28,20 @@ function getCompiler(options) {
 		plugins: [
 			options.shebang &&
 			new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
-			options.globals && new webpack.ProvidePlugin(options.globals)
+			options.globals && new webpack.ProvidePlugin(options.globals),
+			options.minify && new webpackUglify()
 		].filter(Boolean),
 		devtool: options.sourcemap,
 		target: "node",
-		node: false
+		node: false,
+		// Include only app code
+		externals: [(context, request, callback) => {
+			if (!pathIsInside(request, resolveApp("src"))) {
+				callback(null, "commonjs " + request);
+			} else {
+				callback();
+			}
+		}]
 	};
 	return webpack(config);
 }

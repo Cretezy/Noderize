@@ -33,6 +33,8 @@ import { execSync } from "child_process";
 		return;
 	}
 
+	console.log(`${chalk.yellowBright("[INFO]")} Setting up...`);
+
 	// Set the "name" field in package.json
 	try {
 		const childPackagePath = resolve(path, "package.json");
@@ -46,6 +48,14 @@ import { execSync } from "child_process";
 		);
 	} catch (error) {
 		console.error(`${chalk.redBright("[ERROR]")} Error setting name.`);
+		console.error(error);
+	}
+
+	// Move "gitignore" to ".gitignore"
+	try {
+		fs.renameSync(resolve(path, "gitignore"), resolve(path, ".gitignore"));
+	} catch (error) {
+		console.error(`${chalk.redBright("[ERROR]")} Error moving .gitignore.`);
 		console.error(error);
 	}
 

@@ -1,9 +1,16 @@
 {
   "name": "create-noderize",
+  "description": "Create a Node app in less than 30 seconds.",
+  "author": "Charles Crete <charles@cretezy.com",
+  "homepage": "https://github.com/Cretezy/noderize/tree/master/packages/create-noderize",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cretezy/noderize.git"
+  },
   "version": "0.1.0",
   "license": "MIT",
   "bin": "dist/index.js",
-  "dependencies": {
+  "devDependencies": {
     "ncp": "^2.0.0",
     "noderize-scripts": "^0.1.0"
   },
@@ -13,5 +20,10 @@
     "format": "noderize-scripts format",
     "build": "noderize-scripts build",
     "start": "noderize-scripts start"
-  }
+  },
+  "files": [
+    "src",
+    "dist",
+    "template"
+  ]
 }

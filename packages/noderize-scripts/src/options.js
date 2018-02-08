@@ -31,7 +31,11 @@ if (undefinedOrNull(options.runOnWatch)) {
 	options.runOnWatch = true;
 }
 
-const distOptions = merge({}, options, dist);
+if (undefinedOrNull(options.minify)) {
+	options.minify = false;
+}
+
+const distOptions = merge({}, options, { targets: { node: "6" }, minify: true }, dist);
 
 module.exports = { options, distOptions, childPackage };
 

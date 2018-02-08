@@ -1,5 +1,5 @@
 const chalk = require("chalk");
-const { getCompiler } = require("./build");
+const { getCompiler } = require("../webpack");
 const { options } = require("../options");
 const { start } = require("./start");
 const supportsColor = require("supports-color");
