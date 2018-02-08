@@ -11,7 +11,6 @@ function splitLines(lines) {
 		.filter(line => line);
 }
 
-
 module.exports = {
 	appDirectory,
 	resolveApp,

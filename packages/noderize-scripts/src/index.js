@@ -18,11 +18,11 @@ if (args.length === 0) {
 
 const script = args.shift();
 if (!Object.keys(commands).includes(script)) {
-	return noScript()
+	return noScript();
 }
 
 commands[script].run(args);
 
 function noScript() {
-	console.log(`${chalk.red("[INFO]")} Unknown script.`)
+	console.log(`${chalk.red("[INFO]")} Unknown script.`);
 }

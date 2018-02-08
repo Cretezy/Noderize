@@ -7,18 +7,18 @@
     "type": "git",
     "url": "https://github.com/Cretezy/noderize.git"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "bin": "dist/index.js",
   "devDependencies": {
     "ncp": "^2.0.0",
-    "noderize-scripts": "^0.1.0"
+    "noderize-scripts": "^0.1.1"
   },
   "scripts": {
     "watch": "noderize-scripts watch",
     "test": "noderize-scripts test",
     "format": "noderize-scripts format",
-    "build": "noderize-scripts build",
+    "build": "noderize-scripts build --dist",
     "start": "noderize-scripts start"
   },
   "files": [

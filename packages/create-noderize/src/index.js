@@ -61,9 +61,10 @@ import { execSync } from "child_process";
 
 	console.log(`${chalk.yellowBright("[INFO]")} Installing packages...`);
 
+	const useYarn = shouldUseYarn();
 	try {
 		// Install using yarn/npm
-		if (shouldUseYarn()) {
+		if (useYarn) {
 			execSync("yarn", { cwd: path });
 		} else {
 			execSync("npm install", { cwd: path });
@@ -73,7 +74,12 @@ import { execSync } from "child_process";
 		console.error(error);
 	}
 
+	const runCommand = useYarn ? "yarn" : "npm run";
+
 	console.log(`${chalk.greenBright("[INFO]")} Done!`);
+	console.log(`${chalk.greenBright("[INFO]")} You may visit your app with ${chalk.cyan(`cd ${name}`)}`);
+	console.log(`${chalk.greenBright("[INFO]")} Develop by using ${chalk.cyan(`${runCommand} watch`)}`);
+	console.log(`${chalk.greenBright("[INFO]")} Build a production version using ${chalk.cyan(`${runCommand} build`)}`);
 })();
 
 function shouldUseYarn() {

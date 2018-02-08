@@ -43,6 +43,10 @@ Example:
 
 Enable running the app while watching. Might be useful to disable if you are working on a CLI app.
 
+### `sources`: `array[string]` (default: `["src"]`)
+
+Array of paths to not include in build.
+
 ### `minify`: `bool` (default: `false`)
 
 Minifies (compress) your app.
