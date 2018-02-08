@@ -1,6 +1,13 @@
 {
   "name": "noderize-scripts",
-  "version": "0.1.0",
+  "description": "Scripts to use with Noderize.",
+  "author": "Charles Crete <charles@cretezy.com",
+  "homepage": "https://github.com/Cretezy/noderize/tree/master/packages/noderize-scripts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cretezy/noderize.git"
+  },
+  "version": "0.1.1",
   "main": "src/index.js",
   "license": "MIT",
   "bin": "src/index.js",
@@ -19,9 +26,11 @@
     "jest": "^22.2.1",
     "lodash.merge": "^4.6.1",
     "minimist": "^1.2.0",
+    "path-is-inside": "^1.0.2",
     "prettier": "^1.10.2",
     "source-map-support": "^0.5.3",
     "supports-color": "^5.1.0",
+    "uglifyjs-webpack-plugin": "^1.1.8",
     "webpack": "^3.10.0"
   }
 }
