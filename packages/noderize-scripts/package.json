@@ -1,7 +1,7 @@
 {
   "name": "noderize-scripts",
   "description": "Scripts to use with Noderize.",
-  "author": "Charles Crete <charles@cretezy.com",
+  "author": "Charles Crete <charles@cretezy.com>",
   "homepage": "https://github.com/Cretezy/noderize/tree/master/packages/noderize-scripts",
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 {
   "name": "create-noderize",
   "description": "Create a Node app in less than 30 seconds.",
-  "author": "Charles Crete <charles@cretezy.com",
+  "author": "Charles Crete <charles@cretezy.com>",
   "homepage": "https://github.com/Cretezy/noderize/tree/master/packages/create-noderize",
   "repository": {
     "type": "git",
