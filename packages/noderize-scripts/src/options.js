@@ -23,7 +23,7 @@ const defaults = {
 const envDefaults = {
 	production: {
 		targets: { node: "6" },
-		minify: true
+		sourcemap: false
 	}
 };
 
@@ -31,6 +31,7 @@ function getOptions(rawArgs) {
 	// Parse args
 	const args = parseArgs(rawArgs, {
 		boolean: bools,
+		string: strings,
 		default: {
 			shebang: null,
 			runOnWatch: null,
@@ -44,11 +45,11 @@ function getOptions(rawArgs) {
 	const options = merge({}, defaults, childOptions);
 
 	// Merge args to options
-	if (args.targets !== undefined) {
+	if (args.targets !== null) {
 		options.targets = JSON.parse(args.targets);
 	}
 
-	if (args.sources != undefined) {
+	if (args.sources != null) {
 		options.sources = Array.isArray(args.sources)
 			? args.sources
 			: [args.sources];

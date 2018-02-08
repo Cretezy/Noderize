@@ -41,7 +41,7 @@ Example:
 }
 ```
 
-### `sourcemap`: `bool` (default: `cheap-module-eval-source-map`)
+### `sourcemap`: `string|false` (default: `cheap-module-eval-source-map`)
 
 [See source map types](https://webpack.js.org/configuration/devtool).
 
@@ -63,15 +63,13 @@ Include all your dependencies in your bundle. This will make your file size a lo
 
 Minifies (compress) your app.
 
-This is automatically enabled when using `--dist` to build.
-
 ### `env`: `object`
 
 Provide environment-specific variables that can be used with the `--env` flag
 
 By default, the `production` environment does:
 * Sets `targets.node` to the oldest active Node LTS release.
-* Set `minify` to `true`.
+* Set `sourcemap` to `false`.
 
 Example:
 ```json
