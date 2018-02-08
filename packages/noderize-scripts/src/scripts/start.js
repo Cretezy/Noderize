@@ -1,16 +1,18 @@
 const chalk = require("chalk");
 const { fork } = require("child_process");
-const { options } = require("../options");
+const { getOptions } = require("../options");
 
 function run(args) {
-	start(args);
+	start(getOptions(args));
 }
 
-function start(args = []) {
+function start(options) {
 	console.log(`${chalk.yellowBright("[INFO]")} Starting...\n`);
-	const child = fork(options.output, args, {
+
+	const child = fork(options.output, options.args._, {
 		execArgv: ["-r", "source-map-support/register"]
 	});
+
 	child.on("exit", (code, signal) => {
 		console.error(
 			`\n${chalk.yellowBright("[INFO]")} Exited with code ${code} ${
@@ -18,6 +20,7 @@ function start(args = []) {
 			}`
 		);
 	});
+
 	return child;
 }
 

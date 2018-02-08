@@ -1,56 +1,70 @@
 const { resolveApp } = require("./utils");
 const merge = require("lodash.merge");
-
+const parseArgs = require("minimist");
 const {
-	noderize: { dist = {}, ...options } = {},
+	noderize: { env: envOptions, ...childOptions } = {},
 	...childPackage
 } = require(resolveApp("package.json"));
 
-if (undefinedOrNull(options.shebang)) {
-	options.shebang = !undefinedOrNull(childPackage.bin);
+const bools = ["shebang", "runOnWatch", "minify", "includeExternal"];
+const strings = ["entry", "output", "sourcemaps"];
+
+const defaults = {
+	targets: { node: true },
+	entry: "src/index.js",
+	output: childPackage.main || "dist/index.js",
+	shebang: childPackage.bin !== undefined,
+	sources: ["src"],
+	sourcemap: "cheap-module-eval-source-map",
+	runOnWatch: true,
+	minify: false,
+	includeExternal: false,
+};
+const envDefaults = {
+	production: {
+		targets: { node: "6" },
+		minify: true
+	}
+};
+
+function getOptions(rawArgs) {
+	// Parse args
+	const args = parseArgs(rawArgs, {
+		boolean: bools,
+		default: { "shebang": null, "runOnWatch": null, "minify": null, "includeExternal": null, "targets": null }
+	});
+
+	// Get options from package.json with defaults
+	const options = merge({}, defaults, childOptions);
+
+	// Merge args to options
+	if (args.targets !== undefined) {
+		options.targets = JSON.parse(args.targets);
+	}
+
+	if (args.sources != undefined) {
+		options.sources = Array.isArray(args.sources) ? args.sources : [args.sources]
+	}
+
+	bools.forEach(bool => {
+		if (args[bool] !== null) {
+			options[bool] = args[bool]
+		}
+	});
+
+	strings.forEach(string => {
+		if (args[string] !== undefined) {
+			options[string] = args[string]
+		}
+	});
+
+	// Merge envs
+	if (args.env) {
+		const envOptions = merge({}, envDefaults, options.env || {});
+		merge(options, envOptions[args.env] || {});
+	}
+
+	return { ...options, args: args };
 }
 
-if (undefinedOrNull(options.targets)) {
-	options.targets = { node: true };
-}
-
-if (undefinedOrNull(options.entry)) {
-	options.entry = "src/index.js";
-}
-
-if (undefinedOrNull(options.sources)) {
-	options.sources = ["src"];
-}
-
-if (undefinedOrNull(options.sourcemap)) {
-	options.sourcemap = "cheap-module-eval-source-map";
-}
-
-if (undefinedOrNull(options.output)) {
-	options.output = childPackage.main || "dist/index.js";
-}
-
-if (undefinedOrNull(options.runOnWatch)) {
-	options.runOnWatch = true;
-}
-
-if (undefinedOrNull(options.minify)) {
-	options.minify = false;
-}
-
-if (undefinedOrNull(options.includeExternal)) {
-	options.includeExternal = false;
-}
-
-const distOptions = merge(
-	{},
-	options,
-	{ targets: { node: "6" }, minify: true },
-	dist
-);
-
-module.exports = { options, distOptions, childPackage };
-
-function undefinedOrNull(value) {
-	return value === undefined || value === null;
-}
+module.exports = { getOptions, childPackage };

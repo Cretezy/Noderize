@@ -21,3 +21,10 @@ or
 ```bash
 npx create-noderize <path>
 ```
+
+## Features
+
+* Only configure what you need. Sane defaults.
+* Use modern JavaScript features with Babel.
+* TypeScript support.
+* Formatting & testing built-in.

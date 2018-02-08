@@ -29,7 +29,7 @@ function getCompiler(options) {
 					test: /\.ts$/,
 					exclude: /node_modules/,
 					use: {
-						loader: 'ts-loader',
+						loader: "ts-loader",
 						options: {
 							context: appDirectory,
 							configFile: path.resolve(__dirname, "tsconfig.json")
@@ -39,12 +39,12 @@ function getCompiler(options) {
 			]
 		},
 		resolve: {
-			extensions: ['.ts', '.js']
+			extensions: [".ts", ".js"]
 		},
 
 		plugins: [
 			options.shebang &&
-			new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
+				new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
 			options.globals && new webpack.ProvidePlugin(options.globals),
 			options.minify && new webpackUglify()
 		].filter(Boolean),
@@ -56,10 +56,10 @@ function getCompiler(options) {
 		externals: [
 			(context, request, callback) => {
 				// Include only app code unless includeExternal
-				const requestResolved = resolveApp("src", request);
 				if (
-					options.includeExternal || options.sources.find(source =>
-						pathIsInside(requestResolved, resolveApp(source))
+					options.includeExternal ||
+					options.sources.find(source =>
+						pathIsInside(request, resolveApp(source))
 					)
 				) {
 					callback();

@@ -32,17 +32,10 @@ async function run(args = []) {
 		rootDir: appDirectory,
 		roots: ["<rootDir>/src"],
 		transform: {
-			"^.+\\.(ts|js)$": path.resolve(__dirname, "..", "jestBabel.js"),
-			// "^.+\\.(ts|ts)$": "typescript-babel-jest"
+			"^.+\\.(ts|js)$": path.resolve(__dirname, "..", "jestBabel.js")
 		},
-		moduleFileExtensions: [
-			"ts",
-			"js"
-		],
-		// testRegex: "(/__tests__/.*|(\\\\.|/)(test|spec))\\\\.jsx?$",
-		// testRegex: "(/__tests__/.*|(\\\\.|/)(test|spec))\\\\.(js|ts)$"
-		// "testRegex": "/__tests__/.*\\.test\\.ts$"
-		"testRegex": ".*\\.test\\.(ts|js)$"
+		moduleFileExtensions: ["ts", "js"],
+		testRegex: ".*\\.test\\.(ts|js)$"
 	};
 
 	args.push("--config", JSON.stringify(config));

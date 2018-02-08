@@ -1,4 +1,4 @@
-const { options, distOptions } = require("../options");
+const { getOptions } = require("../options");
 const chalk = require("chalk");
 const parseArgs = require("minimist");
 const supportsColor = require("supports-color");
@@ -6,9 +6,8 @@ const { getCompiler } = require("../webpack");
 
 async function run(args) {
 	console.log(`${chalk.yellowBright("[INFO]")} Building...`);
-	const { dist } = parseArgs(args, { boolean: "dist" });
 
-	const compiler = getCompiler(dist ? distOptions : options);
+	const compiler = getCompiler(getOptions(args));
 
 	try {
 		const stats = await new Promise((resolve, reject) => {

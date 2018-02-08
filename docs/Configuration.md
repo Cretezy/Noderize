@@ -6,6 +6,12 @@ You may configure Noderize by passing options to the `noderize` key in your `pac
 
 > Noderize should be able to infer almost all of these options. If not needed, omit them.
 
+Every configuration options can be passed as argumentsto the `build` or `watch` (and `start`) command. For instance: `yarn build --minify`
+
+When passing objects as argument, provide a JSON string. For instance: `yarn build --targets '{"node": true}'`.
+
+When passing arrays as argument, simply pass it multiple times. For instance: `yarn build --sources src --sources src2`
+
 ### `entry`: `string` (default: `src/index.js`)
 
 Used as entry file.
@@ -59,13 +65,24 @@ Minifies (compress) your app.
 
 This is automatically enabled when using `--dist` to build.
 
-### `dist`: `object`
+### `env`: `object`
 
-Options to use when running build with `--dist`. This overrides any other option, but keeps the non-override ones.
+Provide environment-specific variables that can be used with the `--env` flag
 
-By default, when using `--dist`, it:
+By default, the `production` environment does:
 * Sets `targets.node` to the oldest active Node LTS release.
 * Set `minify` to `true`.
+
+Example:
+```json
+"env": {
+    "production": {
+        "minify": false
+    }
+}
+```
+
+Can be used with `yarn build --env production`.
 
 ## Prettier
 

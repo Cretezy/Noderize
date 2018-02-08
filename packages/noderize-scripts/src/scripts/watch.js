@@ -1,13 +1,16 @@
 const chalk = require("chalk");
 const { getCompiler } = require("../webpack");
-const { options } = require("../options");
+const { getOptions } = require("../options");
 const { start } = require("./start");
 const supportsColor = require("supports-color");
+const parseArgs = require("minimist");
 
-function run() {
+function run(args) {
 	console.log(`${chalk.yellowBright("[INFO]")} Watching...`);
 
+	const options = getOptions(args);
 	const compiler = getCompiler(options);
+
 	let child;
 	let first = true;
 
@@ -27,7 +30,7 @@ function run() {
 				child.kill();
 			}
 			if (options.runOnWatch && !stats.hasErrors()) {
-				child = start();
+				child = start(options);
 			}
 		}
 	);
