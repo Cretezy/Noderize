@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/Cretezy/noderize.git"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "bin": "dist/index.js",
   "devDependencies": {
@@ -19,7 +19,8 @@
     "test": "noderize-scripts test",
     "format": "noderize-scripts format",
     "build": "noderize-scripts build --env production",
-    "start": "noderize-scripts start"
+    "start": "noderize-scripts start",
+    "prepublishOnly": "npm run build"
   },
   "files": [
     "src",
