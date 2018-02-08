@@ -27,6 +27,10 @@ if (undefinedOrNull()) {
 	options.output = childPackage.main || "dist/index.js";
 }
 
+if (undefinedOrNull(options.runOnWatch)) {
+	options.runOnWatch = true;
+}
+
 const distOptions = merge({}, options, dist);
 
 module.exports = { options, distOptions, childPackage };

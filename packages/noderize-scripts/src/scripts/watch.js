@@ -16,7 +16,7 @@ function run() {
 			ignored: /node_modules/
 		},
 		(err, stats) => {
-			first || console.log(); // Add extra line on rebuilds
+			first || console.log(); // Add padding line on rebuilds
 			console.log(
 				`${chalk.yellowBright("[INFO]")} ${first ? "B" : "Reb"}uilding...`
 			);
@@ -26,7 +26,7 @@ function run() {
 			if (child) {
 				child.kill();
 			}
-			if (!stats.hasErrors()) {
+			if (options.runOnWatch && !stats.hasErrors()) {
 				child = start();
 			}
 		}
