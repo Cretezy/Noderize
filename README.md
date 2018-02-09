@@ -2,6 +2,7 @@
 
 <p align="center">
     <a href="https://noderize.js.org><img src="docs/website/static/img/icon.svg" alt="Noderize" width="256px" /></a>
+    <br/>
     Noderize lets you create Node apps in less than 30 seconds.
 </p>
 
