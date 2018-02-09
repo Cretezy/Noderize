@@ -51,24 +51,6 @@ npm run build
 
 This will build your app to `dist/index.js` (this output is optionally [configurable](configuration-noderize.md#output))
 
-## Format
+## Additional Features
 
-Noderize can automatically format your code for you using [Prettier](https://prettier.io/).
-
-```bash
-yarn format
-# or
-npm run format
-```
-
-This may be optionally [configurable](configuration-prettier.md).
-
-## Test
-
-[Jest](https://facebook.github.io/jest/) is built-in to Noderize for easy testing.
-
-```bash
-yarn format
-# or
-npm run format
-```
+Check out [all of Noderize's features](features-index.md) such as [ES6/ES7+ support](features-modern.md) and [TypeScript support](features-typescript.md).

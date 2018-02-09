@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"devDependencies": {
-		"noderize-scripts": "^0.1.7"
+		"noderize-scripts": "^0.1.8"
 	},
 	"scripts": {
 		"watch": "noderize-scripts watch",
