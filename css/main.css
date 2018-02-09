@@ -1829,7 +1829,7 @@ footer .copyright {
 .mainContainer .wrapper a,
 .inner .projectIntro a {
     text-decoration: underline;
-    text-decoration-color: #809fc0 !important;
+    text-decoration-color: #abbdcd !important;
 }
 
 .mainContainer .wrapper a:hover,
