@@ -9,7 +9,7 @@ async function run(args) {
 function start(options) {
 	console.log(`${chalk.blueBright("[INFO]")} Starting...`);
 	console.log(); // Padding
-
+	
 	const child = fork(options.output, options.args._, {
 		execArgv: ["-r", "source-map-support/register"]
 	});

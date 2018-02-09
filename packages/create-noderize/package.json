@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "chalk": "^2.3.0",
+    "minimist": "^1.2.0",
     "webpack-node-externals": "^1.6.0"
   }
 }

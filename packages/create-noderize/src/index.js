@@ -4,10 +4,12 @@ import { promisify } from "util";
 import { resolve } from "path";
 import fs from "fs";
 import { execSync } from "child_process";
+import parseArgs from "minimist";
 
 (async () => {
 	// Get name/path from CLI
-	const name = process.argv[2];
+	const args = parseArgs(process.argv.slice(2));
+	const name = args._.length > 0 ? args._[0] : null;
 
 	if (!name) {
 		console.log(`${chalk.red("[WARN]")} No path given!`);
@@ -41,13 +43,16 @@ import { execSync } from "child_process";
 		// Read
 		const childPackage = JSON.parse(fs.readFileSync(childPackagePath));
 		const newChildPackage = { name, ...childPackage }; // Hack to put name at front
+		if (args.typescript) {
+			newChildPackage.noderize = { languages: "typescript" };
+		}
 		// Write
 		fs.writeFileSync(
 			childPackagePath,
 			JSON.stringify(newChildPackage, null, "\t")
 		);
 	} catch (error) {
-		console.error(`${chalk.redBright("[ERROR]")} Error setting name.`);
+		console.error(`${chalk.redBright("[ERROR]")} Error saving package.json.`);
 		console.error(error);
 	}
 
@@ -57,6 +62,17 @@ import { execSync } from "child_process";
 	} catch (error) {
 		console.error(`${chalk.redBright("[ERROR]")} Error moving .gitignore.`);
 		console.error(error);
+	}
+
+	if (args.typescript) {
+		// Setup TypeScript
+		try {
+			fs.renameSync(resolve(path, "src", "index.js"), resolve(path, "src", "index.ts"));
+		} catch (error) {
+			console.error(`${chalk.redBright("[ERROR]")} Error moving src/index.js to src/index.ts`);
+			console.error(error);
+		}
+
 	}
 
 	console.log(`${chalk.blueBright("[INFO]")} Installing packages...`);
@@ -76,7 +92,7 @@ import { execSync } from "child_process";
 
 	const runCommand = useYarn ? "yarn" : "npm run";
 
-	console.log(`${chalk.greenBright("[INFO]")} Done!`);
+	console.log(`${chalk.greenBright("[INFO]")} Done! Your Noderize app is ready!`);
 	console.log(
 		`${chalk.greenBright("[INFO]")} You may visit your app with ${chalk.cyan(
 			`cd ${name}`
@@ -92,9 +108,6 @@ import { execSync } from "child_process";
 			"[INFO]"
 		)} Build a production version using ${chalk.cyan(`${runCommand} build`)}`
 	);
-
-	console.log();
-
 	console.log(
 		`${chalk.greenBright(
 			"[INFO]"
