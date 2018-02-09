@@ -2,4 +2,4 @@
 
 > Part of [Noderize](https://github.com/Cretezy/noderize).
 
-> [Documentation](https://cretezy.github.io/noderize).
+> [Documentation](https://noderize.js.org).

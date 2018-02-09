@@ -1,6 +1,6 @@
 # Noderize
 
-[Documentation](https://cretezy.github.io/noderize).
+[Documentation](https://noderize.js.org).
 
 Noderize lets you create Node apps in less than 30 seconds.
 
