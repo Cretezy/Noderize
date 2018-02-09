@@ -22,7 +22,9 @@ function getCompiler(options) {
 		entry: resolveApp(options.entry),
 		output: {
 			path: path.dirname(output),
-			filename: path.basename(output)
+			filename: path.basename(output),
+			library: options.name,
+			libraryTarget: 'umd',
 		},
 
 		module: {

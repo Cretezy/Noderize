@@ -1,6 +1,7 @@
 ---
 id: features-flow
-title: Flow
+title: Feature: Flow
+sidebar_label: Flow
 ---
 
 [Flow](https://flow.org/) is a static type checker that adds types to JavaScript.

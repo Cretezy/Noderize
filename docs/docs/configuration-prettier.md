@@ -1,6 +1,6 @@
 ---
 id: configuration-prettier
-title: Prettier Configuration
+title: Configuration: Prettier
 sidebar_label: Prettier
 ---
 

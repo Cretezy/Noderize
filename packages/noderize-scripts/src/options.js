@@ -12,6 +12,7 @@ const defaults = {
 	targets: { node: true },
 	output: childPackage.main || "dist/index.js",
 	shebang: childPackage.bin !== undefined,
+	name: childPackage.name,
 	sourcemap: "cheap-module-eval-source-map",
 	runOnWatch: true,
 	minify: false,

@@ -1,6 +1,6 @@
 ---
 id: configuration-noderize
-title: Noderize Configuration
+title: Configuration: Noderize
 sidebar_label: Noderize
 ---
 
@@ -127,6 +127,12 @@ Include all your dependencies in your bundle. This will make your file size a lo
 Default: `false`
 
 Minifies (compress) your app.
+
+
+### `name` [string]
+Default: `name` field in `package.json`
+
+Allow to use a different name as the package name as your name export for UMD.
 
 
 ### `languages` [string|array[string]]

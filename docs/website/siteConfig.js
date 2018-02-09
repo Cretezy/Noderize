@@ -18,10 +18,10 @@
 const siteConfig = {
 	title: 'Noderize',
 	tagline: ' Create a Node app in less than 30 seconds.',
-	url: 'https://cretezy.github.io/noderize',
-	// url: 'https://noderize.js.org',
-	baseUrl: '/noderize/',
-	// baseUrl: '/',
+	// url: 'https://cretezy.github.io/noderize',
+	// baseUrl: '/noderize/',
+	url: 'https://noderize.js.org',
+	baseUrl: '/',
 	projectName: 'noderize',
 
 	headerLinks: [
@@ -30,8 +30,8 @@ const siteConfig = {
 		{ href: 'https://github.com/Cretezy/noderize', label: 'GitHub' },
 	],
 	// users,
-	headerIcon: 'img/icon.svg',
-	footerIcon: 'img/icon.svg',
+	headerIcon: 'img/light.svg',
+	footerIcon: 'img/light.svg',
 	favicon: 'img/favicon/favicon.icon',
 	colors: {
 		primaryColor: '#343a40',
@@ -50,7 +50,7 @@ const siteConfig = {
 
 	scripts: ['https://buttons.github.io/buttons.js'],
 	repoUrl: 'https://github.com/Cretezy/noderize',
-	// cname: "noderize.js.org"
+	cname: "noderize.js.org"
 };
 
 module.exports = siteConfig;

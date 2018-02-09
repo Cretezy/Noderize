@@ -8,7 +8,7 @@ const { getOptions } = require("../options");
 async function run(args) {
 	console.log(`${chalk.blueBright("[INFO]")} Testing...`);
 
-	const options = getOptions(args);
+	const options = await getOptions(args);
 
 	let isInGit;
 	try {
@@ -23,6 +23,7 @@ async function run(args) {
 	if (
 		!(
 			process.env.CI ||
+			args.includes("--ci") ||
 			args.includes("--watchAll") ||
 			args.includes("--watch") ||
 			args.includes("--coverage")
@@ -32,7 +33,7 @@ async function run(args) {
 	}
 
 	const extensions = [
-		options.languages.babel && ".js",
+		options.languages.javascript && ".js",
 		options.languages.typescript && ".ts"
 	].filter(Boolean);
 

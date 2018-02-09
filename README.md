@@ -1,8 +1,12 @@
 # Noderize
 
-[Documentation](https://noderize.js.org).
+<p align="center">
+    <img src="docs/website/static/icon.svg" alt="Noderize" width="256px" />
+    Noderize lets you create Node apps in less than 30 seconds.
+</p>
 
-Noderize lets you create Node apps in less than 30 seconds.
+Visit our main [documentation](https://noderize.js.org).
+
 
 It aims to get out of your way and not require any configuration until you need it, while supporting loads of features.
 

@@ -1,6 +1,7 @@
 ---
 id: features-typescript
-title: TypeScript
+title: Feature: TypeScript
+sidebar_label: TypeScript
 ---
 
 TypeScript support is built in to Noderize.

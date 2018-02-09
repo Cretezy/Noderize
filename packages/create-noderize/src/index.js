@@ -6,11 +6,7 @@ import fs from "fs";
 import { execSync } from "child_process";
 import parseArgs from "minimist";
 
-(async () => {
-	// Get name/path from CLI
-	const args = parseArgs(process.argv.slice(2));
-	const name = args._.length > 0 ? args._[0] : null;
-
+async function run(name, { typescript = false }) {
 	if (!name) {
 		console.log(`${chalk.red("[WARN]")} No path given!`);
 		return;
@@ -24,7 +20,7 @@ import parseArgs from "minimist";
 		return;
 	}
 
-	console.log(`${chalk.blueBright("[INFO]")} Copying...`);
+	console.log(`${chalk.blueBright("[INFO]")} Copying...${typescript ? " (TypeScript)" : ""}`);
 
 	// Copy from template
 	try {
@@ -43,7 +39,7 @@ import parseArgs from "minimist";
 		// Read
 		const childPackage = JSON.parse(fs.readFileSync(childPackagePath));
 		const newChildPackage = { name, ...childPackage }; // Hack to put name at front
-		if (args.typescript) {
+		if (typescript) {
 			newChildPackage.noderize = { languages: "typescript" };
 		}
 		// Write
@@ -64,7 +60,7 @@ import parseArgs from "minimist";
 		console.error(error);
 	}
 
-	if (args.typescript) {
+	if (typescript) {
 		// Setup TypeScript
 		try {
 			fs.renameSync(resolve(path, "src", "index.js"), resolve(path, "src", "index.ts"));
@@ -113,7 +109,7 @@ import parseArgs from "minimist";
 			"[INFO]"
 		)} Visit documentation at ${chalk.cyan(`https://noderize.js.org`)}`
 	);
-})();
+}
 
 function shouldUseYarn() {
 	try {
@@ -123,3 +119,7 @@ function shouldUseYarn() {
 		return false;
 	}
 }
+
+const args = parseArgs(process.argv.slice(2));
+const name = args._.length > 0 ? args._[0] : null;
+run(name, args);
