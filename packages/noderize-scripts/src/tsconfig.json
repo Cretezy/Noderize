@@ -5,5 +5,10 @@
     "moduleResolution": "node",
     "target": "es5",
     "experimentalDecorators": true
-  }
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "__tests__"
+  ]
 }

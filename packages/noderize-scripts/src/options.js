@@ -1,13 +1,11 @@
 const { resolveApp } = require("./utils");
 const merge = require("lodash.merge");
 const parseArgs = require("minimist");
-const {
-	noderize: { env: envOptions, ...childOptions } = {},
-	...childPackage
-} = require(resolveApp("package.json"));
+const childPackage = require(resolveApp("package.json"));
 
 const bools = ["shebang", "runOnWatch", "minify", "includeExternal"];
 const strings = ["entry", "output", "sourcemaps"];
+const cosmiconfig = require('cosmiconfig');
 
 const defaults = {
 	targets: { node: true },
@@ -18,16 +16,18 @@ const defaults = {
 	sourcemap: "cheap-module-eval-source-map",
 	runOnWatch: true,
 	minify: false,
-	includeExternal: false
-};
-const envDefaults = {
-	production: {
-		targets: { node: "6" },
-		sourcemap: false
+	includeExternal: false,
+	env: {
+		production: {
+			targets: { node: "6" },
+			sourcemap: false
+		}
 	}
 };
 
-function getOptions(rawArgs) {
+const envDefaults = {};
+
+async function getOptions(rawArgs) {
 	// Parse args
 	const args = parseArgs(rawArgs, {
 		boolean: bools,
@@ -41,8 +41,19 @@ function getOptions(rawArgs) {
 		}
 	});
 
-	// Get options from package.json with defaults
-	const options = merge({}, defaults, childOptions);
+	let configOptions;
+	try {
+		// Load from "noderize" key in package.json, .noderizerc, or noderize.config.js
+		const results = await cosmiconfig("noderize").load();
+
+		configOptions = results.config;
+	} catch (error) {
+		// Could not load (doesn't exist)
+		configOptions = {};
+	}
+
+	// Merge config to defaults
+	const options = merge({}, defaults, configOptions);
 
 	// Merge args to options
 	if (args.targets !== null) {
@@ -69,8 +80,7 @@ function getOptions(rawArgs) {
 
 	// Merge envs
 	if (args.env) {
-		const envOptions = merge({}, envDefaults, options.env || {});
-		merge(options, envOptions[args.env] || {});
+		merge(options, options.env[args.env] || {});
 	}
 
 	return { ...options, args: args };

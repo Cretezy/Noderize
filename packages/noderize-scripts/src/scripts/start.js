@@ -2,8 +2,8 @@ const chalk = require("chalk");
 const { fork } = require("child_process");
 const { getOptions } = require("../options");
 
-function run(args) {
-	start(getOptions(args));
+async function run(args) {
+	start(await getOptions(args));
 }
 
 function start(options) {

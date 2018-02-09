@@ -3,12 +3,11 @@ const { getCompiler } = require("../webpack");
 const { getOptions } = require("../options");
 const { start } = require("./start");
 const supportsColor = require("supports-color");
-const parseArgs = require("minimist");
 
-function run(args) {
+async function run(args) {
 	console.log(`${chalk.yellowBright("[INFO]")} Watching...`);
 
-	const options = getOptions(args);
+	const options = await getOptions(args);
 	const compiler = getCompiler(options);
 
 	let child;

@@ -4,15 +4,52 @@ title: Noderize Configuration
 sidebar_label: Noderize
 ---
 
-You may configure Noderize by passing options to the `noderize` key in your `package.json`.
+Noderize uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for configuration file support. This means you can configure Noderize via:
 
-> Noderize should be able to infer almost all of these options. If not needed, omit them.
+* A `noderize` key in your `package.json` file.
 
-Every configuration options can be passed as argumentsto the `build` or `watch` (and `start`) command. For instance: `yarn build --minify`
+```json
+{
+    "name": "my-noderize-program",
+    "...": "...",
+    "noderize": {
+        "minify": true
+    }
+}
+```
+
+* A `.noderizerc` file, written in JSON/YAML/JS, with optional extensions: `.json`/`.yml`/`.yaml`/`.js`.
+
+JSON:
+```json
+{
+    "minify": true
+}
+```
+
+YAML:
+```yml
+minify: true
+```
+
+JS:
+```js
+module.exports = {
+    minify: true
+}
+```
+
+* A `noderize.config.js` file that exports an object (like the `.noderizerc` JS example above).
+
+> All configuration is optional with Noderize. Omit until needed.
+
+Every configuration options can be passed as arguments to the `build`/`watch`/`start` command. For instance: `yarn build --minify`
 
 When passing objects as argument, provide a JSON string. For instance: `yarn build --targets '{"node": true}'`.
 
 When passing arrays as argument, simply pass it multiple times. For instance: `yarn build --sources src --sources src2`
+
+To pass arguments to your running program when using the `start` command, add `--` after Noderize's args. For instance: `yarn start --minify -- this is passed to my program`
 
 ## Index
 

@@ -1,13 +1,12 @@
 const { getOptions } = require("../options");
 const chalk = require("chalk");
-const parseArgs = require("minimist");
 const supportsColor = require("supports-color");
 const { getCompiler } = require("../webpack");
 
 async function run(args) {
 	console.log(`${chalk.yellowBright("[INFO]")} Building...`);
 
-	const compiler = getCompiler(getOptions(args));
+	const compiler = getCompiler(await getOptions(args));
 
 	try {
 		const stats = await new Promise((resolve, reject) => {
