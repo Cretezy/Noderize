@@ -6,7 +6,7 @@
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="https://noderize.js.org/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Noderize news and events.</subtitle>
-    <logo>https://noderize.js.orgimg/icon.svg</logo>
+    <logo>https://noderize.js.orgimg/light.svg</logo>
     <rights>Copyright © 2018 Charles Crete</rights>
     <entry>
         <title type="html"><![CDATA[Draft: Path to Noderize v1.0]]></title>

@@ -5,11 +5,11 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 256 256"
+   width="512"
    height="512"
-   width="512">
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg8">
   <defs
      id="defs2" />
   <metadata
@@ -25,21 +25,21 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(0,-161.53333)"
-     id="layer1">
+     id="layer1"
+     transform="translate(0,-161.53333)">
     <path
-       style="fill:#343a40;fill-opacity:1;stroke:#809fc0;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path3701"
        d="m 214.68038,339.57827 c -5.00449,8.66804 -76.67139,50.04494 -86.68038,50.04494 -10.00899,0 -81.675887,-41.3769 -86.680381,-50.04494 -5.004494,-8.66804 -5.004493,-91.42184 10e-7,-100.08988 5.004494,-8.66804 76.67139,-50.04494 86.68038,-50.04494 10.00899,0 81.67589,41.3769 86.68038,50.04494 5.00449,8.66804 5.00449,91.42184 0,100.08988 z"
-       id="path3701" />
+       style="fill:#d3d3d3;fill-opacity:1;stroke:#343a40;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <g
-       id="flowRoot4516"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       aria-label="N"
        transform="matrix(0.74898602,0,0,0.74898602,-25.644535,61.397217)"
-       aria-label="N">
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;letter-spacing:0px;word-spacing:0px;fill:#2c2c2c;fill-opacity:1;stroke:none"
+       id="flowRoot4516">
       <path
-         id="path4737"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:arial;-inkscape-font-specification:arial;fill:#f9f9f9"
-         d="m 150.99609,373.31204 v -137.4375 h 18.65625 l 72.1875,107.90625 V 235.87454 h 17.4375 v 137.4375 h -18.65625 l -72.1875,-108 v 108 z" />
+         d="m 150.99609,373.31204 v -137.4375 h 18.65625 l 72.1875,107.90625 V 235.87454 h 17.4375 v 137.4375 h -18.65625 l -72.1875,-108 v 108 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;font-family:arial;-inkscape-font-specification:arial;fill:#2c2c2c;fill-opacity:1"
+         id="path4737" />
     </g>
   </g>
 </svg>
