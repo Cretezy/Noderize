@@ -35,7 +35,7 @@ async function run(args = []) {
 			"^.+\\.(ts|js)$": path.resolve(__dirname, "..", "jestBabel.js")
 		},
 		moduleFileExtensions: ["ts", "js"],
-		testRegex: ".*\\.test\\.(ts|js)$"
+		testRegex: "(.*__tests__.*|.*\\.(test|spec))\\.(ts|js)$"
 	};
 
 	args.push("--config", JSON.stringify(config));
