@@ -6,7 +6,7 @@ sidebar_label: Noderize
 
 Noderize uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for configuration file support. This means you can configure Noderize via:
 
-* A `noderize` key in your `package.json` file.
+* A `noderize` key in your `package.json` file (recommended):
 
 ```json
 {
@@ -18,7 +18,7 @@ Noderize uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for co
 }
 ```
 
-* A `.noderizerc` file, written in JSON/YAML/JS, with optional extensions: `.json`/`.yml`/`.yaml`/`.js`.
+* A `.noderizerc` file, written in JSON/YAML/JS, with optional extensions: `.json`/`.yml`/`.yaml`/`.js`:
 
 JSON:
 ```json
@@ -41,15 +41,17 @@ module.exports = {
 
 * A `noderize.config.js` file that exports an object (like the `.noderizerc` JS example above).
 
+* Command line arguments:
+
+    * Every configuration options can be passed as arguments to the `build`/`watch`/`start` command. For instance: `yarn build --minify`
+
+    * When passing objects as argument, provide a JSON string. For instance: `yarn build --targets '{"node": true}'`.
+
+    * When passing arrays as argument, simply pass it multiple times. For instance: `yarn build --languages javascript --languages typescript`.
+
 > All configuration is optional with Noderize. Omit until needed.
 
-Every configuration options can be passed as arguments to the `build`/`watch`/`start` command. For instance: `yarn build --minify`
-
-When passing objects as argument, provide a JSON string. For instance: `yarn build --targets '{"node": true}'`.
-
-When passing arrays as argument, simply pass it multiple times. For instance: `yarn build --sources src --sources src2`
-
-To pass arguments to your running program when using the `start` command, add `--` after Noderize's args. For instance: `yarn start --minify -- this is passed to my program`
+To pass arguments to your app when using the `start` or `watch` command, add `--`. For instance: `yarn start --minify -- this is passed to my app`. If you wish to pass flags to your app, add `-- --`, as in `yarn build -- -- --my-flag`  (once to escape Yarn/npm, the other to escape Noderize).
 
 ## Index
 

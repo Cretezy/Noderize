@@ -51,32 +51,6 @@ async function getOptions(rawArgs = []) {
 	// Merge config to defaults
 	const options = merge({}, defaults, configOptions);
 
-	// Parse languages to list then object
-	if (options.languages === undefined) {
-		// No loaders set, use babel
-		options.languages = ["javascript"];
-	} else if (!Array.isArray(options.languages)) {
-		options.languages = [options.languages]; // Support single string
-	}
-
-	const languageList = options.languages;
-
-	options.languages = { javascript: false, typescript: false };
-	languageList.forEach(language => {
-		if (options.languages[language] !== undefined) {
-			options.languages[language] = true;
-		}
-	});
-
-	// Entry
-
-	if(options.entry === undefined){
-		if(languageList.length === 1 && languageList[0] === "typescript"){
-			options.entry = "src/index.ts"
-		}else{
-			options.entry = "src/index.js"
-		}
-	}
 
 	// Merge args to options
 	if (args.targets !== undefined) {
@@ -114,6 +88,37 @@ async function getOptions(rawArgs = []) {
 			options[string] = args[string];
 		}
 	});
+
+	if(args.languages !== undefined){
+		options.languages=args.languages;
+	}
+
+	// Parse languages to list then object
+
+	if (options.languages === undefined) {
+		// No loaders set, use babel
+		options.languages = ["javascript"];
+	} else if (!Array.isArray(options.languages)) {
+		options.languages = [options.languages]; // Support single string
+	}
+
+	const languageList = options.languages;
+
+	options.languages = { javascript: false, typescript: false };
+	languageList.forEach(language => {
+		if (options.languages[language] !== undefined) {
+			options.languages[language] = true;
+		}
+	});
+
+	// Entry
+	if(options.entry === undefined){
+		if(languageList.length === 1 && languageList[0] === "typescript"){
+			options.entry = "src/index.ts"
+		}else{
+			options.entry = "src/index.js"
+		}
+	}
 
 	// Merge envs
 	if (args.env) {
