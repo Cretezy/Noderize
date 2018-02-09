@@ -14,8 +14,8 @@ async function run(args = []) {
 		"prettier"
 	);
 
-	fork(prettierPath, ["--write", "src/**/*.js", ...args], {
-		cwd: appDirectory
+	fork(prettierPath, ["--write", "src/**/*.ts", "src/**/*.js", ...args], {
+		cwd: appDirectory,
 	});
 }
 

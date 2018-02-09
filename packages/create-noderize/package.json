@@ -12,7 +12,7 @@
   "bin": "dist/index.js",
   "devDependencies": {
     "ncp": "^2.0.0",
-    "noderize-scripts": "^0.1.4"
+    "noderize-scripts": "^0.1.7"
   },
   "scripts": {
     "watch": "noderize-scripts watch",
@@ -28,6 +28,7 @@
     "template"
   ],
   "dependencies": {
-    "chalk": "^2.3.0"
+    "chalk": "^2.3.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }

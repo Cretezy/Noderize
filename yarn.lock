@@ -175,14 +175,39 @@
     "@babel/helper-remap-async-to-generator" "7.0.0-beta.39"
     "@babel/plugin-syntax-async-generators" "7.0.0-beta.39"
 
-"@babel/plugin-proposal-class-properties@^7.0.0-beta.39":
+"@babel/plugin-proposal-class-properties@7.0.0-beta.39":
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-class-properties/-/plugin-proposal-class-properties-7.0.0-beta.39.tgz#251bf1cdbaa2d533897b57d26ac39cf52e25c734"
   dependencies:
     "@babel/helper-function-name" "7.0.0-beta.39"
     "@babel/plugin-syntax-class-properties" "7.0.0-beta.39"
 
-"@babel/plugin-proposal-object-rest-spread@7.0.0-beta.39", "@babel/plugin-proposal-object-rest-spread@^7.0.0-beta.39":
+"@babel/plugin-proposal-decorators@^7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.0.0-beta.39.tgz#cfd96774bdeabfaca2055b3009d63423eb461259"
+  dependencies:
+    "@babel/plugin-syntax-decorators" "7.0.0-beta.39"
+
+"@babel/plugin-proposal-export-namespace-from@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-export-namespace-from/-/plugin-proposal-export-namespace-from-7.0.0-beta.39.tgz#861ca8b83e2df981e5022193760e459a0c41300a"
+  dependencies:
+    "@babel/plugin-syntax-export-namespace-from" "7.0.0-beta.39"
+
+"@babel/plugin-proposal-function-sent@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-function-sent/-/plugin-proposal-function-sent-7.0.0-beta.39.tgz#af6d2995f3157727b9afe49902a9ec35e0b28931"
+  dependencies:
+    "@babel/helper-wrap-function" "7.0.0-beta.39"
+    "@babel/plugin-syntax-function-sent" "7.0.0-beta.39"
+
+"@babel/plugin-proposal-numeric-separator@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-numeric-separator/-/plugin-proposal-numeric-separator-7.0.0-beta.39.tgz#781750e4d8f05c32dce7b37623e309f74bf13132"
+  dependencies:
+    "@babel/plugin-syntax-numeric-separator" "7.0.0-beta.39"
+
+"@babel/plugin-proposal-object-rest-spread@7.0.0-beta.39":
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.0.0-beta.39.tgz#ea4d6ea974a364028e5074b1abe6505924d179a3"
   dependencies:
@@ -193,6 +218,12 @@
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-optional-catch-binding/-/plugin-proposal-optional-catch-binding-7.0.0-beta.39.tgz#1335778b3a8fc4289a2cfb518f85c6001ea5d9b4"
   dependencies:
     "@babel/plugin-syntax-optional-catch-binding" "7.0.0-beta.39"
+
+"@babel/plugin-proposal-throw-expressions@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-throw-expressions/-/plugin-proposal-throw-expressions-7.0.0-beta.39.tgz#f94092fe1b71453cd5040ea2e0b3a75600f4bc10"
+  dependencies:
+    "@babel/plugin-syntax-throw-expressions" "7.0.0-beta.39"
 
 "@babel/plugin-proposal-unicode-property-regex@7.0.0-beta.39":
   version "7.0.0-beta.39"
@@ -209,9 +240,33 @@
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-class-properties/-/plugin-syntax-class-properties-7.0.0-beta.39.tgz#a1a0e89c6042635cd21aafbdec3f006f06c368aa"
 
+"@babel/plugin-syntax-decorators@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-decorators/-/plugin-syntax-decorators-7.0.0-beta.39.tgz#7edaae1b4df9c2fafc9f8f0ce4b6ef3336cbc2a1"
+
+"@babel/plugin-syntax-dynamic-import@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.0.0-beta.39.tgz#75c15750bc7df0d89d5d81dcf28cf84516b25e7c"
+
+"@babel/plugin-syntax-export-namespace-from@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-export-namespace-from/-/plugin-syntax-export-namespace-from-7.0.0-beta.39.tgz#aa7b0b60c1c20250f89d09204c03fc67e3f9806c"
+
 "@babel/plugin-syntax-flow@7.0.0-beta.39":
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-flow/-/plugin-syntax-flow-7.0.0-beta.39.tgz#b9247a81e4dacaa57aac3670792d788a64253f68"
+
+"@babel/plugin-syntax-function-sent@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-function-sent/-/plugin-syntax-function-sent-7.0.0-beta.39.tgz#95a3b02e3a8484d4233f9479c14f7a2e960cee37"
+
+"@babel/plugin-syntax-import-meta@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-import-meta/-/plugin-syntax-import-meta-7.0.0-beta.39.tgz#56658e7487227ca7c350b67031c0e16ce987558d"
+
+"@babel/plugin-syntax-numeric-separator@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-numeric-separator/-/plugin-syntax-numeric-separator-7.0.0-beta.39.tgz#347231ff2acf2479d38e4789a976c82c00d38818"
 
 "@babel/plugin-syntax-object-rest-spread@7.0.0-beta.39":
   version "7.0.0-beta.39"
@@ -220,6 +275,10 @@
 "@babel/plugin-syntax-optional-catch-binding@7.0.0-beta.39":
   version "7.0.0-beta.39"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-optional-catch-binding/-/plugin-syntax-optional-catch-binding-7.0.0-beta.39.tgz#b6d3c27d2ceab69cfd132ba19a6d22fd37817fb2"
+
+"@babel/plugin-syntax-throw-expressions@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-throw-expressions/-/plugin-syntax-throw-expressions-7.0.0-beta.39.tgz#b93bb8d80b615d17bd7205c2dccfbdfd9ca7cdf0"
 
 "@babel/plugin-transform-arrow-functions@7.0.0-beta.39":
   version "7.0.0-beta.39"
@@ -424,6 +483,28 @@
   resolved "https://registry.yarnpkg.com/@babel/preset-flow/-/preset-flow-7.0.0-beta.39.tgz#2a104114c71fbce992af0ed6ba633ac8f1be7277"
   dependencies:
     "@babel/plugin-transform-flow-strip-types" "7.0.0-beta.39"
+
+"@babel/preset-stage-2@^7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/preset-stage-2/-/preset-stage-2-7.0.0-beta.39.tgz#dc537fe1d822ec96d07e1c5659dc6635fc5cc130"
+  dependencies:
+    "@babel/plugin-proposal-export-namespace-from" "7.0.0-beta.39"
+    "@babel/plugin-proposal-function-sent" "7.0.0-beta.39"
+    "@babel/plugin-proposal-numeric-separator" "7.0.0-beta.39"
+    "@babel/plugin-proposal-throw-expressions" "7.0.0-beta.39"
+    "@babel/preset-stage-3" "7.0.0-beta.39"
+
+"@babel/preset-stage-3@7.0.0-beta.39":
+  version "7.0.0-beta.39"
+  resolved "https://registry.yarnpkg.com/@babel/preset-stage-3/-/preset-stage-3-7.0.0-beta.39.tgz#30a313d79369aa1b4d6652ae621dc1d162255ac9"
+  dependencies:
+    "@babel/plugin-proposal-async-generator-functions" "7.0.0-beta.39"
+    "@babel/plugin-proposal-class-properties" "7.0.0-beta.39"
+    "@babel/plugin-proposal-object-rest-spread" "7.0.0-beta.39"
+    "@babel/plugin-proposal-optional-catch-binding" "7.0.0-beta.39"
+    "@babel/plugin-proposal-unicode-property-regex" "7.0.0-beta.39"
+    "@babel/plugin-syntax-dynamic-import" "7.0.0-beta.39"
+    "@babel/plugin-syntax-import-meta" "7.0.0-beta.39"
 
 "@babel/template@7.0.0-beta.39":
   version "7.0.0-beta.39"
@@ -3645,10 +3726,6 @@ path-is-absolute@^1.0.0, path-is-absolute@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
 
-path-is-inside@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
-
 path-key@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
@@ -4890,6 +4967,10 @@ watchpack@^1.4.0:
 webidl-conversions@^4.0.1, webidl-conversions@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
+
+webpack-node-externals@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/webpack-node-externals/-/webpack-node-externals-1.6.0.tgz#232c62ec6092b100635a3d29d83c1747128df9bd"
 
 webpack-sources@^1.0.1, webpack-sources@^1.1.0:
   version "1.1.0"

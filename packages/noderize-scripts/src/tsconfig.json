@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "commonjs",
+    "moduleResolution": "node",
     "target": "es5",
-    "allowJs": true
+    "experimentalDecorators": true
   }
 }

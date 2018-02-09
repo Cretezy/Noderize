@@ -12,17 +12,10 @@ const commands = {
 
 const args = process.argv.slice(2);
 
-if (args.length === 0) {
-	return noScript();
-}
-
 const script = args.shift();
 if (!Object.keys(commands).includes(script)) {
-	return noScript();
+	console.log(`${chalk.red("[INFO]")} Unknown script.`);
+	return;
 }
 
 commands[script].run(args);
-
-function noScript() {
-	console.log(`${chalk.red("[INFO]")} Unknown script.`);
-}

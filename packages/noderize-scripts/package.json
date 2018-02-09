@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/Cretezy/noderize.git"
   },
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "src/index.js",
   "license": "MIT",
   "bin": "src/index.js",
@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.39",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.39",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.39",
+    "@babel/plugin-proposal-decorators": "^7.0.0-beta.39",
     "@babel/preset-env": "^7.0.0-beta.39",
     "@babel/preset-flow": "^7.0.0-beta.39",
+    "@babel/preset-stage-2": "^7.0.0-beta.39",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^22.2.0",
     "babel-loader": "8.0.0-beta.0",
@@ -27,7 +27,6 @@
     "jest": "^22.2.1",
     "lodash.merge": "^4.6.1",
     "minimist": "^1.2.0",
-    "path-is-inside": "^1.0.2",
     "prettier": "^1.10.2",
     "source-map-support": "^0.5.3",
     "supports-color": "^5.1.0",
@@ -35,6 +34,7 @@
     "typescript": "^2.7.1",
     "typescript-babel-jest": "^1.0.5",
     "uglifyjs-webpack-plugin": "^1.1.8",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }

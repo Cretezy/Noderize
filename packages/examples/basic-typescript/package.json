@@ -1,5 +1,5 @@
 {
-	"name": "basic-express",
+	"name": "basic-typescript",
 	"version": "0.1.0",
 	"private": true,
 	"devDependencies": {
@@ -12,7 +12,8 @@
 		"build": "noderize-scripts build --env production",
 		"start": "noderize-scripts start"
 	},
-	"dependencies": {
-		"express": "^4.16.2"
-	}
+	"noderize": {
+		"entry": "src/index.ts"
+	},
+	"dependencies": {}
 }

@@ -1,15 +1,16 @@
-module.exports = ({ modules, targets } = {}) => ({
+module.exports = ({ targets } = {}) => ({
 	presets: [
 		[
 			"@babel/preset-env",
 			{
-				targets
+				targets,
+				modules: false
 			}
 		],
+		"@babel/preset-stage-2",
 		"@babel/preset-flow"
 	],
 	plugins: [
-		"@babel/plugin-proposal-object-rest-spread",
-		"@babel/plugin-proposal-class-properties"
+		"@babel/plugin-proposal-decorators"
 	]
 });
