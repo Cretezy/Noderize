@@ -1,7 +1,7 @@
 # Noderize
 
 <p align="center">
-    <img src="docs/website/static/icon.svg" alt="Noderize" width="256px" />
+    <img src="docs/website/static/img/icon.svg" alt="Noderize" width="256px" />
     Noderize lets you create Node apps in less than 30 seconds.
 </p>
 
