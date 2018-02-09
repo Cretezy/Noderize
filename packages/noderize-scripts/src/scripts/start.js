@@ -7,18 +7,26 @@ async function run(args) {
 }
 
 function start(options) {
-	console.log(`${chalk.yellowBright("[INFO]")} Starting...\n`);
+	console.log(`${chalk.blueBright("[INFO]")} Starting...`);
+	console.log(); // Padding
 
 	const child = fork(options.output, options.args._, {
 		execArgv: ["-r", "source-map-support/register"]
 	});
 
 	child.on("exit", (code, signal) => {
-		console.error(
-			`\n${chalk.yellowBright("[INFO]")} Exited with code ${code} ${
-				signal ? `and signal ${signal}` : ""
-			}`
-		);
+		if (code !== null) {
+			console.log(); // Padding
+			if (code === 0) {
+				console.log(`${chalk.greenBright("[INFO]")} Exited with code 0!`);
+			} else {
+				console.warn(
+					`${chalk.yellowBright("[INFO]")} Exited with code ${code} ${
+						signal ? `and signal ${signal}` : ""
+						}`
+				);
+			}
+		}
 	});
 
 	return child;

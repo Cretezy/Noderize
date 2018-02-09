@@ -4,7 +4,7 @@ const supportsColor = require("supports-color");
 const { getCompiler } = require("../webpack");
 
 async function run(args) {
-	console.log(`${chalk.yellowBright("[INFO]")} Building...`);
+	console.log(`${chalk.blueBright("[INFO]")} Building...`);
 
 	const compiler = getCompiler(await getOptions(args));
 

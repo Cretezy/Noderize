@@ -5,7 +5,7 @@ const { start } = require("./start");
 const supportsColor = require("supports-color");
 
 async function run(args) {
-	console.log(`${chalk.yellowBright("[INFO]")} Watching...`);
+	console.log(`${chalk.blueBright("[INFO]")} Watching...`);
 
 	const options = await getOptions(args);
 	const compiler = getCompiler(options);
@@ -20,7 +20,7 @@ async function run(args) {
 		(err, stats) => {
 			first || console.log(); // Add padding line on rebuilds
 			console.log(
-				`${chalk.yellowBright("[INFO]")} ${first ? "B" : "Reb"}uilding...`
+				`${chalk.blueBright("[INFO]")} ${first ? "B" : "Reb"}uilding...`
 			);
 			first = false;
 			console.log(stats.toString({ colors: supportsColor.stdout }));

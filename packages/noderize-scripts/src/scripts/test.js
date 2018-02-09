@@ -3,9 +3,12 @@ const { appDirectory } = require("../utils");
 const chalk = require("chalk");
 const { execSync } = require("child_process");
 const jest = require("jest");
+const { getOptions } = require("../options");
 
-async function run(args = []) {
-	console.log(`${chalk.yellowBright("[INFO]")} Testing...`);
+async function run(args) {
+	console.log(`${chalk.blueBright("[INFO]")} Testing...`);
+
+	const options = getOptions(args);
 
 	let isInGit;
 	try {
@@ -28,14 +31,23 @@ async function run(args = []) {
 		args.push(isInGit ? "--watch" : "--watchAll");
 	}
 
+	const extensions = [
+		options.languages.babel && ".js",
+		options.languages.typescript && ".ts"
+	].filter(Boolean);
+
 	const config = {
 		rootDir: appDirectory,
 		roots: ["<rootDir>/src"],
 		transform: {
-			"^.+\\.(ts|js)$": path.resolve(__dirname, "..", "jestBabel.js")
+			[`^.+\\.(${extensions.join("|")})$`]: path.resolve(
+				__dirname,
+				"..",
+				"jestBabel.js"
+			)
 		},
-		moduleFileExtensions: ["ts", "js"],
-		testRegex: "(.*__tests__.*|.*\\.(test|spec))\\.(ts|js)$"
+		moduleFileExtensions: [...extensions, "json"],
+		testRegex: `(.*__tests__.*|.*\\.(test|spec))\\.(${extensions.join("|")})$`
 	};
 
 	args.push("--config", JSON.stringify(config));

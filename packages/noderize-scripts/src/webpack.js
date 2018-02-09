@@ -2,12 +2,21 @@ const { resolveApp, appDirectory } = require("./utils");
 const path = require("path");
 const webpack = require("webpack");
 const webpackUglify = require("uglifyjs-webpack-plugin");
-const webpackNodeExternals = require('webpack-node-externals');
+const webpackNodeExternals = require("webpack-node-externals");
+const webpackForkTsChecker = require("fork-ts-checker-webpack-plugin");
+const webpackHappyPack = require("happypack");
 const createBabelConfig = require("./createBabelConfig");
 
 function getCompiler(options) {
+	const tsconfig = path.resolve(__dirname, "tsconfig.json");
+	const happyThreadPool = webpackHappyPack.ThreadPool({
+		size: options.buildThreads
+	});
 	const output = resolveApp(options.output);
 
+	const { javascript, typescript } = options.languages;
+
+	// Create webpack config
 	const config = {
 		context: appDirectory,
 		entry: resolveApp(options.entry),
@@ -18,32 +27,55 @@ function getCompiler(options) {
 
 		module: {
 			rules: [
-				{
+				javascript && {
 					test: /\.js$/,
 					exclude: /node_modules/,
-					use: {
-						loader: "babel-loader",
-						options: createBabelConfig({ targets: options.targets })
-					}
+					use: "happypack/loader?id=javascript"
 				},
-				{
+				typescript && {
 					test: /\.ts$/,
 					exclude: /node_modules/,
-					use: {
-						loader: "ts-loader",
-						options: {
-							context: appDirectory,
-							configFile: path.resolve(__dirname, "tsconfig.json")
-						}
-					}
+					use: "happypack/loader?id=typescript"
 				}
-			]
+			].filter(Boolean)
 		},
+
 		resolve: {
-			extensions: [".ts", ".js"]
+			extensions: [javascript && ".js", typescript && ".ts"].filter(Boolean)
 		},
 
 		plugins: [
+			javascript &&
+			new webpackHappyPack({
+				id: "javascript",
+				threadPool: happyThreadPool,
+				loaders: [
+					{
+						loader: "babel-loader",
+						options: createBabelConfig({ targets: options.targets })
+					}
+				]
+			}),
+			typescript &&
+			new webpackHappyPack({
+				id: "typescript",
+				threadPool: happyThreadPool,
+				loaders: [
+					{
+						loader: "ts-loader",
+						options: {
+							context: appDirectory,
+							configFile: tsconfig,
+							happyPackMode: true
+						}
+					}
+				]
+			}),
+			typescript &&
+			new webpackForkTsChecker({
+				checkSyntacticErrors: true,
+				tsconfig
+			}),
 			options.shebang &&
 			new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
 			options.globals && new webpack.ProvidePlugin(options.globals),
@@ -54,8 +86,9 @@ function getCompiler(options) {
 		target: "node",
 		node: false,
 
-		externals: [webpackNodeExternals({ modulesFromFile: true })]
+		externals: options.includeExternal ? undefined : webpackNodeExternals({ modulesFromFile: true })
 	};
+
 	return webpack(config);
 }
 

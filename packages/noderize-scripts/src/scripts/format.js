@@ -4,7 +4,7 @@ const chalk = require("chalk");
 const { fork } = require("child_process");
 
 async function run(args = []) {
-	console.log(`${chalk.yellowBright("[INFO]")} Formatting...`);
+	console.log(`${chalk.blueBright("[INFO]")} Formatting...`);
 	const prettierPath = path.resolve(
 		__dirname,
 		"..",
@@ -14,8 +14,19 @@ async function run(args = []) {
 		"prettier"
 	);
 
-	fork(prettierPath, ["--write", "src/**/*.ts", "src/**/*.js", ...args], {
-		cwd: appDirectory,
+	const child = fork(
+		prettierPath,
+		["--write", "src/**/*.ts", "src/**/*.js", ...args],
+		{
+			cwd: appDirectory
+		}
+	);
+	child.on("exit", code => {
+		if (code === 0) {
+			console.log(`${chalk.greenBright("[INFO]")} Done!`);
+		} else {
+			console.log(`${chalk.yellowBright("[INFO]")} Done!`);
+		}
 	});
 }
 

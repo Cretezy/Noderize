@@ -14,7 +14,7 @@ const args = process.argv.slice(2);
 
 const script = args.shift();
 if (!Object.keys(commands).includes(script)) {
-	console.log(`${chalk.red("[INFO]")} Unknown script.`);
+	console.log(`${chalk.red("[WARN]")} Unknown script.`);
 	return;
 }
 

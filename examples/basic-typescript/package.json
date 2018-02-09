@@ -13,7 +13,6 @@
 		"start": "noderize-scripts start"
 	},
 	"noderize": {
-		"entry": "src/index.ts"
-	},
-	"dependencies": {}
+		"languages":  "typescript"
+	}
 }

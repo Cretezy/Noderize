@@ -10,7 +10,7 @@ import { execSync } from "child_process";
 	const name = process.argv[2];
 
 	if (!name) {
-		console.log(`${chalk.red("[INFO]")} No path given!`);
+		console.log(`${chalk.red("[WARN]")} No path given!`);
 		return;
 	}
 
@@ -18,11 +18,11 @@ import { execSync } from "child_process";
 	const path = resolve(fs.realpathSync(process.cwd()), name);
 
 	if (fs.existsSync(path)) {
-		console.log(`${chalk.red("[INFO]")} Path exists!`);
+		console.log(`${chalk.red("[WARN]")} Path exists!`);
 		return;
 	}
 
-	console.log(`${chalk.yellowBright("[INFO]")} Copying...`);
+	console.log(`${chalk.blueBright("[INFO]")} Copying...`);
 
 	// Copy from template
 	try {
@@ -33,7 +33,7 @@ import { execSync } from "child_process";
 		return;
 	}
 
-	console.log(`${chalk.yellowBright("[INFO]")} Setting up...`);
+	console.log(`${chalk.blueBright("[INFO]")} Setting up...`);
 
 	// Set the "name" field in package.json
 	try {
@@ -59,7 +59,7 @@ import { execSync } from "child_process";
 		console.error(error);
 	}
 
-	console.log(`${chalk.yellowBright("[INFO]")} Installing packages...`);
+	console.log(`${chalk.blueBright("[INFO]")} Installing packages...`);
 
 	const useYarn = shouldUseYarn();
 	try {
@@ -91,6 +91,14 @@ import { execSync } from "child_process";
 		`${chalk.greenBright(
 			"[INFO]"
 		)} Build a production version using ${chalk.cyan(`${runCommand} build`)}`
+	);
+
+	console.log();
+
+	console.log(
+		`${chalk.greenBright(
+			"[INFO]"
+		)} Visit documentation at ${chalk.cyan(`https://noderize.js.org`)}`
 	);
 })();
 

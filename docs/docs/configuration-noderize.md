@@ -57,15 +57,20 @@ To pass arguments to your running program when using the `start` command, add `-
 
 ## Options
 
+
 ### `entry`
 `string` (default: `src/index.js`)
 
 Used as entry file.
 
+If only using the `typescript` [`language`](#languages), this is set to `src/index.ts` by default.
+
+
 ### `output`
 `string` (default: `main` field in `package.json` or `dist/index.js`)
 
 Used as output file.
+
 
 ### `shebang`
 `bool` (default: if `bin` field in `package.json` is set)
@@ -74,10 +79,12 @@ Adds a shebang to top of built file. Useful for building CLI apps.
 
 > You can omit this as it will infer if this is a CLI app by checking if the `bin` field in `package.json` is set.
 
+
 ### `targets`
 `object` (default: `{ node: true }`)
 
 Specific a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
+
 
 ### `globals`
 `object` (default: none)
@@ -91,6 +98,7 @@ Example:
 }
 ```
 
+
 ### `sourcemap`
 `string|false` (default: `cheap-module-eval-source-map`)
 
@@ -103,14 +111,6 @@ Example:
 Enable running the app while watching. Might be useful to disable if you are working on a CLI app.
 
 
-### `sources`
-`array[string]` (default: `["src"]`)
-
-Array of paths to not include in build.
-
-> Unless if using `includeExternal`.
-
-
 ### `includeExternal`
 `bool` (default: `false`)
 
@@ -121,6 +121,17 @@ Include all your dependencies in your bundle. This will make your file size a lo
 `bool` (default: `false`)
 
 Minifies (compress) your app.
+
+
+### `languages`
+`string|array[string]` (default: `javascript`)
+
+Array of languages to be used.
+
+Languages available:
+
+* `javascript`
+* `typescript`
 
 
 ### `env`
