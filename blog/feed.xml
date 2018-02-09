@@ -2,21 +2,21 @@
 <rss version="2.0">
     <channel>
         <title>Noderize Blog</title>
-        <link>https://cretezy.github.io/noderize/blog</link>
+        <link>https://noderize.js.org/blog</link>
         <description>The best place to stay up-to-date with the latest Noderize news and events.</description>
         <lastBuildDate>Fri, 09 Feb 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
             <title>Noderize Blog</title>
-            <url>https://cretezy.github.io/noderizeimg/icon.svg</url>
-            <link>https://cretezy.github.io/noderize/blog</link>
+            <url>https://noderize.js.orgimg/icon.svg</url>
+            <link>https://noderize.js.org/blog</link>
         </image>
         <copyright>Copyright © 2018 Charles Crete</copyright>
         <item>
             <title><![CDATA[Draft: Path to Noderize v1.0]]></title>
-            <link>https://cretezy.github.io/noderize/blog/2018/02/09/path-to-v1.0.html</link>
-            <guid>https://cretezy.github.io/noderize/blog/2018/02/09/path-to-v1.0.html</guid>
+            <link>https://noderize.js.org/blog/2018/02/09/path-to-v1.0.html</link>
+            <guid>https://noderize.js.org/blog/2018/02/09/path-to-v1.0.html</guid>
             <pubDate>Fri, 09 Feb 2018 06:00:00 GMT</pubDate>
             <description><![CDATA[
 Plans for v1.0.
