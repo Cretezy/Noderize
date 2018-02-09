@@ -5,7 +5,7 @@ title: TypeScript
 
 TypeScript support is built in to Noderize.
 
-[See example](https://github.com/Cretezy/noderize/tree/master/packages/examples/basic-typescript).
+[See example](https://github.com/Cretezy/noderize/tree/master/examples/basic-typescript).
 
 ## Entry
 
