@@ -51,7 +51,11 @@ module.exports = {
 
 > All configuration is optional with Noderize. Omit until needed.
 
-To pass arguments to your app when using the `start` or `watch` command, add `--`. For instance: `yarn start --minify -- this is passed to my app`. If you wish to pass flags to your app, add `-- --`, as in `yarn build -- -- --my-flag`  (once to escape Yarn/npm, the other to escape Noderize).
+To pass arguments to your app when using the `start` or `watch` command, add `--`.
+
+For instance: `yarn start --minify -- this is passed to my app`.
+
+If you wish to pass flags to your app, add `-- --`, as in `yarn build -- -- --my-flag` (once to escape Yarn/npm, the other to escape Noderize).
 
 ## Index
 
@@ -60,36 +64,36 @@ To pass arguments to your app when using the `start` or `watch` command, add `--
 ## Options
 
 
-### `entry`
-`string` (default: `src/index.js`)
+### `entry` [string]
+Default: `src/index.js`
 
 Used as entry file.
 
 If only using the `typescript` [`language`](#languages), this is set to `src/index.ts` by default.
 
 
-### `output`
-`string` (default: `main` field in `package.json` or `dist/index.js`)
+### `output` [string]
+Default: `main` field in `package.json` or `dist/index.js`.
 
 Used as output file.
 
 
-### `shebang`
-`bool` (default: if `bin` field in `package.json` is set)
+### `shebang` [boolean]
+Default: if `bin` field in `package.json` is set
 
 Adds a shebang to top of built file. Useful for building CLI apps.
 
 > You can omit this as it will infer if this is a CLI app by checking if the `bin` field in `package.json` is set.
 
 
-### `targets`
-`object` (default: `{ node: true }`)
+### `targets` [object]
+Default: `{ node: true }`
 
 Specific a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
 
 
-### `globals`
-`object` (default: none)
+### `globals` [object]
+Default: none
 
 Set a globals.
 
@@ -101,32 +105,32 @@ Example:
 ```
 
 
-### `sourcemap`
-`string|false` (default: `cheap-module-eval-source-map`)
+### `sourcemap` [string|false]
+Default: `cheap-module-eval-source-map`
 
 [See source map types](https://webpack.js.org/configuration/devtool).
 
 
-### `runOnWatch`
-`bool` (default: `true`)
+### `runOnWatch` [boolean]
+Default: `true`
 
 Enable running the app while watching. Might be useful to disable if you are working on a CLI app.
 
 
-### `includeExternal`
-`bool` (default: `false`)
+### `includeExternal` [boolean]
+Default: `false`
 
 Include all your dependencies in your bundle. This will make your file size a lot larger.
 
 
-### `minify`
-`bool` (default: `false`)
+### `minify` [boolean]
+Default: `false`
 
 Minifies (compress) your app.
 
 
-### `languages`
-`string|array[string]` (default: `javascript`)
+### `languages` [string|array[string]]
+Default: `javascript`
 
 Array of languages to be used.
 
@@ -136,8 +140,8 @@ Languages available:
 * `typescript`
 
 
-### `env`
-`object` (default: none)
+### `env` [object]
+Default: none
 
 Provide environment-specific variables that can be used with the `--env` flag
 
