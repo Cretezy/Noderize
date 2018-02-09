@@ -1,0 +1,86 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Noderize Configuration · Noderize</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Noderize Configuration · Noderize"/><meta property="og:type" content="website"/><meta property="og:url" content="https://cretezy.github.io/noderize/index.html"/><meta property="og:description" content="You may configure Noderize by passing options to the `noderize` key in your `package.json`."/><link rel="shortcut icon" href="/img/favicon/favicon.icon"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://cretezy.github.io/noderize/blog/atom.xml" title="Noderize Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://cretezy.github.io/noderize/blog/feed.xml" title="Noderize Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/icon.svg"/><h2 class="headerTitle">Noderize</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/introduction.html" target="_self">Docs</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/Cretezy/noderize" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Configuration</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Get Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/introduction.html">Introduction</a></li></ul></div><div class="navGroup navGroupActive"><h3>Configuration</h3><ul><li class="navListItem"><a class="navItem" href="/docs/configuration.html">Index</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/configuration-noderize.html">Noderize</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration-prettier.html">Prettier</a></li></ul></div><div class="navGroup navGroupActive"><h3>Features</h3><ul><li class="navListItem"><a class="navItem" href="/docs/features.html">Index</a></li><li class="navListItem"><a class="navItem" href="/docs/features-flow.html">Flow</a></li><li class="navListItem"><a class="navItem" href="/docs/features-typescript.html">TypeScript</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Noderize Configuration</h1></header><article><div><span><p>You may configure Noderize by passing options to the <code>noderize</code> key in your <code>package.json</code>.</p>
+<blockquote>
+<p>Noderize should be able to infer almost all of these options. If not needed, omit them.</p>
+</blockquote>
+<p>Every configuration options can be passed as argumentsto the <code>build</code> or <code>watch</code> (and <code>start</code>) command. For instance: <code>yarn build --minify</code></p>
+<p>When passing objects as argument, provide a JSON string. For instance: <code>yarn build --targets '{&quot;node&quot;: true}'</code>.</p>
+<p>When passing arrays as argument, simply pass it multiple times. For instance: <code>yarn build --sources src --sources src2</code></p>
+<h2><a class="anchor" aria-hidden="true" name="index"></a><a href="#index" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index</h2>
+<ul>
+<li><a href="#entry"><code>entry</code></a></li>
+<li><a href="#output"><code>output</code></a></li>
+<li><a href="#shebang"><code>shebang</code></a></li>
+<li><a href="#targets"><code>targets</code></a></li>
+<li><a href="#globals"><code>globals</code></a></li>
+<li><a href="#sourcemap"><code>sourcemap</code></a></li>
+<li><a href="#runonwatch"><code>runOnWatch</code></a></li>
+<li><a href="#sources"><code>sources</code></a></li>
+<li><a href="#includeexternal"><code>includeExternal</code></a></li>
+<li><a href="#minify"><code>minify</code></a></li>
+<li><a href="#env"><code>env</code></a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" name="options"></a><a href="#options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Options</h2>
+<h3><a class="anchor" aria-hidden="true" name="entry"></a><a href="#entry" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>entry</code></h3>
+<p><code>string</code> (default: <code>src/index.js</code>)</p>
+<p>Used as entry file.</p>
+<h3><a class="anchor" aria-hidden="true" name="output"></a><a href="#output" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>output</code></h3>
+<p><code>string</code> (default: <code>main</code> field in <code>package.json</code> or <code>dist/index.js</code>)</p>
+<p>Used as output file.</p>
+<h3><a class="anchor" aria-hidden="true" name="shebang"></a><a href="#shebang" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>shebang</code></h3>
+<p><code>bool</code> (default: if <code>bin</code> field in <code>package.json</code> is set)</p>
+<p>Adds a shebang to top of built file. Useful for building CLI apps.</p>
+<blockquote>
+<p>You can omit this as it will infer if this is a CLI app by checking if the <code>bin</code> field in <code>package.json</code> is set.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" name="targets"></a><a href="#targets" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>targets</code></h3>
+<p><code>object</code> (default: <code>{ node: true }</code>)</p>
+<p>Specific a <a href="https://babeljs.io/docs/plugins/preset-env/#targets">Babel target</a> to compile to.</p>
+<h3><a class="anchor" aria-hidden="true" name="globals"></a><a href="#globals" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>globals</code></h3>
+<p><code>object</code> (default: none)</p>
+<p>Set a globals.</p>
+<p>Example:</p>
+<pre><code class="hljs css json">"globals": {
+    "$": "jquery"
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" name="sourcemap"></a><a href="#sourcemap" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sourcemap</code></h3>
+<p><code>string|false</code> (default: <code>cheap-module-eval-source-map</code>)</p>
+<p><a href="https://webpack.js.org/configuration/devtool">See source map types</a>.</p>
+<h3><a class="anchor" aria-hidden="true" name="runonwatch"></a><a href="#runonwatch" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>runOnWatch</code></h3>
+<p><code>bool</code> (default: <code>true</code>)</p>
+<p>Enable running the app while watching. Might be useful to disable if you are working on a CLI app.</p>
+<h3><a class="anchor" aria-hidden="true" name="sources"></a><a href="#sources" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sources</code></h3>
+<p><code>array[string]</code> (default: <code>[&quot;src&quot;]</code>)</p>
+<p>Array of paths to not include in build.</p>
+<blockquote>
+<p>Unless if using <code>includeExternal</code>.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" name="includeexternal"></a><a href="#includeexternal" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>includeExternal</code></h3>
+<p><code>bool</code> (default: <code>false</code>)</p>
+<p>Include all your dependencies in your bundle. This will make your file size a lot larger.</p>
+<h3><a class="anchor" aria-hidden="true" name="minify"></a><a href="#minify" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>minify</code></h3>
+<p><code>bool</code> (default: <code>false</code>)</p>
+<p>Minifies (compress) your app.</p>
+<h3><a class="anchor" aria-hidden="true" name="env"></a><a href="#env" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>env</code></h3>
+<p><code>object</code> (default: none)</p>
+<p>Provide environment-specific variables that can be used with the <code>--env</code> flag</p>
+<p>By default, the <code>production</code> environment does:</p>
+<ul>
+<li>Sets <code>targets.node</code> to the oldest active Node LTS release.</li>
+<li>Set <code>sourcemap</code> to <code>false</code>.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="hljs css json">"env": {
+    "production": {
+        "minify": false
+    }
+}
+</code></pre>
+<p>Can be used with <code>yarn build --env production</code>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="configuration.html">← Configuration</a><a class="docs-next button" href="configuration-prettier.html">Prettier Configuration →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/icon.svg" alt="Noderize" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/introduction.html">Getting Started</a><a href="/docs/en/configuration.html">Configuration</a><a href="/docs/en/features.html">Features</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/Cretezy/noderize">GitHub</a><a class="github-button" href="https://github.com/Cretezy/noderize" data-icon="octicon-star" data-count-href="/cretezy/noderize/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Charles Crete.</section></footer></div></body></html>
