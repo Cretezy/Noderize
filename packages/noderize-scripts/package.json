@@ -2,12 +2,12 @@
   "name": "noderize-scripts",
   "description": "Scripts to use with Noderize.",
   "author": "Charles Crete <charles@cretezy.com>",
-  "homepage": "https://github.com/Cretezy/noderize/tree/master/packages/noderize-scripts",
+  "homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Cretezy/noderize.git"
+    "url": "https://github.com/Cretezy/Noderize.git"
   },
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "src/index.js",
   "license": "MIT",
   "bin": "src/index.js",

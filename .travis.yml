@@ -22,7 +22,7 @@ jobs:
         skip_cleanup: true
         script: (cd docs/website && GIT_USER=Noderize-bot yarn publish-gh-pages)
         on:
-          condition: true
+          all_branches: true
     - stage: deploy
       env: DEPLOY=npm
       if: tag IS present
@@ -35,4 +35,4 @@ jobs:
         skip_cleanup: true
         script: (cd packages/create-noderize && ci-publish) && (cd packages/noderize-scripts && ci-publish)
         on:
-          condition: true
+          tags: true
