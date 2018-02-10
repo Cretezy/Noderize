@@ -7,11 +7,11 @@
     "type": "git",
     "url": "https://github.com/Cretezy/noderize.git"
   },
-  "version": "0.1.11",
+  "version": "0.1.12",
   "license": "MIT",
   "bin": "dist/index.js",
   "devDependencies": {
-    "noderize-scripts": "^0.1.11"
+    "noderize-scripts": "^0.1.12"
   },
   "scripts": {
     "watch": "noderize-scripts watch",
