@@ -38,3 +38,11 @@ You may also want to run for tests before as well:
 ```json
 "prepublishOnly": "noderize-scripts test --ci && noderize-scripts build --env production"
 ```
+
+## Fat bundle
+
+To generate a "fat bundle" with all your code and dependencies included, set [`includeExternal`](configuration-noderize.md#includeexternal) to `true`.
+
+This will add all the code in your output bundle, resulting in a large size, but making it portable.
+
+This only recommended when deploying, not when publishing to npm.

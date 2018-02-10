@@ -25,15 +25,19 @@
     "Testing": "Testing",
     "features-typescript": "Feature: TypeScript",
     "TypeScript": "TypeScript",
+    "guides-heroku": "Guide: Heroku",
+    "Heroku": "Heroku",
     "guides-publishing": "Guide: Publishing",
     "Publishing": "Publishing",
+    "guides": "Guides",
     "introduction": "Introduction",
     "Docs": "Docs",
     "Blog": "Blog",
     "GitHub": "GitHub",
     "Get Started": "Get Started",
     "Configuration": "Configuration",
-    "Features": "Features"
+    "Features": "Features",
+    "Guides": "Guides"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

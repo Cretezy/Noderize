@@ -16,6 +16,7 @@ jobs:
       env: DEPLOY=website
       if: tag IS present OR branch = master
       install: (cd docs/website && yarn)
+      script: skip
       before_deploy:
         # Set Git info
         - git config --global user.email "36317094+Noderize-bot@users.noreply.github.com"
@@ -30,7 +31,7 @@ jobs:
     - stage: deploy
       env: DEPLOY=npm
       if: tag IS present
-      install: yarn
+      script: skip
       before_deploy:
         # Publish using $NPM_TOKEN
         - npm i -g ci-publish

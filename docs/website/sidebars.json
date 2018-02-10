@@ -17,6 +17,11 @@
       "features-typescript",
       "features-formatting",
       "features-testing"
+    ],
+    "Guides":[
+      "guides",
+      "guides-publishing",
+      "guides-heroku"
     ]
   }
 }

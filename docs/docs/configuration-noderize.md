@@ -157,7 +157,7 @@ Languages available:
 Provide environment-specific variables that can be used with the `--env` flag
 
 By default, the `production` environment does:
-* Sets `targets.node` to the oldest active Node LTS release.
+* Sets `targets.node` to the oldest active Node LTS release (currently 6).
 * Set `sourcemap` to `false`.
 
 To add other options:
@@ -166,7 +166,7 @@ Example:
 ```json
 "env": {
     "production": {
-        "minify": false
+        "minify": true
     }
 }
 ```

@@ -15,6 +15,7 @@ const args = process.argv.slice(2);
 const script = args.shift();
 if (!Object.keys(commands).includes(script)) {
 	printWarn(`Unknown script.`);
+	process.exit(1);
 	return;
 }
 
