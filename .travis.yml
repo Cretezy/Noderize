@@ -23,8 +23,6 @@ jobs:
       env: DEPLOY=npm
       if: tag IS present
       install: yarn
-      script:
-        - (cd packages/create-noderize && yarn build --env production)
       before_deploy:
         # Publish using $NPM_TOKEN
         - npm i -g ci-publish

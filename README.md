@@ -1,4 +1,4 @@
-# Noderize
+# Noderize [![Build Status](https://travis-ci.org/Cretezy/Noderize.svg?branch=master)](https://travis-ci.org/Cretezy/Noderize)
 
 <p align="center">
     <a href="https://noderize.js.org"><img src="docs/website/static/img/icon.svg" alt="Noderize" width="256px" /></a>
