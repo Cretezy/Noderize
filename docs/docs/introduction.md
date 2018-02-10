@@ -5,7 +5,7 @@ title: Introduction
 
 Noderize lets you create Node apps in less than 30 seconds.
 
-It aims to get out of your way and not require any configuration until you need it, while supporting loads of features.
+It aims to get out of your way and not require any [configuration](configuration-index.md) until you need it, while supporting loads of [features](features-index.md).
 
 Try it out for yourself:
 
@@ -15,18 +15,7 @@ yarn create noderize <path>
 npx create-noderize <path>
 ```
 
-If you wish to save to command globally, you may optionally install using:
-
-```bash
-yarn global add create-noderize
-# or
-npm install -g create-noderize
-
-# then
-create-noderize <path>
-```
-
-[Options can be passed](create.md) to the `create-noderize` command to modify it's behavior, like making it setup a TypeScript project instead.
+[See more `create-noderize` options](create.md).
 
 ## Develop
 

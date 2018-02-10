@@ -4,7 +4,20 @@ title: Create Noderize App
 sidebar_label: Create App
 ---
 
-In the [introduction](introduction.md), we saw how to create a Noderize app using the `create-noderize` package. Some arguments can be passed to this script to modify it's behavior.
+In the [introduction](introduction.md), we saw how to create a Noderize app using the `create-noderize` package.
+
+It is recommended you use the single-use script from the [introduction](introduction.md) as it will always be up-to-date, however you can optionally install the command globally with:
+
+```bash
+yarn global add create-noderize
+# or
+npm install -g create-noderize
+
+# then
+create-noderize <path>
+```
+
+Some arguments can be passed to this script to modify it's behavior.
 
 ## Index
 
