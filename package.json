@@ -11,6 +11,7 @@
   "private": true,
   "workspaces": [
     "packages/*",
-    "examples/*"
+    "examples/*",
+    "docs/website"
   ]
 }
