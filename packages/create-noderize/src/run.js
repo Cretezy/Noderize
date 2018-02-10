@@ -1,8 +1,6 @@
-import { ncp } from "ncp";
 import chalk from "chalk";
-import { promisify } from "util";
 import { resolve } from "path";
-import fs from "fs";
+import fs from "fs-extra";
 import { execSync } from "child_process";
 
 export async function run(name = null,
@@ -14,10 +12,10 @@ export async function run(name = null,
 	}
 
 	// Get absolute path
-	const path = resolve(fs.realpathSync(process.cwd()), name);
+	const path = resolve(await fs.realpath(process.cwd()), name);
 
 	// Check if exist
-	if (fs.existsSync(path)) {
+	if (await fs.exists(path)) {
 		printWarn(`Path exists!`);
 		process.exit(1);
 		return;
@@ -27,7 +25,7 @@ export async function run(name = null,
 
 	// Copy from template
 	try {
-		await promisify(ncp)(resolve(__dirname, "..", "template"), path);
+		await fs.copy(resolve(__dirname, "..", "template"), path);
 	} catch (error) {
 		error(`Error copying.`, error);
 		process.exit(1);
@@ -40,16 +38,13 @@ export async function run(name = null,
 	try {
 		const childPackagePath = resolve(path, "package.json");
 		// Read
-		const childPackage = JSON.parse(fs.readFileSync(childPackagePath));
+		const childPackage = await fs.readJson(childPackagePath);
 		const newChildPackage = { name, ...childPackage }; // Hack to put name at front
 		if (typescript) {
 			newChildPackage.noderize = { languages: "typescript" };
 		}
 		// Write
-		fs.writeFileSync(
-			childPackagePath,
-			JSON.stringify(newChildPackage, null, "\t")
-		);
+		await fs.writeJson(childPackagePath, newChildPackage, {spaces:"\t"});
 	} catch (error) {
 		printError(`Error saving package.json.`, error);
 		process.exit(1);
@@ -58,7 +53,7 @@ export async function run(name = null,
 
 	// Move "gitignore" to ".gitignore"
 	try {
-		fs.renameSync(resolve(path, "gitignore"), resolve(path, ".gitignore"));
+		await fs.rename(resolve(path, "gitignore"), resolve(path, ".gitignore"));
 	} catch (error) {
 		printError(`Error moving .gitignore.`, error);
 		process.exit(1);
@@ -68,7 +63,7 @@ export async function run(name = null,
 	if (typescript) {
 		// Setup TypeScript
 		try {
-			fs.renameSync(
+			await fs.rename(
 				resolve(path, "src", "index.js"),
 				resolve(path, "src", "index.ts")
 			);
