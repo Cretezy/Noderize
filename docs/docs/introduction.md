@@ -17,6 +17,8 @@ npx create-noderize <path>
 
 [See more `create-noderize` options](create.md).
 
+(Noderize requires Node 8+).
+
 ## Develop
 
 Once you have created your Noderize project, simply `cd` into it and you can run it for development using the `watch` script:
