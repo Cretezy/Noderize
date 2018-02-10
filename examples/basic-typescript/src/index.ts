@@ -1,3 +1,1 @@
-import { message } from "./text";
-
-console.log(message);
+console.log("Hello world from TypeScript in Noderize!");

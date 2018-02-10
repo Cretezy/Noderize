@@ -1,0 +1,18 @@
+{
+	"name": "basic-tests",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"watch": "noderize-scripts watch",
+		"test": "noderize-scripts test",
+		"format": "noderize-scripts format",
+		"build": "noderize-scripts build",
+		"start": "noderize-scripts start"
+	},
+	"noderize": {
+		"languages": ["javascript", "typescript"]
+	},
+	"devDependencies": {
+		"noderize-scripts": "*"
+	}
+}
