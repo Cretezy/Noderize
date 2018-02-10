@@ -9,8 +9,7 @@ stages:
   - name: deploy-website
     if: branch = master
   - name: deploy-npm
-    if: branch = master
-    if: tag IS present
+    if: branch = master AND tag IS present
 
 jobs:
   include:
