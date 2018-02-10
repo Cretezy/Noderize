@@ -5,14 +5,10 @@ cache: yarn
 script: skip
 install: skip
 
-stages:
-  - name: deploy-website
-  - name: deploy-npm
-    if: tag IS present
-
 jobs:
   include:
-    - stage: deploy-website
+    - stage: deploy
+      env: DEPLOY=website
       install: (cd docs/website && yarn)
       before_deploy:
         # Set Git info
@@ -23,7 +19,9 @@ jobs:
         provider: script
         skip_cleanup: true
         script: (cd docs/website && yarn publish-gh-pages)
-    - stage: deploy-npm
+    - stage: deploy
+      env: DEPLOY=npm
+      if: tag IS present
       install: yarn
       script:
         - (cd packages/create-noderize && yarn build --env production)
