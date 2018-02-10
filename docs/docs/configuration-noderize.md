@@ -8,54 +8,59 @@ Noderize uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for co
 
 * A `noderize` key in your `package.json` file (recommended):
 
-```json
-{
-    "name": "my-noderize-program",
-    "...": "...",
-    "noderize": {
-        "minify": true
+    ```json
+    {
+        "name": "my-noderize-program",
+        "...": "...",
+        "noderize": {
+            "minify": true
+        }
     }
-}
-```
+    ```
 
 * A `.noderizerc` file, written in JSON/YAML/JS, with optional extensions: `.json`/`.yml`/`.yaml`/`.js`:
 
-JSON:
-```json
-{
-    "minify": true
-}
-```
+    * JSON:
+        ```json
+        {
+            "minify": true
+        }
+        ```
 
-YAML:
-```yml
-minify: true
-```
+    * YAML:
+        ```yml
+        minify: true
+        ```
 
-JS:
-```js
-module.exports = {
-    minify: true
-}
-```
+    * JS:
+        ```js
+        module.exports = {
+            minify: true
+        }
+        ```
 
 * A `noderize.config.js` file that exports an object (like the `.noderizerc` JS example above).
 
 * Command line arguments:
 
-    * Every configuration options can be passed as arguments to the `build`/`watch`/`start` command. For instance: `yarn build --minify`
+    * Every configuration options can be passed as arguments to the `build`/`watch`/`start`/etc command.
+        * `yarn build --minify`
 
-    * When passing objects as argument, provide a JSON string. For instance: `yarn build --targets '{"node": true}'`.
+    * When passing objects as argument, provide a JSON string.
+        * `yarn build --targets '{"node": true}'`.
 
-    * When passing arrays as argument, simply pass it multiple times. For instance: `yarn build --languages javascript --languages typescript`.
+    * When passing arrays as argument, simply pass it multiple times.
+        * `yarn build --languages javascript --languages typescript`.
 
-> All configuration is optional with Noderize. Omit until needed.
+**All configuration is optional with Noderize. Omit until needed.**
 
-To pass arguments to your app when using the `start` or `watch` command, add `--`.
+When using the `start` or `watch` script to run your app, you may pass arguments to your app after `--`:
 
-For instance: `yarn watch --minify -- this is passed to an app ran at src/second.js`.
+* `yarn watch --minify -- some args`
 
-If you wish to pass arguments to your app but aren't providing any Noderize arguments, add `-- --`, as in `yarn watch -- -- --my-flag`.
+If you wish to pass arguments to your app but aren't providing any Noderize arguments, add `-- --`:
+
+* `yarn watch -- -- --some-flag`.
 
 ## Index
 

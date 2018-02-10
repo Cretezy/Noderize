@@ -18,6 +18,7 @@ Then add a `scripts.flow` to `package.json` set to `flow` (optional if using Yar
 
 ```json
 "scripts": {
+    "...": "...",
     "flow": "flow"
 }
 ```

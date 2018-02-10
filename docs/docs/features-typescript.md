@@ -18,4 +18,6 @@ When only using the `typescript` [`language`](configuration-noderize.md#language
 
 If you are also using other languages but want your entry file to be a TypeScript file, simply change the [`entry`](configuration-noderize.md#entry) option to `src/index.ts`.
 
+## Features
 
+* Decorators
