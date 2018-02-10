@@ -10,3 +10,4 @@ Noderize gets out of your way and does not require any configuration until you n
 
 * [Noderize](configuration-noderize.md)
 * [Prettier](configuration-prettier.md)
+* [Jest](configuration-jest.md)

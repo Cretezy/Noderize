@@ -1,7 +1,21 @@
 {
   "docs": {
-    "Get Started": ["introduction"],
-    "Configuration": ["configuration", "configuration-noderize", "configuration-prettier"],
-    "Features": ["features", "features-modern", "features-flow", "features-typescript", "features-format"]
+    "Get Started": [
+      "introduction"
+    ],
+    "Configuration": [
+      "configuration",
+      "configuration-noderize",
+      "configuration-prettier",
+      "configuration-jest"
+    ],
+    "Features": [
+      "features",
+      "features-modern",
+      "features-flow",
+      "features-typescript",
+      "features-formatting",
+      "features-testing"
+    ]
   }
 }

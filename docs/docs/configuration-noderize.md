@@ -53,9 +53,9 @@ module.exports = {
 
 To pass arguments to your app when using the `start` or `watch` command, add `--`.
 
-For instance: `yarn start --minify -- this is passed to my app`.
+For instance: `yarn watch --minify -- this is passed to an app ran at src/second.js`.
 
-If you wish to pass flags to your app, add `-- --`, as in `yarn build -- -- --my-flag` (once to escape Yarn/npm, the other to escape Noderize).
+If you wish to pass arguments to your app but aren't providing any Noderize arguments, add `-- --`, as in `yarn watch -- -- --my-flag`.
 
 ## Index
 

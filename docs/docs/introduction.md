@@ -29,7 +29,7 @@ You may also setup a TypeScript project (change file extension and add [`languag
 
 ## Develop
 
-Once you have created your Noderize project, simply `cd` into it and you can run it for development using:
+Once you have created your Noderize project, simply `cd` into it and you can run it for development using the `watch` script:
 
 ```bash
 yarn watch
@@ -41,7 +41,7 @@ This will continuously rebuild your app and rerun your app as you code!
 
 ## Build
 
-To build your app, simply run:
+To build your app, use the built-in `build` script:
 
 ```bash
 yarn build
@@ -50,6 +50,16 @@ npm run build
 ```
 
 This will build your app to `dist/index.js` (this output is optionally [configurable](configuration-noderize.md#output))
+
+You can then run your file using the `start` script (for source map support) or using Node directly:
+
+```bash
+yarn start
+# or
+npm start
+# or
+node dist/index.js
+```
 
 ## Additional Features
 

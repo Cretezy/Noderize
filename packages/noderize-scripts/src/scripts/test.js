@@ -2,13 +2,25 @@ const path = require("path");
 const { appDirectory } = require("../utils");
 const chalk = require("chalk");
 const { execSync } = require("child_process");
-const jest = require("jest");
+const { fork } = require("child_process");
 const { getOptions } = require("../options");
+const cosmiconfig = require("cosmiconfig");
+const merge = require("lodash.merge");
 
 async function run(args) {
 	console.log(`${chalk.blueBright("[INFO]")} Testing...`);
 
 	const options = await getOptions(args);
+	const jestArgs = options.args._;
+
+	// Manually load jest config
+	let jestConfig = {};
+	try {
+		const results = await cosmiconfig("jest").load();
+		jestConfig = results.config;
+	} catch (error) {
+		// Could not load (doesn't exist?)
+	}
 
 	let isInGit;
 	try {
@@ -23,21 +35,21 @@ async function run(args) {
 	if (
 		!(
 			process.env.CI ||
-			args.includes("--ci") ||
-			args.includes("--watchAll") ||
-			args.includes("--watch") ||
-			args.includes("--coverage")
+			jestArgs.includes("--ci") ||
+			jestArgs.includes("--watchAll") ||
+			jestArgs.includes("--watch") ||
+			jestArgs.includes("--coverage")
 		)
 	) {
-		args.push(isInGit ? "--watch" : "--watchAll");
+		jestArgs.push(isInGit ? "--watch" : "--watchAll");
 	}
 
 	const extensions = [
-		options.languages.javascript && ".js",
-		options.languages.typescript && ".ts"
+		"js", // Must use js for Jest itself
+		options.languages.typescript && "ts"
 	].filter(Boolean);
 
-	const config = {
+	const config = merge({
 		rootDir: appDirectory,
 		roots: ["<rootDir>/src"],
 		transform: {
@@ -49,11 +61,27 @@ async function run(args) {
 		},
 		moduleFileExtensions: [...extensions, "json"],
 		testRegex: `(.*__tests__.*|.*\\.(test|spec))\\.(${extensions.join("|")})$`
-	};
+	}, jestConfig);
 
-	args.push("--config", JSON.stringify(config));
 
-	jest.run(args);
+	jestArgs.push("--config", JSON.stringify(config));
+
+	const jestPath = path.resolve(
+		__dirname,
+		"..",
+		"..",
+		"node_modules",
+		".bin",
+		"jest"
+	);
+
+	fork(
+		jestPath,
+		jestArgs,
+		{
+			cwd: appDirectory
+		}
+	);
 }
 
 module.exports = { run };

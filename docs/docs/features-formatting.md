@@ -1,5 +1,5 @@
 ---
-id: features-format
+id: features-formatting
 title: Feature: Code Formatting
 sidebar_label: Code Formatting
 ---

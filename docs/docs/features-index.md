@@ -11,4 +11,5 @@ Noderize supports loads of exciting features.
 * [Modern JavaScript](features-modern.md)
 * [Flow](features-flow.md)
 * [TypeScript](features-typescript.md)
-* [Code Formatting](features-format.md)
+* [Code Formatting](features-formatting.md)
+* [Testing](features-testing.md)
