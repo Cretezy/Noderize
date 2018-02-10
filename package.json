@@ -10,8 +10,6 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*",
-    "examples/*",
-    "docs/website"
+    "packages/*"
   ]
 }
