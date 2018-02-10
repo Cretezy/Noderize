@@ -18,8 +18,6 @@
 const siteConfig = {
 	title: 'Noderize',
 	tagline: ' Create a Node app in less than 30 seconds.',
-	// url: 'https://cretezy.github.io/noderize',
-	// baseUrl: '/noderize/',
 	url: 'https://noderize.js.org',
 	baseUrl: '/',
 	projectName: 'noderize',
@@ -38,8 +36,7 @@ const siteConfig = {
 		secondaryColor: '#809fc0',
 	},
 
-	copyright:
-	`Copyright © ${new Date().getFullYear()} Charles Crete`,
+	copyright: `Copyright © ${new Date().getFullYear()} Charles Crete`,
 	organizationName: 'Cretezy',
 	projectName: 'Noderize',
 
@@ -51,10 +48,10 @@ const siteConfig = {
 	scripts: ['https://buttons.github.io/buttons.js'],
 	repoUrl: 'https://github.com/Cretezy/Noderize',
 	cname: "noderize.js.org",
-	algolia: {
-		apiKey: "my-search-only-api-key-1234",
-		indexName: "my-index-name"
-	},
+	// algolia: {
+	// 	apiKey: "my-search-only-api-key-1234",
+	// 	indexName: "my-index-name"
+	// },
 };
 
 module.exports = siteConfig;
