@@ -28,9 +28,9 @@ Some arguments can be passed to this script to modify it's behavior.
 ### `--typescript`
 
 This will setup a TypeScript project by:
-* Setting the [`language`](configuration-noderize.md#language) option to `typescript`
+* Setting the [`language`](configuration-noderize.md#languages) option to `typescript`
 * Renaming `src/index.js` to `src/index.ts`
 
-### `--forceNpm` and `---forceYarn`
+### `--forceNpm` & `---forceYarn`
 
 By default, Noderize uses Yarn if available. You may force the use of Yarn or npm.
