@@ -8,6 +8,7 @@
     <br/>
     <a href="https://noderize.js.org"><strong>Documentation</strong></a>
     <br/>
+    <br/>
 </p>
 
 It aims to get out of your way and not require any configuration until you need it, while supporting loads of features.
