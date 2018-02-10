@@ -27,7 +27,7 @@ const siteConfig = {
 	headerLinks: [
 		{ doc: 'introduction', label: 'Docs' },
 		{ blog: true, label: 'Blog' },
-		{ href: 'https://github.com/Cretezy/noderize', label: 'GitHub' },
+		{ href: 'https://github.com/Cretezy/Noderize', label: 'GitHub' },
 	],
 	// users,
 	headerIcon: 'img/light.svg',
@@ -41,7 +41,7 @@ const siteConfig = {
 	copyright:
 	`Copyright © ${new Date().getFullYear()} Charles Crete`,
 	organizationName: 'Cretezy',
-	projectName: 'noderize',
+	projectName: 'Noderize',
 
 	highlight: {
 		// Highlight.js theme to use for syntax highlighting in code blocks
@@ -49,7 +49,7 @@ const siteConfig = {
 	},
 
 	scripts: ['https://buttons.github.io/buttons.js'],
-	repoUrl: 'https://github.com/Cretezy/noderize',
+	repoUrl: 'https://github.com/Cretezy/Noderize',
 	cname: "noderize.js.org"
 };
 
