@@ -8,7 +8,7 @@
 const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
-const MarkdownBlock = CompLibrary.MarkdownBlock;
+// const MarkdownBlock = CompLibrary.MarkdownBlock;
 /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
@@ -101,28 +101,30 @@ const Block = props => (
 );
 
 const Features = props => (
-	<Block layout="fourColumn">
-		{[
-			{
-				image: imgUrl('icon.svg'),
-				imageAlign: 'top',
-				title: 'Instant Setup',
-				content: 'Create a Node app with one command in less than 30 seconds. Get started on coding and forget about configuration.',
-			},
-			{
-				image: imgUrl('icon.svg'),
-				imageAlign: 'top',
-				title: 'Modern JavaScript & TypeScript',
-				content: 'Use modern JavaScript features and TypeScript/Flow side-by-side, with no hassle.',
-			},
-			{
-				image: imgUrl('icon.svg'),
-				imageAlign: 'top',
-				title: 'Flexibility',
-				content: 'No need for configuration until you need some. Every option has sane defaults and avoids you configuring anything by inferring.',
-			},
-		]}
-	</Block>
+	<div id="feature">
+		<Block layout="fourColumn">
+			{[
+				{
+					image: imgUrl('download.svg'),
+					imageAlign: 'top',
+					title: 'Instant Setup',
+					content: 'Create a Node app with one command in less than 30 seconds. Get started on coding and forget about configuration.',
+				},
+				{
+					image: imgUrl('fighter-jet.svg'),
+					imageAlign: 'top',
+					title: 'Modern JavaScript & TypeScript',
+					content: 'Use modern JavaScript features and TypeScript/Flow side-by-side, with no hassle.',
+				},
+				{
+					image: imgUrl('wrench.svg'),
+					imageAlign: 'top',
+					title: 'Flexibility',
+					content: 'No need for configuration until you need some. Every option has sane defaults and avoids you configuring anything by inferring.',
+				},
+			]}
+		</Block>
+	</div>
 );
 
 const FeatureCallout = ({ language }) => (
@@ -130,6 +132,7 @@ const FeatureCallout = ({ language }) => (
 		className="productShowcaseSection paddingBottom"
 		style={{ textAlign: 'center' }}>
 		<h2>Get Started Now</h2>
+		<br/>
 		<Button href={docUrl('introduction.html', language)}>Documentation</Button>
 	</div>
 );
