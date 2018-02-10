@@ -32,3 +32,5 @@ jobs:
         provider: script
         skip_cleanup: true
         script: (cd packages/create-noderize && ci-publish) && (cd packages/noderize-scripts && ci-publish)
+        on:
+          tags: true
