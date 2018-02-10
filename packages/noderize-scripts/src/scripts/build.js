@@ -36,7 +36,7 @@ async function run(args) {
 }
 
 function getCompiler(options) {
-	const tsconfig = path.resolve(__dirname, "tsconfig.json");
+	const tsconfig = path.resolve(__dirname, "..", "tsconfig.json");
 	const happyThreadPool = webpackHappyPack.ThreadPool({
 		size: options.buildThreads
 	});

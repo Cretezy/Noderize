@@ -18,7 +18,7 @@ function start(options) {
 		if (code !== null) {
 			console.log(); // Padding
 			if (code === 0) {
-				printInfo(`Existed gracefully!`);
+				printInfo(`Exited gracefully.`);
 			} else {
 				printWarn(
 					`Exited with code ${code} ${signal ? `and signal ${signal}` : ""}`

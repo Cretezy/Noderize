@@ -21,9 +21,10 @@ If you wish to save to command globally, you may optionally install using:
 yarn global add create-noderize
 # or
 npm install -g create-noderize
-```
 
-Then run it as `create-noderize <path>`
+# then
+create-noderize <path>
+```
 
 [Options can be passed](create.md) to the `create-noderize` command to modify it's behavior, like making it setup a TypeScript project instead.
 
@@ -63,4 +64,4 @@ node dist/index.js
 
 ## Additional Features
 
-Check out [all of Noderize's features](features-index.md) such as [ES6/ES7+ support](features-modern.md) and [TypeScript support](features-typescript.md).
+Check out [all of Noderize's features](features-index.md) such as [modern JavaScript support](features-modern.md) and [TypeScript support](features-typescript.md).

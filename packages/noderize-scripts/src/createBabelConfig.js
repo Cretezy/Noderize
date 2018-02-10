@@ -3,8 +3,7 @@ module.exports = ({ targets } = {}) => ({
 		[
 			"@babel/preset-env",
 			{
-				targets,
-				modules: false
+				targets
 			}
 		],
 		"@babel/preset-stage-2",
