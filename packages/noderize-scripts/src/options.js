@@ -23,7 +23,7 @@ const defaults = {
 			sourcemap: false
 		}
 	},
-	buildThreads: 3,
+	buildThreads: 3
 };
 
 async function getOptions(rawArgs = []) {
@@ -49,7 +49,6 @@ async function getOptions(rawArgs = []) {
 
 	// Merge config to defaults
 	const options = merge({}, defaults, configOptions);
-
 
 	// Merge args to options
 	if (args.targets !== undefined) {
@@ -111,9 +110,9 @@ async function getOptions(rawArgs = []) {
 	// Entry
 	if (options.entry === undefined) {
 		if (languageList.length === 1 && languageList[0] === "typescript") {
-			options.entry = "src/index.ts"
+			options.entry = "src/index.ts";
 		} else {
-			options.entry = "src/index.js"
+			options.entry = "src/index.js";
 		}
 	}
 

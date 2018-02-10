@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const {printWarn} = require("./printUtils");
+const { printWarn } = require("./printUtils");
 
 const commands = {
 	build: require("./scripts/build"),
@@ -14,7 +14,7 @@ const args = process.argv.slice(2);
 
 const script = args.shift();
 if (!Object.keys(commands).includes(script)) {
-	printWarn(`Unknown script.`)
+	printWarn(`Unknown script.`);
 	return;
 }
 

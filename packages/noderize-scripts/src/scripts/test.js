@@ -49,16 +49,20 @@ async function run(args) {
 		options.languages.typescript && "ts"
 	].filter(Boolean);
 
-	const config = merge({
-		rootDir: appDirectory,
-		roots: ["<rootDir>/src"],
-		transform: {
-			[`^.+\\.(${extensions.join("|")})$`]: require.resolve("../jestTransformer.js")
+	const config = merge(
+		{
+			rootDir: appDirectory,
+			roots: ["<rootDir>/src"],
+			transform: {
+				[`^.+\\.(${extensions.join("|")})$`]: require.resolve(
+					"../jestTransformer.js"
+				)
+			},
+			moduleFileExtensions: [...extensions, "json"],
+			testRegex: `(.*__tests__.*|.*\\.(test|spec))\\.(${extensions.join("|")})$`
 		},
-		moduleFileExtensions: [...extensions, "json"],
-		testRegex: `(.*__tests__.*|.*\\.(test|spec))\\.(${extensions.join("|")})$`
-	}, jestConfig);
-
+		jestConfig
+	);
 
 	jestArgs.push("--config", JSON.stringify(config));
 
@@ -71,13 +75,9 @@ async function run(args) {
 		"jest"
 	);
 
-	fork(
-		jestPath,
-		jestArgs,
-		{
-			cwd: appDirectory
-		}
-	);
+	fork(jestPath, jestArgs, {
+		cwd: appDirectory
+	});
 }
 
 module.exports = { run };

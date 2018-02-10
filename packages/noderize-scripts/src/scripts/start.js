@@ -1,6 +1,6 @@
 const { fork } = require("child_process");
 const { getOptions } = require("../options");
-const {printInfo, printWarn} = require("../printUtils");
+const { printInfo, printWarn } = require("../printUtils");
 
 async function run(args) {
 	start(await getOptions(args));
@@ -20,9 +20,9 @@ function start(options) {
 			if (code === 0) {
 				printInfo(`Existed gracefully!`);
 			} else {
-				printWarn(`Exited with code ${code} ${
-					signal ? `and signal ${signal}` : ""
-					}`);
+				printWarn(
+					`Exited with code ${code} ${signal ? `and signal ${signal}` : ""}`
+				);
 			}
 		}
 	});

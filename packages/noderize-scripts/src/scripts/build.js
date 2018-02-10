@@ -52,7 +52,7 @@ function getCompiler(options) {
 			path: path.dirname(output),
 			filename: path.basename(output),
 			library: options.name,
-			libraryTarget: 'umd',
+			libraryTarget: "umd"
 		},
 
 		module: {
@@ -76,38 +76,38 @@ function getCompiler(options) {
 
 		plugins: [
 			javascript &&
-			new webpackHappyPack({
-				id: "javascript",
-				threadPool: happyThreadPool,
-				loaders: [
-					{
-						loader: "babel-loader",
-						options: createBabelConfig({ targets: options.targets })
-					}
-				]
-			}),
-			typescript &&
-			new webpackHappyPack({
-				id: "typescript",
-				threadPool: happyThreadPool,
-				loaders: [
-					{
-						loader: "ts-loader",
-						options: {
-							context: appDirectory,
-							configFile: tsconfig,
-							happyPackMode: true
+				new webpackHappyPack({
+					id: "javascript",
+					threadPool: happyThreadPool,
+					loaders: [
+						{
+							loader: "babel-loader",
+							options: createBabelConfig({ targets: options.targets })
 						}
-					}
-				]
-			}),
+					]
+				}),
 			typescript &&
-			new webpackForkTsChecker({
-				checkSyntacticErrors: true,
-				tsconfig
-			}),
+				new webpackHappyPack({
+					id: "typescript",
+					threadPool: happyThreadPool,
+					loaders: [
+						{
+							loader: "ts-loader",
+							options: {
+								context: appDirectory,
+								configFile: tsconfig,
+								happyPackMode: true
+							}
+						}
+					]
+				}),
+			typescript &&
+				new webpackForkTsChecker({
+					checkSyntacticErrors: true,
+					tsconfig
+				}),
 			options.shebang &&
-			new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
+				new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
 			options.globals && new webpack.ProvidePlugin(options.globals),
 			options.minify && new webpackUglify()
 		].filter(Boolean),
@@ -116,11 +116,13 @@ function getCompiler(options) {
 		target: "node",
 		node: false,
 
-		externals: options.includeExternal ? undefined : webpackNodeExternals({ modulesFromFile: true })
+		externals: options.includeExternal
+			? undefined
+			: webpackNodeExternals({ modulesFromFile: true })
 	};
 
 	return webpack(config);
-};
+}
 
 module.exports = {
 	run,

@@ -2,7 +2,7 @@ const path = require("path");
 const { appDirectory } = require("../appPathsUtils");
 const { getOptions } = require("../options");
 const { fork } = require("child_process");
-const {printInfo, printWarn, printDone} = require("../printUtils");
+const { printInfo, printWarn, printDone } = require("../printUtils");
 
 async function run(args) {
 	printInfo(`Formatting...`);
@@ -29,9 +29,9 @@ async function run(args) {
 
 	child.on("exit", code => {
 		if (code === 0) {
-			printDone("Done!")
+			printDone("Done!");
 		} else {
-			printWarn("Done!")
+			printWarn("Done!");
 		}
 	});
 }

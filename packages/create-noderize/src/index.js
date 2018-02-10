@@ -78,11 +78,11 @@ export async function run(
 
 	const useYarn = forceYarn ? true : forceNpm ? false : shouldUseYarn();
 	try {
-		// Install using yarn/npm
+		// Install latest
 		if (useYarn) {
-			execSync("yarn", { cwd: path, stdio: "inherit" });
+			execSync("yarn add -D noderize-scripts", { cwd: path, stdio: "inherit" });
 		} else {
-			execSync("npm install", { cwd: path, stdio: "inherit" });
+			execSync("npm install -D noderize-scripts", { cwd: path, stdio: "inherit" });
 		}
 	} catch (error) {
 		printError(`Error installing packages.`, error);

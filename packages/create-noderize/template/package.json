@@ -7,8 +7,5 @@
     "format": "noderize-scripts format",
     "build": "noderize-scripts build",
     "start": "noderize-scripts start"
-  },
-  "devDependencies": {
-    "noderize-scripts": "^0.1.8"
   }
 }
