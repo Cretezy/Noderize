@@ -12,7 +12,7 @@ export async function run(
 ) {
 	if (!name) {
 		printWarn(`No path given!`);
-		return;
+		process.exit(1);
 	}
 
 	// Get absolute path
@@ -21,7 +21,7 @@ export async function run(
 	// Check if exist
 	if (fs.existsSync(path)) {
 		printWarn(`Path exists!`);
-		return;
+		process.exit(1);
 	}
 
 	printInfo(`Copying...`);
@@ -31,7 +31,7 @@ export async function run(
 		await promisify(ncp)(resolve(__dirname, "..", "template"), path);
 	} catch (error) {
 		error(`Error copying.`, error);
-		return;
+		process.exit(1);
 	}
 
 	printInfo(`Setting up...`);
@@ -52,6 +52,7 @@ export async function run(
 		);
 	} catch (error) {
 		printError(`Error saving package.json.`, error);
+		process.exit(1);
 	}
 
 	// Move "gitignore" to ".gitignore"
@@ -70,6 +71,7 @@ export async function run(
 			);
 		} catch (error) {
 			printError(`Error moving src/index.js to src/index.ts.`, error);
+			process.exit(1);
 		}
 	}
 
@@ -82,10 +84,14 @@ export async function run(
 		if (useYarn) {
 			execSync("yarn add -D noderize-scripts", { cwd: path, stdio: "inherit" });
 		} else {
-			execSync("npm install -D noderize-scripts", { cwd: path, stdio: "inherit" });
+			execSync("npm install -D noderize-scripts", {
+				cwd: path,
+				stdio: "inherit"
+			});
 		}
 	} catch (error) {
 		printError(`Error installing packages.`, error);
+		process.exit(1);
 	}
 
 	const runCommand = useYarn ? "yarn" : "npm run";
@@ -104,7 +110,7 @@ function shouldUseYarn() {
 	try {
 		execSync("yarn --version", { stdio: "ignore" });
 		return true;
-	} catch (e) {
+	} catch (error) {
 		return false;
 	}
 }
