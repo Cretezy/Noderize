@@ -1,14 +1,14 @@
 const path = require("path");
-const { appDirectory } = require("../utils");
-const chalk = require("chalk");
+const { appDirectory } = require("../appPathsUtils");
 const { execSync } = require("child_process");
 const { fork } = require("child_process");
 const { getOptions } = require("../options");
 const cosmiconfig = require("cosmiconfig");
 const merge = require("lodash.merge");
+const { printInfo } = require("../printUtils");
 
 async function run(args) {
-	console.log(`${chalk.blueBright("[INFO]")} Testing...`);
+	printInfo(`Testing...`);
 
 	const options = await getOptions(args);
 	const jestArgs = options.args._;
@@ -53,11 +53,7 @@ async function run(args) {
 		rootDir: appDirectory,
 		roots: ["<rootDir>/src"],
 		transform: {
-			[`^.+\\.(${extensions.join("|")})$`]: path.resolve(
-				__dirname,
-				"..",
-				"jestBabel.js"
-			)
+			[`^.+\\.(${extensions.join("|")})$`]: require.resolve("../jestTransformer.js")
 		},
 		moduleFileExtensions: [...extensions, "json"],
 		testRegex: `(.*__tests__.*|.*\\.(test|spec))\\.(${extensions.join("|")})$`

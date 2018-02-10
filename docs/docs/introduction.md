@@ -25,7 +25,7 @@ npm install -g create-noderize
 
 Then run it as `create-noderize <path>`
 
-You may also setup a TypeScript project (change file extension and add [`language`](configuration-noderize.md#language) option) by passing `--typescript`.
+[Options can be passed](create.md) to the `create-noderize` command to modify it's behavior, like making it setup a TypeScript project instead.
 
 ## Develop
 

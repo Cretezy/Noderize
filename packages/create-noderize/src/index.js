@@ -6,32 +6,35 @@ import fs from "fs";
 import { execSync } from "child_process";
 import parseArgs from "minimist";
 
-async function run(name, { typescript = false }) {
+export async function run(
+	name,
+	{ typescript = false, forceNpm = false, forceYarn = false } = {}
+) {
 	if (!name) {
-		console.log(`${chalk.red("[WARN]")} No path given!`);
+		printWarn(`No path given!`);
 		return;
 	}
 
 	// Get absolute path
 	const path = resolve(fs.realpathSync(process.cwd()), name);
 
+	// Check if exist
 	if (fs.existsSync(path)) {
-		console.log(`${chalk.red("[WARN]")} Path exists!`);
+		printWarn(`Path exists!`);
 		return;
 	}
 
-	console.log(`${chalk.blueBright("[INFO]")} Copying...${typescript ? " (TypeScript)" : ""}`);
+	printInfo(`Copying...`);
 
 	// Copy from template
 	try {
 		await promisify(ncp)(resolve(__dirname, "..", "template"), path);
 	} catch (error) {
-		console.error(`${chalk.redBright("[ERROR]")} Error copying.`);
-		console.error(error);
+		error(`Error copying.`, error);
 		return;
 	}
 
-	console.log(`${chalk.blueBright("[INFO]")} Setting up...`);
+	printInfo(`Setting up...`);
 
 	// Set the "name" field in package.json
 	try {
@@ -48,67 +51,53 @@ async function run(name, { typescript = false }) {
 			JSON.stringify(newChildPackage, null, "\t")
 		);
 	} catch (error) {
-		console.error(`${chalk.redBright("[ERROR]")} Error saving package.json.`);
-		console.error(error);
+		printError(`Error saving package.json.`, error);
 	}
 
 	// Move "gitignore" to ".gitignore"
 	try {
 		fs.renameSync(resolve(path, "gitignore"), resolve(path, ".gitignore"));
-	} catch (error) {
-		console.error(`${chalk.redBright("[ERROR]")} Error moving .gitignore.`);
-		console.error(error);
+	} catch (err) {
+		printError(`Error moving .gitignore.`, error);
 	}
 
 	if (typescript) {
 		// Setup TypeScript
 		try {
-			fs.renameSync(resolve(path, "src", "index.js"), resolve(path, "src", "index.ts"));
+			fs.renameSync(
+				resolve(path, "src", "index.js"),
+				resolve(path, "src", "index.ts")
+			);
 		} catch (error) {
-			console.error(`${chalk.redBright("[ERROR]")} Error moving src/index.js to src/index.ts`);
-			console.error(error);
+			printError(`Error moving src/index.js to src/index.ts.`, error);
 		}
-
 	}
 
-	console.log(`${chalk.blueBright("[INFO]")} Installing packages...`);
+	printInfo(`Installing packages...`);
+	console.log();
 
-	const useYarn = shouldUseYarn();
+	const useYarn = forceYarn ? true : forceNpm ? false : shouldUseYarn();
 	try {
 		// Install using yarn/npm
 		if (useYarn) {
-			execSync("yarn", { cwd: path });
+			execSync("yarn", { cwd: path, stdio: "inherit" });
 		} else {
-			execSync("npm install", { cwd: path });
+			execSync("npm install", { cwd: path, stdio: "inherit" });
 		}
 	} catch (error) {
-		console.error(`${chalk.redBright("[ERROR]")} Error installing packages.`);
-		console.error(error);
+		printError(`Error installing packages.`, error);
 	}
 
 	const runCommand = useYarn ? "yarn" : "npm run";
 
-	console.log(`${chalk.greenBright("[INFO]")} Done! Your Noderize app is ready!`);
-	console.log(
-		`${chalk.greenBright("[INFO]")} You may visit your app with ${chalk.cyan(
-			`cd ${name}`
-		)}`
+	console.log();
+	printDone(`Done! Your Noderize app is ready!`);
+	printDone(`You may visit your app with ${chalk.cyan(`cd ${name}`)}`);
+	printDone(`Develop by using ${chalk.cyan(`${runCommand} watch`)}`);
+	printDone(
+		`Build a production version using ${chalk.cyan(`${runCommand} build`)}`
 	);
-	console.log(
-		`${chalk.greenBright("[INFO]")} Develop by using ${chalk.cyan(
-			`${runCommand} watch`
-		)}`
-	);
-	console.log(
-		`${chalk.greenBright(
-			"[INFO]"
-		)} Build a production version using ${chalk.cyan(`${runCommand} build`)}`
-	);
-	console.log(
-		`${chalk.greenBright(
-			"[INFO]"
-		)} Visit documentation at ${chalk.cyan(`https://noderize.js.org`)}`
-	);
+	printDone(`Visit documentation at ${chalk.cyan(`https://noderize.js.org`)}`);
 }
 
 function shouldUseYarn() {
@@ -120,6 +109,25 @@ function shouldUseYarn() {
 	}
 }
 
+// Parse args
 const args = parseArgs(process.argv.slice(2));
 const name = args._.length > 0 ? args._[0] : null;
+
 run(name, args);
+
+function printInfo(text) {
+	console.log(`${chalk.blueBright("[INFO]")} ${text}`);
+}
+
+function printDone(text) {
+	console.log(`${chalk.greenBright("[DONE]")} ${text}`);
+}
+
+function printWarn(text) {
+	console.warn(`${chalk.yellowBright("[WARN]")} ${text}`);
+}
+
+function printError(text, error) {
+	console.error(`${chalk.redBright("[ERROR]")} ${text}`);
+	console.error(error);
+}

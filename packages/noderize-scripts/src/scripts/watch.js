@@ -1,11 +1,11 @@
-const chalk = require("chalk");
-const { getCompiler } = require("../webpack");
 const { getOptions } = require("../options");
+const { getCompiler } = require("./build");
 const { start } = require("./start");
 const supportsColor = require("supports-color");
+const { printInfo } = require("../printUtils");
 
 async function run(args) {
-	console.log(`${chalk.blueBright("[INFO]")} Watching...`);
+	printInfo(`Watching...`);
 
 	const options = await getOptions(args);
 	const compiler = getCompiler(options);
@@ -19,9 +19,7 @@ async function run(args) {
 		},
 		(err, stats) => {
 			first || console.log(); // Add padding line on rebuilds
-			console.log(
-				`${chalk.blueBright("[INFO]")} ${first ? "B" : "Reb"}uilding...`
-			);
+			printInfo(`${first ? "B" : "Reb"}uilding...`);
 			first = false;
 			console.log(stats.toString({ colors: supportsColor.stdout }));
 

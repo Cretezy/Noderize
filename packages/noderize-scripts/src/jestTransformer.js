@@ -1,8 +1,8 @@
-const path = require("path");
+const { resolve } = require("path");
 const babelJest = require("babel-jest");
 const createBabelConfig = require("./createBabelConfig");
 const typescript = require("typescript");
-const tsConfig = path.resolve(__dirname, "tsconfig.json");
+const tsConfig = resolve("./.tsconfig.json");
 
 module.exports.process = (src, path, ...rest) => {
 	const isTypeScript = path.endsWith(".ts") || path.endsWith(".tsx");

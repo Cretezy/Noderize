@@ -1,10 +1,15 @@
 const path = require("path");
-const { appDirectory } = require("../utils");
-const chalk = require("chalk");
+const { appDirectory } = require("../appPathsUtils");
+const { getOptions } = require("../options");
 const { fork } = require("child_process");
+const {printInfo, printWarn, printDone} = require("../printUtils");
 
-async function run(args = []) {
-	console.log(`${chalk.blueBright("[INFO]")} Formatting...`);
+async function run(args) {
+	printInfo(`Formatting...`);
+
+	// Althought not required, I'm parsing the args for consistency
+	const options = await getOptions(args);
+
 	const prettierPath = path.resolve(
 		__dirname,
 		"..",
@@ -16,16 +21,17 @@ async function run(args = []) {
 
 	const child = fork(
 		prettierPath,
-		["--write", "src/**/*.ts", "src/**/*.js", ...args],
+		["--write", "src/**/*.ts", "src/**/*.js", ...options.args._],
 		{
 			cwd: appDirectory
 		}
 	);
+
 	child.on("exit", code => {
 		if (code === 0) {
-			console.log(`${chalk.greenBright("[INFO]")} Done!`);
+			printDone("Done!")
 		} else {
-			console.log(`${chalk.yellowBright("[INFO]")} Done!`);
+			printWarn("Done!")
 		}
 	});
 }

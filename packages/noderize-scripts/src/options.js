@@ -1,9 +1,9 @@
-const { resolveApp } = require("./utils");
-const chalk = require("chalk");
+const { resolveApp } = require("./appPathsUtils");
 const merge = require("lodash.merge");
 const parseArgs = require("minimist");
 const childPackage = require(resolveApp("package.json"));
 const cosmiconfig = require("cosmiconfig");
+const { printWarn } = require("./printUtils");
 
 const bools = ["shebang", "runOnWatch", "minify", "includeExternal"];
 const strings = ["entry", "output", "sourcemaps"];
@@ -25,8 +25,6 @@ const defaults = {
 	},
 	buildThreads: 3,
 };
-
-const envDefaults = {};
 
 async function getOptions(rawArgs = []) {
 	// Parse args
@@ -58,7 +56,7 @@ async function getOptions(rawArgs = []) {
 		try {
 			options.targets = JSON.parse(args.targets);
 		} catch (error) {
-			console.warn(`${chalk.red(`[WARN]`)} Could not parse targets argument.`);
+			printWarn(`Could not parse targets argument.`);
 		}
 	}
 
@@ -69,9 +67,7 @@ async function getOptions(rawArgs = []) {
 		} else {
 			const buildThreads = parseInt(args.buildThreads);
 			if (isNaN(buildThreads)) {
-				console.warn(
-					`${chalk.red(`[WARN]`)} Argument buildThreads is not an integer.`
-				);
+				printWarn(`Argument buildThreads is not an integer.`);
 			} else {
 				options.buildThreads = buildThreads;
 			}
@@ -90,8 +86,8 @@ async function getOptions(rawArgs = []) {
 		}
 	});
 
-	if(args.languages !== undefined){
-		options.languages=args.languages;
+	if (args.languages !== undefined) {
+		options.languages = args.languages;
 	}
 
 	// Parse languages to list then object
@@ -113,10 +109,10 @@ async function getOptions(rawArgs = []) {
 	});
 
 	// Entry
-	if(options.entry === undefined){
-		if(languageList.length === 1 && languageList[0] === "typescript"){
+	if (options.entry === undefined) {
+		if (languageList.length === 1 && languageList[0] === "typescript") {
 			options.entry = "src/index.ts"
-		}else{
+		} else {
 			options.entry = "src/index.js"
 		}
 	}
@@ -124,7 +120,7 @@ async function getOptions(rawArgs = []) {
 	// Merge envs
 	if (args.env) {
 		if (options.env[args.env] === undefined) {
-			console.warn(`${chalk.red(`[WARN]`)} Could not find env.`);
+			printWarn(`Could not find specified env.`);
 		} else {
 			merge(options, options.env[args.env]);
 		}

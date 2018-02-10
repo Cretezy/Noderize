@@ -1,13 +1,13 @@
-const chalk = require("chalk");
 const { fork } = require("child_process");
 const { getOptions } = require("../options");
+const {printInfo, printWarn} = require("../printUtils");
 
 async function run(args) {
 	start(await getOptions(args));
 }
 
 function start(options) {
-	console.log(`${chalk.blueBright("[INFO]")} Starting...`);
+	printInfo(`Starting...`);
 	console.log(); // Padding
 
 	const child = fork(options.output, options.args._, {
@@ -18,13 +18,11 @@ function start(options) {
 		if (code !== null) {
 			console.log(); // Padding
 			if (code === 0) {
-				console.log(`${chalk.greenBright("[INFO]")} Exited with code 0!`);
+				printInfo(`Existed gracefully!`);
 			} else {
-				console.warn(
-					`${chalk.yellowBright("[INFO]")} Exited with code ${code} ${
-						signal ? `and signal ${signal}` : ""
-						}`
-				);
+				printWarn(`Exited with code ${code} ${
+					signal ? `and signal ${signal}` : ""
+					}`);
 			}
 		}
 	});
