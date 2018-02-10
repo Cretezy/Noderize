@@ -7,9 +7,8 @@ install: skip
 
 stages:
   - name: deploy-website
-    if: branch = master
   - name: deploy-npm
-    if: branch = master AND tag IS present
+    if: tag IS present
 
 jobs:
   include:
