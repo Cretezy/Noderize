@@ -1,4 +1,4 @@
-import { run } from "./run"
+import { run } from "./run";
 import parseArgs from "minimist";
 
 // Parse args

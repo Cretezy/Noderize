@@ -1,3 +1,3 @@
 export function sub(x, y) {
-    return x - y
+	return x - y;
 }

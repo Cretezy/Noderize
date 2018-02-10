@@ -14,7 +14,7 @@ export class MessageBox extends React.PureComponent {
 			// Send
 			this.props.onSend(text);
 			// Reset
-			this.setState({ text: "" })
+			this.setState({ text: "" });
 		}
 	};
 
@@ -30,6 +30,6 @@ export class MessageBox extends React.PureComponent {
 					<button type="submit">Send</button>
 				</form>
 			</div>
-		)
+		);
 	}
 }

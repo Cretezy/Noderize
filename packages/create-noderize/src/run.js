@@ -3,8 +3,10 @@ import { resolve } from "path";
 import fs from "fs-extra";
 import { execSync } from "child_process";
 
-export async function run(name = null,
-                          { typescript = false, forceNpm = false, forceYarn = false } = {}) {
+export async function run(
+	name = null,
+	{ typescript = false, forceNpm = false, forceYarn = false } = {}
+) {
 	if (!name) {
 		printWarn(`No path given!`);
 		process.exit(1);
@@ -44,7 +46,7 @@ export async function run(name = null,
 			newChildPackage.noderize = { languages: "typescript" };
 		}
 		// Write
-		await fs.writeJson(childPackagePath, newChildPackage, {spaces:"\t"});
+		await fs.writeJson(childPackagePath, newChildPackage, { spaces: "\t" });
 	} catch (error) {
 		printError(`Error saving package.json.`, error);
 		process.exit(1);

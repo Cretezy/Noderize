@@ -62,8 +62,10 @@ async function run(args) {
 	);
 
 	// Force add required options
-	config.setupFiles.push(require.resolve('regenerator-runtime/runtime'));
-	config.transform[`^.+\\.(${extensions.join("|")})$`] = path.resolve(__dirname, "..",
+	config.setupFiles.push(require.resolve("regenerator-runtime/runtime"));
+	config.transform[`^.+\\.(${extensions.join("|")})$`] = path.resolve(
+		__dirname,
+		"..",
 		"jestTransformer.js"
 	);
 

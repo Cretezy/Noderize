@@ -8,7 +8,7 @@ export class MessagesList extends React.PureComponent {
 		return (
 			<div>
 				<p>Messages:</p>
-				<div id="messages" ref={ref => this.list = ref}>
+				<div id="messages" ref={ref => (this.list = ref)}>
 					<List
 						itemKeys="message"
 						items={this.props.messages.map(({ type, id, user, data }) => {
@@ -16,19 +16,18 @@ export class MessagesList extends React.PureComponent {
 							switch (type) {
 								case "join":
 								case "leave":
-									message = `${user} ${type === "join" ? "joined" : "left"}!`
+									message = `${user} ${type === "join" ? "joined" : "left"}!`;
 									break;
 								case "message":
 									const { text } = data;
 									message = `${user}: ${text}`;
-									break
+									break;
 							}
 							return { key: id, user, item: message };
 						})}
 					/>
 				</div>
 			</div>
-		)
+		);
 	}
 }
-

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import socketio from "socket.io-client";
 import "./App.css";
 import { UsersList } from "./UsersList";
@@ -23,7 +23,7 @@ class App extends Component {
 
 		this.socket.on("disconnect", () => {
 			// Reset state
-			this.setState(this.initialState)
+			this.setState(this.initialState);
 		});
 
 		// Recieve name from server
@@ -43,7 +43,7 @@ class App extends Component {
 				() => {
 					// Scroll to bottom of messages list after rerender
 					const { list } = this.messagesList;
-					list.scrollTop = list.scrollHeight
+					list.scrollTop = list.scrollHeight;
 				}
 			);
 		});
@@ -57,13 +57,19 @@ class App extends Component {
 		if (this.state.name) {
 			return (
 				<div id="app">
-					<p>Connected! You are: <UserIcon user={this.state.name}/> {this.state.name}</p>
+					<p>
+						Connected! You are: <UserIcon user={this.state.name} />{" "}
+						{this.state.name}
+					</p>
 					<div id="grid">
 						<div id="sidebar">
 							<UsersList users={this.state.users} />
 						</div>
 						<div id="content">
-							<MessagesList messages={this.state.messages} ref={ref => this.messagesList = ref} />
+							<MessagesList
+								messages={this.state.messages}
+								ref={ref => (this.messagesList = ref)}
+							/>
 							<MessageBox onSend={this.sendMessage} />
 						</div>
 					</div>
@@ -74,11 +80,9 @@ class App extends Component {
 				<div id="app">
 					<p>Connecting...</p>
 				</div>
-			)
+			);
 		}
-
 	}
 }
-
 
 export default App;

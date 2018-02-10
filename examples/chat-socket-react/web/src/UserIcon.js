@@ -1,6 +1,5 @@
 import React from "react";
 
-
 // Render a icon with the color of the user
 export function UserIcon({ user }) {
 	const style = {
@@ -11,7 +10,5 @@ export function UserIcon({ user }) {
 		backgroundColor: user.split(" ")[0]
 	};
 
-	return (
-		<span style={style} />
-	);
+	return <span style={style} />;
 }

@@ -17,7 +17,7 @@ describe("create error codes", () => {
 	beforeEach(() => {
 		// Reset mock every test
 		process = { ...process, exit: jest.fn() };
-		console = { ...console, log: jest.fn(), warn: jest.fn(), error: jest.fn(), }
+		console = { ...console, log: jest.fn(), warn: jest.fn(), error: jest.fn() };
 	});
 
 	test("errors when no path give", async () => {

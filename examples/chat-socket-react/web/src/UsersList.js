@@ -8,9 +8,13 @@ export class UsersList extends React.PureComponent {
 				<p>Connected users:</p>
 				<List
 					itemKeys="user"
-					items={this.props.users.map(user => ({user, item:user, key: user}))}
+					items={this.props.users.map(user => ({
+						user,
+						item: user,
+						key: user
+					}))}
 				/>
 			</div>
-		)
+		);
 	}
 }

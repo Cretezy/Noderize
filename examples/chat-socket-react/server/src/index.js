@@ -50,7 +50,7 @@ io.on("connection", socket => {
 			user: name,
 			data: { text }
 		});
-	})
+	});
 });
 
 function updateUserList() {
@@ -62,10 +62,10 @@ function sendMessage(message) {
 	// Send message to all users (add unique id)
 	io.emit("message", {
 		...message,
-		id: uuid(),
+		id: uuid()
 	});
 }
 
-http.listen(port, function () {
+http.listen(port, function() {
 	console.log(`Listening on :${port}`);
 });
