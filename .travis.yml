@@ -7,8 +7,10 @@ install: skip
 
 jobs:
   include:
+    # Deploy site
     - stage: deploy
       env: DEPLOY=website
+      if: tag IS present OR branch = master
       install: (cd docs/website && yarn)
       before_deploy:
         # Set Git info
@@ -18,7 +20,9 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: (cd docs/website && yarn publish-gh-pages)
+        script: (cd docs/website && GIT_USER=Noderize-bot yarn publish-gh-pages)
+        on:
+          condition: true
     - stage: deploy
       env: DEPLOY=npm
       if: tag IS present
@@ -31,4 +35,4 @@ jobs:
         skip_cleanup: true
         script: (cd packages/create-noderize && ci-publish) && (cd packages/noderize-scripts && ci-publish)
         on:
-          tags: true
+          condition: true
