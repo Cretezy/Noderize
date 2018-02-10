@@ -53,15 +53,18 @@ async function run(args) {
 		{
 			rootDir: appDirectory,
 			roots: ["<rootDir>/src"],
-			transform: {
-				[`^.+\\.(${extensions.join("|")})$`]: require.resolve(
-					"../jestTransformer.js"
-				)
-			},
+			transform: {},
+			setupFiles: [],
 			moduleFileExtensions: [...extensions, "json"],
 			testRegex: `(.*__tests__.*|.*\\.(test|spec))\\.(${extensions.join("|")})$`
 		},
 		jestConfig
+	);
+
+	// Force add required options
+	config.setupFiles.push(require.resolve('regenerator-runtime/runtime'));
+	config.transform[`^.+\\.(${extensions.join("|")})$`] = path.resolve(__dirname, "..",
+		"jestTransformer.js"
 	);
 
 	jestArgs.push("--config", JSON.stringify(config));
