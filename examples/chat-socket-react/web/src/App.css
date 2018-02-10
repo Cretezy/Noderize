@@ -1,0 +1,42 @@
+html, body {
+    margin: 25px 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 100vh;
+}
+
+#app {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#messages {
+    height: 500px;
+    overflow-y: auto;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    border-bottom: #2e2e2e solid 1px;
+}
+
+#content {
+    grid-area: content;
+}
+
+#grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "sidebar" "content"
+}
+
+@media (min-width: 700px) {
+    #grid {
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas: "content sidebar"
+    }
+
+    #sidebar {
+        border-bottom: none;
+    }
+}

@@ -2,7 +2,8 @@
   "docs": {
     "Get Started": [
       "introduction",
-      "create"
+      "create",
+      "examples"
     ],
     "Configuration": [
       "configuration",
