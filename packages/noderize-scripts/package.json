@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/Cretezy/noderize.git"
   },
-  "version": "0.1.9",
+  "version": "0.1.10",
   "main": "src/index.js",
   "license": "MIT",
   "bin": "src/index.js",

@@ -155,6 +155,8 @@ By default, the `production` environment does:
 * Sets `targets.node` to the oldest active Node LTS release.
 * Set `sourcemap` to `false`.
 
+To add other options:
+
 Example:
 ```json
 "env": {

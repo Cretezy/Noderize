@@ -6,13 +6,24 @@ cache: yarn
 install: skip
 script: skip
 
-before_deploy:
-- git config --global user.email "36317094+Noderize-bot@users.noreply.github.com"
-- git config --global user.name "Noderize Bot"
-- echo "machine github.com login $GIT_USER password $GITHUB_TOKEN" > ~/.netrc
 deploy:
-  provider: script
-  skip_cleanup: true
-  on:
-    branch: master
-  script: cd docs/website && yarn && yarn publish-gh-pages
+  - provider: script
+    skip_cleanup: true
+    on:
+      branch: master
+    before_deploy:
+        # Set Git info
+      - git config --global user.email "36317094+Noderize-bot@users.noreply.github.com"
+      - git config --global user.name "Noderize Bot"
+      - echo "machine github.com login $GIT_USER password $GITHUB_TOKEN" > ~/.netrc
+    script: (cd docs/website && yarn && yarn publish-gh-pages)
+
+  - provider: script
+    skip_cleanup: true
+    install: yarn
+    before_deploy:
+      - npm i -g ci-publish # Publish using $NPM_TOKEN
+      - (cd packages/create-noderize && yarn build --env production)
+    on:
+      tags: true
+    script: (cd packages/create-noderize && ci-publish) && (cd packages/noderize-scripts && ci-publish)

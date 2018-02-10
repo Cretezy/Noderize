@@ -50,7 +50,11 @@ const siteConfig = {
 
 	scripts: ['https://buttons.github.io/buttons.js'],
 	repoUrl: 'https://github.com/Cretezy/Noderize',
-	cname: "noderize.js.org"
+	cname: "noderize.js.org",
+	algolia: {
+		apiKey: "my-search-only-api-key-1234",
+		indexName: "my-index-name"
+	},
 };
 
 module.exports = siteConfig;
