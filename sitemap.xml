@@ -13,6 +13,8 @@
 <url> <loc>https://noderize.js.org/docs/features-modern.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://noderize.js.org/docs/features-modern.html" /> </url>
 <url> <loc>https://noderize.js.org/docs/features-testing.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://noderize.js.org/docs/features-testing.html" /> </url>
 <url> <loc>https://noderize.js.org/docs/features-typescript.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://noderize.js.org/docs/features-typescript.html" /> </url>
+<url> <loc>https://noderize.js.org/docs/guides-heroku.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://noderize.js.org/docs/guides-heroku.html" /> </url>
 <url> <loc>https://noderize.js.org/docs/guides-publishing.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://noderize.js.org/docs/guides-publishing.html" /> </url>
+<url> <loc>https://noderize.js.org/docs/guides.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://noderize.js.org/docs/guides.html" /> </url>
 <url> <loc>https://noderize.js.org/docs/introduction.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="https://noderize.js.org/docs/introduction.html" /> </url>
 </urlset>
