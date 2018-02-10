@@ -1,14 +1,14 @@
 {
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "noderize-scripts": "^0.1.8"
-  },
   "scripts": {
     "watch": "noderize-scripts watch",
     "test": "noderize-scripts test",
     "format": "noderize-scripts format",
     "build": "noderize-scripts build",
     "start": "noderize-scripts start"
+  },
+  "devDependencies": {
+    "noderize-scripts": "^0.1.8"
   }
 }

@@ -6,13 +6,15 @@ sidebar_label: Publishing
 
 Noderize allows you to publish your module on npm with no additional step.
 
+Make sure to remove `"private": true` from your `package.json`.
+
 You simply have to build then publish to the registry:
 
 ```bash
-yarn build
+yarn build --env production
 yarn publish
 # or
-npm run build
+npm run build --env production
 npm publish
 ```
 
