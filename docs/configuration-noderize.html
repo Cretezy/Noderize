@@ -6,8 +6,7 @@
           };
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Configuration: Noderize</h1></header><article><div><span><p>Noderize uses <a href="https://github.com/davidtheclark/cosmiconfig">cosmiconfig</a> for configuration file support. This means you can configure Noderize via:</p>
 <ul>
-<li>A <code>noderize</code> key in your <code>package.json</code> file (recommended):</li>
-</ul>
+<li><p>A <code>noderize</code> key in your <code>package.json</code> file (recommended):</p>
 <pre><code class="hljs css json">{
     <span class="hljs-attr">"name"</span>: <span class="hljs-string">"my-noderize-program"</span>,
     <span class="hljs-attr">"..."</span>: <span class="hljs-string">"..."</span>,
@@ -15,38 +14,49 @@
         <span class="hljs-attr">"minify"</span>: <span class="hljs-literal">true</span>
     }
 }
-</code></pre>
+</code></pre></li>
+<li><p>A <code>.noderizerc</code> file, written in JSON/YAML/JS, with optional extensions: <code>.json</code>/<code>.yml</code>/<code>.yaml</code>/<code>.js</code>:</p>
 <ul>
-<li>A <code>.noderizerc</code> file, written in JSON/YAML/JS, with optional extensions: <code>.json</code>/<code>.yml</code>/<code>.yaml</code>/<code>.js</code>:</li>
-</ul>
-<p>JSON:</p>
+<li><p>JSON:</p>
 <pre><code class="hljs css json">{
     <span class="hljs-attr">"minify"</span>: <span class="hljs-literal">true</span>
 }
-</code></pre>
-<p>YAML:</p>
+</code></pre></li>
+<li><p>YAML:</p>
 <pre><code class="hljs css yml"><span class="hljs-attr">minify:</span> <span class="hljs-literal">true</span>
-</code></pre>
-<p>JS:</p>
+</code></pre></li>
+<li><p>JS:</p>
 <pre><code class="hljs css js"><span class="hljs-built_in">module</span>.exports = {
     <span class="hljs-attr">minify</span>: <span class="hljs-literal">true</span>
 }
-</code></pre>
-<ul>
+</code></pre></li>
+</ul></li>
 <li><p>A <code>noderize.config.js</code> file that exports an object (like the <code>.noderizerc</code> JS example above).</p></li>
 <li><p>Command line arguments:</p>
 <ul>
-<li><p>Every configuration options can be passed as arguments to the <code>build</code>/<code>watch</code>/<code>start</code> command. For instance: <code>yarn build --minify</code></p></li>
-<li><p>When passing objects as argument, provide a JSON string. For instance: <code>yarn build --targets '{&quot;node&quot;: true}'</code>.</p></li>
-<li><p>When passing arrays as argument, simply pass it multiple times. For instance: <code>yarn build --languages javascript --languages typescript</code>.</p></li>
+<li><p>Every configuration options can be passed as arguments to the <code>build</code>/<code>watch</code>/<code>start</code>/etc command.</p>
+<ul>
+<li><code>yarn build --minify</code></li>
+</ul></li>
+<li><p>When passing objects as argument, provide a JSON string.</p>
+<ul>
+<li><code>yarn build --targets '{&quot;node&quot;: true}'</code>.</li>
+</ul></li>
+<li><p>When passing arrays as argument, simply pass it multiple times.</p>
+<ul>
+<li><code>yarn build --languages javascript --languages typescript</code>.</li>
+</ul></li>
 </ul></li>
 </ul>
-<blockquote>
-<p>All configuration is optional with Noderize. Omit until needed.</p>
-</blockquote>
-<p>To pass arguments to your app when using the <code>start</code> or <code>watch</code> command, add <code>--</code>.</p>
-<p>For instance: <code>yarn watch --minify -- this is passed to an app ran at src/second.js</code>.</p>
-<p>If you wish to pass arguments to your app but aren't providing any Noderize arguments, add <code>-- --</code>, as in <code>yarn watch -- -- --my-flag</code>.</p>
+<p><strong>All configuration is optional with Noderize. Omit until needed.</strong></p>
+<p>When using the <code>start</code> or <code>watch</code> script to run your app, you may pass arguments to your app after <code>--</code>:</p>
+<ul>
+<li><code>yarn watch --minify -- some args</code></li>
+</ul>
+<p>If you wish to pass arguments to your app but aren't providing any Noderize arguments, add <code>-- --</code>:</p>
+<ul>
+<li><code>yarn watch -- -- --some-flag</code>.</li>
+</ul>
 <h2><a class="anchor" aria-hidden="true" name="index"></a><a href="#index" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Index</h2>
 <ul>
 <li><a href="#entry-string"><code>entry</code> [string]</a></li>
