@@ -2,6 +2,10 @@ language: node_js
 node_js: node
 cache: yarn
 
+# Don't do anything
+install: skip
+script: skip
+
 deploy:
   provider: script
   on:
@@ -10,4 +14,4 @@ deploy:
     - git config --global user.email "36317094+Noderize-bot@users.noreply.github.com"
     - git config --global user.name "Noderize Bot"
     - echo "machine github.com login $GIT_USER password $GITHUB_TOKEN" > ~/.netrc
-    - cd docs/website && npm install && npm run publish-gh-pages
+    - cd docs/website && yarn && yarn publish-gh-pages
