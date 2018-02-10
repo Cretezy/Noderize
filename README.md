@@ -5,10 +5,10 @@
     <br/>
     Noderize lets you create Node apps in less than 30 seconds.
     <br/>
+    <br/>
     <a href="https://noderize.js.org"><strong>Documentation</strong></a>
+    <br/>
 </p>
-
-
 
 It aims to get out of your way and not require any configuration until you need it, while supporting loads of features.
 
