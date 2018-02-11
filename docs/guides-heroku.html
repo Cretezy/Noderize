@@ -11,10 +11,10 @@
 <li>Move <code>noderize-scripts</code> from <code>devDependencies</code> to <code>dependencies</code> in your <code>package.json</code>.</li>
 <li>Add <code>heroku-postbuild</code> script in <code>package.json</code>:
 <pre><code class="hljs css json">{
-    <span class="hljs-attr">"scripts"</span>: {
-        <span class="hljs-attr">"..."</span>: <span class="hljs-string">"..."</span>,
-        <span class="hljs-attr">"heroku-postbuild"</span>: <span class="hljs-string">"noderize-scripts build --env production"</span>
-    }
+  <span class="hljs-attr">"scripts"</span>: {
+      <span class="hljs-attr">"..."</span>: <span class="hljs-string">"..."</span>,
+      <span class="hljs-attr">"heroku-postbuild"</span>: <span class="hljs-string">"noderize-scripts build --env production"</span>
+  }
 }
 </code></pre></li>
 <li>Deploy like normal (if in a Git repo, commit and push with <code>git push heroku master</code>)!</li>

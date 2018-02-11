@@ -5,7 +5,8 @@
             nav.classList.toggle('docsSliderActive');
           };
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Introduction</h1></header><article><div><span><p>Noderize lets you create Node apps in less than 30 seconds.</p>
-<p>It aims to get out of your way and not require any <a href="/docs/configuration.html">configuration</a> until you need it, while supporting loads of <a href="/docs/features.html">features</a>.</p>
+<p>The role of Noderize is to replace your build configuration for a batteries-included experience, focused on features and flexibility.</p>
+<p>It aims to get out of your way and not require any <a href="/docs/configuration.html">configuration</a> until you need it, making it very simple to get started in a few seconds.</p>
 <p>Try it out for yourself:</p>
 <pre><code class="hljs css bash">yarn create noderize &lt;path&gt;
 <span class="hljs-comment"># or</span>
@@ -20,8 +21,8 @@ npx create-noderize &lt;path&gt;
 npm run watch
 </code></pre>
 <p>This will continuously rebuild your app and rerun your app as you code!</p>
-<h2><a class="anchor" aria-hidden="true" name="build"></a><a href="#build" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build</h2>
-<p>To build your app, use the built-in <code>build</code> script:</p>
+<h2><a class="anchor" aria-hidden="true" name="build-start"></a><a href="#build-start" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build &amp; Start</h2>
+<p>You can build your app using the <code>build</code> script:</p>
 <pre><code class="hljs css bash">yarn build
 <span class="hljs-comment"># or</span>
 npm run build
@@ -31,9 +32,10 @@ npm run build
 <pre><code class="hljs css bash">yarn start
 <span class="hljs-comment"># or</span>
 npm start
-<span class="hljs-comment"># or</span>
+<span class="hljs-comment"># or (no source map)</span>
 node dist/index.js
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" name="additional-features"></a><a href="#additional-features" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Additional Features</h2>
-<p>Check out <a href="/docs/features.html">all of Noderize's features</a> such as <a href="/docs/features-modern.html">modern JavaScript support</a> and <a href="/docs/features-typescript.html">TypeScript support</a>.</p>
+<p>Noderize is packed with <a href="/docs/features.html">features</a> such as <a href="/docs/features-modern.html">modern JavaScript support</a> and <a href="/docs/features-typescript.html">TypeScript support</a>.</p>
+<p>Code formatting (<code>format</code> script) and testing (<code>test</code> script) is built-in and let's get work on your high quality code distraction-free.</p>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="create.html">Create Noderize App →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/light.svg" alt="Noderize" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/introduction.html">Getting Started</a><a href="/docs/en/configuration.html">Configuration</a><a href="/docs/en/features.html">Features</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/Cretezy/Noderize">GitHub</a><a class="github-button" href="https://github.com/Cretezy/Noderize" data-icon="octicon-star" data-count-href="/Cretezy/Noderize/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Charles Crete.</section></footer></div></body></html>
