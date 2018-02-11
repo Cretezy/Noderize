@@ -7,7 +7,7 @@ See [examples](https://github.com/Cretezy/Noderize/tree/master/examples) of usin
 
 ## Index
 
-* [Basic Express](https://github.com/Cretezy/Noderize/tree/master/examples/basic-express)
+* [Basic Express](https://github.com/Cretezy/Noderize/tree/master/examples/basic-express) ([tutorial](tutorials-express.md))
 
   Example of basic server using Express.
 

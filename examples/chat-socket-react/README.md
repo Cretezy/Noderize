@@ -8,4 +8,4 @@ A more complete example of a simply chat server with React as a front-end
 
 [Demo](https://noderize-chat-socket-react.surge.sh/).
 
-[![Demo](Demo.png)](https://noderize-chat-socket-react.surge.sh/)
+[![Demo](img/demo.png)](https://noderize-chat-socket-react.surge.sh/)
