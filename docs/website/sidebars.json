@@ -19,15 +19,15 @@
 			"features-formatting",
 			"features-testing"
 		],
-		"Guides": [
-			"guides",
-			"guides-publishing",
-			"guides-heroku"
-		],
 		"Tutorials": [
 			"tutorials",
 			"tutorials-express",
 			"tutorials-cli"
+		],
+		"Guides": [
+			"guides",
+			"guides-publishing",
+			"guides-heroku"
 		]
 	}
 }
