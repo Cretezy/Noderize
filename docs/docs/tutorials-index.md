@@ -9,3 +9,4 @@ Tutorials of using Noderize.
 ## Index
 
 * [Express](tutorials-express.md)
+* [CLI](tutorials-cli.md)

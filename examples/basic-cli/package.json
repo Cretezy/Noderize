@@ -1,0 +1,20 @@
+{
+	"name": "basic-cli",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"watch": "noderize-scripts watch",
+		"test": "noderize-scripts test",
+		"format": "noderize-scripts format",
+		"build": "noderize-scripts build",
+		"start": "noderize-scripts start"
+	},
+	"devDependencies": {
+		"noderize-scripts": "^0.2.5"
+	},
+	"dependencies": {
+		"chalk": "^2.3.0",
+		"commander": "^2.14.1",
+		"inquirer": "^5.1.0"
+	}
+}

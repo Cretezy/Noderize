@@ -1,6 +1,10 @@
 {
 	"docs": {
-		"Get Started": ["introduction", "create", "examples"],
+		"Get Started": [
+			"introduction",
+			"create",
+			"examples"
+		],
 		"Configuration": [
 			"configuration",
 			"configuration-noderize",
@@ -15,7 +19,15 @@
 			"features-formatting",
 			"features-testing"
 		],
-		"Guides": ["guides", "guides-publishing", "guides-heroku"],
-		"Tutorials": ["tutorials", "tutorials-express"]
+		"Guides": [
+			"guides",
+			"guides-publishing",
+			"guides-heroku"
+		],
+		"Tutorials": [
+			"tutorials",
+			"tutorials-express",
+			"tutorials-cli"
+		]
 	}
 }
