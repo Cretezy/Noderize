@@ -5,7 +5,9 @@ title: Introduction
 
 Noderize lets you create Node apps in less than 30 seconds.
 
-It aims to get out of your way and not require any [configuration](configuration-index.md) until you need it, while supporting loads of [features](features-index.md).
+The role of Noderize is to replace your build configuration for a batteries-included experience, focused on features and flexibility.
+
+It aims to get out of your way and not require any [configuration](configuration-index.md) until you need it, making it very simple to get started in a few seconds.
 
 Try it out for yourself:
 
@@ -31,9 +33,9 @@ npm run watch
 
 This will continuously rebuild your app and rerun your app as you code!
 
-## Build
+## Build & Start
 
-To build your app, use the built-in `build` script:
+You can build your app using the `build` script:
 
 ```bash
 yarn build
@@ -49,10 +51,12 @@ You can then run your file using the `start` script (for source map support) or 
 yarn start
 # or
 npm start
-# or
+# or (no source map)
 node dist/index.js
 ```
 
 ## Additional Features
 
-Check out [all of Noderize's features](features-index.md) such as [modern JavaScript support](features-modern.md) and [TypeScript support](features-typescript.md).
+Noderize is packed with [features](features-index.md) such as [modern JavaScript support](features-modern.md) and [TypeScript support](features-typescript.md).
+
+Code formatting (`format` script) and testing (`test` script) is built-in and let's get work on your high quality code distraction-free.
