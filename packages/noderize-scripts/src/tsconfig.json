@@ -1,14 +1,10 @@
 {
-  "compilerOptions": {
-    "noImplicitAny": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "es5",
-    "experimentalDecorators": true
-  },
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "__tests__"
-  ]
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"target": "es5",
+		"experimentalDecorators": true
+	},
+	"exclude": ["**/*.spec.ts", "**/*.test.ts", "__tests__"]
 }

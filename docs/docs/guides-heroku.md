@@ -10,12 +10,12 @@ Deploy to Heroku is very simple:
 * Create an Heroku app using `heroku create [name]`
 * Move `noderize-scripts` from `devDependencies` to `dependencies` in your `package.json`.
 * Add `heroku-postbuild` script in `package.json`:
-    ```json
-    {
-        "scripts": {
-            "...": "...",
-            "heroku-postbuild": "noderize-scripts build --env production"
-        }
-    }
-    ```
+  ```json
+  {
+  	"scripts": {
+  		"...": "...",
+  		"heroku-postbuild": "noderize-scripts build --env production"
+  	}
+  }
+  ```
 * Deploy like normal (if in a Git repo, commit and push with `git push heroku master`)!

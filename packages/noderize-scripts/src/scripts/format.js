@@ -10,6 +10,8 @@ async function run(args) {
 	// Althought not required, I'm parsing the args for consistency
 	const options = await getOptions(args);
 
+	const files = ["src/**/*.ts", "src/**/*.js", "src/**/*.json", "package.json"];
+
 	const prettierPath = path.resolve(
 		__dirname,
 		"..",
@@ -19,13 +21,9 @@ async function run(args) {
 		"prettier"
 	);
 
-	const child = fork(
-		prettierPath,
-		["--write", "src/**/*.ts", "src/**/*.js", ...options.args._],
-		{
-			cwd: appDirectory
-		}
-	);
+	const child = fork(prettierPath, ["--write", ...files, ...options.args._], {
+		cwd: appDirectory
+	});
 
 	child.on("exit", code => {
 		if (code === 0) {

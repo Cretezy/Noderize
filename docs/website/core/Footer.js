@@ -5,17 +5,17 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-const React = require('react');
+const React = require("react");
 
 class Footer extends React.Component {
 	docUrl(doc, language) {
 		const baseUrl = this.props.config.baseUrl;
-		return baseUrl + 'docs/' + (language ? language + '/' : '') + doc;
+		return baseUrl + "docs/" + (language ? language + "/" : "") + doc;
 	}
 
 	pageUrl(doc, language) {
 		const baseUrl = this.props.config.baseUrl;
-		return baseUrl + (language ? language + '/' : '') + doc;
+		return baseUrl + (language ? language + "/" : "") + doc;
 	}
 
 	render() {
@@ -35,13 +35,13 @@ class Footer extends React.Component {
 					</a>
 					<div>
 						<h5>Docs</h5>
-						<a href={this.docUrl('introduction.html', this.props.language)}>
+						<a href={this.docUrl("introduction.html", this.props.language)}>
 							Getting Started
 						</a>
-						<a href={this.docUrl('configuration.html', this.props.language)}>
+						<a href={this.docUrl("configuration.html", this.props.language)}>
 							Configuration
 						</a>
-						<a href={this.docUrl('features.html', this.props.language)}>
+						<a href={this.docUrl("features.html", this.props.language)}>
 							Features
 						</a>
 					</div>
@@ -62,23 +62,27 @@ class Footer extends React.Component {
           </div> */}
 					<div>
 						<h5>More</h5>
-						<a href={this.props.config.baseUrl + 'blog'}>Blog</a>
+						<a href={this.props.config.baseUrl + "blog"}>Blog</a>
 						<a href={this.props.config.repoUrl}>GitHub</a>
 						<a
 							className="github-button"
 							href={this.props.config.repoUrl}
 							data-icon="octicon-star"
-							data-count-href={`/${this.props.config.organizationName}/${this.props.config.projectName}/stargazers`}
+							data-count-href={`/${this.props.config.organizationName}/${
+								this.props.config.projectName
+							}/stargazers`}
 							data-show-count={true}
 							data-count-aria-label="# stargazers on GitHub"
-							aria-label="Star this project on GitHub">
+							aria-label="Star this project on GitHub"
+						>
 							Star
 						</a>
 					</div>
 				</section>
 
 				<section className="copyright">
-					Copyright &copy; {currentYear !== 2018 && "2018-"}{currentYear} Charles Crete.
+					Copyright &copy; {currentYear !== 2018 && "2018-"}
+					{currentYear} Charles Crete.
 				</section>
 			</footer>
 		);

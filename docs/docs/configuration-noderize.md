@@ -8,49 +8,53 @@ Noderize uses [cosmiconfig](https://github.com/davidtheclark/cosmiconfig) for co
 
 * A `noderize` key in your `package.json` file (recommended):
 
-    ```json
-    {
-        "name": "my-noderize-program",
-        "...": "...",
-        "noderize": {
-            "minify": true
-        }
-    }
-    ```
+  ```json
+  {
+  	"name": "my-noderize-program",
+  	"...": "...",
+  	"noderize": {
+  		"minify": true
+  	}
+  }
+  ```
 
 * A `.noderizerc` file, written in JSON/YAML/JS, with optional extensions: `.json`/`.yml`/`.yaml`/`.js`:
 
-    * JSON:
-        ```json
-        {
-            "minify": true
-        }
-        ```
+  * JSON:
 
-    * YAML:
-        ```yml
-        minify: true
-        ```
+    ```json
+    {
+    	"minify": true
+    }
+    ```
 
-    * JS:
-        ```js
-        module.exports = {
-            minify: true
-        }
-        ```
+  * YAML:
+
+    ```yml
+    minify: true
+    ```
+
+  * JS:
+    ```js
+    module.exports = {
+    	minify: true
+    };
+    ```
 
 * A `noderize.config.js` file that exports an object (like the `.noderizerc` JS example above).
 
 * Command line arguments:
 
-    * Every configuration options can be passed as arguments to the `build`/`watch`/`start`/etc command.
-        * `yarn build --minify`
+  * Every configuration options can be passed as arguments to the `build`/`watch`/`start`/etc command.
 
-    * When passing objects as argument, provide a JSON string.
-        * `yarn build --targets '{"node": true}'`.
+    * `yarn build --minify`
 
-    * When passing arrays as argument, simply pass it multiple times.
-        * `yarn build --languages javascript --languages typescript`.
+  * When passing objects as argument, provide a JSON string.
+
+    * `yarn build --targets '{"node": true}'`.
+
+  * When passing arrays as argument, simply pass it multiple times.
+    * `yarn build --languages javascript --languages typescript`.
 
 **All configuration is optional with Noderize. Omit until needed.**
 
@@ -68,79 +72,80 @@ If you wish to pass arguments to your app but aren't providing any Noderize argu
 
 ## Options
 
-
 ### `entry`
+
 [string] Default: `src/index.js`
 
 Used as entry file.
 
 If only using the `typescript` [`language`](#languages), this is set to `src/index.ts` by default.
 
-
 ### `output`
+
 [string] Default: `main` field in `package.json` or `dist/index.js`.
 
 Used as output file.
 
-
 ### `shebang`
+
 [boolean] Default: if `bin` field in `package.json` is set
 
 Adds a shebang to top of built file. Useful for building CLI apps.
 
 > You can omit this as it will infer if this is a CLI app by checking if the `bin` field in `package.json` is set.
 
-
 ### `targets`
+
 [object] Default: `{ node: true }`
 
 Specific a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
 
-
 ### `globals`
-[object] Default: *none*
+
+[object] Default: _none_
 
 Set a globals.
 
 Example:
+
 ```json
 "globals": {
     "$": "jquery"
 }
 ```
 
-
 ### `sourcemap`
+
 [string|false] Default: `cheap-module-eval-source-map`
 
 [See source map types](https://webpack.js.org/configuration/devtool).
 
-
 ### `runOnWatch`
+
 [boolean] Default: `true`
 
 Enable running the app while watching. Might be useful to disable if you are working on a CLI app.
 
-
 ### `includeExternal`
+
 [boolean] Default: `false`
 
 Include all your dependencies in your bundle. This will make your file size a lot larger.
 
-
 ### `minify`
+
 [boolean] Default: `false`
 
 Minifies (compress) your app.
 
-
 ### `name`
+
 [string] Default: `name` field in `package.json`
 
 Allow to use a different name as the package name as your name export for UMD.
 
-
 ### `languages`
+
 [string|array[string]] Default: `javascript`
 
 Array of languages to be used.
@@ -150,19 +155,21 @@ Languages available:
 * `javascript`
 * `typescript`
 
-
 ### `env`
-[object] Default: *none*
+
+[object] Default: _none_
 
 Provide environment-specific variables that can be used with the `--env` flag
 
 By default, the `production` environment does:
+
 * Sets `targets.node` to the oldest active Node LTS release (currently 6).
 * Set `sourcemap` to `false`.
 
 To add other options:
 
 Example:
+
 ```json
 "env": {
     "production": {

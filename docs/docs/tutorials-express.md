@@ -48,9 +48,9 @@ Our `package.json` should look something like this (except the versions being th
 		"build": "noderize-scripts build",
 		"start": "noderize-scripts start"
 	},
-    "devDependencies": {
-        "noderize-scripts": "^0.2.5"
-    },
+	"devDependencies": {
+		"noderize-scripts": "^0.2.5"
+	},
 	"dependencies": {
 		"express": "^4.16.2"
 	}

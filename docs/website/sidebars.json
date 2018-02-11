@@ -1,32 +1,21 @@
 {
-  "docs": {
-    "Get Started": [
-      "introduction",
-      "create",
-      "examples"
-    ],
-    "Configuration": [
-      "configuration",
-      "configuration-noderize",
-      "configuration-prettier",
-      "configuration-jest"
-    ],
-    "Features": [
-      "features",
-      "features-modern",
-      "features-flow",
-      "features-typescript",
-      "features-formatting",
-      "features-testing"
-    ],
-    "Guides":[
-      "guides",
-      "guides-publishing",
-      "guides-heroku"
-    ],
-    "Tutorials":[
-      "tutorials",
-      "tutorials-express"
-    ]
-  }
+	"docs": {
+		"Get Started": ["introduction", "create", "examples"],
+		"Configuration": [
+			"configuration",
+			"configuration-noderize",
+			"configuration-prettier",
+			"configuration-jest"
+		],
+		"Features": [
+			"features",
+			"features-modern",
+			"features-flow",
+			"features-typescript",
+			"features-formatting",
+			"features-testing"
+		],
+		"Guides": ["guides", "guides-publishing", "guides-heroku"],
+		"Tutorials": ["tutorials", "tutorials-express"]
+	}
 }

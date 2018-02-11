@@ -1,43 +1,44 @@
 {
-  "name": "noderize-scripts",
-  "description": "Scripts to use with Noderize.",
-  "author": "Charles Crete <charles@cretezy.com>",
-  "homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Cretezy/Noderize.git"
-  },
-  "version": "0.2.5",
-  "main": "src/index.js",
-  "license": "MIT",
-  "bin": "src/index.js",
-  "scripts": {
-    "format": "prettier --write src/**/*.js"
-  },
-  "dependencies": {
-    "@babel/core": "^7.0.0-beta.39",
-    "@babel/plugin-proposal-decorators": "^7.0.0-beta.39",
-    "@babel/preset-env": "^7.0.0-beta.39",
-    "@babel/preset-flow": "^7.0.0-beta.39",
-    "@babel/preset-stage-2": "^7.0.0-beta.39",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^22.2.0",
-    "babel-loader": "8.0.0-beta.0",
-    "chalk": "^2.3.0",
-    "cosmiconfig": "^4.0.0",
-    "fork-ts-checker-webpack-plugin": "^0.3.0",
-    "happypack": "^4.0.1",
-    "jest": "^22.2.1",
-    "lodash.merge": "^4.6.1",
-    "minimist": "^1.2.0",
-    "prettier": "^1.10.2",
-    "source-map-support": "^0.5.3",
-    "supports-color": "^5.1.0",
-    "ts-loader": "^3.5.0",
-    "typescript": "^2.7.1",
-    "typescript-babel-jest": "^1.0.5",
-    "uglifyjs-webpack-plugin": "^1.1.8",
-    "webpack": "^3.10.0",
-    "webpack-node-externals": "^1.6.0"
-  }
+	"name": "noderize-scripts",
+	"description": "Scripts to use with Noderize.",
+	"author": "Charles Crete <charles@cretezy.com>",
+	"homepage":
+		"https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Cretezy/Noderize.git"
+	},
+	"version": "0.2.5",
+	"main": "src/index.js",
+	"license": "MIT",
+	"bin": "src/index.js",
+	"scripts": {
+		"format": "prettier --write src/**/*.js"
+	},
+	"dependencies": {
+		"@babel/core": "^7.0.0-beta.39",
+		"@babel/plugin-proposal-decorators": "^7.0.0-beta.39",
+		"@babel/preset-env": "^7.0.0-beta.39",
+		"@babel/preset-flow": "^7.0.0-beta.39",
+		"@babel/preset-stage-2": "^7.0.0-beta.39",
+		"babel-core": "^7.0.0-bridge.0",
+		"babel-jest": "^22.2.0",
+		"babel-loader": "8.0.0-beta.0",
+		"chalk": "^2.3.0",
+		"cosmiconfig": "^4.0.0",
+		"fork-ts-checker-webpack-plugin": "^0.3.0",
+		"happypack": "^4.0.1",
+		"jest": "^22.2.1",
+		"lodash.merge": "^4.6.1",
+		"minimist": "^1.2.0",
+		"prettier": "^1.10.2",
+		"source-map-support": "^0.5.3",
+		"supports-color": "^5.1.0",
+		"ts-loader": "^3.5.0",
+		"typescript": "^2.7.1",
+		"typescript-babel-jest": "^1.0.5",
+		"uglifyjs-webpack-plugin": "^1.1.8",
+		"webpack": "^3.10.0",
+		"webpack-node-externals": "^1.6.0"
+	}
 }

@@ -16,38 +16,38 @@
 // ];
 
 const siteConfig = {
-	title: 'Noderize',
-	tagline: ' Create a Node app in less than 30 seconds.',
-	url: 'https://noderize.js.org',
-	baseUrl: '/',
-	projectName: 'noderize',
+	title: "Noderize",
+	tagline: " Create a Node app in less than 30 seconds.",
+	url: "https://noderize.js.org",
+	baseUrl: "/",
+	projectName: "noderize",
 
 	headerLinks: [
-		{ doc: 'introduction', label: 'Docs' },
-		{ blog: true, label: 'Blog' },
-		{ href: 'https://github.com/Cretezy/Noderize', label: 'GitHub' },
+		{ doc: "introduction", label: "Docs" },
+		{ blog: true, label: "Blog" },
+		{ href: "https://github.com/Cretezy/Noderize", label: "GitHub" }
 	],
 	// users,
-	headerIcon: 'img/light.svg',
-	footerIcon: 'img/light.svg',
-	favicon: 'img/favicon/favicon.icon',
+	headerIcon: "img/light.svg",
+	footerIcon: "img/light.svg",
+	favicon: "img/favicon/favicon.icon",
 	colors: {
-		primaryColor: '#343a40',
-		secondaryColor: '#809fc0',
+		primaryColor: "#343a40",
+		secondaryColor: "#809fc0"
 	},
 
 	copyright: `Copyright © ${new Date().getFullYear()} Charles Crete`,
-	organizationName: 'Cretezy',
-	projectName: 'Noderize',
+	organizationName: "Cretezy",
+	projectName: "Noderize",
 
 	highlight: {
 		// Highlight.js theme to use for syntax highlighting in code blocks
-		theme: 'default',
+		theme: "default"
 	},
 
-	scripts: ['https://buttons.github.io/buttons.js'],
-	repoUrl: 'https://github.com/Cretezy/Noderize',
-	cname: "noderize.js.org",
+	scripts: ["https://buttons.github.io/buttons.js"],
+	repoUrl: "https://github.com/Cretezy/Noderize",
+	cname: "noderize.js.org"
 	// algolia: {
 	// 	apiKey: "my-search-only-api-key-1234",
 	// 	indexName: "my-index-name"
