@@ -22,13 +22,13 @@
 		"@babel/preset-flow": "^7.0.0-beta.39",
 		"@babel/preset-stage-2": "^7.0.0-beta.39",
 		"babel-core": "^7.0.0-bridge.0",
-		"babel-jest": "^22.2.0",
+		"babel-jest": "^22.2.2",
 		"babel-loader": "8.0.0-beta.0",
 		"chalk": "^2.3.0",
 		"cosmiconfig": "^4.0.0",
 		"fork-ts-checker-webpack-plugin": "^0.3.0",
 		"happypack": "^4.0.1",
-		"jest": "^22.2.1",
+		"jest": "^22.2.2",
 		"lodash.merge": "^4.6.1",
 		"minimist": "^1.2.0",
 		"prettier": "^1.10.2",
@@ -38,7 +38,7 @@
 		"typescript": "^2.7.1",
 		"typescript-babel-jest": "^1.0.5",
 		"uglifyjs-webpack-plugin": "^1.1.8",
-		"webpack": "^3.10.0",
+		"webpack": "^3.11.0",
 		"webpack-node-externals": "^1.6.0"
 	}
 }
