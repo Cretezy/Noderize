@@ -2,9 +2,6 @@
 	"name": "basic-typescript",
 	"version": "0.1.0",
 	"private": true,
-	"devDependencies": {
-		"noderize-scripts": "*"
-	},
 	"scripts": {
 		"watch": "noderize-scripts watch",
 		"test": "noderize-scripts test",
@@ -14,5 +11,8 @@
 	},
 	"noderize": {
 		"languages":  "typescript"
+	},
+	"devDependencies": {
+        "noderize-scripts": "^0.2.5"
 	}
 }

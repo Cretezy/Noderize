@@ -13,6 +13,6 @@
 		"languages": ["javascript", "typescript"]
 	},
 	"devDependencies": {
-		"noderize-scripts": "*"
+		"noderize-scripts": "^0.2.5"
 	}
 }

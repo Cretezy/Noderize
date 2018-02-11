@@ -32,13 +32,17 @@
     "Publishing": "Publishing",
     "guides": "Guides",
     "introduction": "Introduction",
+    "tutorials-express": "Tutorial: Express",
+    "Express": "Express",
+    "tutorials": "Tutorials",
     "Docs": "Docs",
     "Blog": "Blog",
     "GitHub": "GitHub",
     "Get Started": "Get Started",
     "Configuration": "Configuration",
     "Features": "Features",
-    "Guides": "Guides"
+    "Guides": "Guides",
+    "Tutorials": "Tutorials"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

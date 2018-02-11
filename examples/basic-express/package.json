@@ -2,15 +2,15 @@
 	"name": "basic-express",
 	"version": "0.1.0",
 	"private": true,
-	"devDependencies": {
-		"noderize-scripts": "*"
-	},
 	"scripts": {
 		"watch": "noderize-scripts watch",
 		"test": "noderize-scripts test",
 		"format": "noderize-scripts format",
 		"build": "noderize-scripts build",
 		"start": "noderize-scripts start"
+	},
+	"devDependencies": {
+		"noderize-scripts": "^0.2.5"
 	},
 	"dependencies": {
 		"express": "^4.16.2"
