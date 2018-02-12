@@ -214,3 +214,9 @@ Example:
 ```
 
 Can be used with `yarn build --env production`.
+
+### `debug`
+
+[boolean] Default: `false`
+
+Show less-important warnings in builds and prints full config.
