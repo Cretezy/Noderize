@@ -1,18 +1,18 @@
 language: node_js
 
-cache: yarn
-
 node_js:
 - node
 - 8
+cache: yarn
+
 install: yarn
 script:
-- (cd packages/noderize-scripts && yarn prepublishOnly)
-- (cd packages/create-noderize && yarn && yarn test)
+- (cd packages/noderize-scripts && yarn build && yarn test)
+- (cd packages/create-noderize && yarn build && yarn test)
 
 jobs:
   include:
-    # Deploy site
+    # Deploy site always
     - stage: deploy
       env: DEPLOY=website
       if: tag IS present OR branch = master
@@ -29,16 +29,17 @@ jobs:
         script: (cd docs/website && GIT_USER=Noderize-bot yarn publish-gh-pages)
         on:
           all_branches: true
+    # Deploy to npm on tags
     - stage: deploy
       env: DEPLOY=npm
       if: tag IS present
       script: skip
       before_deploy:
-        # Publish using $NPM_TOKEN
+        # Aublish using $NPM_TOKEN
         - npm i -g ci-publish
       deploy:
         provider: script
         skip_cleanup: true
-        script: (cd packages/noderize-scripts && ci-publish) && (cd packages/create-noderize && yarn && ci-publish)
+        script: (cd packages/noderize-scripts && ci-publish) && (cd packages/create-noderize && ci-publish)
         on:
           tags: true

@@ -15,7 +15,8 @@
 	"scripts": {
 		"remote": "noderize-scripts",
 		"local": "node -r source-map-support/register dist/index.js",
-		"prepublishOnly": "npm run remote build && npm run local build --env production"
+		"build": "npm run remote build && npm run local build",
+		"prepublishOnly": "npm run build --env production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.0.0-beta.39",

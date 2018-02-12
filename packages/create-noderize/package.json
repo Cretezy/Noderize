@@ -13,13 +13,12 @@
 	"bin": "dist/index.js",
 	"files": ["src", "dist", "template"],
 	"scripts": {
-		"watch": "npm run noderize-scripts-local watch",
-		"test": "npm run noderize-scripts-local test",
-		"format": "npm run noderize-scripts-local format",
-		"build": "npm run noderize-scripts-local build",
-		"start": "npm run noderize-scripts-local start",
-		"prepublishOnly": "npm run noderize-scripts-local build --env production",
-		"noderize-scripts-local": "node ../noderize-scripts/dist/index.js"
+		"watch": "noderize-scripts watch",
+		"test": "noderize-scripts test",
+		"format": "noderize-scripts format",
+		"build": "noderize-scripts build",
+		"start": "noderize-scripts start",
+		"prepublishOnly": "noderize-scripts build --env production"
 	},
 	"dependencies": {
 		"chalk": "^2.3.0",
@@ -27,6 +26,6 @@
 		"minimist": "^1.2.0"
 	},
 	"devDependencies": {
-		"noderize-scripts": "^0.3.0"
+		"noderize-scripts": "0.3.0"
 	}
 }
