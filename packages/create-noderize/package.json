@@ -8,7 +8,7 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"license": "MIT",
 	"bin": "dist/index.js",
 	"files": ["src", "dist", "template"],
@@ -26,6 +26,6 @@
 		"minimist": "^1.2.0"
 	},
 	"devDependencies": {
-		"noderize-scripts": "0.3.0"
+		"noderize-scripts": "0.3.1"
 	}
 }

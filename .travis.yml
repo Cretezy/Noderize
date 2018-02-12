@@ -8,7 +8,7 @@ cache: yarn
 install: yarn
 script:
 - (cd packages/noderize-scripts && yarn build && yarn test)
-- (cd packages/create-noderize && yarn build && yarn test)
+- (cd packages/create-noderize && yarn build)
 
 jobs:
   include:
