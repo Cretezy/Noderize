@@ -2,18 +2,18 @@
 	"name": "noderize-scripts",
 	"description": "Scripts to use with Noderize.",
 	"author": "Charles Crete <charles@cretezy.com>",
-	"homepage":
-		"https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
+	"homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.2.6",
-	"main": "src/index.js",
+	"version": "0.3.0",
 	"license": "MIT",
-	"bin": "src/index.js",
+	"bin": "dist/index.js",
 	"scripts": {
-		"format": "prettier --write src/**/*.js"
+		"remote": "noderize-scripts",
+		"local": "node -r source-map-support/register dist/index.js",
+		"prepublishOnly": "noderize-scripts build --env production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.0.0-beta.39",
@@ -25,20 +25,43 @@
 		"babel-jest": "^22.2.2",
 		"babel-loader": "8.0.0-beta.0",
 		"chalk": "^2.3.0",
+		"chokidar": "^2.0.1",
 		"cosmiconfig": "^4.0.0",
 		"fork-ts-checker-webpack-plugin": "^0.3.0",
+		"fs-extra": "^5.0.0",
 		"happypack": "^4.0.1",
 		"jest": "^22.2.2",
 		"lodash.merge": "^4.6.1",
 		"minimist": "^1.2.0",
+		"path-is-inside": "^1.0.2",
 		"prettier": "^1.10.2",
 		"source-map-support": "^0.5.3",
 		"supports-color": "^5.1.0",
 		"ts-loader": "^3.5.0",
 		"typescript": "^2.7.1",
-		"typescript-babel-jest": "^1.0.5",
 		"uglifyjs-webpack-plugin": "^1.1.8",
 		"webpack": "^3.11.0",
 		"webpack-node-externals": "^1.6.0"
+	},
+	"devDependencies": {
+		"noderize-scripts": "0.2.6"
+	},
+	"noderize": {
+		"bundles": [
+			{
+				"entry": [
+					"index.js"
+				],
+				"output": "index.js"
+			},
+			{
+				"entry": "jest/transformer.js",
+				"output": "jestTransformer.js"
+			}
+		],
+		"static": {
+			"tsconfig.json": "tsconfig.json"
+		},
+		"runOnWatch": false
 	}
 }

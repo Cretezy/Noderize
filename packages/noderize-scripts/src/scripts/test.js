@@ -1,25 +1,28 @@
-const path = require("path");
-const { appDirectory } = require("../appPathsUtils");
-const { execSync } = require("child_process");
-const { fork } = require("child_process");
-const { getOptions } = require("../options");
-const cosmiconfig = require("cosmiconfig");
-const merge = require("lodash.merge");
-const { printInfo } = require("../printUtils");
+import path from "path";
+import { appDirectory } from "../utils/path";
+import { execSync } from "child_process";
+import { fork } from "child_process";
+import { getOptions } from "../options";
+import cosmiconfig from "cosmiconfig";
+import merge from "lodash.merge";
+import { printError, printInfo } from "../utils/print";
 
-async function run(args) {
+export default async args => {
 	printInfo(`Testing...`);
 
 	const options = await getOptions(args);
 	const jestArgs = options.args._;
 
-	// Manually load jest config
 	let jestConfig = {};
 	try {
+		// Load jest config
 		const results = await cosmiconfig("jest").load();
-		jestConfig = results.config;
+
+		if (results) {
+			jestConfig = results.config;
+		}
 	} catch (error) {
-		// Could not load (doesn't exist?)
+		printError("Could not read Jest configuration.", error);
 	}
 
 	let isInGit;
@@ -61,11 +64,9 @@ async function run(args) {
 		jestConfig
 	);
 
-	// Force add required options
-	config.setupFiles.push(require.resolve("regenerator-runtime/runtime"));
+	// Force add transformer
 	config.transform[`^.+\\.(${extensions.join("|")})$`] = path.resolve(
 		__dirname,
-		"..",
 		"jestTransformer.js"
 	);
 
@@ -73,7 +74,6 @@ async function run(args) {
 
 	const jestPath = path.resolve(
 		__dirname,
-		"..",
 		"..",
 		"node_modules",
 		".bin",
@@ -83,6 +83,4 @@ async function run(args) {
 	fork(jestPath, jestArgs, {
 		cwd: appDirectory
 	});
-}
-
-module.exports = { run };
+};

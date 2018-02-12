@@ -1,10 +1,10 @@
-const path = require("path");
-const { appDirectory } = require("../appPathsUtils");
-const { getOptions } = require("../options");
-const { fork } = require("child_process");
-const { printInfo, printWarn, printDone } = require("../printUtils");
+import path from "path";
+import { appDirectory } from "../utils/path";
+import { getOptions } from "../options";
+import { fork } from "child_process";
+import { printInfo, printWarn, printDone } from "../utils/print";
 
-async function run(args) {
+export default async args => {
 	printInfo(`Formatting...`);
 
 	// Althought not required, I'm parsing the args for consistency
@@ -14,7 +14,6 @@ async function run(args) {
 
 	const prettierPath = path.resolve(
 		__dirname,
-		"..",
 		"..",
 		"node_modules",
 		".bin",
@@ -32,6 +31,4 @@ async function run(args) {
 			printWarn("Done!");
 		}
 	});
-}
-
-module.exports = { run };
+};

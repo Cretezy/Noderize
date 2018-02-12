@@ -1,32 +1,35 @@
-const { resolveApp } = require("./appPathsUtils");
-const merge = require("lodash.merge");
-const parseArgs = require("minimist");
-const childPackage = require(resolveApp("package.json"));
-const cosmiconfig = require("cosmiconfig");
-const { printWarn } = require("./printUtils");
+import fs from "fs-extra";
+import { resolveApp } from "./utils/path";
+import path from "path";
+import merge from "lodash.merge";
+import parseArgs from "minimist";
+import cosmiconfig from "cosmiconfig";
+import { printError, printInfo, printLines, printWarn } from "./utils/print";
 
-const bools = ["shebang", "runOnWatch", "minify", "includeExternal"];
-const strings = ["entry", "output", "sourcemaps"];
+export async function getOptions(rawArgs = []) {
+	const childPackage = await fs.readJsonSync(resolveApp("package.json"));
 
-const defaults = {
-	targets: { node: true },
-	output: childPackage.main || "dist/index.js",
-	shebang: childPackage.bin !== undefined,
-	name: childPackage.name,
-	sourcemap: "cheap-module-eval-source-map",
-	runOnWatch: true,
-	minify: false,
-	includeExternal: false,
-	env: {
-		production: {
-			targets: { node: "6" },
-			sourcemap: false
-		}
-	},
-	buildThreads: 3
-};
+	const bools = ["shebang", "runOnWatch", "minify", "includeExternal", "debug"];
+	const strings = ["entry", "sourcemaps"];
 
-async function getOptions(rawArgs = []) {
+	const defaults = {
+		shebang: childPackage.bin !== undefined,
+		name: childPackage.name,
+		sourcemap: "cheap-module-eval-source-map",
+		runOnWatch: true,
+		minify: false,
+		includeExternal: false,
+		env: {
+			production: {
+				targets: { node: "6" },
+				sourcemap: false
+			}
+		},
+		buildThreads: 3,
+		static: {},
+		debug: false
+	};
+
 	// Parse args
 	const args = parseArgs(rawArgs, {
 		boolean: bools,
@@ -36,21 +39,22 @@ async function getOptions(rawArgs = []) {
 		}, {})
 	});
 
-	let configOptions;
+	let configOptions = {};
 	try {
 		// Load from "noderize" key in package.json, .noderizerc, or noderize.config.js
 		const results = await cosmiconfig("noderize").load();
 
-		configOptions = results.config;
+		if (results) {
+			configOptions = results.config;
+		}
 	} catch (error) {
-		// Could not load (doesn't exist)
-		configOptions = {};
+		printError("Could not read Noderize configuration.", error);
 	}
 
 	// Merge config to defaults
 	const options = merge({}, defaults, configOptions);
 
-	// Merge args to options
+	// Targets
 	if (args.targets !== undefined) {
 		try {
 			options.targets = JSON.parse(args.targets);
@@ -58,8 +62,11 @@ async function getOptions(rawArgs = []) {
 			printWarn(`Could not parse targets argument.`);
 		}
 	}
+	if (options.targets === undefined) {
+		options.targets = { node: true };
+	}
 
-	// BUild threads
+	// Build threads
 	if (args.buildThreads !== undefined) {
 		if (Number.isInteger(args.buildThreads)) {
 			options.buildThreads = args.buildThreads;
@@ -90,7 +97,6 @@ async function getOptions(rawArgs = []) {
 	}
 
 	// Parse languages to list then object
-
 	if (options.languages === undefined) {
 		// No loaders set, use babel
 		options.languages = ["javascript"];
@@ -104,15 +110,53 @@ async function getOptions(rawArgs = []) {
 	languageList.forEach(language => {
 		if (options.languages[language] !== undefined) {
 			options.languages[language] = true;
+		} else {
+			printWarn(`Unknown language '${language}'`);
 		}
 	});
 
-	// Entry
-	if (options.entry === undefined) {
+	// Bundles
+	if (options.bundles === undefined) {
+		let entry = "index.js";
 		if (languageList.length === 1 && languageList[0] === "typescript") {
-			options.entry = "src/index.ts";
+			entry = "index.ts";
+		}
+
+		options.bundles = [{ entry, output: "index.js" }];
+	}
+
+	options.bundles = options.bundles.map(bundle => {
+		if (!Array.isArray(bundle.entry)) {
+			return { ...bundle, entry: [bundle.entry] };
 		} else {
-			options.entry = "src/index.js";
+			return bundle;
+		}
+	});
+
+	// Check if bundle entries exist
+	// Iterate bundles
+	await Promise.all(
+		options.bundles.map(async bundle => {
+			// Iterate each entry of bundle (excluding externals starting with ~)
+			await Promise.all(
+				bundle.entry
+					.filter(entry => !entry.startsWith("~"))
+					.map(async entry => {
+						// Check & error
+						const exists = await fs.exists(resolveApp("src", entry));
+						if (!exists) {
+							printError(`Could not find bundle entry at src/${entry}`);
+						}
+					})
+			);
+		})
+	);
+
+	if(options.startFile === undefined){
+		if(childPackage.main !== undefined){
+			options.startFile = childPackage.main;
+		}else{
+			options.startFile = path.join("dist", Object.values(options.bundles)[0].output)
 		}
 	}
 
@@ -125,7 +169,9 @@ async function getOptions(rawArgs = []) {
 		}
 	}
 
+	if (options.debug) {
+		printLines(printInfo, JSON.stringify(options, null, "\t"));
+	}
+
 	return { ...options, args: args };
 }
-
-module.exports = { getOptions, childPackage };

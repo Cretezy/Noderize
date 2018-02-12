@@ -72,19 +72,52 @@ If you wish to pass arguments to your app but aren't providing any Noderize argu
 
 ## Options
 
-### `entry`
+### `bundles`
 
-[string] Default: `src/index.js`
+[array] Default: `[ { "entry": "index.js": "output": "index.js" } ]`
 
-Used as entry file.
+Array of bundles to be built. Entry files will be taken from `src`, and output will be placed in `dist`.
 
-If only using the `typescript` [`language`](#languages), this is set to `src/index.ts` by default.
+Example of 2 bundles:
 
-### `output`
+```json
+"bundles": [
+    {
+        "entry": "index.js",
+        "output": "index.js"
+    },
+    {
+        "entry": ["~myExternalDependency", "secondBundle.ts"],
+        "output": "secondBundle.js"
+    }
+]
+```
 
-[string] Default: `main` field in `package.json` or `dist/index.js`.
+The `entry` field may be an array of multiple files. To use an external entry file, prefix it with `~`.
 
-Used as output file.
+If not set and only using the `typescript` [`language`](#languages), the default bundle entry is set to `index.ts`.
+
+### `static`
+
+[object] Default: *none*
+
+Static files/directories to be copied.
+
+Input is sourced from `src` and output placed into `dist`
+
+Example (will copy the `templates` directory from `src/templates` to `dist/templates`):
+
+```json
+"static": {
+    "templates": "templates"
+}
+```
+
+### `startFile`
+
+[string] Default: `main` field in `package.json`, or first entry in [`bundles`](#bundles).
+
+File to run when using `start` or `watch` command.
 
 ### `shebang`
 
@@ -93,6 +126,8 @@ Used as output file.
 Adds a shebang to top of built file. Useful for building CLI apps.
 
 > You can omit this as it will infer if this is a CLI app by checking if the `bin` field in `package.json` is set.
+
+> Note: If this option is activated, it will apply the shebang to all your bundles
 
 ### `targets`
 

@@ -1,16 +1,16 @@
-const { fork } = require("child_process");
-const { getOptions } = require("../options");
-const { printInfo, printWarn } = require("../printUtils");
+import { fork } from "child_process";
+import { getOptions } from "../options";
+import { printInfo, printWarn } from "../utils/print";
 
-async function run(args) {
+export default async args => {
 	start(await getOptions(args));
-}
+};
 
-function start(options) {
+export function start(options) {
 	printInfo(`Starting...`);
 	console.log(); // Padding
 
-	const child = fork(options.output, options.args._, {
+	const child = fork(options.startFile, options.args._, {
 		execArgv: ["-r", "source-map-support/register"]
 	});
 
@@ -29,5 +29,3 @@ function start(options) {
 
 	return child;
 }
-
-module.exports = { run, start };

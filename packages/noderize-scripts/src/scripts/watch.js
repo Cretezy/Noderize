@@ -1,10 +1,14 @@
-const { getOptions } = require("../options");
-const { getCompiler } = require("./build");
-const { start } = require("./start");
-const supportsColor = require("supports-color");
-const { printInfo } = require("../printUtils");
+import { getOptions } from "../options";
+import { start } from "./start";
+import { printInfo } from "../utils/print";
+import chokidar from "chokidar";
+import { getCompiler, printStats } from "../webpack";
+import { resolveApp } from "../utils/path";
+import { copyAll, copyFile } from "../copy";
+import pathIsInside from "path-is-inside";
+import fs from "fs-extra";
 
-async function run(args) {
+export default async args => {
 	printInfo(`Watching...`);
 
 	const options = await getOptions(args);
@@ -21,7 +25,7 @@ async function run(args) {
 			first || console.log(); // Add padding line on rebuilds
 			printInfo(`${first ? "B" : "Reb"}uilding...`);
 			first = false;
-			console.log(stats.toString({ colors: supportsColor.stdout }));
+			printStats(stats, options);
 
 			if (child) {
 				child.kill();
@@ -31,6 +35,64 @@ async function run(args) {
 			}
 		}
 	);
-}
 
-module.exports = { run };
+	// Get real file paths
+	const files = Object.keys(options.static).reduce(
+		(files, source) => ({
+			...files,
+			[resolveApp("src", source)]: {
+				source,
+				destination: options.static[source]
+			}
+		}),
+		{}
+	);
+
+	const fileChange = path => {
+		setTimeout(async () => {
+			// Wait 100ms before checking if the file still exist.
+			// This is because some editors (i.e.: JetBrain editors) create
+			// a tmp file while writing, which triggers a "add" event
+			// then gets deleted right after, and we don't want to copy that.
+
+			const exists = await fs.exists(path);
+			if (exists) {
+				let file;
+				if (files[path]) {
+					// Watching directly the file
+					file = files[path];
+				} else {
+					// File is in subdirectory that is being watched
+					const root = Object.keys(files).find(fullFilePath => {
+						if (pathIsInside(path, fullFilePath)) {
+							console.log("found inside", path, fullFilePath);
+							return true;
+						}
+					});
+
+					if (root) {
+						file = files[root];
+					}
+				}
+
+				if (file) {
+					copyFile(file.source, file.destination);
+				}
+			}
+		}, 100);
+	};
+
+	const staticWatcher = chokidar.watch(Object.keys(files), {
+		ignoreInitial: true,
+		disableGlobbing: true
+	});
+
+	staticWatcher.on("ready", () => {
+		// Copy all files at the start
+		copyAll(options.static);
+	});
+
+	staticWatcher.on("add", fileChange);
+	staticWatcher.on("addDir", fileChange);
+	staticWatcher.on("change", fileChange);
+};

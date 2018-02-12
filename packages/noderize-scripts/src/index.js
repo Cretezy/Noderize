@@ -1,13 +1,16 @@
-#!/usr/bin/env node
-
-const { printWarn } = require("./printUtils");
+import { printWarn } from "./utils/print";
+import build from "./scripts/build";
+import start from "./scripts/start";
+import test from "./scripts/test";
+import watch from "./scripts/watch";
+import format from "./scripts/format";
 
 const commands = {
-	build: require("./scripts/build"),
-	test: require("./scripts/test"),
-	watch: require("./scripts/watch"),
-	format: require("./scripts/format"),
-	start: require("./scripts/start")
+	build,
+	test,
+	watch,
+	format,
+	start
 };
 
 const args = process.argv.slice(2);
@@ -16,7 +19,6 @@ const script = args.shift();
 if (!Object.keys(commands).includes(script)) {
 	printWarn(`Unknown script.`);
 	process.exit(1);
-	return;
+} else {
+	commands[script](args);
 }
-
-commands[script].run(args);
