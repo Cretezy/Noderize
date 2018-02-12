@@ -8,8 +8,7 @@ node_js:
 install: yarn
 script:
 - (cd packages/noderize-scripts && yarn remote build)
-- yarn # link noderize-scripts
-- (cd packages/create-noderize && yarn test)
+- (cd packages/create-noderize && yarn && yarn test)
 
 jobs:
   include:
@@ -40,6 +39,6 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: (cd packages/noderize-scripts && ci-publish) && yarn && (cd packages/create-noderize && ci-publish)
+        script: (cd packages/noderize-scripts && ci-publish) && (cd packages/create-noderize && yarn && ci-publish)
         on:
           tags: true
