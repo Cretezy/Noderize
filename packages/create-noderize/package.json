@@ -11,9 +11,7 @@
 	"version": "0.3.0",
 	"license": "MIT",
 	"bin": "dist/index.js",
-	"devDependencies": {
-		"noderize-scripts": "^0.3.0"
-	},
+	"files": ["src", "dist", "template"],
 	"scripts": {
 		"watch": "noderize-scripts watch",
 		"test": "noderize-scripts test",
@@ -22,10 +20,12 @@
 		"start": "noderize-scripts start",
 		"prepublishOnly": "noderize-scripts build --env production"
 	},
-	"files": ["src", "dist", "template"],
 	"dependencies": {
 		"chalk": "^2.3.0",
 		"fs-extra": "^5.0.0",
 		"minimist": "^1.2.0"
+	},
+	"devDependencies": {
+		"noderize-scripts": "^0.3.0"
 	}
 }

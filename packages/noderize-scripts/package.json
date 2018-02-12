@@ -2,7 +2,8 @@
 	"name": "noderize-scripts",
 	"description": "Scripts to use with Noderize.",
 	"author": "Charles Crete <charles@cretezy.com>",
-	"homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
+	"homepage":
+		"https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
@@ -10,10 +11,11 @@
 	"version": "0.3.0",
 	"license": "MIT",
 	"bin": "dist/index.js",
+	"files": ["src", "dist"],
 	"scripts": {
 		"remote": "noderize-scripts",
 		"local": "node -r source-map-support/register dist/index.js",
-		"prepublishOnly": "noderize-scripts build --env production"
+		"prepublishOnly": "npm run remote build && npm run local build --env production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.0.0-beta.39",
@@ -49,9 +51,7 @@
 	"noderize": {
 		"bundles": [
 			{
-				"entry": [
-					"index.js"
-				],
+				"entry": ["index.js"],
 				"output": "index.js"
 			},
 			{
