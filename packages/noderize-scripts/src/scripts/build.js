@@ -5,6 +5,7 @@ import { copyAll } from "../copy";
 
 export default async args => {
 	printInfo(`Building...`);
+	console.log();
 
 	const options = await getOptions(args);
 
@@ -22,15 +23,17 @@ export default async args => {
 		});
 
 		printStats(stats, options);
+		console.log();
+
+		// Copy
+		if (Object.keys(options.static).length > 0) {
+			await copyAll(options.static);
+			console.log();
+		}
+
+		printDone("Done!");
 	} catch (error) {
 		printError("Error building.", error);
 		return;
 	}
-
-	console.log();
-
-	// Copy
-	await copyAll(options.static);
-
-	printDone("Done!");
 };

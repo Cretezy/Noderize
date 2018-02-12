@@ -15,17 +15,17 @@ export default async args => {
 	const compiler = getCompiler(options);
 
 	let child;
-	let first = true;
 
 	compiler.watch(
 		{
 			ignored: /node_modules/
 		},
 		(err, stats) => {
-			first || console.log(); // Add padding line on rebuilds
-			printInfo(`${first ? "B" : "Reb"}uilding...`);
-			first = false;
+			console.log();
+			printInfo(`Building...`);
+			console.log();
 			printStats(stats, options);
+			console.log();
 
 			if (child) {
 				child.kill();

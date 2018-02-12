@@ -14,9 +14,9 @@ If you are not using JavaScript, you may want to remove the `javascript` languag
 
 ## Entry
 
-When only using the `typescript` [`language`](configuration-noderize.md#languages) option, the [`entry`](configuration-noderize.md#entry) option is automatically set to `src/index.ts`.
+When only using the `typescript` [`language`](configuration-noderize.md#languages) option, the [`bundles`](configuration-noderize.md#bundles) option is automatically set to enter at `src/index.ts`.
 
-If you are also using other languages but want your entry file to be a TypeScript file, simply change the [`entry`](configuration-noderize.md#entry) option to `src/index.ts`.
+If you are also using other languages but want your entry file to be a TypeScript file, simply set the [`bundles`](configuration-noderize.md#bundles) option to enter `src/index.ts`.
 
 ## Features
 

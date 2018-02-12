@@ -13,9 +13,11 @@
 	"bin": "dist/index.js",
 	"files": ["src", "dist"],
 	"scripts": {
-		"remote": "noderize-scripts",
-		"local": "node -r source-map-support/register dist/index.js",
-		"build": "npm run remote build && npm run local build",
+		"bin": "node dist/index.js",
+		"watch": "npm run bin watch",
+		"test": "npm run bin test",
+		"format": "npm run bin format",
+		"build": "noderize-scripts build && npm run bin build",
 		"prepublishOnly": "npm run build --env production"
 	},
 	"dependencies": {
@@ -47,7 +49,7 @@
 		"webpack-node-externals": "^1.6.0"
 	},
 	"devDependencies": {
-		"noderize-scripts": "0.2.6"
+		"noderize-scripts": "latest"
 	},
 	"noderize": {
 		"bundles": [

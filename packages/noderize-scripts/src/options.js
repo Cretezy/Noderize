@@ -14,7 +14,6 @@ export async function getOptions(rawArgs = []) {
 
 	const defaults = {
 		shebang: childPackage.bin !== undefined,
-		name: childPackage.name,
 		sourcemap: "cheap-module-eval-source-map",
 		runOnWatch: true,
 		minify: false,
@@ -152,11 +151,14 @@ export async function getOptions(rawArgs = []) {
 		})
 	);
 
-	if(options.startFile === undefined){
-		if(childPackage.main !== undefined){
+	if (options.startFile === undefined) {
+		if (childPackage.main !== undefined) {
 			options.startFile = childPackage.main;
-		}else{
-			options.startFile = path.join("dist", Object.values(options.bundles)[0].output)
+		} else {
+			options.startFile = path.join(
+				"dist",
+				Object.values(options.bundles)[0].output
+			);
 		}
 	}
 

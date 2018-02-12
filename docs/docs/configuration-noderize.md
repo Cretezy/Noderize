@@ -115,7 +115,7 @@ Example (will copy the `templates` directory from `src/templates` to `dist/templ
 
 ### `startFile`
 
-[string] Default: `main` field in `package.json`, or first entry in [`bundles`](#bundles).
+[string] Default: `main` field in `package.json`, or first output in [`bundles`](#bundles).
 
 File to run when using `start` or `watch` command.
 
@@ -173,11 +173,6 @@ Include all your dependencies in your bundle. This will make your file size a lo
 
 Minifies (compress) your app.
 
-### `name`
-
-[string] Default: `name` field in `package.json`
-
-Allow to use a different name as the package name as your name export for UMD.
 
 ### `languages`
 
@@ -189,6 +184,7 @@ Languages available:
 
 * `javascript`
 * `typescript`
+
 
 ### `env`
 
@@ -214,6 +210,7 @@ Example:
 ```
 
 Can be used with `yarn build --env production`.
+
 
 ### `debug`
 

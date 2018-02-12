@@ -71,7 +71,8 @@ export function getCompiler(options) {
 							loader: "babel-loader",
 							options: createBabelConfig({ targets: options.targets })
 						}
-					]
+					],
+					verbose: options.debug
 				}),
 			typescript &&
 				new webpackHappyPack({
@@ -86,7 +87,8 @@ export function getCompiler(options) {
 								happyPackMode: true
 							}
 						}
-					]
+					],
+					verbose: options.debug
 				}),
 			typescript &&
 				new webpackForkTsChecker({
