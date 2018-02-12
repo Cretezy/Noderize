@@ -7,7 +7,7 @@ node_js:
 - 8
 install: yarn
 script:
-- (cd packages/noderize-scrpits && yarn remote build)
+- (cd packages/noderize-scripts && yarn remote build)
 - (cd packages/create-noderize && yarn test)
 
 jobs:
