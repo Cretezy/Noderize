@@ -21,8 +21,8 @@ export function getCompiler(options) {
 			if (entry.startsWith("~")) {
 				// Get the path of the package
 
-				// Using eval to get require to bypass webpack
-				return eval("require").resolve(entry.slice(1));
+				// Using window to get require to bypass webpack
+				return window.require.resolve(entry.slice(1));
 			} else {
 				return resolveApp("src", entry);
 			}
