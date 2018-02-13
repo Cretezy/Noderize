@@ -14,10 +14,10 @@
 	"files": ["src", "dist"],
 	"scripts": {
 		"bin": "node dist/index.js",
-		"watch": "npm run bin watch",
-		"test": "npm run bin test",
-		"format": "npm run bin format",
-		"build": "noderize-scripts build && npm run bin build",
+		"watch": "npm run bin -- watch",
+		"test": "npm run bin -- test",
+		"format": "npm run bin -- format",
+		"build": "noderize-scripts build && npm run bin -- build",
 		"prepublishOnly": "npm run build --env production"
 	},
 	"dependencies": {

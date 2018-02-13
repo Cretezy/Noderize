@@ -9,12 +9,19 @@ import { printError, printInfo, printLines, printWarn } from "./utils/print";
 export async function getOptions(rawArgs = []) {
 	const childPackage = await fs.readJsonSync(resolveApp("package.json"));
 
-	const bools = ["shebang", "runOnWatch", "minify", "includeExternal", "debug"];
-	const strings = ["entry", "sourcemaps"];
+	const bools = [
+		"shebang",
+		"sourcemaps",
+		"runOnWatch",
+		"minify",
+		"includeExternal",
+		"debug"
+	];
+	const strings = ["startFile"];
 
 	const defaults = {
 		shebang: childPackage.bin !== undefined,
-		sourcemap: "cheap-module-eval-source-map",
+		sourcemap: true,
 		runOnWatch: true,
 		minify: false,
 		includeExternal: false,
@@ -26,6 +33,8 @@ export async function getOptions(rawArgs = []) {
 		},
 		buildThreads: 3,
 		static: {},
+		globals: {},
+		targets: { node: true },
 		debug: false
 	};
 
@@ -61,8 +70,23 @@ export async function getOptions(rawArgs = []) {
 			printWarn(`Could not parse targets argument.`);
 		}
 	}
-	if (options.targets === undefined) {
-		options.targets = { node: true };
+
+	// Static
+	if (args.static !== undefined) {
+		try {
+			options.static = JSON.parse(args.static);
+		} catch (error) {
+			printWarn(`Could not parse static argument.`);
+		}
+	}
+
+	// Globals
+	if (args.globals !== undefined) {
+		try {
+			options.globals = JSON.parse(args.globals);
+		} catch (error) {
+			printWarn(`Could not parse globals argument.`);
+		}
 	}
 
 	// Build threads
@@ -113,6 +137,28 @@ export async function getOptions(rawArgs = []) {
 			printWarn(`Unknown language '${language}'`);
 		}
 	});
+
+	if (args.bundles !== undefined) {
+		if (!Array.isArray(args.bundles)) {
+			args.bundles = [args.bundles];
+		}
+
+		options.bundles = args.bundles
+			.map(bundle => {
+				try {
+					return JSON.parse(bundle);
+				} catch (error) {
+					printWarn(`Could not parse bundle.`);
+					return false;
+				}
+			})
+			.filter(Boolean);
+
+		// If no bundles were found, reset
+		if (options.bundles.length === 0) {
+			options.bundles = undefined;
+		}
+	}
 
 	// Bundles
 	if (options.bundles === undefined) {

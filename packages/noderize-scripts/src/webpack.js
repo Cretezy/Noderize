@@ -98,10 +98,13 @@ export function getCompiler(options) {
 			options.shebang &&
 				new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
 			options.globals && new webpack.ProvidePlugin(options.globals),
-			options.minify && new webpackUglify()
+			options.minify && new webpackUglify(),
+			options.sourcemap &&
+				new webpack.SourceMapDevToolPlugin({
+					filename: "[name].map"
+				})
 		].filter(Boolean),
 
-		devtool: options.sourcemap,
 		target: "node",
 		node: false,
 

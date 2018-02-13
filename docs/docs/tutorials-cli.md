@@ -10,8 +10,8 @@ Our goal is to:
 
 * Have a default help command
 * Have 2 sub-commands:
-    * `greet`: Asks for your name and says hello
-    * `fibonacci`: Generate numbers in the fibonacci series
+  * `greet`: Asks for your name and says hello
+  * `fibonacci`: Generate numbers in the fibonacci series
 
 We will be using 3 libraries:
 
@@ -128,7 +128,7 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 
 export default async name => {
-    // Code here
+	// Code here
 };
 ```
 
@@ -146,7 +146,7 @@ if (name === undefined) {
 Next, we'll greet the user with color:
 
 ```js
-console.log(`Hello ${chalk.blueBright(name)}!`)
+console.log(`Hello ${chalk.blueBright(name)}!`);
 ```
 
 ## Fibonacci
@@ -187,8 +187,8 @@ Next, we'll convert our string value to a number, and error if it is not valid:
 n = parseInt(n);
 
 if (isNaN(n) || n < 1) {
-    console.log(chalk.yellowBright("Value of n is not a positive integer."));
-    process.exit(1);
+	console.log(chalk.yellowBright("Value of n is not a positive integer."));
+	process.exit(1);
 }
 ```
 
@@ -208,7 +208,7 @@ To finish off this sub-command, we'll calculate the value and display it to the 
 ```js
 const value = fibonacci(n);
 console.log(
-    `Fibonacci for n=${chalk.blueBright(n)} = ${chalk.blueBright(value)}!`
+	`Fibonacci for n=${chalk.blueBright(n)} = ${chalk.blueBright(value)}!`
 );
 ```
 

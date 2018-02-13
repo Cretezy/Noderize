@@ -1,7 +1,7 @@
 ---
 id: create
 title: Create Noderize App
-sidebar_label: Create App
+sidebar_label: Create
 ---
 
 In the [introduction](introduction.md), we saw how to create a Noderize app using the `create-noderize` package.
