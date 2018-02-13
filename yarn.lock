@@ -649,10 +649,6 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-app-root-path@2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.0.1.tgz#cd62dcf8e4fd5a417efc664d2e5b10653c651b46"
-
 append-transform@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/append-transform/-/append-transform-0.4.0.tgz#d76ebf8ca94d276e247a36bad44a4b74ab611991"
@@ -842,14 +838,6 @@ babel-helpers@^6.24.1:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-jest@20.0.3:
-  version "20.0.3"
-  resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-20.0.3.tgz#e4a03b13dc10389e140fc645d09ffc4ced301671"
-  dependencies:
-    babel-core "^6.0.0"
-    babel-plugin-istanbul "^4.0.0"
-    babel-preset-jest "^20.0.3"
-
 babel-jest@^22.2.2:
   version "22.2.2"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-22.2.2.tgz#eda38dca284e32cc5257f96a9b51351975de4e04"
@@ -871,17 +859,13 @@ babel-messages@^6.23.0:
   dependencies:
     babel-runtime "^6.22.0"
 
-babel-plugin-istanbul@^4.0.0, babel-plugin-istanbul@^4.1.5:
+babel-plugin-istanbul@^4.1.5:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/babel-plugin-istanbul/-/babel-plugin-istanbul-4.1.5.tgz#6760cdd977f411d3e175bb064f2bc327d99b2b6e"
   dependencies:
     find-up "^2.1.0"
     istanbul-lib-instrument "^1.7.5"
     test-exclude "^4.1.1"
-
-babel-plugin-jest-hoist@^20.0.3:
-  version "20.0.3"
-  resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-20.0.3.tgz#afedc853bd3f8dc3548ea671fbe69d03cc2c1767"
 
 babel-plugin-jest-hoist@^22.2.0:
   version "22.2.0"
@@ -890,12 +874,6 @@ babel-plugin-jest-hoist@^22.2.0:
 babel-plugin-syntax-object-rest-spread@^6.13.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
-
-babel-preset-jest@^20.0.3:
-  version "20.0.3"
-  resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-20.0.3.tgz#cbacaadecb5d689ca1e1de1360ebfc66862c178a"
-  dependencies:
-    babel-plugin-jest-hoist "^20.0.3"
 
 babel-preset-jest@^22.2.0:
   version "22.2.0"
@@ -3472,35 +3450,6 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-noderize-scripts@latest:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/noderize-scripts/-/noderize-scripts-0.2.6.tgz#33c880396a1dfef4c88f8b3ef0327a76d364e5ca"
-  dependencies:
-    "@babel/core" "^7.0.0-beta.39"
-    "@babel/plugin-proposal-decorators" "^7.0.0-beta.39"
-    "@babel/preset-env" "^7.0.0-beta.39"
-    "@babel/preset-flow" "^7.0.0-beta.39"
-    "@babel/preset-stage-2" "^7.0.0-beta.39"
-    babel-core "^7.0.0-bridge.0"
-    babel-jest "^22.2.2"
-    babel-loader "8.0.0-beta.0"
-    chalk "^2.3.0"
-    cosmiconfig "^4.0.0"
-    fork-ts-checker-webpack-plugin "^0.3.0"
-    happypack "^4.0.1"
-    jest "^22.2.2"
-    lodash.merge "^4.6.1"
-    minimist "^1.2.0"
-    prettier "^1.10.2"
-    source-map-support "^0.5.3"
-    supports-color "^5.1.0"
-    ts-loader "^3.5.0"
-    typescript "^2.7.1"
-    typescript-babel-jest "^1.0.5"
-    uglifyjs-webpack-plugin "^1.1.8"
-    webpack "^3.11.0"
-    webpack-node-externals "^1.6.0"
-
 nopt@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/nopt/-/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
@@ -4711,15 +4660,7 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript-babel-jest@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/typescript-babel-jest/-/typescript-babel-jest-1.0.5.tgz#5f5acffb7495cb050601f056e4ec07ac52c69445"
-  dependencies:
-    app-root-path "2.0.1"
-    babel-jest "20.0.3"
-    typescript "^2.4.1"
-
-typescript@^2.4.1, typescript@^2.7.1:
+typescript@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.7.1.tgz#bb3682c2c791ac90e7c6210b26478a8da085c359"
 
