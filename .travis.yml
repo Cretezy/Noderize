@@ -5,7 +5,6 @@ node_js:
 - 8
 cache: yarn
 
-install: yarn
 script:
 - (cd packages/noderize-scripts && yarn bootstrap && yarn test)
 - (cd packages/create-noderize && yarn build && yarn test)
@@ -16,7 +15,7 @@ jobs:
     - stage: deploy
       env: DEPLOY=website
       if: tag IS present OR branch = master
-      install: (cd docs/website && yarn)
+      install: skip
       script: skip
       before_deploy:
         # Set Git info
@@ -26,7 +25,7 @@ jobs:
       deploy:
         provider: script
         skip_cleanup: true
-        script: (cd docs/website && GIT_USER=Noderize-bot yarn publish-gh-pages)
+        script: (cd docs/website && yarn && GIT_USER=Noderize-bot yarn publish-gh-pages)
         on:
           all_branches: true
     # Deploy to npm on tags

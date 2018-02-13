@@ -77,3 +77,7 @@ Uses [Prettier options](configuration-prettier.md).
 Runs your [tests](features-testing.md).
 
 Uses [Jest options](configuration-jest.md).
+
+### `clean`
+
+Cleans your output directory (`dist`). Useful before publishing.
