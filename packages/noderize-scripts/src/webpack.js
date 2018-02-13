@@ -21,9 +21,8 @@ export function getCompiler(options) {
 			if (entry.startsWith("~")) {
 				// Get the path of the package
 
-				// This does make Webpack warn when compiling down noderize-scripts.
-				// It thinks it needs to include this, but we don't want it to.
-				return require.resolve(entry.slice(1));
+				// Using eval to get require to bypass webpack
+				return eval("require").resolve(entry.slice(1));
 			} else {
 				return resolveApp("src", entry);
 			}
