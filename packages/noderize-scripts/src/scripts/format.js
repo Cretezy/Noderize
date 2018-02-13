@@ -5,7 +5,7 @@ import { fork } from "child_process";
 import { printInfo, printWarn, printDone } from "../utils/print";
 
 export default async args => {
-	printInfo(`Formatting...`);
+	printInfo("Formatting...");
 
 	// Althought not required, parsing the args for consistency
 	const options = await getOptions(args);
@@ -25,10 +25,11 @@ export default async args => {
 	});
 
 	child.on("exit", code => {
+		const message = "Done formatting!";
 		if (code === 0) {
-			printDone("Done!");
+			printDone(message);
 		} else {
-			printWarn("Done!");
+			printWarn(message);
 		}
 	});
 };

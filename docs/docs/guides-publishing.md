@@ -18,26 +18,26 @@ npm run build --env production
 npm publish
 ```
 
-If you want to preview what your package will look like instead, `build` then run `yarn pack` or `npm pack`. This will create a `.tgz` file which is identical to what is published.
+When publishing to npm, you want to:
 
-## Automatically build
+* `clean`: Clean the output directory of any leftover files that you don't wish to publish.
+* `build`: Build your app/library. Prefer using the production [`env`](configuration-noderize.md#env) for cleaner publishing code.
+* `publish`: Use npm or Yarn to publish to the registry.
 
-To automate building before publishing, you may want to add `scripts.prepublishOnly` to your `package.json` like so:
+If you want to preview what your package will look like instead, use the `pack` command (`yarn pack` or `npm pack`). This will create a `.tgz` file which is identical to what is published.
+
+## Automatic Cleaning & Building
+
+To automate cleaning and building before publishing, you want to add the `prepack` script to your `package.json` like so:
 
 ```json
 "scripts": {
     "...": "...",
-    "prepublishOnly": "noderize-scripts build --env production"
+    "prepack": "noderize-scripts clean && noderize-scripts build --env production"
 }
 ```
 
-When using `yarn publish` or `npm publish`, it will first run build your package, then publish.
-
-You may also want to run for tests before as well:
-
-```json
-"prepublishOnly": "noderize-scripts test --ci && noderize-scripts build --env production"
-```
+When using `yarn publish` or `npm publish`, it will first clean, then build, then publish.
 
 ## Fat bundle
 
@@ -45,4 +45,4 @@ To generate a "fat bundle" with all your code and dependencies included, set [`i
 
 This will add all the code in your output bundle, resulting in a large size, but making it portable.
 
-This only recommended when deploying, not when publishing to npm.
+This is not recommended, should never be used when publishing to npm.

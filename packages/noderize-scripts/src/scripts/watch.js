@@ -9,7 +9,7 @@ import pathIsInside from "path-is-inside";
 import fs from "fs-extra";
 
 export default async args => {
-	printInfo(`Watching...`);
+	printInfo("Watching...");
 
 	const options = await getOptions(args);
 	const compiler = getCompiler(options);
@@ -22,7 +22,7 @@ export default async args => {
 		},
 		(err, stats) => {
 			console.log();
-			printInfo(`Building...`);
+			printInfo("Building...");
 			console.log();
 			printStats(stats, options);
 			console.log();
@@ -63,20 +63,16 @@ export default async args => {
 					file = files[path];
 				} else {
 					// File is in subdirectory that is being watched
-					const root = Object.keys(files).find(fullFilePath => {
-						if (pathIsInside(path, fullFilePath)) {
-							console.log("found inside", path, fullFilePath);
-							return true;
-						}
-					});
-
-					if (root) {
-						file = files[root];
-					}
+					file =
+						files[
+							Object.keys(files).find(fullFilePath =>
+								pathIsInside(path, fullFilePath)
+							)
+						];
 				}
 
 				if (file) {
-					copyFile(file.source, file.destination);
+					await copyFile(file.source, file.destination);
 				}
 			}
 		}, 100);
@@ -87,9 +83,9 @@ export default async args => {
 		disableGlobbing: true
 	});
 
-	staticWatcher.on("ready", () => {
+	staticWatcher.on("ready", async () => {
 		// Copy all files at the start
-		copyAll(options.static);
+		await copyAll(options.static);
 	});
 
 	staticWatcher.on("add", fileChange);

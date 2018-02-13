@@ -21,6 +21,6 @@ export function printError(text, error = null) {
 	error && console.error(error);
 }
 
-export function printLines(printMethod, lines) {
-	lines.split("\n").forEach(line => printMethod(`\t${line}`));
+export function printLines(printMethod, lines, prefix = "") {
+	lines.split("\n").forEach(line => printMethod(`${prefix}${line}`));
 }

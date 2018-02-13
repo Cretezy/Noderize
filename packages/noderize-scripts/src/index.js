@@ -4,13 +4,15 @@ import start from "./scripts/start";
 import test from "./scripts/test";
 import watch from "./scripts/watch";
 import format from "./scripts/format";
+import clean from "./scripts/clean";
 
 const commands = {
 	build,
 	test,
 	watch,
 	format,
-	start
+	start,
+	clean
 };
 
 const args = process.argv.slice(2);

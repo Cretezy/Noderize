@@ -4,7 +4,7 @@ import { getCompiler, printStats } from "../webpack";
 import { copyAll } from "../copy";
 
 export default async args => {
-	printInfo(`Building...`);
+	printInfo("Building...");
 	console.log();
 
 	const options = await getOptions(args);
@@ -31,9 +31,8 @@ export default async args => {
 			console.log();
 		}
 
-		printDone("Done!");
+		printDone("Done building!");
 	} catch (error) {
 		printError("Error building.", error);
-		return;
 	}
 };

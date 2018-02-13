@@ -37,7 +37,7 @@ export function getCompiler(options) {
 		output: {
 			path: resolveApp("dist"),
 			filename: "[name]",
-			// library: options.name,
+			library: options.name,
 			libraryTarget: "umd"
 		},
 

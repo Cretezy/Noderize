@@ -15,11 +15,12 @@
 	"scripts": {
 		"noderize-scripts": "node ../noderize-scripts/dist/index.js",
 		"watch": "npm run noderize-scripts -- watch",
-		"test": "npm run noderize-scripts -- test",
-		"format": "npm run noderize-scripts -- format",
 		"build": "npm run noderize-scripts -- build",
 		"start": "npm run noderize-scripts -- start",
-		"prepublishOnly": "npm run build --env production"
+		"format": "npm run noderize-scripts -- format",
+		"test": "npm run noderize-scripts -- test",
+		"clean": "npm run noderize-scripts -- clean",
+		"prepack": "npm run clean && npm run build --env production"
 	},
 	"dependencies": {
 		"chalk": "^2.3.0",

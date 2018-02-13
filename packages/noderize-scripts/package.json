@@ -13,12 +13,15 @@
 	"bin": "dist/index.js",
 	"files": ["src", "dist"],
 	"scripts": {
-		"bin": "node dist/index.js",
-		"watch": "npm run bin -- watch",
-		"test": "npm run bin -- test",
-		"format": "npm run bin -- format",
-		"build": "noderize-scripts build && npm run bin -- build",
-		"prepublishOnly": "npm run build --env production"
+		"self": "node dist/index.js",
+		"bootstrap": "noderize-scripts build && npm run self -- build",
+		"watch": "npm run self -- watch",
+		"build": "npm run self -- build",
+		"test": "npm run self -- test",
+		"format": "npm run self -- format",
+		"clean": "npm run self -- clean",
+		"prepack":
+			"(npm run clean || rm -rf dist); noderize-scripts build --env production && npm run build --env production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.0.0-beta.39",
@@ -58,7 +61,7 @@
 				"output": "index.js"
 			},
 			{
-				"entry": "jest/transformer.js",
+				"entry": "jestTransformer.js",
 				"output": "jestTransformer.js"
 			}
 		],

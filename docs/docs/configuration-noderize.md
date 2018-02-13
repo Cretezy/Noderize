@@ -166,6 +166,12 @@ Languages available:
 * `javascript`
 * `typescript`
 
+### `name`
+
+[string] Default: `name` field in `package.json`
+
+Name of exported library (for CommonJS1 (old) and IIFE).
+
 ## Run Options
 
 ### `runOnWatch`

@@ -4,7 +4,7 @@ import path from "path";
 import merge from "lodash.merge";
 import parseArgs from "minimist";
 import cosmiconfig from "cosmiconfig";
-import { printError, printInfo, printLines, printWarn } from "./utils/print";
+import { printDebug, printError, printLines, printWarn } from "./utils/print";
 
 export async function getOptions(rawArgs = []) {
 	const childPackage = await fs.readJsonSync(resolveApp("package.json"));
@@ -17,7 +17,7 @@ export async function getOptions(rawArgs = []) {
 		"includeExternal",
 		"debug"
 	];
-	const strings = ["startFile"];
+	const strings = ["startFile", "name"];
 
 	const defaults = {
 		shebang: childPackage.bin !== undefined,
@@ -35,7 +35,8 @@ export async function getOptions(rawArgs = []) {
 		static: {},
 		globals: {},
 		targets: { node: true },
-		debug: false
+		debug: false,
+		name: childPackage.name
 	};
 
 	// Parse args
@@ -218,7 +219,7 @@ export async function getOptions(rawArgs = []) {
 	}
 
 	if (options.debug) {
-		printLines(printInfo, JSON.stringify(options, null, "\t"));
+		printLines(printDebug, JSON.stringify(options, null, "\t"), "\t");
 	}
 
 	return { ...options, args: args };

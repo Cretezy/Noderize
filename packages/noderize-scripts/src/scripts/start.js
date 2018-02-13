@@ -7,7 +7,7 @@ export default async args => {
 };
 
 export function start(options) {
-	printInfo(`Starting...`);
+	printInfo("Starting...");
 	console.log(); // Padding
 
 	const child = fork(options.startFile, options.args._, {
@@ -18,7 +18,7 @@ export function start(options) {
 		if (code !== null) {
 			console.log(); // Padding
 			if (code === 0) {
-				printInfo(`Exited gracefully.`);
+				printInfo("Exited gracefully!");
 			} else {
 				printWarn(
 					`Exited with code ${code} ${signal ? `and signal ${signal}` : ""}`

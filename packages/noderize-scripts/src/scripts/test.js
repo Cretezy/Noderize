@@ -8,7 +8,7 @@ import merge from "lodash.merge";
 import { printError, printInfo } from "../utils/print";
 
 export default async args => {
-	printInfo(`Testing...`);
+	printInfo("Testing...");
 
 	const options = await getOptions(args);
 	const jestArgs = options.args._;

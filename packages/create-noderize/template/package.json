@@ -6,6 +6,7 @@
 		"build": "noderize-scripts build",
 		"start": "noderize-scripts start",
 		"format": "noderize-scripts format",
-		"test": "noderize-scripts test"
+		"test": "noderize-scripts test",
+		"clean": "noderize-scripts clean"
 	}
 }
