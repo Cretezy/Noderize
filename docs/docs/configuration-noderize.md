@@ -172,6 +172,40 @@ Languages available:
 
 Name of exported library (for CommonJS1 (old) and IIFE).
 
+### `babel`
+
+[object] Default: *none*
+
+Babel plugins and presets.
+
+For instance, to add the React preset for creating a library:
+
+```json
+"babel": {
+    "presets": ["react"]
+}
+```
+
+When passing arguments, you must format them in JSON. For example: `yarn build --babelPresets '"react"'`
+
+> Note: These options can't be passed to the `test` command by arguments.
+
+#### `presets`
+
+[array] Default: *none*
+
+Array of additional presets.
+
+Use `--babelPresets` argument
+
+#### `plugins`
+
+[array] Default: *none*
+
+Array of additional plugins.
+
+Use `--babelPlugins` argument.
+
 ## Run Options
 
 ### `runOnWatch`

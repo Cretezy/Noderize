@@ -11,7 +11,7 @@ import fs from "fs-extra";
 export default async args => {
 	printInfo("Watching...");
 
-	const options = await getOptions(args);
+	const options =  getOptions(args);
 	const compiler = getCompiler(options);
 
 	let child;

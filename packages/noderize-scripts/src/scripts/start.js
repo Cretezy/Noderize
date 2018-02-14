@@ -3,7 +3,7 @@ import { getOptions } from "../options";
 import { printInfo, printWarn } from "../utils/print";
 
 export default async args => {
-	start(await getOptions(args));
+	start( getOptions(args));
 };
 
 export function start(options) {

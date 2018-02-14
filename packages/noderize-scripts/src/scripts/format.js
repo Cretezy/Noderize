@@ -8,7 +8,7 @@ export default async args => {
 	printInfo("Formatting...");
 
 	// Althought not required, parsing the args for consistency
-	const options = await getOptions(args);
+	const options =  getOptions(args);
 
 	const files = ["src/**/*.ts", "src/**/*.js", "src/**/*.json", "package.json"];
 

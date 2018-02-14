@@ -68,7 +68,7 @@ export function getCompiler(options) {
 					loaders: [
 						{
 							loader: "babel-loader",
-							options: createBabelConfig({ targets: options.targets })
+							options: createBabelConfig(options)
 						}
 					],
 					verbose: options.debug

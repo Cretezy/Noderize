@@ -3,10 +3,13 @@ import { createTransformer } from "babel-jest";
 import createBabelConfig from "./createBabelConfig";
 import typescript from "typescript";
 import tsConfig from "./tsconfig.json";
+import { getOptions } from "./options";
+
+const options = getOptions();
 
 export function process(src, path, ...rest) {
-	const isTypeScript = path.endsWith(".ts") || path.endsWith(".tsx");
-	const isJavaScript = path.endsWith(".js") || path.endsWith(".jsx");
+	const isTypeScript = path.endsWith(".ts");
+	const isJavaScript = path.endsWith(".js");
 
 	if (isTypeScript) {
 		src = typescript.transpile(src, tsConfig.compilerOptions, path, []);
@@ -16,7 +19,7 @@ export function process(src, path, ...rest) {
 		const fileName = isJavaScript ? path : "file.js";
 
 		src = createTransformer({
-			...createBabelConfig()
+			...createBabelConfig(options)
 		}).process(src, fileName, ...rest);
 	}
 

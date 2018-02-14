@@ -1,4 +1,7 @@
-export default ({ targets = { node: true } } = {}) => ({
+export default ({
+	targets = { node: true },
+	babel: { presets, plugins }
+} = {}) => ({
 	presets: [
 		[
 			"@babel/preset-env",
@@ -7,7 +10,8 @@ export default ({ targets = { node: true } } = {}) => ({
 			}
 		],
 		"@babel/preset-stage-2",
-		"@babel/preset-flow"
+		"@babel/preset-flow",
+		...presets
 	],
-	plugins: ["@babel/plugin-proposal-decorators"]
+	plugins: ["@babel/plugin-proposal-decorators", ...plugins]
 });

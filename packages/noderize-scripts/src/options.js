@@ -6,8 +6,8 @@ import parseArgs from "minimist";
 import cosmiconfig from "cosmiconfig";
 import { printDebug, printError, printLines, printWarn } from "./utils/print";
 
-export async function getOptions(rawArgs = []) {
-	const childPackage = await fs.readJsonSync(resolveApp("package.json"));
+export function getOptions(rawArgs = []) {
+	const childPackage = fs.readJsonSync(resolveApp("package.json"));
 
 	const bools = [
 		"shebang",
@@ -36,7 +36,8 @@ export async function getOptions(rawArgs = []) {
 		globals: {},
 		targets: { node: true },
 		debug: false,
-		name: childPackage.name
+		name: childPackage.name,
+		babel: { plugins: [], presets: [] }
 	};
 
 	// Parse args
@@ -51,7 +52,7 @@ export async function getOptions(rawArgs = []) {
 	let configOptions = {};
 	try {
 		// Load from "noderize" key in package.json, .noderizerc, or noderize.config.js
-		const results = await cosmiconfig("noderize").load();
+		const results = cosmiconfig("noderize", { sync: true }).load();
 
 		if (results) {
 			configOptions = results.config;
@@ -102,6 +103,45 @@ export async function getOptions(rawArgs = []) {
 				options.buildThreads = buildThreads;
 			}
 		}
+	}
+
+	if (args.babelPlugins !== undefined) {
+		if (!Array.isArray(args.babelPlugins)) {
+			args.babelPlugins = [args.babelPlugins];
+		}
+		options.babel.plugins = args.babelPlugins.map(plugin => {
+			try {
+				return JSON.parse(plugin);
+			} catch (error) {
+				printWarn(`Could not parse babel plugin.`);
+			}
+		});
+	}
+
+	if (args.babelPlugins !== undefined) {
+		if (!Array.isArray(args.babelPlugins)) {
+			args.babelPlugins = [args.babelPlugins];
+		}
+		options.babel.plugins = args.babelPlugins.map(plugin => {
+			try {
+				return JSON.parse(plugin);
+			} catch (error) {
+				printWarn(`Could not parse babel plugin.`);
+			}
+		});
+	}
+
+	if (args.babelPresets !== undefined) {
+		if (!Array.isArray(args.babelPresets)) {
+			args.babelPresets = [args.babelPresets];
+		}
+		options.babel.presets = args.babelPresets.map(preset => {
+			try {
+				return JSON.parse(preset);
+			} catch (error) {
+				printWarn(`Could not parse babel preset.`);
+			}
+		});
 	}
 
 	bools.forEach(bool => {
@@ -181,22 +221,16 @@ export async function getOptions(rawArgs = []) {
 
 	// Check if bundle entries exist
 	// Iterate bundles
-	await Promise.all(
-		options.bundles.map(async bundle => {
-			// Iterate each entry of bundle (excluding externals starting with ~)
-			await Promise.all(
-				bundle.entry
-					.filter(entry => !entry.startsWith("~"))
-					.map(async entry => {
-						// Check & error
-						const exists = await fs.exists(resolveApp("src", entry));
-						if (!exists) {
-							printError(`Could not find bundle entry at src/${entry}`);
-						}
-					})
-			);
-		})
-	);
+	options.bundles.map(bundle => {
+		// Iterate each entry of bundle (excluding externals starting with ~)
+		bundle.entry.filter(entry => !entry.startsWith("~")).map(entry => {
+			// Check & error
+			const exists = fs.existsSync(resolveApp("src", entry));
+			if (!exists) {
+				printError(`Could not find bundle entry at src/${entry}`);
+			}
+		});
+	});
 
 	if (options.startFile === undefined) {
 		if (childPackage.main !== undefined) {
@@ -218,8 +252,12 @@ export async function getOptions(rawArgs = []) {
 		}
 	}
 
-	if (options.debug) {
+	if (options.debug || args.showConfig) {
 		printLines(printDebug, JSON.stringify(options, null, "\t"), "\t");
+	}
+
+	if (args.showConfig) {
+		process.exit(0);
 	}
 
 	return { ...options, args: args };

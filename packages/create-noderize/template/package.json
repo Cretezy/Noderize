@@ -1,6 +1,7 @@
 {
 	"version": "0.1.0",
 	"private": true,
+	"main": "dist/index.js",
 	"scripts": {
 		"watch": "noderize-scripts watch",
 		"build": "noderize-scripts build",

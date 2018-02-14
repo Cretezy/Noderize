@@ -26,6 +26,23 @@ When publishing to npm, you want to:
 
 If you want to preview what your package will look like instead, use the `pack` command (`yarn pack` or `npm pack`). This will create a `.tgz` file which is identical to what is published.
 
+## Files
+
+By default, npm/Yarn will include these [files](https://docs.npmjs.com/files/package.json#files):
+
+* package.json
+* README
+* CHANGES / CHANGELOG / HISTORY
+* LICENSE / LICENCE
+* NOTICE
+* The file in the "main" field
+
+When using multiple bundles and/or static files, we must indicate to publish the whole `dist` folder (and optionally include `src` for human-readable code). Add to your `package.json`:
+
+```json
+"files": ["src", "dist"],
+```
+
 ## Automatic Cleaning & Building
 
 To automate cleaning and building before publishing, you want to add the `prepack` script to your `package.json` like so:
