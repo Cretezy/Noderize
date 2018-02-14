@@ -11,7 +11,7 @@ script:
 stages:
 - test
 - name: deploy
-  if: repo = Cretezy/scrypt-async-modern
+  if: repo = Cretezy/Noderize
 
 jobs:
   include:
