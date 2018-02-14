@@ -8,7 +8,7 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"license": "MIT",
 	"bin": "dist/index.js",
 	"files": ["src", "dist"],
@@ -24,13 +24,13 @@
 			"rm -rf dist && noderize-scripts build --env production && npm run build --env production"
 	},
 	"dependencies": {
-		"@babel/core": "^7.0.0-beta.40",
-		"@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
-		"@babel/preset-env": "^7.0.0-beta.40",
-		"@babel/preset-flow": "^7.0.0-beta.40",
-		"@babel/preset-stage-2": "^7.0.0-beta.40",
-		"babel-core": "^7.0.0-bridge.0",
-		"babel-jest": "^22.2.2",
+		"@babel/core": "7.0.0-beta.40",
+		"@babel/plugin-proposal-decorators": "7.0.0-beta.40",
+		"@babel/preset-env": "7.0.0-beta.40",
+		"@babel/preset-flow": "7.0.0-beta.40",
+		"@babel/preset-stage-2": "7.0.0-beta.40",
+		"babel-core": "7.0.0-bridge.0",
+		"babel-jest": "22.2.2",
 		"babel-loader": "8.0.0-beta.0",
 		"chalk": "^2.3.1",
 		"chokidar": "^2.0.1",
@@ -52,7 +52,7 @@
 		"webpack-node-externals": "^1.6.0"
 	},
 	"devDependencies": {
-		"noderize-scripts": "0.3.2"
+		"noderize-scripts": "0.3.3"
 	},
 	"noderize": {
 		"bundles": [

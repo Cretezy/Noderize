@@ -8,7 +8,7 @@
   dependencies:
     "@babel/highlight" "7.0.0-beta.40"
 
-"@babel/core@^7.0.0-beta.39", "@babel/core@^7.0.0-beta.40":
+"@babel/core@7.0.0-beta.40", "@babel/core@^7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.0.0-beta.40.tgz#455464dd81d499fd97d32b473f0331f74379a33f"
   dependencies:
@@ -188,7 +188,7 @@
     "@babel/helper-function-name" "7.0.0-beta.40"
     "@babel/plugin-syntax-class-properties" "7.0.0-beta.40"
 
-"@babel/plugin-proposal-decorators@^7.0.0-beta.39", "@babel/plugin-proposal-decorators@^7.0.0-beta.40":
+"@babel/plugin-proposal-decorators@7.0.0-beta.40", "@babel/plugin-proposal-decorators@^7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-decorators/-/plugin-proposal-decorators-7.0.0-beta.40.tgz#d2c033bfa55719ddea681c241c9609b346c7cd9c"
   dependencies:
@@ -442,7 +442,7 @@
     "@babel/helper-regex" "7.0.0-beta.40"
     regexpu-core "^4.1.3"
 
-"@babel/preset-env@^7.0.0-beta.39", "@babel/preset-env@^7.0.0-beta.40":
+"@babel/preset-env@7.0.0-beta.40", "@babel/preset-env@^7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.0.0-beta.40.tgz#713292f9e410f76b3f4301330756c89343c4b2e4"
   dependencies:
@@ -484,13 +484,13 @@
     invariant "^2.2.2"
     semver "^5.3.0"
 
-"@babel/preset-flow@^7.0.0-beta.39", "@babel/preset-flow@^7.0.0-beta.40":
+"@babel/preset-flow@7.0.0-beta.40", "@babel/preset-flow@^7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/preset-flow/-/preset-flow-7.0.0-beta.40.tgz#08784f5a847bf1a7fc7ea031977c5e43ef72753a"
   dependencies:
     "@babel/plugin-transform-flow-strip-types" "7.0.0-beta.40"
 
-"@babel/preset-stage-2@^7.0.0-beta.39", "@babel/preset-stage-2@^7.0.0-beta.40":
+"@babel/preset-stage-2@7.0.0-beta.40", "@babel/preset-stage-2@^7.0.0-beta.40":
   version "7.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@babel/preset-stage-2/-/preset-stage-2-7.0.0-beta.40.tgz#c88db5e0e7ebfde8460c9cd3bed9acd841830e72"
   dependencies:
@@ -792,6 +792,10 @@ babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
+babel-core@7.0.0-bridge.0, babel-core@^7.0.0-bridge.0:
+  version "7.0.0-bridge.0"
+  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
+
 babel-core@^6.0.0, babel-core@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
@@ -816,10 +820,6 @@ babel-core@^6.0.0, babel-core@^6.26.0:
     slash "^1.0.0"
     source-map "^0.5.6"
 
-babel-core@^7.0.0-bridge.0:
-  version "7.0.0-bridge.0"
-  resolved "https://registry.yarnpkg.com/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
-
 babel-generator@^6.18.0, babel-generator@^6.26.0:
   version "6.26.1"
   resolved "https://registry.yarnpkg.com/babel-generator/-/babel-generator-6.26.1.tgz#1844408d3b8f0d35a404ea7ac180f087a601bd90"
@@ -840,7 +840,7 @@ babel-helpers@^6.24.1:
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-jest@^22.2.2:
+babel-jest@22.2.2, babel-jest@^22.2.2:
   version "22.2.2"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-22.2.2.tgz#eda38dca284e32cc5257f96a9b51351975de4e04"
   dependencies:
@@ -2941,7 +2941,7 @@ jest-worker@^22.2.2:
   dependencies:
     merge-stream "^1.0.1"
 
-jest@^22.2.2, jest@^22.3.0:
+jest@^22.3.0:
   version "22.3.0"
   resolved "https://registry.yarnpkg.com/jest/-/jest-22.3.0.tgz#07434314d2e8662ea936552d950680b7e6551b0d"
   dependencies:
@@ -3452,31 +3452,31 @@ node-pre-gyp@^0.6.39:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-noderize-scripts@0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/noderize-scripts/-/noderize-scripts-0.3.2.tgz#219652c2bc57ad6cd755e435c9358504ae233a69"
+noderize-scripts@0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/noderize-scripts/-/noderize-scripts-0.3.3.tgz#bade770126134315a0717dcbb104b15169902077"
   dependencies:
-    "@babel/core" "^7.0.0-beta.39"
-    "@babel/plugin-proposal-decorators" "^7.0.0-beta.39"
-    "@babel/preset-env" "^7.0.0-beta.39"
-    "@babel/preset-flow" "^7.0.0-beta.39"
-    "@babel/preset-stage-2" "^7.0.0-beta.39"
+    "@babel/core" "^7.0.0-beta.40"
+    "@babel/plugin-proposal-decorators" "^7.0.0-beta.40"
+    "@babel/preset-env" "^7.0.0-beta.40"
+    "@babel/preset-flow" "^7.0.0-beta.40"
+    "@babel/preset-stage-2" "^7.0.0-beta.40"
     babel-core "^7.0.0-bridge.0"
     babel-jest "^22.2.2"
     babel-loader "8.0.0-beta.0"
-    chalk "^2.3.0"
+    chalk "^2.3.1"
     chokidar "^2.0.1"
     cosmiconfig "^4.0.0"
     fork-ts-checker-webpack-plugin "^0.3.0"
     fs-extra "^5.0.0"
     happypack "^4.0.1"
-    jest "^22.2.2"
+    jest "^22.3.0"
     lodash.merge "^4.6.1"
     minimist "^1.2.0"
     path-is-inside "^1.0.2"
     prettier "^1.10.2"
     source-map-support "^0.5.3"
-    supports-color "^5.1.0"
+    supports-color "^5.2.0"
     ts-loader "^3.5.0"
     typescript "^2.7.1"
     uglifyjs-webpack-plugin "^1.1.8"
@@ -4544,7 +4544,7 @@ supports-color@^4.2.1:
   dependencies:
     has-flag "^2.0.0"
 
-supports-color@^5.1.0, supports-color@^5.2.0:
+supports-color@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.2.0.tgz#b0d5333b1184dd3666cbe5aa0b45c5ac7ac17a4a"
   dependencies:
