@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.3.8",
+	"version": "0.3.7",
 	"license": "MIT",
 	"bin": "dist/index.js",
 	"files": [
@@ -55,7 +55,7 @@
 		"webpack-node-externals": "^1.6.0"
 	},
 	"devDependencies": {
-		"noderize-scripts": "0.3.7"
+		"noderize-scripts": "0.3.6"
 	},
 	"noderize": {
 		"bundles": [
