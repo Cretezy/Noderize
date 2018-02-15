@@ -10,7 +10,7 @@ import { printError, printInfo } from "../utils/print";
 export default async args => {
 	printInfo("Testing...");
 
-	const options =  getOptions(args);
+	const options = getOptions(args);
 	const jestArgs = options.args._;
 
 	let jestConfig = {};

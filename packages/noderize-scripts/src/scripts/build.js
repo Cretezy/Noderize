@@ -7,7 +7,7 @@ export default async args => {
 	printInfo("Building...");
 	console.log();
 
-	const options =  getOptions(args);
+	const options = getOptions(args);
 
 	const compiler = getCompiler(options);
 

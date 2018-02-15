@@ -21,8 +21,8 @@ export function getCompiler(options) {
 			if (entry.startsWith("~")) {
 				// Get the path of the package
 
-				// Using window to get require to bypass webpack
-				return window.require.resolve(entry.slice(1));
+				// Using eval to get require to bypass webpack
+				return eval("require").resolve(entry.slice(1));
 			} else {
 				return resolveApp("src", entry);
 			}
@@ -67,7 +67,7 @@ export function getCompiler(options) {
 					threadPool: happyThreadPool,
 					loaders: [
 						{
-							loader: "babel-loader",
+							loader: eval("require").resolve("babel-loader"),
 							options: createBabelConfig(options)
 						}
 					],
@@ -79,7 +79,7 @@ export function getCompiler(options) {
 					threadPool: happyThreadPool,
 					loaders: [
 						{
-							loader: "ts-loader",
+							loader: eval("require").resolve("ts-loader"),
 							options: {
 								context: appDirectory,
 								configFile: tsconfig,
@@ -104,7 +104,7 @@ export function getCompiler(options) {
 				})
 		].filter(Boolean),
 
-		target: "node",
+		target: options.target,
 		node: false,
 
 		externals: options.includeExternal

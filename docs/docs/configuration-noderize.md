@@ -121,7 +121,16 @@ Adds a shebang to top of built file. Useful for building CLI apps.
 
 [object] Default: `{ node: true }`
 
-Specific a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
+Specify a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
+
+### `target`
+
+[string] Default: `node`
+
+Specify a target. Options are:
+
+* `node`
+* `web`
 
 ### `globals`
 

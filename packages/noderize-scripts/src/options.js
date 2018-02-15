@@ -17,7 +17,7 @@ export function getOptions(rawArgs = []) {
 		"includeExternal",
 		"debug"
 	];
-	const strings = ["startFile", "name"];
+	const strings = ["startFile", "name", "target"];
 
 	const defaults = {
 		shebang: childPackage.bin !== undefined,
@@ -37,7 +37,8 @@ export function getOptions(rawArgs = []) {
 		targets: { node: true },
 		debug: false,
 		name: childPackage.name,
-		babel: { plugins: [], presets: [] }
+		babel: { plugins: [], presets: [] },
+		target: "node"
 	};
 
 	// Parse args
