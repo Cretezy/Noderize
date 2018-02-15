@@ -17,6 +17,7 @@ export function getOptions(rawArgs = []) {
 		"includeExternal",
 		"debug"
 	];
+
 	const strings = ["startFile", "name", "target"];
 
 	const defaults = {
@@ -212,18 +213,23 @@ export function getOptions(rawArgs = []) {
 	}
 
 	options.bundles = options.bundles.map(bundle => {
-		if (!Array.isArray(bundle.entry)) {
-			return { ...bundle, entry: [bundle.entry] };
-		} else {
-			return bundle;
+		const output = merge({}, bundle);
+		if (!Array.isArray(output.entry)) {
+			output.entry = [output.entry];
 		}
+		if (output.polyfill === undefined) {
+			output.polyfill = true;
+		}
+
+		return output;
 	});
+
 
 	// Check if bundle entries exist
 	// Iterate bundles
 	options.bundles.map(bundle => {
 		// Iterate each entry of bundle (excluding externals starting with ~)
-		bundle.entry.filter(entry => !entry.startsWith("~")).map(entry => {
+		bundle.entry.filter(entry => !entry.startsWith("~")).forEach(entry => {
 			// Check & error
 			const exists = fs.existsSync(resolveApp("src", entry));
 			if (!exists) {

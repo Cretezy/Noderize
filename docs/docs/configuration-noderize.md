@@ -68,7 +68,7 @@ See more details in [scripts](scripts.md).
 
 ### `bundles`
 
-[array] Default: `[ { "entry": "index.js": "output": "index.js" } ]`
+[array] Default: `[ { "entry": "index.js", "output": "index.js", "regenerator": true } ]`
 
 Array of bundles to be built. Entry files will be taken from `src`, and output will be placed in `dist`.
 
@@ -88,6 +88,8 @@ Example of 2 bundles:
 ```
 
 The `entry` field may be an array of multiple files. To use an external entry file, prefix it with `~`.
+
+The `polyfill` field may be omitted, and will default to `true`. This will include the Babel polyfill.
 
 If not set and only using the `typescript` [`language`](#languages), the default bundle entry is set to `index.ts`.
 

@@ -2,16 +2,18 @@
 	"name": "noderize-scripts",
 	"description": "Scripts to use with Noderize.",
 	"author": "Charles Crete <charles@cretezy.com>",
-	"homepage":
-		"https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
+	"homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.3.7",
+	"version": "0.3.8",
 	"license": "MIT",
 	"bin": "dist/index.js",
-	"files": ["src", "dist"],
+	"files": [
+		"src",
+		"dist"
+	],
 	"scripts": {
 		"self": "node dist/index.js",
 		"bootstrap": "noderize-scripts build && npm run self -- build",
@@ -20,12 +22,12 @@
 		"test": "npm run self -- test",
 		"format": "npm run self -- format",
 		"clean": "npm run self -- clean",
-		"prepack":
-			"rm -rf dist && noderize-scripts build --env production && npm run build --env production"
+		"prepack": "rm -rf dist && noderize-scripts build --env production && npm run build --env production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.0.0-beta.40",
 		"@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
+		"@babel/polyfill": "^7.0.0-beta.40",
 		"@babel/preset-env": "^7.0.0-beta.40",
 		"@babel/preset-flow": "^7.0.0-beta.40",
 		"@babel/preset-stage-2": "^7.0.0-beta.40",
@@ -49,15 +51,18 @@
 		"typescript": "^2.7.1",
 		"uglifyjs-webpack-plugin": "^1.1.8",
 		"webpack": "^3.11.0",
+		"webpack-bypass-require": "^0.1.0",
 		"webpack-node-externals": "^1.6.0"
 	},
 	"devDependencies": {
-		"noderize-scripts": "0.3.6"
+		"noderize-scripts": "0.3.7"
 	},
 	"noderize": {
 		"bundles": [
 			{
-				"entry": ["index.js"],
+				"entry": [
+					"index.js"
+				],
 				"output": "index.js"
 			},
 			{

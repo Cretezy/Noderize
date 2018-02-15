@@ -7,6 +7,7 @@ import webpackUglify from "uglifyjs-webpack-plugin";
 import webpackNodeExternals from "webpack-node-externals";
 import webpackForkTsChecker from "fork-ts-checker-webpack-plugin";
 import webpackHappyPack from "happypack";
+import webpackRequire from "webpack-bypass-require";
 
 export function getCompiler(options) {
 	const tsconfig = path.resolve(__dirname, "tsconfig.json");
@@ -17,18 +18,16 @@ export function getCompiler(options) {
 	const { javascript, typescript } = options.languages;
 
 	const bundles = options.bundles.reduce((bundles, bundle) => {
-		const entries = bundle.entry.map(entry => {
-			if (entry.startsWith("~")) {
-				// Get the path of the package
+		const entries = bundle.entry.map(entry => entry.startsWith("~") ? webpackRequire.resolve(entry.slice(1)) : resolveApp("src", entry));
 
-				// Using eval to get require to bypass webpack
-				return eval("require").resolve(entry.slice(1));
-			} else {
-				return resolveApp("src", entry);
-			}
-		});
+		if (bundle.polyfill) {
+			entries.unshift(webpackRequire.resolve("@babel/polyfill"))
+		}
+
 		return { ...bundles, [bundle.output]: entries };
 	}, {});
+
+	const exclude = [/node_modules/, /\.test\./, /\.spec\.]/, /__tests__/];
 
 	// Create webpack config
 	const config = {
@@ -45,12 +44,12 @@ export function getCompiler(options) {
 			rules: [
 				javascript && {
 					test: /\.js$/,
-					exclude: /node_modules/,
+					exclude,
 					use: "happypack/loader?id=javascript"
 				},
 				typescript && {
 					test: /\.ts$/,
-					exclude: /node_modules/,
+					exclude,
 					use: "happypack/loader?id=typescript"
 				}
 			].filter(Boolean)
@@ -62,46 +61,46 @@ export function getCompiler(options) {
 
 		plugins: [
 			javascript &&
-				new webpackHappyPack({
-					id: "javascript",
-					threadPool: happyThreadPool,
-					loaders: [
-						{
-							loader: eval("require").resolve("babel-loader"),
-							options: createBabelConfig(options)
-						}
-					],
-					verbose: options.debug
-				}),
+			new webpackHappyPack({
+				id: "javascript",
+				threadPool: happyThreadPool,
+				loaders: [
+					{
+						loader: webpackRequire.resolve("babel-loader"),
+						options: createBabelConfig(options)
+					}
+				],
+				verbose: options.debug
+			}),
 			typescript &&
-				new webpackHappyPack({
-					id: "typescript",
-					threadPool: happyThreadPool,
-					loaders: [
-						{
-							loader: eval("require").resolve("ts-loader"),
-							options: {
-								context: appDirectory,
-								configFile: tsconfig,
-								happyPackMode: true
-							}
+			new webpackHappyPack({
+				id: "typescript",
+				threadPool: happyThreadPool,
+				loaders: [
+					{
+						loader: webpackRequire.resolve("ts-loader"),
+						options: {
+							context: appDirectory,
+							configFile: tsconfig,
+							happyPackMode: true
 						}
-					],
-					verbose: options.debug
-				}),
+					}
+				],
+				verbose: options.debug
+			}),
 			typescript &&
-				new webpackForkTsChecker({
-					checkSyntacticErrors: true,
-					tsconfig
-				}),
+			new webpackForkTsChecker({
+				checkSyntacticErrors: true,
+				tsconfig
+			}),
 			options.shebang &&
-				new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
+			new webpack.BannerPlugin({ banner: "#!/usr/bin/env node", raw: true }),
 			options.globals && new webpack.ProvidePlugin(options.globals),
 			options.minify && new webpackUglify(),
 			options.sourcemap &&
-				new webpack.SourceMapDevToolPlugin({
-					filename: "[name].map"
-				})
+			new webpack.SourceMapDevToolPlugin({
+				filename: "[name].map"
+			})
 		].filter(Boolean),
 
 		target: options.target,
