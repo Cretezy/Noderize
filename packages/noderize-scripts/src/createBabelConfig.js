@@ -1,5 +1,5 @@
 export default ({
-	targets = { node: true },
+	targets,
 	babel: { presets, plugins }
 } = {}) => ({
 	presets: [

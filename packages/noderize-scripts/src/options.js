@@ -27,14 +27,13 @@ export function getOptions(rawArgs = []) {
 		includeExternal: false,
 		env: {
 			production: {
-				targets: {},
 				sourcemap: false
 			}
 		},
 		buildThreads: 3,
 		static: {},
 		globals: {},
-		targets: { node: true },
+		targets: {},
 		debug: false,
 		name: childPackage.name,
 		babel: { plugins: [], presets: [] },

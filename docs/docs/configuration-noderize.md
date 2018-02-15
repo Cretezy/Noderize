@@ -119,11 +119,9 @@ Adds a shebang to top of built file. Useful for building CLI apps.
 
 ### `targets`
 
-[object] Default: `{ node: true }`
+[object] Default: `{}`
 
 Specify a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
-
-You should override this to `{}` when publishing (use the `production` [`env`](#env)).
 
 ### `target`
 
@@ -241,7 +239,6 @@ Provide environment-specific variables that can be used with the `--env` flag
 
 By default, the `production` environment does:
 
-* Sets `targets` to `{}`.
 * Set `sourcemap` to `false`.
 
 To add other options:
