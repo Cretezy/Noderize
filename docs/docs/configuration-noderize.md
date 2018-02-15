@@ -123,6 +123,8 @@ Adds a shebang to top of built file. Useful for building CLI apps.
 
 Specify a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
 
+You should override this to `{}` when publishing (use the `production` [`env`](#env)).
+
 ### `target`
 
 [string] Default: `node`
@@ -239,7 +241,7 @@ Provide environment-specific variables that can be used with the `--env` flag
 
 By default, the `production` environment does:
 
-* Sets `targets.node` to the oldest active Node LTS release (currently 6).
+* Sets `targets` to `{}`.
 * Set `sourcemap` to `false`.
 
 To add other options:

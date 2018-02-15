@@ -27,7 +27,7 @@ export function getOptions(rawArgs = []) {
 		includeExternal: false,
 		env: {
 			production: {
-				targets: { node: "6" },
+				targets: {},
 				sourcemap: false
 			}
 		},
