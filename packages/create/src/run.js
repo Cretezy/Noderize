@@ -83,9 +83,17 @@ export async function run(
 	try {
 		// Install latest
 		if (useYarn) {
-			execSync("yarn add -D noderize-scripts", { cwd: path, stdio: "inherit" });
+			execSync("yarn add -D @noderize/scripts", { cwd: path, stdio: "inherit" });
 		} else {
-			execSync("npm install -D noderize-scripts", {
+			execSync("npm install -D @noderize/scripts", {
+				cwd: path,
+				stdio: "inherit"
+			});
+		}
+		if (useYarn) {
+			execSync("yarn add @noderize/runtime", { cwd: path, stdio: "inherit" });
+		} else {
+			execSync("npm install @noderize/runtime", {
 				cwd: path,
 				stdio: "inherit"
 			});

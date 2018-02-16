@@ -1,30 +1,30 @@
 {
-	"name": "noderize-scripts",
+	"name": "@noderize/scripts",
 	"description": "Scripts to use with Noderize.",
 	"author": "Charles Crete <charles@cretezy.com>",
 	"homepage":
-		"https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
+		"https://github.com/Cretezy/Noderize/tree/master/packages/scripts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.3.8",
+	"version": "0.3.9",
 	"license": "MIT",
-	"bin": "dist/index.js",
+	"bin": {"noderize-scripts":"dist/index.js"},
 	"files": ["src", "dist"],
 	"scripts": {
-		"self": "node -r source-map-support/register dist/index.js",
-		"bootstrap": "noderize-scripts build && npm run self -- build",
-		"watch": "npm run self -- watch",
-		"build": "npm run self -- build",
-		"test": "npm run self -- test",
-		"format": "npm run self -- format",
-		"clean": "npm run self -- clean",
+		"scripts": "node -r source-map-support/register dist/index.js",
+		"bootstrap": "noderize-scripts build && npm run scripts -- build",
+		"watch": "npm run scripts -- watch",
+		"build": "npm run scripts -- build",
+		"test": "npm run scripts -- test",
+		"format": "npm run scripts -- format",
+		"clean": "npm run scripts -- clean",
 		"prepack":
 			"rm -rf dist && noderize-scripts build --env production && npm run build --env production"
 	},
 	"dependencies": {
-		"noderize-runtime": "^0.3.8",
+		"@noderize/runtime": "^0.3.8",
 		"@babel/core": "^7.0.0-beta.40",
 		"@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
 		"@babel/plugin-transform-runtime": "^7.0.0-beta.40",
@@ -56,7 +56,7 @@
 		"webpack-node-externals": "^1.6.0"
 	},
 	"devDependencies": {
-		"noderize-scripts": "0.3.7"
+		"noderize-scripts": "0.3.8"
 	},
 	"noderize": {
 		"bundles": [
