@@ -115,7 +115,7 @@ export function getOptions(rawArgs = []) {
 			type: String,
 			default: ({ childPackage }) =>
 				Object.keys(childPackage.dependencies || {}).includes(
-					"noderize-runtime"
+					"@noderize/runtime"
 				)
 					? "noderize"
 					: "include",

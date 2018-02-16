@@ -90,7 +90,10 @@ export async function getCompiler(options) {
 					loaders: [
 						{
 							loader: webpackRequire.resolve("babel-loader"),
-							options: createBabelConfig(options)
+							options: {
+								...createBabelConfig(options),
+								cacheDirectory: true
+							}
 						}
 					],
 					verbose: options.debug
