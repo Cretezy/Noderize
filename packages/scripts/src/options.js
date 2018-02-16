@@ -113,7 +113,12 @@ export function getOptions(rawArgs = []) {
 		},
 		runtime: {
 			type: String,
-			default: ({childPackage}) => Object.keys(childPackage.dependencies || {}).includes("noderize-runtime") ? "noderize" : "include",
+			default: ({ childPackage }) =>
+				Object.keys(childPackage.dependencies || {}).includes(
+					"noderize-runtime"
+				)
+					? "noderize"
+					: "include",
 			choices: ["noderize", "include", "polyfill", "none"]
 		}
 	};

@@ -7,14 +7,10 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.3.9",
+	"version": "0.3.10",
 	"license": "MIT",
 	"bin": "dist/index.js",
-	"files": [
-		"src",
-		"dist",
-		"template"
-	],
+	"files": ["src", "dist", "template"],
 	"scripts": {
 		"scripts": "node -r source-map-support/register ../scripts/dist/index.js",
 		"watch": "npm run scripts -- watch",
@@ -26,7 +22,7 @@
 		"prepack": "npm run clean && npm run build --env production"
 	},
 	"dependencies": {
-		"@noderize/runtime": "^0.3.9",
+		"@noderize/runtime": "^0.3.10",
 		"chalk": "^2.3.1",
 		"fs-extra": "^5.0.0",
 		"minimist": "^1.2.0"

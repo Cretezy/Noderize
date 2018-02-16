@@ -5,8 +5,8 @@ node_js:
 cache: yarn
 
 script:
-- (cd packages/noderize-scripts && yarn bootstrap && yarn test)
-- (cd packages/create-noderize && yarn build && yarn test)
+- (cd packages/scripts && yarn bootstrap && yarn test)
+- (cd packages/create && yarn build && yarn test)
 
 stages:
 - test
@@ -41,6 +41,6 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: (cd packages/noderize-scripts && ci-publish) && (cd packages/create-noderize && ci-publish)
+      script: (cd packages/scripts && ci-publish) && (cd packages/runtime && ci-publish) && (cd packages/create && ci-publish)
       on:
         tags: true

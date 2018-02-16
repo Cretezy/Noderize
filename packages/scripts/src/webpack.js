@@ -127,7 +127,7 @@ export async function getCompiler(options) {
 		].filter(Boolean),
 
 		target: options.target,
-		node: options.target === "node" ? false:undefined,
+		node: options.target === "node" ? false : undefined,
 
 		externals: [
 			!options.includeExternal &&
@@ -135,14 +135,12 @@ export async function getCompiler(options) {
 			options.runtime === "noderize" && /@babel\/runtime/
 		].filter(Boolean),
 
-		stats: options.debug ? "verbose" :"minimal"
+		stats: options.debug ? "verbose" : "minimal"
 	};
 
 	return webpack(config);
 }
 
 export function printStats(stats) {
-	console.log(
-		stats.toString({ colors: supportsColor.stdout })
-	);
+	console.log(stats.toString({ colors: supportsColor.stdout }));
 }
