@@ -231,6 +231,13 @@ export function getOptions(rawArgs = []) {
 			printWarn(`Unknown language '${language}'`);
 		}
 	});
+
+
+	options.bundles.forEach(bundle => {
+		if (bundle.polyfill) {
+			bundle.entry.unshift("~@babel/polyfill")
+		}
+	});
 	//
 	//
 	// if (args.babelPlugins !== undefined) {

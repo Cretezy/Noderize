@@ -11,14 +11,13 @@ script:
 stages:
 - test
 - name: deploy
-  if: repo = Cretezy/Noderize
+  if: repo = Cretezy/Noderize AND tag IS present # only deploy on tags
 
 jobs:
   include:
   # Deploy site always
   - stage: deploy
     env: DEPLOY=website
-    if: tag IS present OR branch = master
     install: skip
     script: skip
     before_deploy:
@@ -35,7 +34,6 @@ jobs:
   # Deploy to npm on tags
   - stage: deploy
     env: DEPLOY=npm
-    if: tag IS present
     script: skip
     before_deploy:
     # Publish using $NPM_TOKEN

@@ -89,7 +89,7 @@ Example of 2 bundles:
 
 The `entry` field may be an array of multiple files. To use an external entry file, prefix it with `~`.
 
-You can also add the `polyfill` field for each bundle. When set to `true`, the Babel polyfill will be included.
+You can also add the `polyfill` field for each bundle. When set to `true`, ``@babel/polyfill` (the Babel polyfill) will be appended to your entries. This will increase your file size dramatically.
 
 If bundles are not set and only using the `typescript` [`language`](#languages), the default bundle entry is set to `index.ts`.
 

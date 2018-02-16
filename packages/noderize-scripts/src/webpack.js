@@ -21,29 +21,23 @@ export async function getCompiler(options) {
 
 	const bundles = {};
 
-	 await Promise.all(options.bundles.map(async (bundle) => {
-		const entries = await Promise.all(bundle.entry.map(async entry => {
-			if(entry.startsWith("~")){
-				try{
+	await Promise.all(options.bundles.map(async (bundle) => {
+		bundles[bundle.output] = await Promise.all(bundle.entry.map(async entry => {
+			if (entry.startsWith("~")) {
+				try {
 					return webpackRequire.resolve(entry.slice(1));
-				}catch(error){
+				} catch (error) {
 					printError(`Could not find external entry '${entry.slice(1)}'.`);
 				}
-			}else{
+			} else {
 				const entryPath = resolveApp("src", entry);
 				if (!await fs.exists(entryPath)) {
 					printError(`Could not find entry '${entry}' (${entryPath}).`);
-				}else{
+				} else {
 					return entryPath;
 				}
 			}
 		}));
-
-		if (bundle.polyfill) {
-			entries.unshift(webpackRequire.resolve("@babel/polyfill"))
-		}
-
-		bundles[bundle.output]=entries
 	}));
 
 	const exclude = [/node_modules/, /\.test\./, /\.spec\.]/, /__tests__/];
@@ -131,7 +125,7 @@ export async function getCompiler(options) {
 
 		stats: {
 			warnings: options.debug,
-			errorDetails:options.debug
+			errorDetails: options.debug
 		}
 	};
 
