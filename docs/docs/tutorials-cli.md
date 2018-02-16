@@ -57,9 +57,10 @@ Our `package.json` should look something like this (except the versions being th
 		"start": "noderize-scripts start"
 	},
 	"devDependencies": {
-		"noderize-scripts": "^0.2.5"
+		"@noderize/scripts": "*"
 	},
 	"dependencies": {
+		"@noderize/runtime": "*",
 		"chalk": "^2.3.0",
 		"commander": "^2.14.1",
 		"inquirer": "^5.1.0"

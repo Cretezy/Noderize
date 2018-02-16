@@ -78,6 +78,8 @@ Runs your [tests](features-testing.md).
 
 Uses [Jest options](configuration-jest.md).
 
+Cannot pass build options.
+
 ### `clean`
 
 Cleans your output directory (`dist`). Useful before publishing.

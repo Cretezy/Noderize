@@ -15,3 +15,5 @@ yarn test -- -- --showConfig
 # or
 npm test -- -- --showConfig
 ```
+
+> Note: You cannot pass build options to Jest by command line (like `targets` or `babel`).

@@ -114,16 +114,16 @@ Example (will copy the `templates` directory from `src/templates` to `dist/templ
 Which runtime to use.
 
 * `noderize`: Use the Noderize runtime dependency (external Babel runtime)
-    * This requires  `noderize-runtime` as dependency
+  * This requires `noderize-runtime` as dependency
 * `include`: Includes the Babel runtime in your bundle
-    * Will increase your file size.
+  * Will increase your file size.
 * `polyfill`: Includes the Babel polyfill in your bundle
-    * This will dramatically increase your bundle size
-    * Do not use in libraries. Instead, use `noderize` for smaller file size
+  * This will dramatically increase your bundle size
+  * Do not use in libraries. Instead, use `noderize` for smaller file size
 * `none`: Don't include a runtime.
-    * This is useful if you are compiling for a recent engine (Node 8+ for instance)
-    * This will be just under `noderize`'s file size, but no features are polyfille/transformed
-    * Only use this if you know what you are doing
+  * This is useful if you are compiling for a recent engine (Node 8+ for instance)
+  * This will be just under `noderize`'s file size, but no features are polyfille/transformed
+  * Only use this if you know what you are doing
 
 ### `shebang`
 
@@ -201,7 +201,7 @@ Name of exported library (for CommonJS1 (old) and IIFE).
 
 ### `babel`
 
-[object] Default: *none*
+[object] Default: _none_
 
 Additional Babel plugins and presets.
 
