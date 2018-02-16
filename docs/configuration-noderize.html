@@ -53,6 +53,7 @@
 <ul>
 <li><a href="#bundles"><code>bundles</code></a></li>
 <li><a href="#static"><code>static</code></a></li>
+<li><a href="#runtime"><code>runtime</code></a></li>
 <li><a href="#shebang"><code>shebang</code></a></li>
 <li><a href="#targets"><code>targets</code></a></li>
 <li><a href="#target"><code>target</code></a></li>
@@ -86,7 +87,6 @@
 ]
 </code></pre>
 <p>The <code>entry</code> field may be an array of multiple files. To use an external entry file, prefix it with <code>~</code>.</p>
-<p>You can also add the <code>polyfill</code> field for each bundle. When set to <code>true</code>, ``@babel/polyfill` (the Babel polyfill) will be appended to your entries. This will increase your file size dramatically.</p>
 <p>If bundles are not set and only using the <code>typescript</code> <a href="#languages"><code>language</code></a>, the default bundle entry is set to <code>index.ts</code>.</p>
 <h3><a class="anchor" aria-hidden="true" name="static"></a><a href="#static" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>static</code></h3>
 <p>[object] Default: <em>none</em></p>
@@ -97,6 +97,30 @@
     "templates": "templates"
 }
 </code></pre>
+<h3><a class="anchor" aria-hidden="true" name="runtime"></a><a href="#runtime" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>runtime</code></h3>
+<p>[string] Default: <code>noderize</code> if <code>noderize-runtime</code> is dependency, else <code>include</code></p>
+<p>Which runtime to use.</p>
+<ul>
+<li><code>noderize</code>: Use the Noderize runtime dependency (external Babel runtime)
+<ul>
+<li>This requires  <code>noderize-runtime</code> as dependency</li>
+</ul></li>
+<li><code>include</code>: Includes the Babel runtime in your bundle
+<ul>
+<li>Will increase your file size.</li>
+</ul></li>
+<li><code>polyfill</code>: Includes the Babel polyfill in your bundle
+<ul>
+<li>This will dramatically increase your bundle size</li>
+<li>Do not use in libraries. Instead, use <code>noderize</code> for smaller file size</li>
+</ul></li>
+<li><code>none</code>: Don't include a runtime.
+<ul>
+<li>This is useful if you are compiling for a recent engine (Node 8+ for instance)</li>
+<li>This will be just under <code>noderize</code>'s file size, but no features are polyfille/transformed</li>
+<li>Only use this if you know what you are doing</li>
+</ul></li>
+</ul>
 <h3><a class="anchor" aria-hidden="true" name="shebang"></a><a href="#shebang" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>shebang</code></h3>
 <p>[boolean] Default: if <code>bin</code> field in <code>package.json</code> is set</p>
 <p>Adds a shebang to top of built file. Useful for building CLI apps.</p>
