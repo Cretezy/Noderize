@@ -119,7 +119,7 @@ export async function getCompiler(options) {
 		target: options.target,
 		node: false,
 
-		externals: [!options.includeExternal && webpackNodeExternals({ modulesFromFile: true }), /@babel\/runtime/].filter(Boolean),
+		externals: [!options.includeExternal && webpackNodeExternals({ modulesFromFile: true })].filter(Boolean),
 
 		stats: {
 			warnings: options.debug,
