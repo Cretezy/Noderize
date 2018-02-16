@@ -89,8 +89,6 @@ Example of 2 bundles:
 
 The `entry` field may be an array of multiple files. To use an external entry file, prefix it with `~`.
 
-You can also add the `polyfill` field for each bundle. When set to `true`, ``@babel/polyfill` (the Babel polyfill) will be appended to your entries. This will increase your file size dramatically.
-
 If bundles are not set and only using the `typescript` [`language`](#languages), the default bundle entry is set to `index.ts`.
 
 ### `static`
@@ -108,6 +106,24 @@ Example (will copy the `templates` directory from `src/templates` to `dist/templ
     "templates": "templates"
 }
 ```
+
+### `runtime`
+
+[string] Default: `noderize` if `noderize-runtime` is dependency, else `include`
+
+Which runtime to use.
+
+* `noderize`: Use the Noderize runtime dependency (external Babel runtime)
+    * This requires  `noderize-runtime` as dependency
+* `include`: Includes the Babel runtime in your bundle
+    * Will increase your file size.
+* `polyfill`: Includes the Babel polyfill in your bundle
+    * This will dramatically increase your bundle size
+    * Do not use in libraries. Instead, use `noderize` for smaller file size
+* `none`: Don't include a runtime.
+    * This is useful if you are compiling for a recent engine (Node 8+ for instance)
+    * This will be just under `noderize`'s file size, but no features are polyfille/transformed
+    * Only use this if you know what you are doing
 
 ### `shebang`
 

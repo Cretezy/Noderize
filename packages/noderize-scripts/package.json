@@ -2,7 +2,8 @@
 	"name": "noderize-scripts",
 	"description": "Scripts to use with Noderize.",
 	"author": "Charles Crete <charles@cretezy.com>",
-	"homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
+	"homepage":
+		"https://github.com/Cretezy/Noderize/tree/master/packages/noderize-scripts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
@@ -10,10 +11,7 @@
 	"version": "0.3.8",
 	"license": "MIT",
 	"bin": "dist/index.js",
-	"files": [
-		"src",
-		"dist"
-	],
+	"files": ["src", "dist"],
 	"scripts": {
 		"self": "node -r source-map-support/register dist/index.js",
 		"bootstrap": "noderize-scripts build && npm run self -- build",
@@ -22,9 +20,11 @@
 		"test": "npm run self -- test",
 		"format": "npm run self -- format",
 		"clean": "npm run self -- clean",
-		"prepack": "rm -rf dist && noderize-scripts build --env production && npm run build --env production"
+		"prepack":
+			"rm -rf dist && noderize-scripts build --env production && npm run build --env production"
 	},
 	"dependencies": {
+		"noderize-runtime": "^0.3.8",
 		"@babel/core": "^7.0.0-beta.40",
 		"@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
 		"@babel/plugin-transform-runtime": "^7.0.0-beta.40",
@@ -32,7 +32,6 @@
 		"@babel/preset-env": "^7.0.0-beta.40",
 		"@babel/preset-flow": "^7.0.0-beta.40",
 		"@babel/preset-stage-2": "^7.0.0-beta.40",
-		"@babel/runtime": "^7.0.0-beta.40",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^22.2.2",
 		"babel-loader": "^8.0.0-beta.0",
@@ -62,9 +61,7 @@
 	"noderize": {
 		"bundles": [
 			{
-				"entry": [
-					"index.js"
-				],
+				"entry": ["index.js"],
 				"output": "index.js"
 			},
 			{

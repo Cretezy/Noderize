@@ -1,0 +1,15 @@
+{
+	"name": "noderize-runtime",
+	"description": "Runtime to use with Noderize.",
+	"author": "Charles Crete <charles@cretezy.com>",
+	"homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/noderize-runtime",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Cretezy/Noderize.git"
+	},
+	"version": "0.3.8",
+	"license": "MIT",
+	"dependencies": {
+		"@babel/runtime": "^7.0.0-beta.40"
+	}
+}

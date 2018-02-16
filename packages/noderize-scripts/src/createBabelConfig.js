@@ -1,7 +1,8 @@
 export default ({
-	                targets,
-	                babel: { presets = [], plugins = [] }
-                } = {}) => ({
+	targets,
+	babel: { presets = [], plugins = [] },
+	runtime = "include"
+} = {}) => ({
 	presets: [
 		[
 			"@babel/preset-env",
@@ -13,5 +14,10 @@ export default ({
 		"@babel/preset-flow",
 		...presets
 	],
-	plugins: ["@babel/plugin-proposal-decorators", "@babel/plugin-transform-runtime", ...plugins]
+	plugins: [
+		"@babel/plugin-proposal-decorators",
+		(runtime === "noderize" || runtime === "include") &&
+			"@babel/plugin-transform-runtime",
+		...plugins
+	].filter(Boolean)
 });

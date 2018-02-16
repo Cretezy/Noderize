@@ -12,7 +12,7 @@ export default async args => {
 	printInfo("Watching...");
 
 	const options = getOptions(args);
-		const compiler = await getCompiler(options);
+	const compiler = await getCompiler(options);
 	let child;
 
 	compiler.watch(
@@ -23,7 +23,7 @@ export default async args => {
 			console.log();
 			printInfo("Building...");
 			console.log();
-			printStats(stats, options);
+			printStats(stats);
 			console.log();
 
 			if (child) {

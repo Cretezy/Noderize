@@ -8,7 +8,7 @@ import { printDebug, printError, printLines, printWarn } from "./utils/print";
 
 function run(runners = [], value) {
 	if (!Array.isArray(runners)) {
-		runners = [runners]
+		runners = [runners];
 	}
 
 	runners.forEach(runner => {
@@ -30,25 +30,30 @@ export function getOptions(rawArgs = []) {
 		bundles: {
 			type: Array,
 			subtype: Object,
-			default: ({ options: { languages } }) => [{
-				entry: ["index." + (languages.length === 1 && languages[0] === "typescript" ? "ts" : "js")],
-				output: "index.js",
-				polyfill: false
-			}],
-			run: [bundles => bundles.map(bundle => ({
-				...bundle,
-				polyfill: bundle.polyfill !== undefined ? bundle.polyfill : false
-			})), bundles => bundles.map(bundle => {
-				if (Array.isArray(bundle.entry)) {
-					return bundle
-				} else {
-					return { ...bundle, entry: [bundle.entry] }
+			default: ({ options: { languages } }) => [
+				{
+					entry: [
+						"index." +
+							(languages.length === 1 && languages[0] === "typescript"
+								? "ts"
+								: "js")
+					],
+					output: "index.js"
 				}
-			})]
+			],
+			run: bundles =>
+				bundles.map(bundle => ({
+					...bundle,
+					entry: Array.isArray(bundle.entry) ? bundle.entry : [bundle.entry]
+				}))
 		},
 		startFile: {
 			type: String,
-			default: ({ options, childPackage }) => resolveApp(childPackage.main ? "" : "dist", childPackage.main || options.bundles[0].output),
+			default: ({ options, childPackage }) =>
+				resolveApp(
+					childPackage.main ? "" : "dist",
+					childPackage.main || options.bundles[0].output
+				),
 			run: startFile => resolveApp("dist", startFile)
 		},
 		shebang: {
@@ -103,17 +108,26 @@ export function getOptions(rawArgs = []) {
 		},
 		target: {
 			type: String,
-			default: "node"
+			default: "node",
+			choices: ["node", "web"]
 		},
-
+		runtime: {
+			type: String,
+			default: ({childPackage}) => Object.keys(childPackage.dependencies).includes("noderize-runtime") ? "noderize" : "include",
+			choices: ["noderize", "include", "polyfill", "none"]
+		}
 	};
 
-	const boleans = Object.keys(types).filter(type => types[type].type === Boolean);
+	const boleans = Object.keys(types).filter(
+		type => types[type].type === Boolean
+	);
 
 	// Parse args
 	const args = parseArgs(rawArgs, {
 		boolean: boleans,
-		string: Object.keys(types).filter(type => types[type].type === String || types[type].type === Object),
+		string: Object.keys(types).filter(
+			type => types[type].type === String || types[type].type === Object
+		),
 		default: boleans.reduce((total, bool) => ({ ...total, [bool]: null }), {})
 	});
 
@@ -159,32 +173,40 @@ export function getOptions(rawArgs = []) {
 				try {
 					return JSON.parse(value);
 				} catch (error) {
-					printError(`Could not parse JSON for argument '${arg}'.`, error.message)
+					printError(
+						`Could not parse JSON for argument '${arg}'.`,
+						error.message
+					);
 					break;
 				}
 			case Array:
 				if (!Array.isArray(value)) {
 					value = [value];
 				}
-				return value.map(value => parseArgType(arg, { type: type.subtype }, value));
+				return value.map(value =>
+					parseArgType(arg, { type: type.subtype }, value)
+				);
 		}
 	}
 
-	Object.keys(args).filter(arg => Object.keys(types).includes(arg)).forEach(arg => {
-		const type = types[arg];
-		let argValue = args[arg];
-		if (argValue !== null) {
-			let value = parseArgType(arg, type, argValue);
-			if (value !== undefined) {
-				value = run(type.run, value);
+	Object.keys(args)
+		.filter(arg => Object.keys(types).includes(arg))
+		.forEach(arg => {
+			const type = types[arg];
+			let argValue = args[arg];
+			if (argValue !== null) {
+				let value = parseArgType(arg, type, argValue);
+				if (value !== undefined) {
+					value = run(type.run, value);
 
-				options[arg] = value;
+					options[arg] = value;
+				}
 			}
-		}
-	});
+		});
 
 	Object.keys(types).forEach(type => {
-		if (options[type] === undefined) {
+		const value = options[type];
+		if (value === undefined) {
 			let defaultValue = types[type].default;
 			if (defaultValue instanceof Function) {
 				defaultValue = defaultValue({ options, childPackage });
@@ -193,33 +215,27 @@ export function getOptions(rawArgs = []) {
 		}
 	});
 
-	// Fix entry and polyfill
-	// options.bundles.forEach(bundle => {
-	// 	if (!Array.isArray(bundle.entry)) {
-	// 		bundle.entry = [bundle.entry]
-	// 	}
-	// 	if (bundle.polyfill === undefined) {
-	// 		bundle.polyfill = false;
-	// 	}
-	// });
-
 	// Checks
 	Object.keys(options).forEach(option => {
 		const value = options[option];
 		const type = types[option];
 		if (type.type === Number) {
 			if (type.integer && !Number.isInteger(value)) {
-				printError(`Option '${option}' is not an integer.`)
+				printError(`Option '${option}' is not an integer.`);
 			}
 			if (type.min !== undefined && value < type.min) {
-				printError(`Option '${option}' is under minimum (${type.min}).`)
+				printError(`Option '${option}' is under minimum (${type.min}).`);
 			}
 			if (type.max !== undefined && value > type.max) {
-				printError(`Option '${option}' is over maximum (${type.max}).`)
+				printError(`Option '${option}' is over maximum (${type.max}).`);
+			}
+		}
+		if (type.choices !== undefined) {
+			if (!type.choices.includes(value)) {
+				printError(`Invalid choice for ${option}: '${value}'.`);
 			}
 		}
 	});
-
 
 	const languageList = options.languages;
 
@@ -232,12 +248,6 @@ export function getOptions(rawArgs = []) {
 		}
 	});
 
-
-	options.bundles.forEach(bundle => {
-		if (bundle.polyfill) {
-			bundle.entry.unshift("~@babel/polyfill")
-		}
-	});
 	//
 	//
 	// if (args.babelPlugins !== undefined) {

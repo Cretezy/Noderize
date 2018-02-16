@@ -11,9 +11,9 @@ export async function start(options) {
 	printInfo("Starting...");
 	console.log(); // Padding
 
-	const startFileExists = await  fs.exists(options.startFile);
-	if(!startFileExists){
-		printError("Start file does not exists.")
+	const startFileExists = await fs.exists(options.startFile);
+	if (!startFileExists) {
+		printError("Start file does not exists.");
 		return;
 	}
 
