@@ -13,6 +13,9 @@
 		"languages": "typescript"
 	},
 	"devDependencies": {
-		"noderize-scripts": "^0.2.5"
+		"@noderize/scripts": "^0.3.11"
+	},
+	"dependencies": {
+		"@noderize/runtime": "^0.3.11"
 	}
 }
