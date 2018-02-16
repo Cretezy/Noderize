@@ -8,8 +8,10 @@ import webpackNodeExternals from "webpack-node-externals";
 import webpackForkTsChecker from "fork-ts-checker-webpack-plugin";
 import webpackHappyPack from "happypack";
 import webpackRequire from "webpack-bypass-require";
+import { printError } from "./utils/print";
+import fs from "fs-extra";
 
-export function getCompiler(options) {
+export async function getCompiler(options) {
 	const tsconfig = path.resolve(__dirname, "tsconfig.json");
 	const happyThreadPool = webpackHappyPack.ThreadPool({
 		size: options.buildThreads
@@ -17,15 +19,32 @@ export function getCompiler(options) {
 
 	const { javascript, typescript } = options.languages;
 
-	const bundles = options.bundles.reduce((bundles, bundle) => {
-		const entries = bundle.entry.map(entry => entry.startsWith("~") ? webpackRequire.resolve(entry.slice(1)) : resolveApp("src", entry));
+	const bundles = {};
+
+	 await Promise.all(options.bundles.map(async (bundle) => {
+		const entries = await Promise.all(bundle.entry.map(async entry => {
+			if(entry.startsWith("~")){
+				try{
+					return webpackRequire.resolve(entry.slice(1));
+				}catch(error){
+					printError(`Could not find external entry '${entry.slice(1)}'.`);
+				}
+			}else{
+				const entryPath = resolveApp("src", entry);
+				if (!await fs.exists(entryPath)) {
+					printError(`Could not find entry '${entry}' (${entryPath}).`);
+				}else{
+					return entryPath;
+				}
+			}
+		}));
 
 		if (bundle.polyfill) {
 			entries.unshift(webpackRequire.resolve("@babel/polyfill"))
 		}
 
-		return { ...bundles, [bundle.output]: entries };
-	}, {});
+		bundles[bundle.output]=entries
+	}));
 
 	const exclude = [/node_modules/, /\.test\./, /\.spec\.]/, /__tests__/];
 
@@ -111,7 +130,8 @@ export function getCompiler(options) {
 			: webpackNodeExternals({ modulesFromFile: true }),
 
 		stats: {
-			warnings: options.debug
+			warnings: options.debug,
+			errorDetails:options.debug
 		}
 	};
 

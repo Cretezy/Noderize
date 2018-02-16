@@ -1,7 +1,7 @@
 export default ({
-	targets,
-	babel: { presets, plugins }
-} = {}) => ({
+	                targets,
+	                babel: { presets = [], plugins = [] }
+                } = {}) => ({
 	presets: [
 		[
 			"@babel/preset-env",
@@ -13,5 +13,5 @@ export default ({
 		"@babel/preset-flow",
 		...presets
 	],
-	plugins: ["@babel/plugin-proposal-decorators", ...plugins]
+	plugins: ["@babel/plugin-proposal-decorators", "@babel/plugin-transform-runtime", ...plugins]
 });

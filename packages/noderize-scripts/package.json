@@ -15,7 +15,7 @@
 		"dist"
 	],
 	"scripts": {
-		"self": "node dist/index.js",
+		"self": "node -r source-map-support/register dist/index.js",
 		"bootstrap": "noderize-scripts build && npm run self -- build",
 		"watch": "npm run self -- watch",
 		"build": "npm run self -- build",
@@ -27,10 +27,12 @@
 	"dependencies": {
 		"@babel/core": "^7.0.0-beta.40",
 		"@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
+		"@babel/plugin-transform-runtime": "^7.0.0-beta.40",
 		"@babel/polyfill": "^7.0.0-beta.40",
 		"@babel/preset-env": "^7.0.0-beta.40",
 		"@babel/preset-flow": "^7.0.0-beta.40",
 		"@babel/preset-stage-2": "^7.0.0-beta.40",
+		"@babel/runtime": "^7.0.0-beta.40",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^22.2.2",
 		"babel-loader": "^8.0.0-beta.0",

@@ -9,7 +9,7 @@ export default async args => {
 
 	const options = getOptions(args);
 
-	const compiler = getCompiler(options);
+	const compiler = await getCompiler(options);
 
 	try {
 		const stats = await new Promise((resolve, reject) => {

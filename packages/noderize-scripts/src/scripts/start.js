@@ -1,14 +1,21 @@
 import { fork } from "child_process";
 import { getOptions } from "../options";
-import { printInfo, printWarn } from "../utils/print";
+import { printError, printInfo, printWarn } from "../utils/print";
+import fs from "fs-extra";
 
 export default async args => {
-	start(getOptions(args));
+	await start(getOptions(args));
 };
 
-export function start(options) {
+export async function start(options) {
 	printInfo("Starting...");
 	console.log(); // Padding
+
+	const startFileExists = await  fs.exists(options.startFile);
+	if(!startFileExists){
+		printError("Start file does not exists.")
+		return;
+	}
 
 	const child = fork(options.startFile, options.args._, {
 		execArgv: ["-r", "source-map-support/register"]

@@ -12,8 +12,7 @@ export default async args => {
 	printInfo("Watching...");
 
 	const options = getOptions(args);
-	const compiler = getCompiler(options);
-
+		const compiler = await getCompiler(options);
 	let child;
 
 	compiler.watch(

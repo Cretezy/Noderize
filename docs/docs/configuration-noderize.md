@@ -68,7 +68,7 @@ See more details in [scripts](scripts.md).
 
 ### `bundles`
 
-[array] Default: `[ { "entry": "index.js", "output": "index.js", "regenerator": true } ]`
+[array] Default: `[ { "entry": "index.js", "output": "index.js" } ]`
 
 Array of bundles to be built. Entry files will be taken from `src`, and output will be placed in `dist`.
 
@@ -89,9 +89,9 @@ Example of 2 bundles:
 
 The `entry` field may be an array of multiple files. To use an external entry file, prefix it with `~`.
 
-The `polyfill` field may be omitted, and will default to `true`. This will include the Babel polyfill.
+You can also add the `polyfill` field for each bundle. When set to `true`, the Babel polyfill will be included.
 
-If not set and only using the `typescript` [`language`](#languages), the default bundle entry is set to `index.ts`.
+If bundles are not set and only using the `typescript` [`language`](#languages), the default bundle entry is set to `index.ts`.
 
 ### `static`
 
@@ -187,35 +187,21 @@ Name of exported library (for CommonJS1 (old) and IIFE).
 
 [object] Default: *none*
 
-Babel plugins and presets.
+Additional Babel plugins and presets.
 
-For instance, to add the React preset for creating a library:
+For instance, to add the React preset for creating a React library:
 
 ```json
 "babel": {
-    "presets": ["react"]
+    "presets": ["@babel/preset-react"]
 }
 ```
 
-When passing arguments, you must format them in JSON. For example: `yarn build --babelPresets '"react"'`
+### `buildThreads`
 
-> Note: These options can't be passed to the `test` command by arguments.
+[number] Default: `3`
 
-#### `presets`
-
-[array] Default: *none*
-
-Array of additional presets.
-
-Use `--babelPresets` argument
-
-#### `plugins`
-
-[array] Default: *none*
-
-Array of additional plugins.
-
-Use `--babelPlugins` argument.
+Amount of build threads to use. Minimum of 1.
 
 ## Run Options
 
@@ -230,6 +216,8 @@ Enable running the app while watching. Might be useful to disable if you are wor
 [string] Default: `main` field in `package.json`, or first output in [`bundles`](#bundles).
 
 File to run when using `start` or `watch` command.
+
+This is relative to your project root. Add `dist/` before.
 
 ## Other Options
 
