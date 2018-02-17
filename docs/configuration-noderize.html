@@ -103,7 +103,7 @@
 <ul>
 <li><code>noderize</code>: Use the Noderize runtime dependency (external Babel runtime)
 <ul>
-<li>This requires  <code>noderize-runtime</code> as dependency</li>
+<li>This requires <code>noderize-runtime</code> as dependency</li>
 </ul></li>
 <li><code>include</code>: Includes the Babel runtime in your bundle
 <ul>
@@ -124,15 +124,15 @@
 <h3><a class="anchor" aria-hidden="true" name="shebang"></a><a href="#shebang" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>shebang</code></h3>
 <p>[boolean] Default: if <code>bin</code> field in <code>package.json</code> is set</p>
 <p>Adds a shebang to top of built file. Useful for building CLI apps.</p>
-<blockquote>
 <p>You can omit this as it will infer if this is a CLI app by checking if the <code>bin</code> field in <code>package.json</code> is set.</p>
-</blockquote>
 <blockquote>
 <p>Note: If this option is activated, it will apply the shebang to all your bundles</p>
 </blockquote>
 <h3><a class="anchor" aria-hidden="true" name="targets"></a><a href="#targets" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>targets</code></h3>
-<p>[object] Default: <code>{}</code></p>
+<p>[object] Default: <code>{ &quot;node&quot;: true }</code></p>
 <p>Specify a <a href="https://babeljs.io/docs/plugins/preset-env/#targets">Babel target</a> to compile to.</p>
+<p>Default to current Node version. You may want to compile to standard ES5 if your app is a library by using <code>{}</code>.</p>
+<p>This is overridden per environment with <a href="#env"><code>env</code></a> option.</p>
 <h3><a class="anchor" aria-hidden="true" name="target"></a><a href="#target" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>target</code></h3>
 <p>[string] Default: <code>node</code></p>
 <p>Specify a target. Options are:</p>
@@ -151,6 +151,7 @@
 <h3><a class="anchor" aria-hidden="true" name="sourcemap"></a><a href="#sourcemap" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>sourcemap</code></h3>
 <p>[boolean] Default: <code>true</code></p>
 <p>Generate source maps.</p>
+<p>This is overridden in production with <a href="#env"><code>env</code></a> option.</p>
 <h3><a class="anchor" aria-hidden="true" name="includeexternal"></a><a href="#includeexternal" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>includeExternal</code></h3>
 <p>[boolean] Default: <code>false</code></p>
 <p>Include all your dependencies in your bundle. This will make your file size a lot larger.</p>
@@ -167,7 +168,7 @@
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="name"></a><a href="#name" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>name</code></h3>
 <p>[string] Default: <code>name</code> field in <code>package.json</code></p>
-<p>Name of exported library (for CommonJS1 (old) and IIFE).</p>
+<p>Name of exported library (for CommonJS1 (old) and IIFE). Only useful for libraries.</p>
 <h3><a class="anchor" aria-hidden="true" name="babel"></a><a href="#babel" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>babel</code></h3>
 <p>[object] Default: <em>none</em></p>
 <p>Additional Babel plugins and presets.</p>
@@ -189,21 +190,37 @@
 <p>This is relative to your project root. Add <code>dist/</code> before.</p>
 <h2><a class="anchor" aria-hidden="true" name="other-options"></a><a href="#other-options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other Options</h2>
 <h3><a class="anchor" aria-hidden="true" name="env"></a><a href="#env" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>env</code></h3>
-<p>[object] Default: <em>none</em></p>
-<p>Provide environment-specific variables that can be used with the <code>--env</code> flag</p>
-<p>By default, the <code>production</code> environment does:</p>
-<ul>
-<li>Set <code>sourcemap</code> to <code>false</code>.</li>
-</ul>
-<p>To add other options:</p>
-<p>Example:</p>
+<p>[object] Default: See below</p>
+<p>Provide environment-specific variables.</p>
+<p>Default:</p>
+<pre><code class="hljs css json">"env": {
+    "production": {
+        "sourcemap": false,
+        "target": {}
+    }
+}
+</code></pre>
+<p>Example of adding other options:</p>
 <pre><code class="hljs css json">"env": {
     "production": {
         "minify": true
+    },
+    "test": {
+        "debug": true
     }
 }
 </code></pre>
 <p>Useful when building a production build with <code>yarn build --env production</code>.</p>
+<p>Resolving is done in this order:</p>
+<ul>
+<li>If in testing, use <code>test</code></li>
+<li>Try <code>--env</code> argument</li>
+<li>Try <code>NODE_ENV</code> environment variable</li>
+<li>Use <code>development</code></li>
+</ul>
+<blockquote>
+<p>Note: Is it not recommened to use the <code>development</code> environment. Instead, set the values to the root config.</p>
+</blockquote>
 <h3><a class="anchor" aria-hidden="true" name="debug"></a><a href="#debug" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>debug</code></h3>
 <p>[boolean] Default: <code>false</code></p>
 <ul>
