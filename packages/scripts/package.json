@@ -8,7 +8,7 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.3.12",
+	"version": "0.3.13",
 	"license": "MIT",
 	"bin": { "noderize-scripts": "dist/index.js" },
 	"files": ["src", "dist"],
@@ -24,7 +24,7 @@
 			"rm -rf dist && noderize-scripts build --env production && npm run build --env production"
 	},
 	"dependencies": {
-		"@noderize/runtime": "^0.3.12",
+		"@noderize/runtime": "^0.3.13",
 		"@babel/core": "^7.0.0-beta.40",
 		"@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
 		"@babel/plugin-transform-runtime": "^7.0.0-beta.40",
@@ -56,7 +56,7 @@
 		"webpack-node-externals": "^1.6.0"
 	},
 	"devDependencies": {
-		"@noderize/scripts": "0.3.11"
+		"@noderize/scripts": "0.3.12"
 	},
 	"noderize": {
 		"bundles": [
