@@ -131,15 +131,20 @@ Which runtime to use.
 
 Adds a shebang to top of built file. Useful for building CLI apps.
 
-> You can omit this as it will infer if this is a CLI app by checking if the `bin` field in `package.json` is set.
+You can omit this as it will infer if this is a CLI app by checking if the `bin` field in `package.json` is set.
 
 > Note: If this option is activated, it will apply the shebang to all your bundles
 
 ### `targets`
 
-[object] Default: `{}`
+[object] Default: `{ "node": true }`
 
 Specify a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to compile to.
+
+Default to current Node version. You may want to compile to standard ES5 if your app is a library by using `{}`.
+
+
+This is overridden per environment with [`env`](#env) option.
 
 ### `target`
 
@@ -170,6 +175,8 @@ Example:
 
 Generate source maps.
 
+This is overridden in production with [`env`](#env) option.
+
 ### `includeExternal`
 
 [boolean] Default: `false`
@@ -197,7 +204,7 @@ Languages available:
 
 [string] Default: `name` field in `package.json`
 
-Name of exported library (for CommonJS1 (old) and IIFE).
+Name of exported library (for CommonJS1 (old) and IIFE). Only useful for libraries.
 
 ### `babel`
 
@@ -239,27 +246,44 @@ This is relative to your project root. Add `dist/` before.
 
 ### `env`
 
-[object] Default: _none_
+[object] Default: See below
 
-Provide environment-specific variables that can be used with the `--env` flag
+Provide environment-specific variables.
 
-By default, the `production` environment does:
+Default:
 
-* Set `sourcemap` to `false`.
+```json
+"env": {
+    "production": {
+        "sourcemap": false,
+        "target": {}
+    }
+}
+```
 
-To add other options:
-
-Example:
+Example of adding other options:
 
 ```json
 "env": {
     "production": {
         "minify": true
+    },
+    "test": {
+        "debug": true
     }
 }
 ```
 
 Useful when building a production build with `yarn build --env production`.
+
+Resolving is done in this order:
+
+* If in testing, use `test`
+* Try `--env` argument
+* Try `NODE_ENV` environment variable
+* Use `development`
+
+> Note: Is it not recommened to use the `development` environment. Instead, set the values to the root config.
 
 ### `debug`
 

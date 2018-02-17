@@ -7,11 +7,10 @@ import cosmiconfig from "cosmiconfig";
 import merge from "lodash.merge";
 import { printError, printInfo } from "../utils/print";
 
-export default async args => {
+export default async (args) => {
 	printInfo("Testing...");
 
-	const options = getOptions(args);
-	const jestArgs = options.args._;
+	const options = getOptions(null, "test");
 
 	let jestConfig = {};
 	try {
@@ -35,16 +34,17 @@ export default async args => {
 		isInGit = false;
 	}
 
+	// Watch by default (when not in CI)
 	if (
 		!(
 			process.env.CI ||
-			jestArgs.includes("--ci") ||
-			jestArgs.includes("--watchAll") ||
-			jestArgs.includes("--watch") ||
-			jestArgs.includes("--coverage")
+			args.includes("--ci") ||
+			args.includes("--watchAll") ||
+			args.includes("--watch") ||
+			args.includes("--coverage")
 		)
 	) {
-		jestArgs.push(isInGit ? "--watch" : "--watchAll");
+		args.push(isInGit ? "--watch" : "--watchAll");
 	}
 
 	const extensions = [
@@ -70,7 +70,7 @@ export default async args => {
 		"jestTransformer.js"
 	);
 
-	jestArgs.push("--config", JSON.stringify(config));
+	args.push("--config", JSON.stringify(config));
 
 	const jestPath = path.resolve(
 		__dirname,
@@ -80,7 +80,8 @@ export default async args => {
 		"jest"
 	);
 
-	fork(jestPath, jestArgs, {
+	// Run Jest
+	fork(jestPath, args, {
 		cwd: appDirectory
 	});
 };

@@ -62,4 +62,4 @@ To generate a "fat bundle" with all your code and dependencies included, set [`i
 
 This will add all the code in your output bundle, resulting in a large size, but making it portable.
 
-This is not recommended, should never be used when publishing to npm.
+This is not recommended and should never be used when publishing to npm.

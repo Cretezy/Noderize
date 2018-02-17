@@ -16,6 +16,8 @@ Noderize comes build it with commands ("scripts"). These scripts are automatical
 }
 ```
 
+These scripts depend on `@noderize/scripts`.
+
 You can run Noderize's command like so:
 
 ```bash
@@ -26,7 +28,7 @@ npm run <script>
 
 > Note: with npm, you may omit `run` for the `start` and `test` scripts. For example: `npm start`.
 
-For every script, you may pass arguments to both Noderize and your app.
+For every the `watch` and `start` script, you may pass arguments to both Noderize and your app:
 
 ```bash
 yarn watch [noderize args] -- [app args]
@@ -72,13 +74,29 @@ Uses [build](configuration-noderize.md#build-options) & [run options](configurat
 
 Uses [Prettier options](configuration-prettier.md).
 
+You can pass options directory to Prettier:
+
+```bash
+yarn format --useTabs
+# or
+npm run format --useTabs
+```
+
 ### `test`
 
 Runs your [tests](features-testing.md).
 
 Uses [Jest options](configuration-jest.md).
 
-Cannot pass build options.
+You can pass arguments directly to Jest:
+
+```bash
+yarn test --ci
+# or
+npm test --ci
+```
+
+> Note: To use Noderize's build options (such as [`babel`](configuration-noderize.md#babel) and [`languages`](configuration-noderize.md#languages)), you must set them to file configs.
 
 ### `clean`
 

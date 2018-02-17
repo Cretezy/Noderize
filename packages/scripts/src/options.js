@@ -18,7 +18,7 @@ function run(runners = [], value) {
 	return value;
 }
 
-export function getOptions(rawArgs = []) {
+export function getOptions(rawArgs, env = null) {
 	const childPackage = fs.readJsonSync(resolveApp("package.json"));
 
 	const types = {
@@ -34,9 +34,9 @@ export function getOptions(rawArgs = []) {
 				{
 					entry: [
 						"index." +
-							(languages.length === 1 && languages[0] === "typescript"
-								? "ts"
-								: "js")
+						(languages.length === 1 && languages[0] === "typescript"
+							? "ts"
+							: "js")
 					],
 					output: "index.js"
 				}
@@ -96,7 +96,9 @@ export function getOptions(rawArgs = []) {
 		},
 		targets: {
 			type: Object,
-			default: {}
+			default: {
+				node: true
+			}
 		},
 		debug: {
 			type: Boolean,
@@ -120,6 +122,19 @@ export function getOptions(rawArgs = []) {
 					? "noderize"
 					: "include",
 			choices: ["noderize", "include", "polyfill", "none"]
+		},
+		env: {
+			type: Object,
+			default: {
+				production: {
+					sourcemap: false,
+					targets: {},
+				},
+				test: {},
+				development: {}
+			},
+			merge: true,
+			notArg: true
 		}
 	};
 
@@ -128,7 +143,7 @@ export function getOptions(rawArgs = []) {
 	);
 
 	// Parse args
-	const args = parseArgs(rawArgs, {
+	const args = parseArgs(rawArgs || [], {
 		boolean: boleans,
 		string: Object.keys(types).filter(
 			type => types[type].type === String || types[type].type === Object
@@ -196,6 +211,7 @@ export function getOptions(rawArgs = []) {
 
 	Object.keys(args)
 		.filter(arg => Object.keys(types).includes(arg))
+		.filter(arg => !types[arg].notArg)
 		.forEach(arg => {
 			const type = types[arg];
 			let argValue = args[arg];
@@ -209,14 +225,19 @@ export function getOptions(rawArgs = []) {
 			}
 		});
 
-	Object.keys(types).forEach(type => {
-		const value = options[type];
-		if (value === undefined) {
-			let defaultValue = types[type].default;
+	Object.keys(types).forEach(typeName => {
+		const value = options[typeName];
+		let type = types[typeName];
+		if (value === undefined || type.merge) {
+			let defaultValue = type.default;
 			if (defaultValue instanceof Function) {
 				defaultValue = defaultValue({ options, childPackage });
 			}
-			options[type] = defaultValue;
+			if (type.merge) {
+				options[typeName] = merge({}, defaultValue, options[typeName])
+			} else {
+				options[typeName] = defaultValue;
+			}
 		}
 	});
 
@@ -385,15 +406,21 @@ export function getOptions(rawArgs = []) {
 	// 	}
 	// }
 	//
-	// // Merge envs
-	// if (args.env) {
-	// 	if (options.env[args.env] === undefined) {
-	// 		printWarn(`Could not find specified env.`);
-	// 	} else {
-	// 		merge(options, options.env[args.env]);
-	// 	}
-	// }
-	//
+
+	options.currentEnv = env || args.env || process.env.NODE_ENV || "development";
+
+	// Replace with env value
+	if (options.currentEnv) {
+		const envConfig = options.env[options.currentEnv];
+		if (envConfig === undefined) {
+			printWarn(`Could not find '${options.currentEnv}' environment.`);
+		} else {
+			Object.keys(envConfig).forEach(envKey => {
+				options[envKey] = envConfig[envKey];
+			});
+		}
+	}
+
 	if (options.debug || args.showConfig) {
 		printLines(printDebug, JSON.stringify(options, null, "\t"), "\t");
 	}

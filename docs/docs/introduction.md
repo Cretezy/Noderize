@@ -59,4 +59,4 @@ node dist/index.js
 
 Noderize is packed with [features](features-index.md) such as [modern JavaScript support](features-modern.md) and [TypeScript support](features-typescript.md).
 
-Code formatting (`format` script) and testing (`test` script) is built-in and let's get work on your high quality code distraction-free.
+[Code formatting](features-formatting.md) ([`format` script](scripts.md#format)) and [testing](features-testing.md) ([`test` script](scripts.md#test)) is built-in and let's get work on your high quality code distraction-free.

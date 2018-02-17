@@ -6,14 +6,12 @@ sidebar_label: Jest
 
 You may configure [Jest](https://facebook.github.io/jest) as you [normally would](https://facebook.github.io/jest/docs/en/configuration.html).
 
-You may also use a `.jestrc` file (with optional `.json`/`.yml`/`.yaml`/`.js` extension) for configuring using JSON/YAML/JS.
-
-To pass arguments to Jest when using the `test` script, simply add them after `-- --` like so:
+You may pass arguments to Jest when using the `test` script:
 
 ```bash
-yarn test -- -- --showConfig
+yarn test --ci
 # or
-npm test -- -- --showConfig
+npm test --ci
 ```
 
-> Note: You cannot pass build options to Jest by command line (like `targets` or `babel`).
+> Note: To use Noderize's build options, you must set them to file configs.
