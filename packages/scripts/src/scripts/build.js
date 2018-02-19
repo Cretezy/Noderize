@@ -22,7 +22,7 @@ export default async args => {
 			});
 		});
 
-		printStats(stats);
+		printStats(stats, options);
 		console.log();
 
 		// Copy

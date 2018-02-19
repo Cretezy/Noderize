@@ -23,14 +23,18 @@ export default async args => {
 			console.log();
 			printInfo("Building...");
 			console.log();
-			printStats(stats);
+			printStats(stats, options);
 			console.log();
 
-			if (child) {
-				child.kill();
+			if (child && child.pid) {
+				// Kill all subchilds
+				process.kill(-child.pid);
 			}
 			if (options.runOnWatch && !stats.hasErrors()) {
-				child = start(options);
+				// Let program finish before starting
+				setTimeout(() => {
+					child = start(options);
+				}, 50);
 			}
 		}
 	);

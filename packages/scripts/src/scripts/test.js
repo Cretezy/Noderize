@@ -7,7 +7,7 @@ import cosmiconfig from "cosmiconfig";
 import merge from "lodash.merge";
 import { printError, printInfo } from "../utils/print";
 
-export default async (args) => {
+export default async args => {
 	printInfo("Testing...");
 
 	const options = getOptions(null, "test");

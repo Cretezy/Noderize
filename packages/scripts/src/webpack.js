@@ -136,14 +136,21 @@ export async function getCompiler(options) {
 			!options.includeExternal &&
 				webpackNodeExternals({ modulesFromFile: true }),
 			options.runtime === "noderize" && /@babel\/runtime/
-		].filter(Boolean),
-
-		stats: options.debug ? "verbose" : "minimal"
+		].filter(Boolean)
 	};
 
 	return webpack(config);
 }
 
-export function printStats(stats) {
-	console.log(stats.toString({ colors: supportsColor.stdout }));
+export function printStats(stats, options) {
+	console.log(
+		stats.toString({
+			colors: supportsColor.stdout,
+			modules: options.debug,
+			maxModules: Infinity,
+			excludeAssets: options.debug ? undefined : /\.map$/,
+			version: options.debug,
+			warnins: options.debug
+		})
+	);
 }

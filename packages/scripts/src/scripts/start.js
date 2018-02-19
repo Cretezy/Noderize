@@ -18,7 +18,8 @@ export async function start(options) {
 	}
 
 	const child = fork(options.startFile, options.args._, {
-		execArgv: ["-r", "source-map-support/register"]
+		execArgv: ["-r", "source-map-support/register"],
+		detached: true
 	});
 
 	child.on("exit", (code, signal) => {

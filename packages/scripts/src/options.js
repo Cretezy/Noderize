@@ -34,9 +34,9 @@ export function getOptions(rawArgs, env = null) {
 				{
 					entry: [
 						"index." +
-						(languages.length === 1 && languages[0] === "typescript"
-							? "ts"
-							: "js")
+							(languages.length === 1 && languages[0] === "typescript"
+								? "ts"
+								: "js")
 					],
 					output: "index.js"
 				}
@@ -128,7 +128,7 @@ export function getOptions(rawArgs, env = null) {
 			default: {
 				production: {
 					sourcemap: false,
-					targets: {},
+					targets: {}
 				},
 				test: {},
 				development: {}
@@ -234,7 +234,7 @@ export function getOptions(rawArgs, env = null) {
 				defaultValue = defaultValue({ options, childPackage });
 			}
 			if (type.merge) {
-				options[typeName] = merge({}, defaultValue, options[typeName])
+				options[typeName] = merge({}, defaultValue, options[typeName]);
 			} else {
 				options[typeName] = defaultValue;
 			}
