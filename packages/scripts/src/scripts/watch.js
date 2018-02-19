@@ -15,6 +15,9 @@ export default async args => {
 	const compiler = await getCompiler(options);
 	let child;
 
+	let errors = false;
+	let childRunning = false;
+
 	compiler.watch(
 		{
 			ignored: /node_modules/
@@ -26,15 +29,19 @@ export default async args => {
 			printStats(stats, options);
 			console.log();
 
-			if (child && child.pid) {
-				// Kill all subchilds
-				process.kill(-child.pid);
-			}
-			if (options.runOnWatch && !stats.hasErrors()) {
-				// Let program finish before starting
-				setTimeout(() => {
+			function startChild() {
+				if (!stats.hasErrors()) {
 					child = start(options);
-				}, 50);
+				}
+			}
+
+			if (child) {
+				child.on("exit", () => {
+					startChild();
+				});
+				child.kill("SIGKILL");
+			} else {
+				startChild();
 			}
 		}
 	);
