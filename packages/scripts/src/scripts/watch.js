@@ -33,7 +33,7 @@ export default async args => {
 				if (child) {
 					child.kill();
 				}
-				child = start(options);
+				child = await start(options);
 			}
 		}
 	);
