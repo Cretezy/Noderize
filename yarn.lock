@@ -563,9 +563,15 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@noderize/scripts@0.3.13":
-  version "0.3.13"
-  resolved "https://registry.yarnpkg.com/@noderize/scripts/-/scripts-0.3.13.tgz#24711ce4a19e5d0db9e614958739195a270d1505"
+"@noderize/runtime@^0.3.16":
+  version "0.3.16"
+  resolved "https://registry.yarnpkg.com/@noderize/runtime/-/runtime-0.3.16.tgz#651169c72b750373e29d421782fd6e48f8de044f"
+  dependencies:
+    "@babel/runtime" "^7.0.0-beta.40"
+
+"@noderize/scripts@0.3.16":
+  version "0.3.16"
+  resolved "https://registry.yarnpkg.com/@noderize/scripts/-/scripts-0.3.16.tgz#4ad9dca90a19ff45884cec1ffb36db161f4a114e"
   dependencies:
     "@babel/core" "^7.0.0-beta.40"
     "@babel/plugin-proposal-decorators" "^7.0.0-beta.40"
@@ -574,7 +580,7 @@
     "@babel/preset-env" "^7.0.0-beta.40"
     "@babel/preset-flow" "^7.0.0-beta.40"
     "@babel/preset-stage-2" "^7.0.0-beta.40"
-    "@noderize/runtime" "^0.3.13"
+    "@noderize/runtime" "^0.3.16"
     babel-core "^7.0.0-bridge.0"
     babel-jest "^22.2.2"
     babel-loader "^8.0.0-beta.0"
