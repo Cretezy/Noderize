@@ -29,19 +29,11 @@ export default async args => {
 			printStats(stats, options);
 			console.log();
 
-			function startChild() {
-				if (!stats.hasErrors()) {
-					child = start(options);
+			if (options.runOnWatch) {
+				if (child) {
+					child.kill();
 				}
-			}
-
-			if (child) {
-				child.on("exit", () => {
-					startChild();
-				});
-				child.kill("SIGKILL");
-			} else {
-				startChild();
+				child = start(options);
 			}
 		}
 	);
@@ -101,4 +93,10 @@ export default async args => {
 	staticWatcher.on("add", fileChange);
 	staticWatcher.on("addDir", fileChange);
 	staticWatcher.on("change", fileChange);
+
+	process.on("exit", () => {
+		if (child) {
+			child.kill();
+		}
+	});
 };
