@@ -22,7 +22,7 @@ export default async args => {
 		{
 			ignored: /node_modules/
 		},
-		(err, stats) => {
+		async (err, stats) => {
 			console.log();
 			printInfo("Building...");
 			console.log();
