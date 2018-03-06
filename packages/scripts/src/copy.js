@@ -2,17 +2,17 @@ import { printError, printInfo } from "./utils/print";
 import { resolveApp } from "./utils/path";
 import fs from "fs-extra";
 
-export async function copyAll(files) {
+export async function copyAll(files, options) {
 	await Promise.all(
 		Object.keys(files).map(async source => {
 			const destination = files[source];
 
-			await copyFile(source, destination);
+			await copyFile(source, destination, options);
 		})
 	);
 }
 
-export async function copyFile(source, destination) {
+export async function copyFile(source, destination, options) {
 	try {
 		await fs.copy(resolveApp(options.srcDirectory, source), resolveApp(options.distDirectory, destination));
 

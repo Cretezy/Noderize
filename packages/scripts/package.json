@@ -8,7 +8,7 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"license": "MIT",
 	"bin": { "noderize-scripts": "dist/index.js" },
 	"files": ["src", "dist"],
@@ -20,10 +20,10 @@
 		"format": "npm run scripts -- format",
 		"clean": "npm run scripts -- clean",
 		"prepack":
-			"rm -rf dist && noderize-scripts build --env production && npm run build --env production"
+			"rm -rf dist && noderize-scripts build --env production && npm run build -- --env production"
 	},
 	"dependencies": {
-		"@noderize/runtime": "^0.4.0",
+		"@noderize/runtime": "^0.4.1",
 		"@babel/core": "^7.0.0-beta.40",
 		"@babel/plugin-proposal-decorators": "^7.0.0-beta.40",
 		"@babel/plugin-transform-runtime": "^7.0.0-beta.40",

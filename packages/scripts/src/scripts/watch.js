@@ -74,7 +74,7 @@ export default async args => {
 				}
 
 				if (file) {
-					await copyFile(file.source, file.destination);
+					await copyFile(file.source, file.destination, options);
 				}
 			}
 		}, 100);
@@ -87,7 +87,7 @@ export default async args => {
 
 	staticWatcher.on("ready", async () => {
 		// Copy all files at the start
-		await copyAll(options.static);
+		await copyAll(options.static, options);
 	});
 
 	staticWatcher.on("add", fileChange);

@@ -27,7 +27,7 @@ export default async args => {
 
 		// Copy
 		if (Object.keys(options.static).length > 0) {
-			await copyAll(options.static);
+			await copyAll(options.static, options);
 			console.log();
 		}
 
