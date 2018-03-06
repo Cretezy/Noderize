@@ -35,16 +35,14 @@ Next, [create](create.md) a Noderize project inside your project root called `fu
 
 ## Setup
 
-You will need to add the Firebase specific-commands and dependencies (including `npm-run-all`).
+You will need to add the Firebase-specific dependencies and scripts.
 
 First, add the dependencies:
 
 ```bash
 yarn add firebase-admin firebase-functions
-yarn add -D npm-run-all
 # or
 npm install firebase-admin firebase-functions
-npm install -D npm-run-all
 ```
 
 Next, add these scripts to your `package.json`:
