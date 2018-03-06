@@ -5,7 +5,7 @@ node_js:
 cache: yarn
 
 script:
-- (cd packages/scripts && yarn bootstrap && yarn test)
+- (cd packages/scripts && yarn prepack && yarn test)
 - (cd packages/create && yarn build && yarn test)
 
 stages:

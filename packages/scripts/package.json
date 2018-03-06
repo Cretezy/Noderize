@@ -14,7 +14,6 @@
 	"files": ["src", "dist"],
 	"scripts": {
 		"scripts": "node -r source-map-support/register dist/index.js",
-		"bootstrap": "noderize-scripts build && npm run scripts -- build",
 		"watch": "npm run scripts -- watch",
 		"build": "npm run scripts -- build",
 		"test": "npm run scripts -- test",
