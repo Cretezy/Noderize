@@ -28,7 +28,8 @@
 		"Guides": [
 			"guides",
 			"guides-publishing",
-			"guides-heroku"
+			"guides-heroku",
+			"guides-firebase-functions"
 		]
 	}
 }
