@@ -1,0 +1,68 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Guide: Firebase Cloud Functions · Noderize</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Guide: Firebase Cloud Functions · Noderize"/><meta property="og:type" content="website"/><meta property="og:url" content="https://noderize.js.org/index.html"/><meta property="og:description" content="To deploy Firebase Cloud Functions, we must:"/><link rel="shortcut icon" href="/img/favicon/favicon.icon"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><link rel="alternate" type="application/atom+xml" href="https://noderize.js.org/blog/atom.xml" title="Noderize Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://noderize.js.org/blog/feed.xml" title="Noderize Blog RSS Feed"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/light.svg"/><h2 class="headerTitle">Noderize</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/docs/introduction.html" target="_self">Docs</a></li><li><a href="/blog" target="_self">Blog</a></li><li><a href="https://github.com/Cretezy/Noderize" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Get Started</h3><ul><li class="navListItem"><a class="navItem" href="/docs/introduction.html">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docs/create.html">Create</a></li><li class="navListItem"><a class="navItem" href="/docs/scripts.html">Scripts</a></li><li class="navListItem"><a class="navItem" href="/docs/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>Configuration</h3><ul><li class="navListItem"><a class="navItem" href="/docs/configuration.html">Index</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration-noderize.html">Noderize</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration-prettier.html">Prettier</a></li><li class="navListItem"><a class="navItem" href="/docs/configuration-jest.html">Jest</a></li></ul></div><div class="navGroup navGroupActive"><h3>Features</h3><ul><li class="navListItem"><a class="navItem" href="/docs/features.html">Index</a></li><li class="navListItem"><a class="navItem" href="/docs/features-modern.html">Modern JavaScript</a></li><li class="navListItem"><a class="navItem" href="/docs/features-flow.html">Flow</a></li><li class="navListItem"><a class="navItem" href="/docs/features-typescript.html">TypeScript</a></li><li class="navListItem"><a class="navItem" href="/docs/features-formatting.html">Code Formatting</a></li><li class="navListItem"><a class="navItem" href="/docs/features-testing.html">Testing</a></li></ul></div><div class="navGroup navGroupActive"><h3>Tutorials</h3><ul><li class="navListItem"><a class="navItem" href="/docs/tutorials.html">Index</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials-express.html">Express</a></li><li class="navListItem"><a class="navItem" href="/docs/tutorials-cli.html">CLI</a></li></ul></div><div class="navGroup navGroupActive"><h3>Guides</h3><ul><li class="navListItem"><a class="navItem" href="/docs/guides.html">Index</a></li><li class="navListItem"><a class="navItem" href="/docs/guides-publishing.html">Publishing</a></li><li class="navListItem"><a class="navItem" href="/docs/guides-heroku.html">Heroku</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/docs/guides-firebase-functions.html">Firebase Cloud Functions</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1>Guide: Firebase Cloud Functions</h1></header><article><div><span><p>To deploy Firebase Cloud Functions, we must:</p>
+<ul>
+<li>Create a Firebase project</li>
+<li>Create a Noderize app</li>
+<li>Configure</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" name="requirements"></a><a href="#requirements" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Requirements</h2>
+<p>You must setup the <a href="https://github.com/firebase/firebase-tools">Firebase CLI</a> before setting up Functions.</p>
+<p>Quick Firebase CLI setup:</p>
+<pre><code class="hljs css bash">yarn global add firebase-tools
+<span class="hljs-comment"># or</span>
+npm install -g firebase-tools
+
+<span class="hljs-comment"># then</span>
+firebase login
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" name="project-setup"></a><a href="#project-setup" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Project Setup</h2>
+<p>Create a directory to be used as your project root (for Firebase). Setup Firebase using <code>firebase init</code>, and <strong>do not</strong> select the Functions options when creating.</p>
+<p>Next, <a href="/docs/create.html">create</a> a Noderize project inside your project root called <code>functions</code>.</p>
+<blockquote>
+<p>Note: You may change the directory name (defaults to <code>functions</code>) with the <code>functions.source</code> key in <code>firebase.json</code>.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" name="setup"></a><a href="#setup" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setup</h2>
+<p>You will need to add the Firebase-specific dependencies and scripts.</p>
+<p>First, add the dependencies:</p>
+<pre><code class="hljs css bash">yarn add firebase-admin firebase-functions
+<span class="hljs-comment"># or</span>
+npm install firebase-admin firebase-functions
+</code></pre>
+<p>Next, add these scripts to your <code>package.json</code>:</p>
+<pre><code class="hljs css json">{
+    <span class="hljs-attr">"scripts"</span>: {
+        <span class="hljs-attr">"..."</span>: <span class="hljs-string">"..."</span>,
+        <span class="hljs-attr">"prepack"</span>: <span class="hljs-string">"noderize-scripts clean &amp;&amp; noderize-scripts build --env production"</span>,
+        <span class="hljs-attr">"preserve"</span>: <span class="hljs-string">"npm run build"</span>,
+        <span class="hljs-attr">"serve"</span>: <span class="hljs-string">"firebase serve --only functions"</span>,
+        <span class="hljs-attr">"predeploy"</span>: <span class="hljs-string">"npm run prepack"</span>,
+        <span class="hljs-attr">"deploy"</span>: <span class="hljs-string">"firebase deploy --only functions"</span>,
+        <span class="hljs-attr">"preshell"</span>: <span class="hljs-string">"npm run build"</span>,
+        <span class="hljs-attr">"shell"</span>: <span class="hljs-string">"firebase experimental:functions:shell"</span>,
+        <span class="hljs-attr">"logs"</span>: <span class="hljs-string">"firebase functions:log"</span>
+    }
+}
+</code></pre>
+<p>This will allow you to use the <code>serve</code>, <code>deploy</code>, <code>logs</code>, and <code>shell</code> command from Firebase.</p>
+<p>Done!</p>
+<h2><a class="anchor" aria-hidden="true" name="demo"></a><a href="#demo" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo</h2>
+<p>Replace <code>src/index.js</code> by:</p>
+<pre><code class="hljs css js"><span class="hljs-keyword">import</span> { https } <span class="hljs-keyword">from</span> <span class="hljs-string">"firebase-functions"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> test = https.onRequest(<span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+    res.send(<span class="hljs-string">"Hello world!"</span>);
+});
+</code></pre>
+<p>Then run <code>yarn serve</code> or <code>npm run serve</code>. You will see it build, then serve the function. Clicking the function link will show <code>Hello world!</code>.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="guides-heroku.html">← Guide: Heroku</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/light.svg" alt="Noderize" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/introduction.html">Getting Started</a><a href="/docs/en/configuration.html">Configuration</a><a href="/docs/en/features.html">Features</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/Cretezy/Noderize">GitHub</a><a class="github-button" href="https://github.com/Cretezy/Noderize" data-icon="octicon-star" data-count-href="/Cretezy/Noderize/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2018 Charles Crete.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+              var search = docsearch({
+                apiKey: 'ca0d50cdf7792b2eeaf3807f2a81cdde',
+                indexName: 'noderize',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
