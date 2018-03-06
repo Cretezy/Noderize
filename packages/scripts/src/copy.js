@@ -14,14 +14,14 @@ export async function copyAll(files) {
 
 export async function copyFile(source, destination) {
 	try {
-		await fs.copy(resolveApp("src", source), resolveApp("dist", destination));
+		await fs.copy(resolveApp(options.srcDirectory, source), resolveApp(options.distDirectory, destination));
 
-		printInfo(`Copied src/${source} to dist/${destination}!`);
+		printInfo(`Copied ${options.srcDirectory}/${source} to ${options.distDirectory}/${destination}!`);
 	} catch (error) {
 		if (error.code === "ENOENT") {
-			printError(`Could not find src/${source}.`);
+			printError(`Could not find ${options.srcDirectory}/${source}.`);
 		} else {
-			printError(`Error copying src/${source} to dist/${destination}.`, error);
+			printError(`Error copying ${options.srcDirectory}/${source} to ${options.distDirectory}/${destination}.`, error);
 		}
 	}
 }

@@ -42,7 +42,7 @@ export default async args => {
 	const files = Object.keys(options.static).reduce(
 		(files, source) => ({
 			...files,
-			[resolveApp("src", source)]: {
+			[resolveApp(options.srcDirectory, source)]: {
 				source,
 				destination: options.static[source]
 			}

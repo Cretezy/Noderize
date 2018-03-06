@@ -6,7 +6,10 @@ import { printInfo, printWarn, printDone } from "../utils/print";
 export default async args => {
 	printInfo("Formatting...");
 
-	const files = ["src/**/*.ts", "src/**/*.js", "src/**/*.json", "package.json"];
+	const options = getOptions(null);
+
+	const srcPrefixed = ["**/*.ts", "**/*.js", "**/*.json"].map(file => path.join(options.srcDirectory, file));
+	const files = [...srcPrefixed, "package.json"];
 
 	const prettierPath = path.resolve(
 		__dirname,

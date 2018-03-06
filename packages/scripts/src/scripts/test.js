@@ -55,7 +55,7 @@ export default async args => {
 	const config = merge(
 		{
 			rootDir: appDirectory,
-			roots: ["<rootDir>/src"],
+			roots: [`<rootDir>/${options.srcDirectory}`],
 			transform: {},
 			setupFiles: [],
 			moduleFileExtensions: [...extensions, "json"],

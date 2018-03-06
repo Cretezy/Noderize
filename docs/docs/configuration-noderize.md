@@ -143,7 +143,6 @@ Specify a [Babel target](https://babeljs.io/docs/plugins/preset-env/#targets) to
 
 Default to current Node version. You may want to compile to standard ES5 if your app is a library by using `{}`.
 
-
 This is overridden per environment with [`env`](#env) option.
 
 ### `target`
@@ -225,6 +224,20 @@ For instance, to add the React preset for creating a React library:
 [number] Default: `3`
 
 Amount of build threads to use. Minimum of 1.
+
+### `srcDirectory`
+
+[string] Default: `src`
+
+Directory of source code.
+
+### `distDirectory`
+
+[string] Default: `dist`
+
+Directory of output code.
+
+> Note: The [`clean` script](scripts.md#clean) will delete this directory when ran.
 
 ## Run Options
 

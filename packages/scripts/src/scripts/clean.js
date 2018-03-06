@@ -6,7 +6,7 @@ export default async args => {
 	printInfo("Cleaning...");
 
 	try {
-		await fs.remove(resolveApp("dist"));
+		await fs.remove(resolveApp(options.distDirectory));
 
 		printDone("Done cleaning!");
 	} catch (error) {

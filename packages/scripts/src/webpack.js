@@ -32,7 +32,7 @@ export async function getCompiler(options) {
 							printError(`Could not find external entry '${entry.slice(1)}'.`);
 						}
 					} else {
-						const entryPath = resolveApp("src", entry);
+						const entryPath = resolveApp(options.srcDirectory, entry);
 						if (!await fs.exists(entryPath)) {
 							printError(`Could not find entry '${entry}' (${entryPath}).`);
 						} else {
@@ -57,7 +57,7 @@ export async function getCompiler(options) {
 		context: appDirectory,
 		entry: bundles,
 		output: {
-			path: resolveApp("dist"),
+			path: resolveApp(options.distDirectory),
 			filename: "[name]",
 			library: options.name,
 			libraryTarget: "umd"

@@ -86,6 +86,14 @@ export function getOptions(rawArgs, env = null) {
 			min: 1,
 			default: 3
 		},
+		srcDirectory:{
+			type: String,
+			default: "src"
+		},
+		distDirectory:{
+			type: String,
+			default: "dist"
+		},
 		static: {
 			type: Object,
 			default: {}
