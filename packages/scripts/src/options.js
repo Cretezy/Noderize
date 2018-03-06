@@ -22,6 +22,14 @@ export function getOptions(rawArgs, env = null) {
 	const childPackage = fs.readJsonSync(resolveApp("package.json"));
 
 	const types = {
+		srcDirectory:{
+			type: String,
+			default: "src"
+		},
+		distDirectory:{
+			type: String,
+			default: "dist"
+		},
 		languages: {
 			type: Array,
 			subtype: String,
@@ -51,10 +59,10 @@ export function getOptions(rawArgs, env = null) {
 			type: String,
 			default: ({ options, childPackage }) =>
 				resolveApp(
-					childPackage.main ? "" : "dist",
+					childPackage.main ? "" : options.distDirectory,
 					childPackage.main || options.bundles[0].output
 				),
-			run: startFile => resolveApp("dist", startFile)
+			run: startFile => resolveApp(options.distDirectory, startFile)
 		},
 		shebang: {
 			type: Boolean,
@@ -85,14 +93,6 @@ export function getOptions(rawArgs, env = null) {
 			integer: true,
 			min: 1,
 			default: 3
-		},
-		srcDirectory:{
-			type: String,
-			default: "src"
-		},
-		distDirectory:{
-			type: String,
-			default: "dist"
 		},
 		static: {
 			type: Object,
