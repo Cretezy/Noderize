@@ -27,6 +27,7 @@
 		],
 		"Guides": [
 			"guides",
+			"guides-migrate",
 			"guides-publishing",
 			"guides-heroku",
 			"guides-firebase-functions"

@@ -11,7 +11,7 @@ script:
 stages:
 - test
 - name: deploy
-  if: repo = Cretezy/Noderize AND tag IS present # only deploy on tags
+  if: repo = Cretezy/Noderize
 
 jobs:
   include:
