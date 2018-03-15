@@ -20,17 +20,17 @@
 			"features-formatting",
 			"features-testing"
 		],
-		"Tutorials": [
-			"tutorials",
-			"tutorials-express",
-			"tutorials-cli"
-		],
 		"Guides": [
 			"guides",
 			"guides-migrate",
 			"guides-publishing",
 			"guides-heroku",
 			"guides-firebase-functions"
+		],
+		"Tutorials": [
+			"tutorials",
+			"tutorials-express",
+			"tutorials-cli"
 		]
 	}
 }
