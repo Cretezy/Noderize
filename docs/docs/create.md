@@ -6,7 +6,7 @@ sidebar_label: Create
 
 In the [introduction](introduction.md), we saw how to create a Noderize app using the `create-noderize` package.
 
-It is recommended you use the single-use script from the [introduction](introduction.md) as it will always be up-to-date, however you can optionally install the command globally with:
+It is recommended you use the single-use script from the [introduction](introduction.md) as it will always be up-to-date. However, you can optionally install the command globally with:
 
 ```bash
 yarn global add create-noderize
@@ -17,7 +17,7 @@ npm install -g create-noderize
 create-noderize <path>
 ```
 
-Some arguments can be passed to this script to modify it's behavior.
+Some arguments can be passed to this script to modify its behavior.
 
 ## Index
 
@@ -27,7 +27,7 @@ Some arguments can be passed to this script to modify it's behavior.
 
 ### `--typescript`
 
-This will setup a TypeScript project by:
+This will set up a TypeScript project by:
 
 * Setting the [`language`](configuration-noderize.md#languages) option to `typescript`
 * Renaming `src/index.js` to `src/index.ts`

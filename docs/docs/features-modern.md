@@ -4,7 +4,7 @@ title: Feature: Modern JavaScript
 sidebar_label: Modern JavaScript
 ---
 
-Noderize enables to use of modern Javascript out-of-the-box with Babel:
+Noderize enables the use of modern JavaScript out-of-the-box with Babel:
 
 * ES6, ES7, ES8.
 * Stage 3: Object rest/spread, async generator functions

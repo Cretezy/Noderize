@@ -4,10 +4,10 @@ title: Guide: Heroku
 sidebar_label: Heroku
 ---
 
-Deploy to Heroku is very simple:
+Deploying to Heroku is very simple:
 
 * Be in a Git repo (optional, `git init`)
-* Create an Heroku app using `heroku create [name]`
+* Create a Heroku app using `heroku create [name]`
 * Move `@noderize/scripts` from `devDependencies` to `dependencies` in your `package.json`.
 * Add `heroku-postbuild` script in `package.json`:
   ```json
