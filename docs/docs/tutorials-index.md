@@ -4,7 +4,7 @@ title: Tutorials
 sidebar_label: Index
 ---
 
-Tutorials of using Noderize.
+Tutorials on using Noderize.
 
 ## Index
 

@@ -76,7 +76,7 @@ To determine which port our web server will run on, we'll try reading from the `
 const port = parseInt(process.env.PORT) || 3000;
 ```
 
-Next, we will to tell Express to listen to requests. We will also provide a callback to indicate us that our app is running:
+Next, we will tell Express to listen to requests. We will also provide a callback to notify us that our app is running:
 
 ```js
 app.listen(port, () => {
@@ -106,11 +106,11 @@ When visiting `http://localhost:3000`, we'll see this:
 
 ![](/img/docs/tutorials-express-1.png)
 
-Success! From now our, on code will automatically update on changes.
+Success! From now on, our code will automatically update on changes.
 
 ## Greeting route
 
-Lets next add our greeting endpoint, which will takes a `name` parameter (defaulting to `world`) and returns a greeting:
+Let's next add our greeting endpoint, which takes a `name` parameter (defaulting to `world`) and returns a greeting:
 
 ```js
 app.get("/greet", (req, res) => {
@@ -128,7 +128,7 @@ Finished!
 
 In this tutorial we saw how to:
 
-* [Setup a Noderize app and install Express](#setup)
-* [Import Express and setup our Express server](#express-server)
+* [Set up a Noderize app and install Express](#setup)
+* [Import Express and set up our Express server](#express-server)
 * [Run our Noderize app](#running-our-app)
 * [Add our greeting route](#greeting-route)

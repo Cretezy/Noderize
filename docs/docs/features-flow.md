@@ -6,7 +6,7 @@ sidebar_label: Flow
 
 [Flow](https://flow.org/) is a static type checker that adds types to JavaScript.
 
-Flow is built-in to Noderize, you simply have to add the `flow-bin` command to your project to start using it:
+Flow is built-in to Noderize. You simply have to add the `flow-bin` command to your project to start using it:
 
 ```bash
 yarn add -D flow-bin

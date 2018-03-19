@@ -12,7 +12,7 @@ To deploy Firebase Cloud Functions, we must:
 
 ## Requirements
 
-You must setup the [Firebase CLI](https://github.com/firebase/firebase-tools) before setting up Functions.
+You must set up the [Firebase CLI](https://github.com/firebase/firebase-tools) before setting up Functions.
 
 Quick Firebase CLI setup:
 
@@ -27,7 +27,7 @@ firebase login
 
 ## Project Setup
 
-Create a directory to be used as your project root (for Firebase). Setup Firebase using `firebase init`, and **do not** select the Functions options when creating.
+Create a directory to be used as your project root (for Firebase). Set up Firebase using `firebase init`, and **do not** select the Functions options when creating.
 
 Next, [create](create.md) a Noderize project inside your project root called `functions`.
 

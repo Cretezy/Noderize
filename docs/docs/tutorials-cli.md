@@ -15,7 +15,7 @@ Our goal is to:
 
 We will be using 3 libraries:
 
-* [`Commander.js`](https://github.com/tj/commander.js): commands and sub-commands
+* [`Commander.js`](https://github.com/tj/commander.js): Commands and sub-commands
 * [`chalk`](https://github.com/chalk/chalk): Color our output
 * [`Inquirer.js`](https://github.com/SBoudrias/Inquirer.js): Prompts
 
@@ -100,7 +100,7 @@ program.command("greet [name]").action(greet);
 program.command("fibonacci [n]").action(fibonacci);
 ```
 
-Next, we'll add a catch-all command (if entering a non-valid command). We will firstly show a message to the user, then show them to general help message, and exit with error code 1.
+Next, we'll add a catch-all command (if entering a non-valid command). We will firstly show a message to the user, then show them the general help message, and exit with error code 1.
 
 ```js
 program.action(() => {
@@ -243,7 +243,7 @@ Finished!
 
 In this tutorial we saw how to:
 
-* [Setup a Noderize app and install dependencies](#setup)
+* [Set up a Noderize app and install dependencies](#setup)
 * [Created our program structure](#structure)
 * [Added the `greet` sub-command](#greet)
 * [Added the `fibonacci` sub-command](#fibonacci)

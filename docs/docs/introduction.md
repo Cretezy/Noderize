@@ -43,7 +43,7 @@ yarn build
 npm run build
 ```
 
-This will build your app to `dist/index.js` (this output is optionally [configurable](configuration-noderize.md#output))
+This will build your app to `dist/index.js` (this output is optionally [configurable](configuration-noderize.md#output)).
 
 You can then run your file using the `start` script (for source map support) or using Node directly:
 
@@ -59,4 +59,4 @@ node dist/index.js
 
 Noderize is packed with [features](features-index.md) such as [modern JavaScript support](features-modern.md) and [TypeScript support](features-typescript.md).
 
-[Code formatting](features-formatting.md) ([`format` script](scripts.md#format)) and [testing](features-testing.md) ([`test` script](scripts.md#test)) is built-in and let's get work on your high quality code distraction-free.
+[Code formatting](features-formatting.md) ([`format` script](scripts.md#format)) and [testing](features-testing.md) ([`test` script](scripts.md#test)) is built-in and lets you get working on your high-quality code distraction-free.
