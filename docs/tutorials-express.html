@@ -56,7 +56,7 @@ npm install express
 <p>To determine which port our web server will run on, we'll try reading from the <code>PORT</code> environment variable, and default back to <code>3000</code>:</p>
 <pre><code class="hljs css js"><span class="hljs-keyword">const</span> port = <span class="hljs-built_in">parseInt</span>(process.env.PORT) || <span class="hljs-number">3000</span>;
 </code></pre>
-<p>Next, we will to tell Express to listen to requests. We will also provide a callback to indicate us that our app is running:</p>
+<p>Next, we will tell Express to listen to requests. We will also provide a callback to notify us that our app is running:</p>
 <pre><code class="hljs css js">app.listen(port, () =&gt; {
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Listening at http://localhost:<span class="hljs-subst">${port}</span>`</span>);
 });
@@ -74,9 +74,9 @@ npm run watch
 </code></pre>
 <p>When visiting <code>http://localhost:3000</code>, we'll see this:</p>
 <p><img src="/img/docs/tutorials-express-1.png" alt=""></p>
-<p>Success! From now our, on code will automatically update on changes.</p>
+<p>Success! From now on, our code will automatically update on changes.</p>
 <h2><a class="anchor" aria-hidden="true" name="greeting-route"></a><a href="#greeting-route" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Greeting route</h2>
-<p>Lets next add our greeting endpoint, which will takes a <code>name</code> parameter (defaulting to <code>world</code>) and returns a greeting:</p>
+<p>Let's next add our greeting endpoint, which takes a <code>name</code> parameter (defaulting to <code>world</code>) and returns a greeting:</p>
 <pre><code class="hljs css js">app.get(<span class="hljs-string">"/greet"</span>, (req, res) =&gt; {
     res.send(<span class="hljs-string">`Hello <span class="hljs-subst">${req.query.name || <span class="hljs-string">"world"</span>}</span>!`</span>);
 });
@@ -87,8 +87,8 @@ npm run watch
 <h2><a class="anchor" aria-hidden="true" name="summary"></a><a href="#summary" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Summary</h2>
 <p>In this tutorial we saw how to:</p>
 <ul>
-<li><a href="#setup">Setup a Noderize app and install Express</a></li>
-<li><a href="#express-server">Import Express and setup our Express server</a></li>
+<li><a href="#setup">Set up a Noderize app and install Express</a></li>
+<li><a href="#express-server">Import Express and set up our Express server</a></li>
 <li><a href="#running-our-app">Run our Noderize app</a></li>
 <li><a href="#greeting-route">Add our greeting route</a></li>
 </ul>
