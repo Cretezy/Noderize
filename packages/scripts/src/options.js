@@ -22,11 +22,11 @@ export function getOptions(rawArgs, env = null) {
 	const childPackage = fs.readJsonSync(resolveApp("package.json"));
 
 	const types = {
-		srcDirectory:{
+		srcDirectory: {
 			type: String,
 			default: "src"
 		},
-		distDirectory:{
+		distDirectory: {
 			type: String,
 			default: "dist"
 		},
@@ -49,7 +49,7 @@ export function getOptions(rawArgs, env = null) {
 					output: "index.js"
 				}
 			],
-			run: (bundles) =>
+			run: bundles =>
 				bundles.map(bundle => ({
 					...bundle,
 					entry: Array.isArray(bundle.entry) ? bundle.entry : [bundle.entry]
@@ -62,7 +62,8 @@ export function getOptions(rawArgs, env = null) {
 					childPackage.main ? "" : options.distDirectory,
 					childPackage.main || options.bundles[0].output
 				),
-			run: (startFile, {options}) => resolveApp(options.distDirectory, startFile)
+			run: (startFile, { options }) =>
+				resolveApp(options.distDirectory, startFile)
 		},
 		shebang: {
 			type: Boolean,
@@ -173,7 +174,7 @@ export function getOptions(rawArgs, env = null) {
 					if (type.type === Array && !Array.isArray(value)) {
 						value = [value];
 					}
-					value = run(type.run, value, {options});
+					value = run(type.run, value, { options });
 					options[configOptionKey] = value;
 				} else {
 					printWarn(`Config key '${configOptionKey}' doesn't do anything.`);
@@ -226,7 +227,7 @@ export function getOptions(rawArgs, env = null) {
 			if (argValue !== null) {
 				let value = parseArgType(arg, type, argValue);
 				if (value !== undefined) {
-					value = run(type.run, value, {options});
+					value = run(type.run, value, { options });
 
 					options[arg] = value;
 				}
