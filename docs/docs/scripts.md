@@ -4,7 +4,7 @@ title: Noderize Scripts
 sidebar_label: Scripts
 ---
 
-Noderize comes build it with commands ("scripts"). These scripts are automatically added to your `package.json` `scripts` field when using [`create-noderize`](create.md):
+Noderize comes with commands ("scripts") built-in. These scripts are automatically added to your `package.json` `scripts` field when using [`create-noderize`](create.md):
 
 ```json
 "scripts": {
@@ -28,7 +28,7 @@ npm run <script>
 
 > Note: with npm, you may omit `run` for the `start` and `test` scripts. For example: `npm start`.
 
-For every the `watch` and `start` script, you may pass arguments to both Noderize and your app:
+For the `watch` and `start` scripts, you may pass arguments to both Noderize and your app:
 
 ```bash
 yarn watch [noderize args] -- [app args]
@@ -64,7 +64,7 @@ Uses [run options](configuration-noderize.md#run-options).
 
 ### `watch`
 
-Continuously builds are runs your app.
+Continuously builds and runs your app.
 
 Uses [build](configuration-noderize.md#build-options) & [run options](configuration-noderize.md#run-options).
 
