@@ -28,6 +28,8 @@
     "TypeScript": "TypeScript",
     "guides-firebase-functions": "Guide: Firebase Cloud Functions",
     "Firebase Cloud Functions": "Firebase Cloud Functions",
+    "guides-google-functions": "Guide: Google Cloud Functions",
+    "Google Cloud Functions": "Google Cloud Functions",
     "guides-heroku": "Guide: Heroku",
     "Heroku": "Heroku",
     "guides-migrate": "Guide: Migrate",

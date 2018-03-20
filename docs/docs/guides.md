@@ -12,3 +12,4 @@ Guides for Noderize.
 * [Publishing](guides-publishing.md)
 * [Heroku](guides-heroku.md)
 * [Firebase Cloud Functions](guides-firebase-functions.md)
+* [Google Cloud Functions](guides-google-functions.md)
