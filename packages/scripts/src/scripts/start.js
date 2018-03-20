@@ -1,5 +1,6 @@
 import spawn from "cross-spawn";
 import { getOptions } from "../options";
+import { appDirectory } from "../utils/path";
 import { printError, printInfo, printWarn } from "../utils/print";
 import fs from "fs-extra";
 
