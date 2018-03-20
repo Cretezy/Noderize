@@ -563,15 +563,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@noderize/runtime@^0.3.16":
-  version "0.3.16"
-  resolved "https://registry.yarnpkg.com/@noderize/runtime/-/runtime-0.3.16.tgz#651169c72b750373e29d421782fd6e48f8de044f"
-  dependencies:
-    "@babel/runtime" "^7.0.0-beta.40"
-
-"@noderize/scripts@0.3.16":
-  version "0.3.16"
-  resolved "https://registry.yarnpkg.com/@noderize/scripts/-/scripts-0.3.16.tgz#4ad9dca90a19ff45884cec1ffb36db161f4a114e"
+"@noderize/scripts@0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@noderize/scripts/-/scripts-0.4.3.tgz#3b2dfcc8f726ff7ca9cc7c734dacfc12b5395eac"
   dependencies:
     "@babel/core" "^7.0.0-beta.40"
     "@babel/plugin-proposal-decorators" "^7.0.0-beta.40"
@@ -580,7 +574,7 @@
     "@babel/preset-env" "^7.0.0-beta.40"
     "@babel/preset-flow" "^7.0.0-beta.40"
     "@babel/preset-stage-2" "^7.0.0-beta.40"
-    "@noderize/runtime" "^0.3.16"
+    "@noderize/runtime" "^0.4.3"
     babel-core "^7.0.0-bridge.0"
     babel-jest "^22.2.2"
     babel-loader "^8.0.0-beta.0"
@@ -1500,6 +1494,16 @@ cross-spawn@^5.0.1:
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
   dependencies:
     lru-cache "^4.0.1"
+    shebang-command "^1.2.0"
+    which "^1.2.9"
+
+cross-spawn@^6.0.5:
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
+  dependencies:
+    nice-try "^1.0.4"
+    path-key "^2.0.1"
+    semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
 
@@ -3452,6 +3456,10 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
+nice-try@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.4.tgz#d93962f6c52f2c1558c0fbda6d512819f1efe1c4"
+
 node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
@@ -3755,7 +3763,7 @@ path-is-inside@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
-path-key@^2.0.0:
+path-key@^2.0.0, path-key@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
 
@@ -4245,7 +4253,7 @@ schema-utils@^0.4.2:
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
 
-"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.3.0, semver@^5.4.1:
+"semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.3.0, semver@^5.4.1, semver@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 

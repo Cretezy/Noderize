@@ -1,13 +1,13 @@
 import path from "path";
 import { appDirectory } from "../utils/path";
 import { execSync } from "child_process";
-import { fork } from "child_process";
+import spawn from "cross-spawn";
 import { getOptions } from "../options";
 import cosmiconfig from "cosmiconfig";
 import merge from "lodash.merge";
 import { printError, printInfo } from "../utils/print";
 
-export default async args => {
+export default async (args, fullArgs) => {
 	printInfo("Testing...");
 
 	const options = getOptions(null, "test");
@@ -81,7 +81,8 @@ export default async args => {
 	);
 
 	// Run Jest
-	fork(jestPath, args, {
-		cwd: appDirectory
+	spawn(fullArgs[0], [jestPath, ...args], {
+		cwd: appDirectory,
+		stdio: "inherit"
 	});
 };

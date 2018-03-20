@@ -1,4 +1,4 @@
-import { fork } from "child_process";
+import spawn from "cross-spawn";
 import { getOptions } from "../options";
 import { printError, printInfo, printWarn } from "../utils/print";
 import fs from "fs-extra";
@@ -7,7 +7,7 @@ export default async args => {
 	await start(getOptions(args));
 };
 
-export async function start(options) {
+export async function start(options, nodePath = process.argv[0]) {
 	printInfo("Starting...");
 	console.log(); // Padding
 
@@ -17,8 +17,10 @@ export async function start(options) {
 		return;
 	}
 
-	const child = fork(options.startFile, options.args._, {
-		execArgv: ["-r", "source-map-support/register"]
+	const child = spawn(nodePath, [options.startFile, ...options.args._], {
+		execArgv: ["-r", "source-map-support/register"],
+		cwd: appDirectory,
+		stdio: "inherit"
 	});
 
 	child.on("exit", (code, signal) => {

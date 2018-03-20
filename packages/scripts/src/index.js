@@ -22,5 +22,5 @@ if (!Object.keys(commands).includes(script)) {
 	printWarn(`Unknown script.`);
 	process.exit(1);
 } else {
-	commands[script](args);
+	commands[script](args, process.argv);
 }

@@ -1,10 +1,10 @@
 import path from "path";
 import { getOptions } from "../options";
 import { appDirectory } from "../utils/path";
-import { fork } from "child_process";
+import spawn from "cross-spawn";
 import { printInfo, printWarn, printDone } from "../utils/print";
 
-export default async args => {
+export default async (args, fullArgs) => {
 	printInfo("Formatting...");
 
 	const options = getOptions(null);
@@ -22,9 +22,14 @@ export default async args => {
 		"prettier"
 	);
 
-	const child = fork(prettierPath, ["--write", ...files, ...args], {
-		cwd: appDirectory
-	});
+	const child = spawn(
+		fullArgs[0],
+		[prettierPath, "--write", ...files, ...args],
+		{
+			cwd: appDirectory,
+			stdio: "inherit"
+		}
+	);
 
 	child.on("exit", code => {
 		const message = "Done formatting!";
