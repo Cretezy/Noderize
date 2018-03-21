@@ -14,7 +14,7 @@ export default async (args, fullArgs) => {
 	);
 	const files = [...srcPrefixed, "package.json"];
 
-	const prettierPath =  await getBinPath("prettier");
+	const prettierPath = await getBinPath("prettier");
 
 	const child = spawn(
 		fullArgs[0],

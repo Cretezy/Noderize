@@ -5,7 +5,7 @@ export const appDirectory = fs.realpathSync(process.cwd());
 export const resolveApp = (...relativePath) =>
 	resolve(appDirectory, ...relativePath);
 
-export async function getBinPath(bin){
+export async function getBinPath(bin) {
 	const local = resolve(
 		__dirname,
 		"..", // scripts
@@ -13,7 +13,7 @@ export async function getBinPath(bin){
 		".bin",
 		bin
 	);
-	if(await fs.exists(local)){
+	if (await fs.exists(local)) {
 		return local;
 	}
 
@@ -26,7 +26,7 @@ export async function getBinPath(bin){
 		bin
 	);
 
-	if(await fs.exists(global)){
+	if (await fs.exists(global)) {
 		return global;
 	}
 
