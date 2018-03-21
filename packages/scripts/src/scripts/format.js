@@ -1,6 +1,6 @@
 import path from "path";
 import { getOptions } from "../options";
-import { appDirectory } from "../utils/path";
+import { appDirectory, getBinPath } from "../utils/path";
 import spawn from "cross-spawn";
 import { printInfo, printWarn, printDone } from "../utils/print";
 
@@ -14,13 +14,7 @@ export default async (args, fullArgs) => {
 	);
 	const files = [...srcPrefixed, "package.json"];
 
-	const prettierPath = path.resolve(
-		__dirname,
-		"..",
-		"node_modules",
-		".bin",
-		"prettier"
-	);
+	const prettierPath =  await getBinPath("prettier");
 
 	const child = spawn(
 		fullArgs[0],

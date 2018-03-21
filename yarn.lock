@@ -563,9 +563,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@noderize/scripts@0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@noderize/scripts/-/scripts-0.4.3.tgz#3b2dfcc8f726ff7ca9cc7c734dacfc12b5395eac"
+"@noderize/scripts@0.4.5":
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/@noderize/scripts/-/scripts-0.4.5.tgz#44c686c8b24908a95e792990c45863ff3140c32d"
   dependencies:
     "@babel/core" "^7.0.0-beta.40"
     "@babel/plugin-proposal-decorators" "^7.0.0-beta.40"
@@ -574,13 +574,14 @@
     "@babel/preset-env" "^7.0.0-beta.40"
     "@babel/preset-flow" "^7.0.0-beta.40"
     "@babel/preset-stage-2" "^7.0.0-beta.40"
-    "@noderize/runtime" "^0.4.3"
+    "@noderize/runtime" "^0.4.5"
     babel-core "^7.0.0-bridge.0"
     babel-jest "^22.2.2"
     babel-loader "^8.0.0-beta.0"
     chalk "^2.3.1"
     chokidar "^2.0.2"
     cosmiconfig "^4.0.0"
+    cross-spawn "^6.0.5"
     fork-ts-checker-webpack-plugin "^0.3.0"
     fs-extra "^5.0.0"
     happypack "^4.0.1"

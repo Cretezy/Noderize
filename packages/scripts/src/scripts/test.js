@@ -1,5 +1,5 @@
 import path from "path";
-import { appDirectory } from "../utils/path";
+import { appDirectory, getBinPath } from "../utils/path";
 import { execSync } from "child_process";
 import spawn from "cross-spawn";
 import { getOptions } from "../options";
@@ -72,13 +72,7 @@ export default async (args, fullArgs) => {
 
 	args.push("--config", JSON.stringify(config));
 
-	const jestPath = path.resolve(
-		__dirname,
-		"..",
-		"node_modules",
-		".bin",
-		"jest"
-	);
+	const jestPath = await getBinPath("jest");
 
 	// Run Jest
 	spawn(fullArgs[0], [jestPath, ...args], {
