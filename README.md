@@ -6,7 +6,7 @@
     Noderize lets you create Node apps in less than 30 seconds.
     <br/>
     <br/>
-    <a href="https://noderize.js.org"><strong>Documentation</strong></a>
+    <a href="https://noderize.js.org/docs/introduction.html"><strong>Documentation</strong></a>
     <br/>
     <br/>
 </p>
