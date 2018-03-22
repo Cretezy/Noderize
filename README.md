@@ -23,6 +23,6 @@ or
 npx create-noderize <path>
 ```
 
-Visit our [documentation](https://noderize.js.org/docs/introduction.html) for more information!
+Visit our [documentation](https://noderize.js.org) for more information!
 
 > Inspired by [`create-react-app`](https://github.com/facebook/create-react-app)
