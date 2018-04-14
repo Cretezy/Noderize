@@ -1,7 +1,7 @@
 ---
 id: features-linting
-title: Feature: Code Linting
-sidebar_label: Code Linting
+title: Feature: Linting
+sidebar_label: Linting
 ---
 
 To start using linting in Noderize, you can configure it using:

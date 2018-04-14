@@ -10,7 +10,11 @@
 	"version": "0.5.0",
 	"license": "MIT",
 	"bin": "dist/index.js",
-	"files": ["src", "dist", "template"],
+	"files": [
+		"src",
+		"dist",
+		"template"
+	],
 	"scripts": {
 		"scripts": "node -r source-map-support/register ../scripts/dist/index.js",
 		"watch": "npm run scripts -- watch",
@@ -24,7 +28,6 @@
 	},
 	"dependencies": {
 		"@noderize/runtime": "^0.5.0",
-		"chalk": "^2.3.1",
 		"consola": "^1.2.0",
 		"fs-extra": "^5.0.0",
 		"minimist": "^1.2.0"
