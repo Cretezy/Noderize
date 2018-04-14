@@ -18,7 +18,8 @@
 			"features-flow",
 			"features-typescript",
 			"features-formatting",
-			"features-testing"
+			"features-testing",
+			"features-linting"
 		],
 		"Guides": [
 			"guides",

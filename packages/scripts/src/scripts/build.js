@@ -1,10 +1,10 @@
 import { getOptions } from "../options";
-import { printInfo, printError, printDone } from "../utils/print";
 import { getCompiler, printStats } from "../webpack";
 import { copyAll } from "../copy";
+import { buildLogger as log } from "../utils/logger";
 
 export default async args => {
-	printInfo("Building...");
+	log.start("Building...");
 	console.log();
 
 	const options = getOptions(args);
@@ -31,8 +31,9 @@ export default async args => {
 			console.log();
 		}
 
-		printDone("Done building!");
+		log.success("Done building!");
 	} catch (error) {
-		printError("Error building.", error);
+		log.error("Error building.");
+		log.error(error);
 	}
 };

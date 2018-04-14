@@ -8,6 +8,7 @@
 		"start": "noderize-scripts start",
 		"format": "noderize-scripts format",
 		"test": "noderize-scripts test",
+		"lint": "noderize-scripts lint",
 		"clean": "noderize-scripts clean"
 	}
 }

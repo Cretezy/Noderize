@@ -5,10 +5,10 @@ import spawn from "cross-spawn";
 import { getOptions } from "../options";
 import cosmiconfig from "cosmiconfig";
 import merge from "lodash.merge";
-import { printError, printInfo } from "../utils/print";
+import { testLogger as log } from "../utils/logger";
 
 export default async (args, fullArgs) => {
-	printInfo("Testing...");
+	log.start("Testing...");
 
 	const options = getOptions(null, "test");
 
@@ -21,7 +21,8 @@ export default async (args, fullArgs) => {
 			jestConfig = results.config;
 		}
 	} catch (error) {
-		printError("Could not read Jest configuration.", error);
+		log.error("Could not read Jest configuration.");
+		log.error(error);
 	}
 
 	let isInGit;

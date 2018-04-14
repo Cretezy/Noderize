@@ -1,10 +1,9 @@
 import fs from "fs-extra";
 import { resolveApp } from "./utils/path";
-import path from "path";
 import merge from "lodash.merge";
 import parseArgs from "minimist";
 import cosmiconfig from "cosmiconfig";
-import { printDebug, printError, printLines, printWarn } from "./utils/print";
+import { configLogger as log, printLines } from "./utils/logger";
 
 function run(runners = [], value, extra) {
 	if (!Array.isArray(runners)) {
@@ -177,12 +176,13 @@ export function getOptions(rawArgs, env = null) {
 					value = run(type.run, value, { options });
 					options[configOptionKey] = value;
 				} else {
-					printWarn(`Config key '${configOptionKey}' doesn't do anything.`);
+					log.warn(`Config key '${configOptionKey}' doesn't do anything.`);
 				}
 			});
 		}
 	} catch (error) {
-		printError("Could not read Noderize configuration.", error);
+		log.error("Could not read Noderize configuration.");
+		log.error(error);
 	}
 
 	function parseArgType(arg, type, value) {
@@ -193,7 +193,7 @@ export function getOptions(rawArgs, env = null) {
 			case Number:
 				const number = parseFloat(value);
 				if (isNaN(number)) {
-					printError(`Argument '${arg}' is not a number.`);
+					log.error(`Argument '${arg}' is not a number.`);
 					break;
 				} else {
 					return number;
@@ -202,10 +202,9 @@ export function getOptions(rawArgs, env = null) {
 				try {
 					return JSON.parse(value);
 				} catch (error) {
-					printError(
-						`Could not parse JSON for argument '${arg}'.`,
-						error.message
-					);
+					log.error(`Could not parse JSON for argument '${arg}'.`);
+					log.error(error.message);
+
 					break;
 				}
 			case Array:
@@ -256,18 +255,18 @@ export function getOptions(rawArgs, env = null) {
 		const type = types[option];
 		if (type.type === Number) {
 			if (type.integer && !Number.isInteger(value)) {
-				printError(`Option '${option}' is not an integer.`);
+				log.error(`Option '${option}' is not an integer.`);
 			}
 			if (type.min !== undefined && value < type.min) {
-				printError(`Option '${option}' is under minimum (${type.min}).`);
+				log.error(`Option '${option}' is under minimum (${type.min}).`);
 			}
 			if (type.max !== undefined && value > type.max) {
-				printError(`Option '${option}' is over maximum (${type.max}).`);
+				log.error(`Option '${option}' is over maximum (${type.max}).`);
 			}
 		}
 		if (type.choices !== undefined) {
 			if (!type.choices.includes(value)) {
-				printError(`Invalid choice for ${option}: '${value}'.`);
+				log.error(`Invalid choice for ${option}: '${value}'.`);
 			}
 		}
 	});
@@ -279,7 +278,7 @@ export function getOptions(rawArgs, env = null) {
 		if (options.languages[language] !== undefined) {
 			options.languages[language] = true;
 		} else {
-			printWarn(`Unknown language '${language}'`);
+			log.warn(`Unknown language '${language}'`);
 		}
 	});
 
@@ -422,7 +421,7 @@ export function getOptions(rawArgs, env = null) {
 	if (options.currentEnv) {
 		const envConfig = options.env[options.currentEnv];
 		if (envConfig === undefined) {
-			printWarn(`Could not find '${options.currentEnv}' environment.`);
+			log.warn(`Could not find '${options.currentEnv}' environment.`);
 		} else {
 			Object.keys(envConfig).forEach(envKey => {
 				options[envKey] = envConfig[envKey];
@@ -431,7 +430,7 @@ export function getOptions(rawArgs, env = null) {
 	}
 
 	if (options.debug || args.showConfig) {
-		printLines(printDebug, JSON.stringify(options, null, "\t"), "\t");
+		printLines(log.info, JSON.stringify(options, null, "\t"), "\t");
 	}
 
 	if (args.showConfig) {

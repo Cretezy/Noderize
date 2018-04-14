@@ -13,3 +13,4 @@ Noderize supports loads of exciting features.
 * [TypeScript](features-typescript.md)
 * [Code Formatting](features-formatting.md)
 * [Testing](features-testing.md)
+* [Linting](features-linting.md)

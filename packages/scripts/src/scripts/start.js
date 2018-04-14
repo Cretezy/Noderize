@@ -1,20 +1,20 @@
 import spawn from "cross-spawn";
 import { getOptions } from "../options";
 import { appDirectory } from "../utils/path";
-import { printError, printInfo, printWarn } from "../utils/print";
 import fs from "fs-extra";
+import { startLogger as log } from "../utils/logger";
 
 export default async args => {
 	await start(getOptions(args));
 };
 
 export async function start(options, nodePath = process.argv[0]) {
-	printInfo("Starting...");
+	log.start("Starting...");
 	console.log(); // Padding
 
 	const startFileExists = await fs.exists(options.startFile);
 	if (!startFileExists) {
-		printError("Start file does not exists.");
+		log.error("Start file does not exists.");
 		return;
 	}
 
@@ -28,9 +28,9 @@ export async function start(options, nodePath = process.argv[0]) {
 		if (code !== null) {
 			console.log(); // Padding
 			if (code === 0) {
-				printInfo("Exited gracefully!");
+				log.success("Exited gracefully!");
 			} else {
-				printWarn(
+				log.warn(
 					`Exited with code ${code} ${signal ? `and signal ${signal}` : ""}`
 				);
 			}

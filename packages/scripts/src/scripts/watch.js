@@ -1,15 +1,15 @@
 import { getOptions } from "../options";
 import { start } from "./start";
-import { printInfo } from "../utils/print";
 import chokidar from "chokidar";
 import { getCompiler, printStats } from "../webpack";
 import { resolveApp } from "../utils/path";
 import { copyAll, copyFile } from "../copy";
 import pathIsInside from "path-is-inside";
 import fs from "fs-extra";
+import { watchLogger as log } from "../utils/logger";
 
 export default async args => {
-	printInfo("Watching...");
+	log.start("Watching...");
 
 	const options = getOptions(args);
 	const compiler = await getCompiler(options);
@@ -24,7 +24,7 @@ export default async args => {
 		},
 		async (err, stats) => {
 			console.log();
-			printInfo("Building...");
+			log.info("Building...");
 			console.log();
 			printStats(stats, options);
 			console.log();

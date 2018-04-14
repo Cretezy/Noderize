@@ -2,13 +2,14 @@ import chalk from "chalk";
 import { resolve } from "path";
 import fs from "fs-extra";
 import { execSync } from "child_process";
+import log from "consola";
 
 export async function run(
 	name = null,
 	{ typescript = false, forceNpm = false, forceYarn = false } = {}
 ) {
 	if (!name) {
-		printWarn(`No path given!`);
+		log.warn(`No path given!`);
 		process.exit(1);
 		return;
 	}
@@ -18,12 +19,12 @@ export async function run(
 
 	// Check if exist
 	if (await fs.exists(path)) {
-		printWarn(`Path exists!`);
+		log.warn(`Path exists!`);
 		process.exit(1);
 		return;
 	}
 
-	printInfo(`Copying...`);
+	log.start(`Copying...`);
 
 	// Copy from template
 	try {
@@ -34,7 +35,7 @@ export async function run(
 		return;
 	}
 
-	printInfo(`Setting up...`);
+	log.info(`Setting up...`);
 
 	// Set the "name" field in package.json
 	try {
@@ -48,7 +49,8 @@ export async function run(
 		// Write
 		await fs.writeJson(childPackagePath, newChildPackage, { spaces: "\t" });
 	} catch (error) {
-		printError(`Error saving package.json.`, error);
+		log.error(`Error saving package.json.`);
+		log.error(error);
 		process.exit(1);
 		return;
 	}
@@ -57,7 +59,8 @@ export async function run(
 	try {
 		await fs.rename(resolve(path, "gitignore"), resolve(path, ".gitignore"));
 	} catch (error) {
-		printError(`Error moving .gitignore.`, error);
+		log.error(`Error moving .gitignore.`);
+		log.error(error);
 		process.exit(1);
 		return;
 	}
@@ -70,13 +73,14 @@ export async function run(
 				resolve(path, "src", "index.ts")
 			);
 		} catch (error) {
-			printError(`Error moving src/index.js to src/index.ts.`, error);
+			log.error(`Error moving src/index.js to src/index.ts.`);
+			log.error(error);
 			process.exit(1);
 			return;
 		}
 	}
 
-	printInfo(`Installing packages...`);
+	log.info(`Installing packages...`);
 	console.log();
 
 	const useYarn = forceYarn ? true : forceNpm ? false : shouldUseYarn();
@@ -102,7 +106,8 @@ export async function run(
 			});
 		}
 	} catch (error) {
-		printError(`Error installing packages.`, error);
+		log.error(`Error installing packages.`);
+		log.error(error);
 		process.exit(1);
 		return;
 	}
@@ -110,13 +115,15 @@ export async function run(
 	const runCommand = useYarn ? "yarn" : "npm run";
 
 	console.log();
-	printDone(`Done! Your Noderize app is ready!`);
-	printDone(`You may visit your app with ${chalk.cyan(`cd ${name}`)}`);
-	printDone(`Develop by using ${chalk.cyan(`${runCommand} watch`)}`);
-	printDone(
+	log.success(`Done! Your Noderize app is ready!`);
+	log.success(`You may visit your app with ${chalk.cyan(`cd ${name}`)}`);
+	log.success(`Develop by using ${chalk.cyan(`${runCommand} watch`)}`);
+	log.success(
 		`Build a production version using ${chalk.cyan(`${runCommand} build`)}`
 	);
-	printDone(`Visit documentation at ${chalk.cyan(`https://noderize.js.org`)}`);
+	log.success(
+		`Visit documentation at ${chalk.cyan(`https://noderize.js.org`)}`
+	);
 }
 
 function shouldUseYarn() {
@@ -126,21 +133,4 @@ function shouldUseYarn() {
 	} catch (error) {
 		return false;
 	}
-}
-
-function printInfo(text) {
-	console.log(`${chalk.blueBright("[INFO]")} ${text}`);
-}
-
-function printDone(text) {
-	console.log(`${chalk.greenBright("[DONE]")} ${text}`);
-}
-
-function printWarn(text) {
-	console.warn(`${chalk.yellowBright("[WARN]")} ${text}`);
-}
-
-function printError(text, error) {
-	console.error(`${chalk.redBright("[ERROR]")} ${text}`);
-	console.error(error);
 }

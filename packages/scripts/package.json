@@ -8,7 +8,7 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.4.6",
+	"version": "0.5.0",
 	"license": "MIT",
 	"bin": {
 		"noderize-scripts": "dist/index.js"
@@ -21,6 +21,7 @@
 		"test": "npm run scripts -- test",
 		"format": "npm run scripts -- format",
 		"clean": "npm run scripts -- clean",
+		"lint": "npm run scripts -- lint",
 		"prepack":
 			"rm -rf dist && noderize-scripts build --env production && npm run build -- --env production"
 	},
@@ -32,14 +33,16 @@
 		"@babel/preset-env": "^7.0.0-beta.40",
 		"@babel/preset-flow": "^7.0.0-beta.40",
 		"@babel/preset-stage-2": "^7.0.0-beta.40",
-		"@noderize/runtime": "^0.4.6",
+		"@noderize/runtime": "^0.5.0",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^22.2.2",
 		"babel-loader": "^8.0.0-beta.0",
 		"chalk": "^2.3.1",
 		"chokidar": "^2.0.2",
+		"consola": "^1.2.0",
 		"cosmiconfig": "^4.0.0",
 		"cross-spawn": "^6.0.5",
+		"eslint": "^4.19.1",
 		"fork-ts-checker-webpack-plugin": "^0.3.0",
 		"fs-extra": "^5.0.0",
 		"happypack": "^4.0.1",
@@ -58,7 +61,7 @@
 		"webpack-node-externals": "^1.6.0"
 	},
 	"devDependencies": {
-		"@noderize/scripts": "0.4.5"
+		"@noderize/scripts": "0.4.6"
 	},
 	"noderize": {
 		"bundles": [

@@ -2,10 +2,10 @@ import path from "path";
 import { getOptions } from "../options";
 import { appDirectory, getBinPath } from "../utils/path";
 import spawn from "cross-spawn";
-import { printInfo, printWarn, printDone } from "../utils/print";
+import { formatLogger as log } from "../utils/logger";
 
 export default async (args, fullArgs) => {
-	printInfo("Formatting...");
+	log.start("Formatting...");
 
 	const options = getOptions(null);
 
@@ -27,10 +27,7 @@ export default async (args, fullArgs) => {
 
 	child.on("exit", code => {
 		const message = "Done formatting!";
-		if (code === 0) {
-			printDone(message);
-		} else {
-			printWarn(message);
-		}
+
+		(code === 0 ? log.success : log.warn)(message);
 	});
 };

@@ -8,8 +8,8 @@ import webpackNodeExternals from "webpack-node-externals";
 import webpackForkTsChecker from "fork-ts-checker-webpack-plugin";
 import webpackHappyPack from "happypack";
 import webpackRequire from "webpack-bypass-require";
-import { printError } from "./utils/print";
 import fs from "fs-extra";
+import { buildLogger as log } from "./utils/logger";
 
 export async function getCompiler(options) {
 	const tsconfig = path.resolve(__dirname, "tsconfig.json");
@@ -29,12 +29,12 @@ export async function getCompiler(options) {
 						try {
 							return webpackRequire.resolve(entry.slice(1));
 						} catch (error) {
-							printError(`Could not find external entry '${entry.slice(1)}'.`);
+							log.error(`Could not find external entry '${entry.slice(1)}'.`);
 						}
 					} else {
 						const entryPath = resolveApp(options.srcDirectory, entry);
 						if (!await fs.exists(entryPath)) {
-							printError(`Could not find entry '${entry}' (${entryPath}).`);
+							log.error(`Could not find entry '${entry}' (${entryPath}).`);
 						} else {
 							return entryPath;
 						}

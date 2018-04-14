@@ -1,6 +1,6 @@
-import { printError, printInfo } from "./utils/print";
 import { resolveApp } from "./utils/path";
 import fs from "fs-extra";
+import { copyLogger as log } from "./utils/logger";
 
 export async function copyAll(files, options) {
 	await Promise.all(
@@ -19,21 +19,21 @@ export async function copyFile(source, destination, options) {
 			resolveApp(options.distDirectory, destination)
 		);
 
-		printInfo(
+		log.info(
 			`Copied ${options.srcDirectory}/${source} to ${
 				options.distDirectory
 			}/${destination}!`
 		);
 	} catch (error) {
 		if (error.code === "ENOENT") {
-			printError(`Could not find ${options.srcDirectory}/${source}.`);
+			log.error(`Could not find ${options.srcDirectory}/${source}.`);
 		} else {
-			printError(
+			log.error(
 				`Error copying ${options.srcDirectory}/${source} to ${
 					options.distDirectory
-				}/${destination}.`,
-				error
+				}/${destination}.`
 			);
+			log.error(error);
 		}
 	}
 }
