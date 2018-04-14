@@ -6,7 +6,7 @@
     Noderize lets you create Node apps in less than 30 seconds.
     <br/>
     <br/>
-    <a href="https://noderize.js.org"><strong>Documentation</strong></a>
+    <a href="https://noderize.js.org/docs/introduction.html"><strong>Documentation</strong></a>
     <br/>
     <br/>
 </p>
@@ -23,6 +23,6 @@ or
 npx create-noderize <path>
 ```
 
-Visit our [documentation](https://noderize.js.org) for more information!
+Visit our [documentation](https://noderize.js.org/docs/introduction.html) for more information!
 
 > Inspired by [`create-react-app`](https://github.com/facebook/create-react-app)
