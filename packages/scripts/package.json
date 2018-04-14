@@ -2,8 +2,7 @@
 	"name": "@noderize/scripts",
 	"description": "Scripts to use with Noderize.",
 	"author": "Charles Crete <charles@cretezy.com>",
-	"homepage":
-		"https://github.com/Cretezy/Noderize/tree/master/packages/scripts",
+	"homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/scripts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
@@ -13,7 +12,10 @@
 	"bin": {
 		"noderize-scripts": "dist/index.js"
 	},
-	"files": ["src", "dist"],
+	"files": [
+		"src",
+		"dist"
+	],
 	"scripts": {
 		"scripts": "node -r source-map-support/register dist/index.js",
 		"watch": "npm run scripts -- watch",
@@ -22,8 +24,7 @@
 		"format": "npm run scripts -- format",
 		"clean": "npm run scripts -- clean",
 		"lint": "npm run scripts -- lint",
-		"prepack":
-			"rm -rf dist && noderize-scripts build --env production && npm run build -- --env production"
+		"prepack": "rm -rf dist && noderize-scripts build --env production && npm run build -- --env production"
 	},
 	"dependencies": {
 		"@babel/core": "^7.0.0-beta.40",
@@ -37,7 +38,6 @@
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-jest": "^22.2.2",
 		"babel-loader": "^8.0.0-beta.0",
-		"chalk": "^2.3.1",
 		"chokidar": "^2.0.2",
 		"consola": "^1.2.0",
 		"cosmiconfig": "^4.0.0",
