@@ -33,7 +33,7 @@ export async function getCompiler(options) {
 						}
 					} else {
 						const entryPath = resolveApp(options.srcDirectory, entry);
-						if (!await fs.exists(entryPath)) {
+						if (!(await fs.exists(entryPath))) {
 							log.error(`Could not find entry '${entry}' (${entryPath}).`);
 						} else {
 							return entryPath;
@@ -62,6 +62,8 @@ export async function getCompiler(options) {
 			library: options.name,
 			libraryTarget: "umd"
 		},
+
+		mode: options.currentEnv,
 
 		module: {
 			rules: [

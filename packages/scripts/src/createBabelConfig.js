@@ -10,12 +10,12 @@ export default ({
 				targets
 			}
 		],
-		"@babel/preset-stage-2",
+		["@babel/preset-stage-2", { decoratorsLegacy: true }],
 		"@babel/preset-flow",
 		...presets
 	],
 	plugins: [
-		"@babel/plugin-proposal-decorators",
+		["@babel/plugin-proposal-decorators", { legacy: true }],
 		(runtime === "noderize" || runtime === "include") &&
 			"@babel/plugin-transform-runtime",
 		...plugins

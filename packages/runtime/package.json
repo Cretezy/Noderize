@@ -8,9 +8,9 @@
 		"type": "git",
 		"url": "https://github.com/Cretezy/Noderize.git"
 	},
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"license": "MIT",
 	"dependencies": {
-		"@babel/runtime": "^7.0.0-beta.40"
+		"@babel/runtime": "^7.0.0-beta.46"
 	}
 }
