@@ -4,6 +4,7 @@
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"target": "es5",
+		"lib": ["es5", "es6", "dom"],
 		"experimentalDecorators": true
 	},
 	"exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts", "__tests__"]
