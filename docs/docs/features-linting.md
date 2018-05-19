@@ -24,4 +24,4 @@ npm run lint
 >
 > `"lint": "noderize-scripts lint"`
 
-Code liting is done using [ESlint](https://eslint.org).
+Code linting is done using [ESlint](https://eslint.org).
