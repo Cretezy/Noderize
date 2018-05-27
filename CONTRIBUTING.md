@@ -26,13 +26,14 @@ Unsure where to begin contributing to Noderize? You can start by looking through
 
 # Getting started
 
-* Creaate your own fork of the code. This is the "Fork" button on GitHub.
+* Create your own fork of the code. This is the "Fork" button on GitHub.
 * Clone the repo to your computer and setup the repo:
-    * You will need `node` install, and [`yarn`](https://yarnpkg.com) is highly recommended.
-    * `cd` into the cloned project and run `yarn`. This will install dependencies.
+    * You will need `node` install, with [`yarn`](https://yarnpkg.com).
+    * `cd` into the cloned project and run `lerna bootstrap`. This will install dependencies.
     * `cd` into `packages/scripts` and run `yarn prepack`. This will bootstrap the Noderize scripts.
 * Make your changes!
     * You can run `yarn build` in the `packages/script` directory to build your changes.
+    * Use `lerna link` to relink the new built version.
     * You can then test out the changes with the `packages/create` package. Run `yarn build` there to use your modified scripts.
     * Optionally, write tests for your changes.
 * Before making a commit, make sure to run `yarn format` in your modified package to format the code to the project's style.
