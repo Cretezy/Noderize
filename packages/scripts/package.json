@@ -25,7 +25,7 @@
     "clean": "npm run scripts -- clean",
     "lint": "npm run scripts -- lint",
     "bootstrap": " noderize-scripts build",
-    "prepack": "rm -rf dist && noderize-scripts build --env production && npm run build -- --env production"
+    "prepack": "rm -rf dist && npm run build -- --env production"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.46",
