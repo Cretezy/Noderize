@@ -19,3 +19,5 @@ Deploying to Heroku is very simple:
   }
   ```
 * Deploy like normal (if in a Git repo, commit and push with `git push heroku master`)!
+
+This method also works for [Dokku](http://dokku.viewdocs.io/dokku/).
