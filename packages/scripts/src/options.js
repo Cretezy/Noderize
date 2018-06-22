@@ -116,6 +116,14 @@ export function getOptions(rawArgs, env = null) {
       type: Object,
       default: {}
     },
+    inspect: {
+      type: Boolean,
+      default: false
+    },
+    inspectChrome: {
+      type: Number,
+      default: false
+    },
     target: {
       type: String,
       default: "node",

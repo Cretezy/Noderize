@@ -255,6 +255,20 @@ File to run when using `start` or `watch` command.
 
 This is relative to your project root. Add `dist/` before.
 
+### `inspect`
+
+[boolean] Default: `false`
+
+Start the [Node debugger](https://nodejs.org/api/debugger.html) with Noderize.
+
+### `inspectChrome`
+
+[number] Default: _none_
+
+Start the [Chrome DevTools (Node) debugger](https://nodejs.org/api/debugger.html#debugger_v8_inspector_integration_for_node_js) with Noderize.
+
+Number given will be used as port to listen on.
+
 ## Other Options
 
 ### `env`

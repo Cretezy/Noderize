@@ -18,8 +18,23 @@ export async function start(options, nodePath = process.argv[0]) {
     return;
   }
 
-  const child = spawn(nodePath, [options.startFile, ...options.args._], {
-    execArgv: ["-r", "source-map-support/register"],
+  const args = [options.startFile, ...options.args._];
+  const execArgv = ["-r", "source-map-support/register"];
+
+  // Enable V8 debugger
+  if (options.inspect) {
+    args.unshift("inspect");
+  }
+  // Enable Chrome DevTools debugger
+  if (options.inspectChrome) {
+    execArgv.push(
+      `--inspect=${options.inspectChrome}`
+    );
+
+  }
+  console.log([...execArgv,...args])
+
+  const child = spawn(nodePath,[...execArgv,...args], {
     cwd: appDirectory,
     stdio: "inherit"
   });
