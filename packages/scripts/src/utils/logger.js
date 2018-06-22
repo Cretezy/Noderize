@@ -12,5 +12,5 @@ export const testLogger = consola.withScope("test");
 export const watchLogger = consola.withScope("watch");
 
 export function printLines(printMethod, lines, prefix = "") {
-	lines.split("\n").forEach(line => printMethod(`${prefix}${line}`));
+  lines.split("\n").forEach(line => printMethod(`${prefix}${line}`));
 }

@@ -4,16 +4,16 @@ import fs from "fs-extra";
 import { cleanLogger as log } from "../utils/logger";
 
 export default async args => {
-	log.start("Cleaning...");
+  log.start("Cleaning...");
 
-	const options = getOptions(null);
+  const options = getOptions(null);
 
-	try {
-		await fs.remove(resolveApp(options.distDirectory));
+  try {
+    await fs.remove(resolveApp(options.distDirectory));
 
-		log.success("Done cleaning!");
-	} catch (error) {
-		log.error("Error deleting files.");
-		log.error(error);
-	}
+    log.success("Done cleaning!");
+  } catch (error) {
+    log.error("Error deleting files.");
+    log.error(error);
+  }
 };

@@ -8,21 +8,21 @@ import { getOptions } from "./options";
 const options = getOptions(null, "test");
 
 export function process(src, path, ...rest) {
-	const isTypeScript = path.endsWith(".ts");
-	const isJavaScript = path.endsWith(".js");
+  const isTypeScript = path.endsWith(".ts");
+  const isJavaScript = path.endsWith(".js");
 
-	if (isTypeScript && options.languages.typescript) {
-		src = typescript.transpile(src, tsConfig.compilerOptions, path, []);
-	}
+  if (isTypeScript && options.languages.typescript) {
+    src = typescript.transpile(src, tsConfig.compilerOptions, path, []);
+  }
 
-	if (isJavaScript || isTypeScript) {
-		// Must use a temporary file name if TypeScript.
-		const fileName = isJavaScript ? path : "file.js";
+  if (isJavaScript || isTypeScript) {
+    // Must use a temporary file name if TypeScript.
+    const fileName = isJavaScript ? path : "file.js";
 
-		src = createTransformer({
-			...createBabelConfig(options)
-		}).process(src, fileName, ...rest);
-	}
+    src = createTransformer({
+      ...createBabelConfig(options)
+    }).process(src, fileName, ...rest);
+  }
 
-	return src;
+  return src;
 }

@@ -2,7 +2,8 @@
   "name": "@noderize/scripts",
   "description": "Scripts to use with Noderize.",
   "author": "Charles Crete <charles@cretezy.com>",
-  "homepage": "https://github.com/Cretezy/Noderize/tree/master/packages/scripts",
+  "homepage":
+    "https://github.com/Cretezy/Noderize/tree/master/packages/scripts",
   "repository": {
     "type": "git",
     "url": "https://github.com/Cretezy/Noderize.git"
@@ -12,10 +13,7 @@
   "bin": {
     "noderize-scripts": "dist/index.js"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
+  "files": ["src", "dist"],
   "scripts": {
     "scripts": "node -r source-map-support/register dist/index.js",
     "watch": "npm run scripts -- watch",
@@ -25,7 +23,8 @@
     "clean": "npm run scripts -- clean",
     "lint": "npm run scripts -- lint",
     "bootstrap": " noderize-scripts build",
-    "prepack": "npm run build && mv dist/ dist-temp/ && node dist-temp build -- --env production && chmod +x -R dist && rm -r dist-temp"
+    "prepack":
+      "npm run build && mv dist/ dist-temp/ && node dist-temp build -- --env production && chmod +x -R dist && rm -r dist-temp"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.46",
