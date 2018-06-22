@@ -5,10 +5,11 @@ node_js:
 cache: yarn
 
 script:
+- (cd packages/scripts && yarn) && cd (packages/create && yarn)
 - yarn lerna bootstrap
-- (cd packages/scripts && yarn && yarn prepack && yarn test)
+- (cd packages/scripts && yarn prepare && yarn test)
 - yarn lerna link
-- (cd packages/create && yarn && yarn prepack && yarn test)
+- (cd packages/create && yarn prepare && yarn test)
 
 stages:
 - test
