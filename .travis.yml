@@ -7,6 +7,7 @@ cache: yarn
 script:
 - yarn lerna bootstrap
 - (cd packages/scripts && yarn prepack && yarn test)
+- yarn lerna link
 - (cd packages/create && yarn prepack && yarn test)
 
 stages:
@@ -42,6 +43,6 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: yarn lerna boostrap && (cd packages/scripts && ci-publish) && (cd packages/runtime && ci-publish) && (cd packages/create && ci-publish)
+      script: yarn lerna boostrap && (cd packages/scripts && ci-publish) && (cd packages/runtime && ci-publish) && yarn lerna link && (cd packages/create && ci-publish)
       on:
         tags: true
