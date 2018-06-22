@@ -170,10 +170,10 @@ export function getOptions(rawArgs, env = null) {
   let options = {};
   try {
     // Load from "noderize" key in package.json, .noderizerc, or noderize.config.js
-    const results = cosmiconfig("noderize", { sync: true }).load();
+    const results = cosmiconfig("noderize").searchSync();
 
     if (results) {
-      const configOptions = results.config;
+      const configOptions = results.config || {};
       Object.keys(configOptions).forEach(configOptionKey => {
         if (types[configOptionKey] !== undefined) {
           const type = types[configOptionKey];
@@ -431,7 +431,7 @@ export function getOptions(rawArgs, env = null) {
     if (envConfig === undefined) {
       log.warn(`Could not find '${options.currentEnv}' environment.`);
     } else {
-      Object.keys(envConfig).forEach(envKey => {
+      Object.keys(envConfig || {}).forEach(envKey => {
         options[envKey] = envConfig[envKey];
       });
     }

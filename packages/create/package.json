@@ -23,7 +23,7 @@
 		"test": "noderize-scripts test",
 		"lint": "noderize-scripts lint",
 		"clean": "noderize-scripts clean",
-		"prepack": "npm run clean && npm run build -- --env production"
+		"prepare": "npm run clean && npm run build -- --env production"
 	},
 	"dependencies": {
 		"@noderize/runtime": "^0.7.2",
