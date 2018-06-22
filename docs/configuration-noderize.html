@@ -69,6 +69,8 @@
 <li><a href="#distdirectory"><code>distDirectory</code></a></li>
 <li><a href="#runonwatch"><code>runOnWatch</code></a></li>
 <li><a href="#startfile"><code>startFile</code></a></li>
+<li><a href="#inspect"><code>inspect</code></a></li>
+<li><a href="#inspectchrome"><code>inspectChrome</code></a></li>
 <li><a href="#env"><code>env</code></a></li>
 <li><a href="#debug"><code>debug</code></a></li>
 </ul>
@@ -199,6 +201,13 @@
 <p>[string] Default: <code>main</code> field in <code>package.json</code>, or first output in <a href="#bundles"><code>bundles</code></a>.</p>
 <p>File to run when using <code>start</code> or <code>watch</code> command.</p>
 <p>This is relative to your project root. Add <code>dist/</code> before.</p>
+<h3><a class="anchor" aria-hidden="true" name="inspect"></a><a href="#inspect" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>inspect</code></h3>
+<p>[boolean] Default: <code>false</code></p>
+<p>Start the <a href="https://nodejs.org/api/debugger.html">Node debugger</a> with Noderize.</p>
+<h3><a class="anchor" aria-hidden="true" name="inspectchrome"></a><a href="#inspectchrome" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>inspectChrome</code></h3>
+<p>[number] Default: <em>none</em></p>
+<p>Start the <a href="https://nodejs.org/api/debugger.html#debugger_v8_inspector_integration_for_node_js">Chrome DevTools (Node) debugger</a> with Noderize.</p>
+<p>Number given will be used as port to listen on.</p>
 <h2><a class="anchor" aria-hidden="true" name="other-options"></a><a href="#other-options" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other Options</h2>
 <h3><a class="anchor" aria-hidden="true" name="env"></a><a href="#env" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code>env</code></h3>
 <p>[object] Default: See below</p>
