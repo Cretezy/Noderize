@@ -25,7 +25,7 @@
     "clean": "npm run scripts -- clean",
     "lint": "npm run scripts -- lint",
     "bootstrap": " noderize-scripts build",
-    "prepack": "npm run build && mv dist/ dist-temp/ && node dist-temp build -- --env production && chmod +x -R dist && rm -r dist-temp"
+    "prepack": "npm run bootstrap && npm run build && mv dist/ dist-temp/ && node dist-temp build -- --env production && chmod +x -R dist && rm -r dist-temp"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-beta.46",
