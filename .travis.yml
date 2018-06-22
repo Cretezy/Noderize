@@ -5,8 +5,9 @@ node_js:
 cache: yarn
 
 script:
+- yarn lerna bootstrap
 - (cd packages/scripts && yarn prepack && yarn test)
-- (cd packages/create && yarn build && yarn test)
+- (cd packages/create && yarn prepack && yarn test)
 
 stages:
 - test
@@ -41,6 +42,6 @@ jobs:
     deploy:
       provider: script
       skip_cleanup: true
-      script: (cd packages/scripts && ci-publish) && (cd packages/runtime && ci-publish) && (cd packages/create && ci-publish)
+      script: yarn lerna boostrap && (cd packages/scripts && ci-publish) && (cd packages/runtime && ci-publish) && (cd packages/create && ci-publish)
       on:
         tags: true
