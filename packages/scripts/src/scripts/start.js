@@ -30,10 +30,8 @@ export async function start(options, nodePath = process.argv[0]) {
     execArgv.push(
       `--inspect=${options.inspectChrome}`
     );
-
   }
-  console.log([...execArgv,...args])
-
+  
   const child = spawn(nodePath,[...execArgv,...args], {
     cwd: appDirectory,
     stdio: "inherit"
