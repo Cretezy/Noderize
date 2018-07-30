@@ -10,12 +10,19 @@ export default ({
         targets
       }
     ],
-    ["@babel/preset-stage-2", { decoratorsLegacy: true }],
-    "@babel/preset-flow",
+
+      "@babel/preset-flow",
     ...presets
   ],
-  plugins: [
-    ["@babel/plugin-proposal-decorators", { legacy: true }],
+  plugins: [    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+      "@babel/plugin-proposal-function-sent",
+      "@babel/plugin-proposal-export-namespace-from",
+      "@babel/plugin-proposal-numeric-separator",
+      "@babel/plugin-proposal-throw-expressions",
+      "@babel/plugin-syntax-dynamic-import",
+      "@babel/plugin-syntax-import-meta",
+      ["@babel/plugin-proposal-class-properties", { "loose": false }],
+      "@babel/plugin-proposal-json-strings",
     (runtime === "noderize" || runtime === "include") &&
       "@babel/plugin-transform-runtime",
     ...plugins

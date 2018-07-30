@@ -15,7 +15,7 @@ export default async (args, fullArgs) => {
   let jestConfig = {};
   try {
     // Load jest config
-    const results = await cosmiconfig("jest").load();
+    const results = await cosmiconfig("jest").search();
 
     if (results) {
       jestConfig = results.config;
