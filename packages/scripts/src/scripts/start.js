@@ -27,12 +27,10 @@ export async function start(options, nodePath = process.argv[0]) {
   }
   // Enable Chrome DevTools debugger
   if (options.inspectChrome) {
-    execArgv.push(
-      `--inspect=${options.inspectChrome}`
-    );
+    execArgv.push(`--inspect=${options.inspectChrome}`);
   }
-  
-  const child = spawn(nodePath,[...execArgv,...args], {
+
+  const child = spawn(nodePath, [...execArgv, ...args], {
     cwd: appDirectory,
     stdio: "inherit"
   });
