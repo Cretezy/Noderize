@@ -1,7 +1,5 @@
-# Noderize [![Build Status](https://travis-ci.org/Cretezy/Noderize.svg?branch=master)](https://travis-ci.org/Cretezy/Noderize)
-
 <p align="center">
-    <a href="https://noderize.js.org"><img src="docs/website/static/img/icon.svg" alt="Noderize" width="256px" /></a>
+    <a href="https://noderize.js.org"><img src="docs/website/static/img/icon_text.svg" alt="Noderize" width="256px" /></a>
     <br/>
     Noderize lets you create Node apps in less than 30 seconds.
     <br/>
@@ -26,3 +24,5 @@ npx create-noderize <path>
 Visit our [documentation](https://noderize.js.org/docs/introduction.html) for more information!
 
 > Inspired by [`create-react-app`](https://github.com/facebook/create-react-app)
+
+[![Build Status](https://travis-ci.org/Cretezy/Noderize.svg?branch=master)](https://travis-ci.org/Cretezy/Noderize)

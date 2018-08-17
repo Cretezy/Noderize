@@ -20,20 +20,18 @@ const siteConfig = {
 	tagline: " Create a Node app in less than 30 seconds.",
 	url: "https://noderize.js.org",
 	baseUrl: "/",
-	projectName: "noderize",
-
 	headerLinks: [
 		{ doc: "introduction", label: "Docs" },
-		{ blog: true, label: "Blog" },
+		// { blog: true, label: "Blog" },
 		{ href: "https://github.com/Cretezy/Noderize", label: "GitHub" }
 	],
 	// users,
-	headerIcon: "img/light.svg",
-	footerIcon: "img/light.svg",
-	favicon: "img/favicon/favicon.icon",
+	headerIcon: "img/icon.svg",
+	footerIcon: "img/icon.svg",
+	favicon: "img/favicon/favicon.ico",
 	colors: {
-		primaryColor: "#343a40",
-		secondaryColor: "#809fc0"
+		primaryColor: "#3d434b",
+		secondaryColor: "#fed766"
 	},
 
 	copyright: `Copyright © ${new Date().getFullYear()} Charles Crete`,
