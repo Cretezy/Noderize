@@ -9,7 +9,7 @@
         <generator>Feed for Node.js</generator>
         <image>
             <title>Noderize Blog</title>
-            <url>https://noderize.js.orgimg/light.svg</url>
+            <url>https://noderize.js.org/img/icon.svg</url>
             <link>https://noderize.js.org/blog</link>
         </image>
         <copyright>Copyright © 2018 Charles Crete</copyright>
@@ -18,9 +18,7 @@
             <link>https://noderize.js.org/blog/2018/02/09/path-to-v1.0.html</link>
             <guid>https://noderize.js.org/blog/2018/02/09/path-to-v1.0.html</guid>
             <pubDate>Fri, 09 Feb 2018 06:00:00 GMT</pubDate>
-            <description><![CDATA[
-Plans for v1.0.
-
+            <description><![CDATA[<p>Plans for v1.0.</p>
 ]]></description>
         </item>
     </channel>
