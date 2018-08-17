@@ -1,6 +1,6 @@
 <p align="center">
-    <a href="https://noderize.js.org"><img src="docs/website/static/img/icon_text.svg" alt="Noderize" width="256px" /></a>
-    <br/>
+    <a href="https://noderize.js.org"><img src="docs/website/static/img/icon_text.svg" alt="Noderize" width="420px" /></a>
+    <br/><br/>
     Noderize lets you create Node apps in less than 30 seconds.
     <br/>
     <br/>
